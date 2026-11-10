@@ -1,0 +1,40 @@
+{
+ "product": "LEVEL7 CAD MTM Admin",
+ "kind": "admin-ui",
+ "version": "1.1.0",
+ "core": "1.1.0",
+ "notes": "LEVEL7 CAD MTM Admin 1.1.0",
+ "dir": "level7-cad/admin/v/1.1.0/ui",
+ "files": [
+  {
+   "path": "index.html",
+   "sha256": "b3474d67cf8ebc5e4f0cc38eeefdea9c4aff577634c3d3424b122e9df11cf5f5",
+   "size": 542
+  },
+  {
+   "path": "admin.js",
+   "sha256": "0222b3dd0a4e9b929de7fb5bfbac64392ca81e7a93b397ddda0ac597a3291fcf",
+   "size": 18118
+  },
+  {
+   "path": "admin.css",
+   "sha256": "3a63226227d8cf8dccf7eb60424725a249fcb4f998e77941416d1788b6312eaf",
+   "size": 5511
+  },
+  {
+   "path": "catalogue.json",
+   "sha256": "ea5afec0693654e50772a1e5690be89624cd06145ee7c2ee75d0ba535871c7a9",
+   "size": 8117
+  },
+  {
+   "path": "icon.png",
+   "sha256": "03c1edda74e459b2a56f5d65b9bc0736f570e367c5d5a6b121833c7973c5ae3d",
+   "size": 21897
+  },
+  {
+   "path": "ui-version.json",
+   "sha256": "5096a639d392f778ab488df01d6633ea929c33b08dff2460f03135cf6b64f428",
+   "size": 42
+  }
+ ]
+}
