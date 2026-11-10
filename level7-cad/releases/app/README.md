@@ -1,3 +1,7 @@
+LEVEL7 and MTM 0.9.294
+
+The admin's public key (LEVEL7) is built in: the super admin control is ON in the built program. Each copy needs the admin's signed users' policy (login with name and password) and the admin's approval of its version before it works.
+
 LEVEL7 and MTM 0.9.293
 
 The Windows program is sealed (level7-cad/tools/seal-windows.mjs, in build-windows.sh): the main process (licence, updates, file check) runs only from resources/app.asar, whose fingerprint is in the exe — one changed byte and it does not start; running the exe as plain Node, NODE_OPTIONS and the debugger flags are closed. The pages stay beside it and are updated as before; a release that changes the main process needs the new program (Setup). Checked on a real Windows machine by the build workflow (job level7-and-mtm-windows-check).
