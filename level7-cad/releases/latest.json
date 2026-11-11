@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.300",
- "notes": "The line tools' icons; the lines group's fixed icon.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.300/app",
+ "version": "0.9.301",
+ "notes": "The tool icons on a clean white tile, a little larger.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.301/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "f14c67ccc98d7217f3f920ce8cc2ab35ea1b84b9c9c56f26456fdc50486cfaf0",
-   "size": 176082
+   "sha256": "1650aca9959dc1fef3bc6cbeab6a28e4d0f5c32a7369413ffc4382228449e6ac",
+   "size": 176271
   },
   {
    "path": "assets/icon.ico",
@@ -156,7 +156,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "57b3898691bdbf7d9ac440194a9572b807299921e7013f40afa60c0b3f2216d6",
+   "sha256": "e9cd66f5934ac0bdd912472a358f15acdbe85d00af77b7ba5a0aeb75db4e0629",
    "size": 301
   },
   {
@@ -1556,8 +1556,8 @@
   },
   {
    "path": "src/ui-design-0118.css",
-   "sha256": "f3278057064cac870bcd1e93be54922bb7851edd3b3297ccfbbeac3010a45e93",
-   "size": 21473
+   "sha256": "af18fff1914df7f8ab4ec3ed5bb17db474fda5fa146acd607ee46529a7f1cdd3",
+   "size": 22201
   },
   {
    "path": "src/ui-guide-0113.js",
