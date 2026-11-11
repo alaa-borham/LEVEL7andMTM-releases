@@ -1,0 +1,95 @@
+name: windows-program
+
+# The full Windows program of every release the admin approves (LEVEL7 CAD MTM Admin → التحديثات → اعتماد writes
+# latest.json): checked against the admin's signed approval, built, tried on a real Windows machine (it starts; one
+# changed byte in its sealed core and it refuses to start), then put on this repository's Releases page — one fixed
+# address to download it: https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/latest
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'level7-cad/releases/latest.json'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version (empty: the one offered to the computers now)'
+        required: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: windows-program
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      v: ${{ steps.v.outputs.v }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        env:
+          WANTED: ${{ github.event.inputs.version }}
+        run: |
+          V="$WANTED"; [ -n "$V" ] || V=$(node -p "require('./level7-cad/releases/latest.json').version")
+          [[ "$V" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || { echo "bad version $V"; exit 1; }
+          echo "v=$V" >> "$GITHUB_OUTPUT"
+      - run: node tools/verify-release.mjs ${{ steps.v.outputs.v }}
+      - run: bash tools/build-windows.sh ${{ steps.v.outputs.v }} dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: program
+          path: dist/LEVEL7-and-MTM-${{ steps.v.outputs.v }}-win32-x64.zip
+          retention-days: 1
+
+  check:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: program
+      - name: unpack
+        shell: pwsh
+        run: Expand-Archive -Path LEVEL7-and-MTM-${{ needs.build.outputs.v }}-win32-x64.zip -DestinationPath w
+      - name: the sealed program starts
+        shell: pwsh
+        run: |
+          $d = "w/LEVEL7-and-MTM-${{ needs.build.outputs.v }}-win32-x64"
+          $p = Start-Process -FilePath "$d/LEVEL7 and MTM.exe" -ArgumentList "--l7-smoke=$PWD\smoke1.json" -PassThru
+          if (-not $p.WaitForExit(120000)) { $p.Kill(); throw "did not finish" }
+          Get-Content smoke1.json
+          $j = Get-Content smoke1.json | ConvertFrom-Json
+          if (-not $j.ok -or -not $j.sealed -or $j.version -ne "${{ needs.build.outputs.v }}") { throw "not started sealed" }
+      - name: one byte changed in the sealed core - it must not start
+        shell: pwsh
+        run: |
+          $d = "w/LEVEL7-and-MTM-${{ needs.build.outputs.v }}-win32-x64"
+          $f = "$d/resources/app.asar"
+          $b = [System.IO.File]::ReadAllBytes($f); $i = $b.Length - 200; $b[$i] = $b[$i] -bxor 1; [System.IO.File]::WriteAllBytes($f, $b)
+          $p = Start-Process -FilePath "$d/LEVEL7 and MTM.exe" -ArgumentList "--l7-smoke=$PWD\smoke2.json" -PassThru
+          if (-not $p.WaitForExit(60000)) { $p.Kill() }
+          if (Test-Path smoke2.json) { Get-Content smoke2.json; throw "the changed program started" }
+          "refused to start (exit $($p.ExitCode))"
+
+  publish:
+    needs: [build, check]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: program
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          V: ${{ needs.build.outputs.v }}
+        run: |
+          NOTES=$(node -p "require('./level7-cad/releases/manifests/$V.json').notes || ''")
+          BODY=$(printf 'LEVEL7 and MTM %s — Windows (64-bit)\n\n%s\n\nالتركيب: فك الملف، ثم افتح «LEVEL7 - first run.cmd» أول مرة فقط، وبعدها «LEVEL7 and MTM.exe».\nيعمل فقط باسم مستخدم وكلمة سر من المدير، وعلى جهاز يوافق عليه.' "$V" "$NOTES")
+          if gh release view "v$V" >/dev/null 2>&1; then
+            gh release upload "v$V" "LEVEL7-and-MTM-$V-win32-x64.zip" --clobber
+          else
+            gh release create "v$V" "LEVEL7-and-MTM-$V-win32-x64.zip" --title "LEVEL7 and MTM $V" --notes "$BODY" --latest
+          fi
