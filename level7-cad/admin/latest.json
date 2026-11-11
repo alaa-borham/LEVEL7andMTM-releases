@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.2.0",
+ "version": "1.2.1",
  "core": "1.2.0",
- "notes": "LEVEL7 CAD MTM Admin 1.2.0 (the new key)",
- "dir": "level7-cad/admin/v/1.2.0/ui",
+ "notes": "Admin screen 1.2.1: shows when the key is open",
+ "dir": "level7-cad/admin/v/1.2.1/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,8 +13,8 @@
   },
   {
    "path": "admin.js",
-   "sha256": "0222b3dd0a4e9b929de7fb5bfbac64392ca81e7a93b397ddda0ac597a3291fcf",
-   "size": 18118
+   "sha256": "fe3172d44491d11d7f0e6e7eb182d717521a419380b13e9a9d5c83e463f18f79",
+   "size": 18214
   },
   {
    "path": "admin.css",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "3d9028482c29d5ed45c1fd1b4e33eabea69741a5b911e675a45006e91c1ff29a",
+   "sha256": "28165aa21088a1346721541d8c89978dbbb95cb1d994a8c46530b993cc1e06d2",
    "size": 42
   }
  ]
