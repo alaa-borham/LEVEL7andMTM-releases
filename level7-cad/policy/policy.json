@@ -1,4 +1,4 @@
 {
- "payload": "{\"version\":1,\"issued\":\"2026-11-10T20:39:27.848Z\",\"users\":[{\"id\":\"728cbd1cc1553fb5a90b9efc745fb7ebe74aca28dddb935c28a22dffd97e2c77\",\"salt\":\"/lJhAAc00FcBHtjbun1PHQ==\",\"hash\":\"z/2ywf2GkFMqQuW8R+97qtPRk9rRKRREN2nMNQuBu38=\",\"expires\":null,\"disabled\":false,\"xz\":true,\"admin\":true,\"devices\":[],\"blocked\":[]}],\"product\":\"LEVEL7 and MTM\",\"kind\":\"policy\"}",
- "sig": "ep6B+kRinSpMjBhbkLaRSjtyD/4e/UMNLSlYN4om/lp2kQqmbzRfVpeQtobvBjkFFEWGgezYZ4WG14ujBvJaAQ=="
+ "payload": "{\"version\":2,\"issued\":\"2026-11-11T16:13:11.536Z\",\"users\":[{\"id\":\"728cbd1cc1553fb5a90b9efc745fb7ebe74aca28dddb935c28a22dffd97e2c77\",\"salt\":\"/lJhAAc00FcBHtjbun1PHQ==\",\"hash\":\"z/2ywf2GkFMqQuW8R+97qtPRk9rRKRREN2nMNQuBu38=\",\"expires\":null,\"disabled\":false,\"xz\":true,\"admin\":true,\"devices\":[],\"blocked\":[]}],\"product\":\"LEVEL7 and MTM\",\"kind\":\"policy\"}",
+ "sig": "rQeD4dhiPH745JqMItTQz/ZYnpTOcGRoqN7DE9IW1TqPJpdXa/wZS2uQPTDRJwxw6/3tJKAWi9Q/OZQk83NkAQ=="
 }
