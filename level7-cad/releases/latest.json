@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.301",
- "notes": "The tool icons on a clean white tile, a little larger.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.301/app",
+ "version": "0.9.302",
+ "notes": "Icons on a very light grey tile; the user's icons for the points, lines, edit and transformation tools, with fixed group icons.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.302/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "1650aca9959dc1fef3bc6cbeab6a28e4d0f5c32a7369413ffc4382228449e6ac",
-   "size": 176271
+   "sha256": "da7732e13e511b8d9edce665abb9ff922b29d32db6a0c1ab2f61b375ca62d618",
+   "size": 176948
   },
   {
    "path": "assets/icon.ico",
@@ -35,6 +35,21 @@
    "size": 712
   },
   {
+   "path": "assets/icons/dart.png",
+   "sha256": "59190d5f703c71335562163e520a005ebef4a05e8fe62d7574255455baf6bf83",
+   "size": 6417
+  },
+  {
+   "path": "assets/icons/editGroup.png",
+   "sha256": "ebc2a1c617f60de12030308baa770baf602ae8289ba36e83c20f0b5d1c045ef0",
+   "size": 8808
+  },
+  {
+   "path": "assets/icons/intersect.png",
+   "sha256": "1e11be931c35a53c5c6851e6f4c0be9aca3b3e6b57f3a8f019341f512e61319e",
+   "size": 5845
+  },
+  {
    "path": "assets/icons/line.png",
    "sha256": "86fb470e643bcb28cc665f66ecbfabf9268130beba75374aab4296a4371b4e55",
    "size": 4714
@@ -50,6 +65,26 @@
    "size": 7981
   },
   {
+   "path": "assets/icons/mirrorCopy.png",
+   "sha256": "9ffdd5827bd09a4ae6b3ad55a4f7e53f5c31b1a735a573e6e2569b0336a0bf23",
+   "size": 4808
+  },
+  {
+   "path": "assets/icons/mirrorDir.png",
+   "sha256": "b560103ea7a404168758f37f0ac4f6758a4015d89be1e7dcb270afc5d73ac6eb",
+   "size": 6336
+  },
+  {
+   "path": "assets/icons/mirrorMove.png",
+   "sha256": "bf2a0bd45377f3c628d394a187edcfb312b1d7e4b47bf173d0d65593fc046462",
+   "size": 4449
+  },
+  {
+   "path": "assets/icons/mirrorPts.png",
+   "sha256": "24ddf2aaa22e52cbab0721ef6e7d72b06c9db5b86b2fbf33799fa4245c0e5e97",
+   "size": 8359
+  },
+  {
    "path": "assets/icons/parallel.png",
    "sha256": "bb455b246cec227acd2099000b593a29eebbc477717229d8acd1744a055e6a8d",
    "size": 4816
@@ -58,6 +93,66 @@
    "path": "assets/icons/parallelMany.png",
    "sha256": "293f75d8ba2e37dbd6640f4aabdb3cb25b0420efd824f0eaf0d021ecfec9bc60",
    "size": 4632
+  },
+  {
+   "path": "assets/icons/point.png",
+   "sha256": "3e30c269d98fa287f62084c8ae35a2ed5646bae82911ebb704d9a97c7990986e",
+   "size": 5425
+  },
+  {
+   "path": "assets/icons/pointGroup.png",
+   "sha256": "dc8e3524784bcf53ff8df5d1435206e303d842101bf95f0389148f6768b98753",
+   "size": 8586
+  },
+  {
+   "path": "assets/icons/pointMove.png",
+   "sha256": "b00fc1ec516690cdd562d141a9ea49474ea5f807d3185fcc78803b2679375048",
+   "size": 3728
+  },
+  {
+   "path": "assets/icons/pointOn.png",
+   "sha256": "172df8f980b35ad9ebf22221f85a2ef60385b051d88e34fa3557af8696f13863",
+   "size": 2970
+  },
+  {
+   "path": "assets/icons/rotateAlign.png",
+   "sha256": "584ad4e2738b99725ab293973ba4835627cdf8269b103c4c7526819b57bf87c3",
+   "size": 8696
+  },
+  {
+   "path": "assets/icons/rotatePts.png",
+   "sha256": "1a0b3d5f5364d7e743c02e3ef428d500ba7bc59a3720b54c9a60bdcbd3bcd3a0",
+   "size": 7573
+  },
+  {
+   "path": "assets/icons/rotateSpread.png",
+   "sha256": "5e28d8408cc3848658ae560e148a12106238e9886d9064fe935e253123ffb7a1",
+   "size": 7173
+  },
+  {
+   "path": "assets/icons/scaleDir.png",
+   "sha256": "5894555cd5829397b70201ec52be47594fd413346ac5216f1798dd5a3651755c",
+   "size": 2446
+  },
+  {
+   "path": "assets/icons/scalePts.png",
+   "sha256": "9c2147be440640cc0f9f76c07e8d6eca95dbfb87e3f1d1f8f11c5882bbe9c041",
+   "size": 9024
+  },
+  {
+   "path": "assets/icons/setLength.png",
+   "sha256": "6999cad5cacdf83a8ca5e45aa53d80aa7bb9cfc0242a3cd65d74db1a5e82a3a0",
+   "size": 5709
+  },
+  {
+   "path": "assets/icons/transformGroup.png",
+   "sha256": "d7c42816e4eecbd94c571b542065d98bd855a073591e2c59a027fb8e337bd446",
+   "size": 11431
+  },
+  {
+   "path": "assets/icons/trim.png",
+   "sha256": "3bbab12b7ee7f81020b1032c3cc57e3413554e8077229aa5ec6e977f1a257136",
+   "size": 4102
   },
   {
    "path": "assets/l7design/assets/index-DzZItTLu.js",
@@ -156,7 +251,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "e9cd66f5934ac0bdd912472a358f15acdbe85d00af77b7ba5a0aeb75db4e0629",
+   "sha256": "155fe6d351c630f037f6237c42ad053ac7583a660eae5d839cbec8b694df56b8",
    "size": 301
   },
   {
@@ -401,13 +496,13 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "e1422c6aff591b992587706ab97d7ee69e8124eefc98b44a6df266fdf26dacca",
-   "size": 77550
+   "sha256": "8613443e407bfa774c9dd76ed9de82c7bb66ca01262b17632f7c82c48eb1d6bc",
+   "size": 77170
   },
   {
    "path": "src/l7-icons.js",
-   "sha256": "0747bd22699ae25b362105cd0753c983db77a089315e609d266734daf265d1dc",
-   "size": 15416
+   "sha256": "3a1f5b47243a07d074c7aebc3ae5de6168183993f1bab771e7b7c5873db96d4f",
+   "size": 12930
   },
   {
    "path": "src/l7-license.css",
@@ -1556,8 +1651,8 @@
   },
   {
    "path": "src/ui-design-0118.css",
-   "sha256": "af18fff1914df7f8ab4ec3ed5bb17db474fda5fa146acd607ee46529a7f1cdd3",
-   "size": 22201
+   "sha256": "fb1f6f29d17ef5d0717aa71c0f8eb7ecba98e2f48c6a6042c6b16d6d2a4add15",
+   "size": 22349
   },
   {
    "path": "src/ui-guide-0113.js",
