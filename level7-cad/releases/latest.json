@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.297",
- "notes": "The admin's new key built in.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.297/app",
+ "version": "0.9.298",
+ "notes": "Start screen; a second copy only brings the open one forward.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.298/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "fec723eee63b6eb1f52f5bcf9b7ca4dd871edc4fe718b7522d3fbe0d3ae456ab",
-   "size": 174733
+   "sha256": "c87bbebf46f3de2283a29b8b575384bd8f84a1adaf6e2f81ba0aa5e0f3eb1e76",
+   "size": 175011
   },
   {
    "path": "assets/icon.ico",
@@ -36,8 +36,8 @@
   },
   {
    "path": "assets/l7design/assets/index-DzZItTLu.js",
-   "sha256": "00be2cbcbf5289edcc350c0b1a1f0280f83591dea41285e53098846b1f1c6862",
-   "size": 979313
+   "sha256": "8523f7480b8ede826ec9b2d687d8623cb8347414176861cdc68cd01b58d09eeb",
+   "size": 979946
   },
   {
    "path": "assets/l7design/assets/index-PYmrzbVA.css",
@@ -51,28 +51,28 @@
   },
   {
    "path": "desktop/license.cjs",
-   "sha256": "0b83890062fb58a2b2575cbbbaa628c15056af5392da0fd792f00d58497a6e0b",
-   "size": 52201
+   "sha256": "f6ed4ae52594fb2eeb84c5db7dc1ef30ce5a6c66265fa68a1cfa3e957bc390bd",
+   "size": 46191
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "1da4afc1e285e7bdb4126c07556e40bedf465be01efa587972204da1d1884917",
-   "size": 96770
+   "sha256": "61baa14dcb6a21bdeea6e1c4e98d3c8ac8c274f1de4cb1983f62780c04adaee3",
+   "size": 89880
   },
   {
    "path": "desktop/native-save-targets.cjs",
-   "sha256": "d9c6867539bbf4254a13335b25d18700700003ba32b3b302a5cd1dd53c3251c7",
-   "size": 6347
+   "sha256": "9247b5d12e2b433df821e803437e7cf2c3c2c8791172d69f1c67a63e6cbdf45b",
+   "size": 6465
   },
   {
    "path": "desktop/preload.cjs",
-   "sha256": "941e1c723b4cfc2f77be3c0a79210a0ec88e0ea309306d982ccb66feaa49f2f9",
-   "size": 9386
+   "sha256": "56f3edeae05a4f8809aea0984acc27a9b9ea595a7f74eb4df1d39dc16e890ba3",
+   "size": 9884
   },
   {
    "path": "desktop/remote-update.cjs",
-   "sha256": "979daca5bac8ec7650414b31b51c261c24dd46afc839ef2c85456dde9f429770",
-   "size": 27442
+   "sha256": "9ec5e8baddf68f2164b463a5cd69e12d4b785b7196701cd8b82da0880a0b2a45",
+   "size": 29537
   },
   {
    "path": "examples/draft-blocks.dxf",
@@ -126,263 +126,263 @@
   },
   {
    "path": "native.html",
-   "sha256": "9471a640490fadea2b6fc1d8e346a4da8886a9c3c9d0342eff819131f6e78fa4",
-   "size": 68642
+   "sha256": "4984074841097b7bd3d9b6bd98b6fd00856a3af11d6a8c6f6ccb0d9acf38e29d",
+   "size": 68871
   },
   {
    "path": "package.json",
-   "sha256": "acc2a6d49cb1597f6ae405625fd7f68722e39e50f71cc0155f0011d9f0498761",
+   "sha256": "4cf230b4c1a3ac14b3ba4cebf3dfb737ef85662b9135157b06ed98ff13f2e422",
    "size": 301
   },
   {
    "path": "src/app.js",
-   "sha256": "e54040229108504976413322c3ecce71a7e883e7a580929444f4a1e9f79d9ac1",
-   "size": 65077
+   "sha256": "68b095673c25adb32d052db7603854cfee094aaf0166c6ef8c4290304c51913c",
+   "size": 64831
   },
   {
    "path": "src/auxiliary-endpoint-curve-kernel.mjs",
-   "sha256": "4bdbccf3e36af1607c2bb340519fc13670bd55ee4232a0491a835b3c42072581",
-   "size": 19747
+   "sha256": "f6abddd9fe2b4418bde625a29eaf4c51fbf860e6cda14ab561dfabc0627a588e",
+   "size": 19812
   },
   {
    "path": "src/bounded-line-transform.mjs",
-   "sha256": "afe9468d48dc1774fe947180a4b8de2ec34d2784042803a087caf8c9b2205cd0",
-   "size": 7926
+   "sha256": "085e0c4638c4697053322e7d24200297a7d5a5029cf677bb6a7e1d439f9f7c4c",
+   "size": 7962
   },
   {
    "path": "src/chamfer-corner-kernel.mjs",
-   "sha256": "470f150fff93d55da256443cda05cfd5a05253ca7b702fa25c0a54f425e08614",
-   "size": 11569
+   "sha256": "82f737f27c3149b14b38874bd5324116d58b86e91c0937e8a52a3a8c3f61b01e",
+   "size": 11597
   },
   {
    "path": "src/chamfer-link-schema.mjs",
-   "sha256": "e80047b4ea692e6df71fe4cd75156e4e991becc5b654154bce1159616cca11b8",
-   "size": 5511
+   "sha256": "09b571378aff946a1903da5846abd433c210fe505f9836888d3d836c9ea9c6a7",
+   "size": 5398
   },
   {
    "path": "src/circular-corner-kernel.mjs",
-   "sha256": "ffdb41ada336838138c4d6d23ee244838ce6be16fa0c7cf1ff6c5be85c95d7bf",
-   "size": 12638
+   "sha256": "39ecb68c913e763ae0fee3f16135392a77170dc4cfbabf30434868be2eb816c2",
+   "size": 12446
   },
   {
    "path": "src/closed-region-inspection.mjs",
-   "sha256": "b095ed08d15494ba0695d221d2dd12f69e0b0b17d5d4c5c6e0975e1fc0b5a89f",
-   "size": 10590
+   "sha256": "7850f3c5d0cf2c68d7185406967e9e58138c1ba72f39722957aab285fbea84a0",
+   "size": 10618
   },
   {
    "path": "src/complete-original-preview.mjs",
-   "sha256": "539ac46e184b4aac1be5b7d4c146e728a3c3cbcb84a67edf8de659e09b18bf51",
-   "size": 4978
+   "sha256": "c8506c01a6a28b9372cdfc30d60efc5207a16a9c516d9e8cc25de41fd7afe8c3",
+   "size": 4838
   },
   {
    "path": "src/construction-intersections.mjs",
-   "sha256": "0071f6c82991f5f0bce13eed569814339be6a6fa9d2f2cf35f91e7cbcd1857ce",
-   "size": 6524
+   "sha256": "47b99f130d321da3ea2a018f4d68bb5534b58a0dffed3ce18eeba20db0267899",
+   "size": 6537
   },
   {
    "path": "src/construction-length-kernel.mjs",
-   "sha256": "8b8009f15351ea46180b3d6934c044c15a5b4993619530fc2de9e4f6b355d02d",
-   "size": 6193
+   "sha256": "120cb8d908df6fcd64e1d1faec13c49ccb7774cb62048cfb0c2b96ad0f2b3898",
+   "size": 6135
   },
   {
    "path": "src/construction-polyline-kernel.mjs",
-   "sha256": "03be187aeccf4d772e120c5f516cd4eb44ffea8608ad5a32a36876ace3339e6d",
-   "size": 14164
+   "sha256": "8c82fbb1e56551acd4935416fc2c943d251c604eeb0b3f097f447e93b230beef",
+   "size": 13980
   },
   {
    "path": "src/contour-offset-kernel.mjs",
-   "sha256": "126ee022631578c7b98af9fe974d94707b03280a3a2f083e7ca3e9b408aa57aa",
-   "size": 7444
+   "sha256": "fa087b73a149643156118abc8dd1c98f83e58337064ca9f8b65b520915afcdd7",
+   "size": 7484
   },
   {
    "path": "src/corner-distance-bindings.mjs",
-   "sha256": "cdf622693d368cf5917b4cd75aa3e46af91d7a377cd7f73a9e75650fe943724a",
-   "size": 5541
+   "sha256": "c647b3ca8d8a790395500048fa8b50aa7b898cd7ef80d596a92b3f3497f8cf41",
+   "size": 5611
   },
   {
    "path": "src/corner-distance-picker-ui.js",
-   "sha256": "09103952dbba4c60e4f91bfdb7d38a7803183a9d0c3f890da4768fb058226525",
-   "size": 4253
+   "sha256": "22d4d3bc5a845125ef6237e6302aafa2bea372222e56248272cfbc5a2549ee60",
+   "size": 4147
   },
   {
    "path": "src/curve-construction-controls.mjs",
-   "sha256": "1655346ae1e9fe07b53bd309ee6f597b7a21d943f1031a27f83489ed4e9ba4fd",
-   "size": 15313
+   "sha256": "f3dc4234ac4c9981e4d8d80a14050181ab019349702f4460e22fd91f35a61975",
+   "size": 15269
   },
   {
    "path": "src/curve-construction-ui.js",
-   "sha256": "a8608553337cda30bd4cd61d138ba58975113d58e3130682ed2ef609634b992d",
-   "size": 33861
+   "sha256": "0c516f3c1da718c3638385084affeec63797d7eb6a7c3f58e246d735de214d19",
+   "size": 33616
   },
   {
    "path": "src/curve-direction-kernel.mjs",
-   "sha256": "75e468f062f24bc720e9cd14e3b6cdb9d7a4d7df46858046e43e459136eb8ef4",
-   "size": 14194
+   "sha256": "de605b0be51fdcfa1ad087b9cb3e6ff017d9a2ad66f421df6ffe1b4d224ca290",
+   "size": 13965
   },
   {
    "path": "src/curve-reference-edit.mjs",
-   "sha256": "ae276ef705c710ece14773bc6ee17bd7300ceda4e584468d1e3c8b097461da83",
-   "size": 21037
+   "sha256": "932c15361054cdce78d5b1e73c0321a2cfeea14a0f38cae0d011625052d621ca",
+   "size": 21364
   },
   {
    "path": "src/dimension-inspection-ui.js",
-   "sha256": "a2b47b29287d3ad3a776f821daac0acf6ca80440072abc1919639c548e68ee79",
-   "size": 21959
+   "sha256": "15ff6fa73d318ca78f706025475c5b90eb8cd2f2102c918077ec1d122f6eac34",
+   "size": 21983
   },
   {
    "path": "src/dimension-inspection.mjs",
-   "sha256": "25df9abdc20892fa3f9ebe109473edc18113dbec6d2d62ae19fb95a81c4d74b7",
-   "size": 20471
+   "sha256": "c718626a6adce33d4a31f3af7e16fe8b66011e4ffe45bcdfde6de534aa4329eb",
+   "size": 20245
   },
   {
    "path": "src/direct-path-editor.js",
-   "sha256": "0d16e8c2aeccb29a90861f7a9f841a9e2b4f7abfe9ace6315687b2c1f17ffdc0",
-   "size": 23909
+   "sha256": "00927bc8ac4e6f2baf1d30c3f9e57d2f45852da2f8d8cd7cf8ccf1efc1b30464",
+   "size": 23504
   },
   {
    "path": "src/draggable-palettes.js",
-   "sha256": "4533659f68396b8a1c90ab6b05d94f2ee125e243ec911d4cfa5567e8218de810",
-   "size": 6384
+   "sha256": "a0a163f7e79f5963977c5863144bba220acbd47127458b13798cbbe851a9b598",
+   "size": 6308
   },
   {
    "path": "src/drawing-construction-ui.js",
-   "sha256": "c7a1f91ca13032ac11f8591487eb62c861e738d78630f657cbd47e63320f1c2e",
-   "size": 17190
+   "sha256": "f3ad7b2a0747a350506524614adcec5d53a5898b76c826f1e16a0f0778cd1271",
+   "size": 16960
   },
   {
    "path": "src/drawing-construction.js",
-   "sha256": "737469fcb54e4ce81f9fc32885954d822ed7c1e1db80128934d79497f0d31fc6",
-   "size": 8975
+   "sha256": "b617daf54eb679e278bbf4d4ba726ccff5789543f8892621a121ba48d8e3c58f",
+   "size": 8830
   },
   {
    "path": "src/drawing-line-edit.js",
-   "sha256": "d4a93516fd4d0d9d95959591f6074efb6dd304d778156f84c8fe17dadd7e41c8",
-   "size": 5572
+   "sha256": "f501a3f1cfc1ab7f2f0242cffb6cec3705a63c5edb86cffc50d92631e0b20943",
+   "size": 5621
   },
   {
    "path": "src/drawing-path.js",
-   "sha256": "27d4dd72017c04728e275c59b38257cee517022f25781be402eed633b0797d4c",
-   "size": 4356
+   "sha256": "19b3b6ff27044de48b7d035ee4e153492f70f919106b231ee5389b6734fc366e",
+   "size": 4362
   },
   {
    "path": "src/early-history-replay.mjs",
-   "sha256": "14cab7818f93b8711d167421fa349716b801f728562a340e5921657f5fab1a5f",
-   "size": 7941
+   "sha256": "453e314bd71e90c58647faa277276527f8bb804016a20ba24d73ad28b6aa4ec9",
+   "size": 7990
   },
   {
    "path": "src/empty-native-line-part.mjs",
-   "sha256": "e1448a652f21a4ee26e7540203d2cf49f6936c6bb917cee4cdd01790a43d61ce",
-   "size": 9133
+   "sha256": "5791eb066afd632bba7967eeddb65210cccbd55eef8adbf3959a38e0857aa9ea",
+   "size": 8863
   },
   {
    "path": "src/endpoint-morph-kernel.mjs",
-   "sha256": "9b1eca1ccdbb57aa7bab7bbe913f940b2851a49294536b3861078b5b85cba4ad",
-   "size": 8384
+   "sha256": "23aae7a0b7a2de8355a1f224d11d4e6df606e8d97a6232be2096c43dd206b711",
+   "size": 8308
   },
   {
    "path": "src/formula-cases.js",
-   "sha256": "bdab77e3ee0f54ecca5d9517393fad30aab9c15e1d0d8279ffdc795cc0345c78",
-   "size": 5065
+   "sha256": "8c0669bca316c69cf1935f128e527bd8a1e3664fce3dd434d1670f754d6e0fcf",
+   "size": 5074
   },
   {
    "path": "src/geometric-z-kernel.mjs",
-   "sha256": "a9c1dc8a14334847f4f052ad3bf476e14cb087753632bd8fe8feade936a03146",
-   "size": 10861
+   "sha256": "b1b581eae409b716e65cfea0d033151e88ff3dbe12ceafee555d9ea354b742ec",
+   "size": 10878
   },
   {
    "path": "src/geometry.js",
-   "sha256": "08001e8e86af565e00727d67a53ed871e1f76af088d4bab4f40fab37b1ca29c0",
-   "size": 44229
+   "sha256": "e6c562cc4b04ff6f9837e9f19f811fbcb53cb321fd52e483bf68564439665235",
+   "size": 44280
   },
   {
    "path": "src/grain-history-kernel.mjs",
-   "sha256": "4118435b696e30d1403ae6d1f55b449619a62fa13a1ca8aa9d375bb71200e458",
-   "size": 9690
+   "sha256": "6a4e528ab512ed9d1a51b566a9e416db2c07236abf34be2bae2cb5911331f54f",
+   "size": 9485
   },
   {
    "path": "src/grain-reference-schema.mjs",
-   "sha256": "c7143ebfdad2ae03d4abd326cbdd1d777e15ec37ec2b7069f64a9893e2735626",
-   "size": 7475
+   "sha256": "554419097bc7060c6b47e8e1af5992425bd346ec6b2b909d90ccbeb80371c648",
+   "size": 7556
   },
   {
    "path": "src/grouped-tool-palette.js",
-   "sha256": "41565e40f0cae28d6b928191f198e7a040ff543ff48f90c745447b6b2ec4ee26",
-   "size": 92090
+   "sha256": "03056e0a83adec6bbc2509f1faa1833cbc8fe9c0f47afe85c55e36eae2ce5dbe",
+   "size": 91919
   },
   {
    "path": "src/history-prefix-preview.js",
-   "sha256": "a04c2e24abfb5c177368d490db73bad47835162b4430aa9f197398dec1038f96",
-   "size": 8356
+   "sha256": "a479413f75bfa5cc8998f58bd1969071639eba62bd6928c85a9f4f140b4fe5b0",
+   "size": 8246
   },
   {
    "path": "src/in-place-parallel-kernel.mjs",
-   "sha256": "01ad4800da6afbe594ccdde067dcde34861e7859c26e2636e505ed20cf7b016f",
-   "size": 6518
+   "sha256": "43f4e0f22ee06d578b098b51f605db280d520f310dcfbb40fc616ffb931c10d3",
+   "size": 6674
   },
   {
    "path": "src/insert-part-kernel.mjs",
-   "sha256": "6792153f2b71c2b942a0211c6de31ccc2ce247fcafd0e9a0be71406333bc801a",
-   "size": 9151
+   "sha256": "07fabc6c248882e4e3c496ae714cd7ae2b9b89e0d56d03548e8f3afd976bba97",
+   "size": 9089
   },
   {
    "path": "src/interactive-append-link-schema.mjs",
-   "sha256": "02fff545432736607fb5552a3a97c6e38bf2fab7f1fcc9f9707d900aa62f9e55",
-   "size": 7205
+   "sha256": "521f90d72cc7db6e7f3c4708345e70e55f7f28be9d6c257ba52a4a7832e4d610",
+   "size": 7182
   },
   {
    "path": "src/interactive-curve-kernel.mjs",
-   "sha256": "004faa5a88524a2c62ecd265138a3ee205857d4ae94661400790a9f9ddc846a9",
-   "size": 29081
+   "sha256": "ddfe8282c9d7208dbac0e1a99516ac6906725566311888a956944105ee9302d6",
+   "size": 29116
   },
   {
    "path": "src/interactive-insert-line-kernel.mjs",
-   "sha256": "efee882c341ba67e1c8bb7f6d08859926382c6628e6db4d2726d61d7fc0e3f85",
-   "size": 6891
+   "sha256": "a69a74919ab971be4663911559a56a15e29d97af78e6a4fa6cb66258165715ab",
+   "size": 6916
   },
   {
    "path": "src/interactive-insert-part-link-schema.mjs",
-   "sha256": "c58d0a830c607d6288661d8c2b411d8208a7632bb18745bd9b1638f05be4f398",
-   "size": 4533
+   "sha256": "bf4a4f96a5b9259165f0ff17d9ae5cc43d1a83687c329cc9e79c4ad82d5a9c23",
+   "size": 4530
   },
   {
    "path": "src/interactive-insert-point-kernel.mjs",
-   "sha256": "f950863c55ad7826a1fb1680b4288042cb72b618ed5b568042d9016d3d3821b6",
-   "size": 6262
+   "sha256": "da4f294f3323a763505e3eed5da2d2a377102dc40f9c078909bcf31651d7c73a",
+   "size": 6043
   },
   {
    "path": "src/interactive-line-kernel.mjs",
-   "sha256": "1cda4624c19b4688c7207f48069aa0b8d64f4de0a743c711583d98d07bf723df",
-   "size": 16174
+   "sha256": "23c36cce8923a2b011a17d3b95418ac577ea0b089f92ed71bdfe8f901309ec1d",
+   "size": 16241
   },
   {
    "path": "src/interactive-line20-kernel.mjs",
-   "sha256": "c70182f6fbb9e6f50d4e078a295f6a749486be675d621405ee3cec0036598f8a",
-   "size": 7920
+   "sha256": "cc5ae2db9fec15a9983814e1e9d3108f45bf02175dd674c6b0fc0ec0b49755f9",
+   "size": 7858
   },
   {
    "path": "src/interactive-raster20-kernel.mjs",
-   "sha256": "0bf02d796ee78616237b0e62b8a058e8fd338ff7350610ed4eaf21bdfd52e2b5",
-   "size": 9303
+   "sha256": "3e65377a9af64068907a47e808ba9e013999faab7faf246d27852711ef8cb81c",
+   "size": 9291
   },
   {
    "path": "src/interactive-shapes-kernel.mjs",
-   "sha256": "5b4115d7e77233900779f0e8ac43f279598956e0f17c661f3772864f4ca8e1e8",
-   "size": 20639
+   "sha256": "d102bcfa7a56bae3a67508acd7b19e8b4c5027c116e6e501837a30d0ad793b0a",
+   "size": 20646
   },
   {
    "path": "src/io.js",
-   "sha256": "9f4258bbda7c4a2740782e16529840500cf96fd662c68761c7fb6196ee024f0a",
-   "size": 48923
+   "sha256": "defd2d7bc60809fe794e8f4011eb67be4816cc9c25722657d8df7bb07b8a91c5",
+   "size": 48866
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "9dcb0ccb1229dcc1ccb8ace3a14a13dc758112acc7456547f4f14c618a249bfe",
-   "size": 77121
+   "sha256": "3cc9a7aed9867754f7dcdb9cf8957a581ca860f855382616e3a89fe0436f27c1",
+   "size": 77369
   },
   {
    "path": "src/l7-icons.js",
-   "sha256": "b1eb184ea372adff42b44cf77f3a3d9e598db40466856c049ff2157909707950",
-   "size": 15438
+   "sha256": "167e6d37bba50eb718df31c3d598e39d363a351e6db572d4cc766feaf976ad1a",
+   "size": 15370
   },
   {
    "path": "src/l7-license.css",
@@ -391,63 +391,68 @@
   },
   {
    "path": "src/l7-license.js",
-   "sha256": "ef718756862634cda255ddd4f42b6aadf3ac9d7b58cc2e63cd0fa09232c34414",
-   "size": 21755
+   "sha256": "da1091c35a90724ddc26caa9081614a9372dbdcd1ce40f7f61dafe3fcc6f1c6a",
+   "size": 23423
+  },
+  {
+   "path": "src/l7-splash.css",
+   "sha256": "08f2b4b38dc81c2d328c72631f41d2674b24aded4bb9a6820dcc4d949aad6ad0",
+   "size": 1059
   },
   {
    "path": "src/line-transform-ui.js",
-   "sha256": "1e4bf51fff6333e807b8b1fb9af587f848fe0c078948d3de033fa8a986e5f311",
-   "size": 19521
+   "sha256": "451bad58b9318d4c9f115d657d85912d2c2e5f15869186a352ba0d208d7cafe8",
+   "size": 19766
   },
   {
    "path": "src/line-transform.js",
-   "sha256": "c8db46dc176c54bfe1f49dd40cca5f0252b08a40e3901b7588306ef8d214fbb4",
-   "size": 5751
+   "sha256": "3248ba9b2191f8bb2b7bee2ba2932da18535ae6f5c3b74a07e7e63e6c4a2e52b",
+   "size": 5932
   },
   {
    "path": "src/linear-history-kernel.mjs",
-   "sha256": "ee42007ac358cad8639c73f92905bf2aa78d46295477398826776de4c0010d60",
-   "size": 17733
+   "sha256": "6dbc68ff1ebce534ddb7e5f61927d4cef686ffe907da95a46490aae2d82262c8",
+   "size": 17729
   },
   {
    "path": "src/linked-point-position-ui.js",
-   "sha256": "b3874d6cb4e19dade712c763167f00588d50740d50b088a1e8d4cf6d3f6430d9",
-   "size": 8387
+   "sha256": "c7df5f20f8a713dbacf52026224a124fb9b8f49cb4b139a828163c2685887407",
+   "size": 8687
   },
   {
    "path": "src/main-menu.js",
-   "sha256": "8db18133984e3acd6d7ef9be49879423698a3dc6ef9da9e597eceb20f7f05a43",
-   "size": 4649
+   "sha256": "f30fc3882a47d964445fbde87bd4ac6c705fcb2c1eaea27a0656393f31315a80",
+   "size": 4441
   },
   {
    "path": "src/multi-anchor-curve-kernel.mjs",
-   "sha256": "a6f54da297a5b7e716a41b8a80109ca75bd0d44677bd01f41a4c21c066fb1b99",
-   "size": 31479
+   "sha256": "cdea557e553bcea4cba33e29d07b2032797950f7b5c3b774871d60a3ca201566",
+   "size": 31610
   },
   {
    "path": "src/native-alaa-append-ui.js",
-   "sha256": "36451369d3e786dfd7ad5c429cd2282ae911c1aea39b616855d48cf48edd6179",
-   "size": 14527
+   "sha256": "993f71ec047007a44132f31311144cf69a5f2c37be173b7ac3dc6aec9be2d708",
+   "size": 14438
   },
   {
    "path": "src/native-alaa-z-scalars.mjs",
-   "sha256": "eb0ec3b2e7445d42a4174af0f6980e6512e12ba53fac21fcbd681dc8cd429bc4",
-   "size": 27332
+   "sha256": "03a24be78b988bbd54af3e8699cbe7f544dc4df03a86773577da1cd5991ca8f5",
+   "size": 27333
   },
   {
    "path": "src/native-alaa2-append-anchors.js",
-   "sha256": "11f8063a19d45f20bbf4ac8ee08182fe9d0941d88784bd53685f99feddd44438",
-   "size": 6729
+   "sha256": "cf3f22d02e35ac7ab4b3e63f2abb49e734db5f566f132f4721c48f8511c8f32e",
+   "size": 6642
   },
   {
    "path": "src/native-alaa2-append.js",
-   "sha256": "42a52dfa7fc8b01718369fad0681eabf202c33621c5df6fc5931c92ab2ecc011",
-   "size": 31104
+   "sha256": "b94c495a06018a99637b7e16a4e7d02757dfdae4c5110e3111ce486ec53b91cd",
+   "size": 30924
   },
   {
    "path": "src/native-app.js",
-   "sha256": "dd8d0d0066204345febd33543c5f676cc9a3f94f4c9c71dc3c9e0222a512be42",
-   "size": 191402
+   "sha256": "2069be7ffce876d1a453d29d2a0aff2e4076b9b94dca695d7d1536f7bb54696a",
+   "size": 190337
   },
   {
    "path": "src/native-bartack10-template.mjs",
@@ -456,8 +461,8 @@
   },
   {
    "path": "src/native-bartack10.mjs",
-   "sha256": "49bf685e5ebcc1568b56afd7aed4da6f08019d0257ac61ef46b2a6b47b84373c",
-   "size": 13023
+   "sha256": "bbe535917716142ebc14c3da8fbe93112a6094121f49560176292fce555266cf",
+   "size": 12966
   },
   {
    "path": "src/native-buttonhole10-template.mjs",
@@ -466,8 +471,8 @@
   },
   {
    "path": "src/native-buttonhole10.mjs",
-   "sha256": "8a8297e67045c498ed11dd2fcef503d24d6b8b0277de5789c4a063d6f7cb05d9",
-   "size": 12797
+   "sha256": "c49c8bbca7d87e797fcaf8ae71c391d8313d22c0262fd26e9b5af3d4623145bf",
+   "size": 12654
   },
   {
    "path": "src/native-buttonhole20-template.mjs",
@@ -476,8 +481,8 @@
   },
   {
    "path": "src/native-buttonhole20.mjs",
-   "sha256": "ff3d03f69afe53037322d07539fdb703e349226442f96c77885d1a59c4dde1e3",
-   "size": 13129
+   "sha256": "6ce87b00638fec29d002616f95abf726741b26a745edeb06c0a9911ba19b55fd",
+   "size": 13117
   },
   {
    "path": "src/native-buttonhole40-template.mjs",
@@ -486,233 +491,233 @@
   },
   {
    "path": "src/native-buttonhole40.mjs",
-   "sha256": "09cdf1a65d0116ccee1a37a53527f13fd05af3ac5e753132f1824f704373f6c0",
-   "size": 13029
+   "sha256": "7156da6dc72df48417eedbf3703a9847b4b4b398efc074fc8bc2e9dc2e5af52f",
+   "size": 12703
   },
   {
    "path": "src/native-cache-preview.js",
-   "sha256": "0adfaefdf159ea41251e8be2c53b7ae2be3789056ed53d31d60f5391d0389d99",
-   "size": 13169
+   "sha256": "3cbb4ead970f3a0873749178be65c5aca77d895cf6c7a4589a53acd068eb277d",
+   "size": 13359
   },
   {
    "path": "src/native-chamfer-template.mjs",
-   "sha256": "7fc58433622f5ba6700d870a5d16ec3bfee411d40ea77969ceb200f3e4463b2e",
-   "size": 6009
+   "sha256": "d089c481db2e8b52c821ab3e494a3ce81f6d20ba1c4b9713285864d749aed23a",
+   "size": 7193
   },
   {
    "path": "src/native-circular-corner-template.mjs",
-   "sha256": "31bb04cc09870ddbcb63005052bc7b4fac44fd6cbc9b8b9df770d1843271b63b",
-   "size": 7235
+   "sha256": "0bf9cdd70d8a0fc0f9a24c5569d60aca9f892e4e48e804ee38da6b31a05f7375",
+   "size": 7297
   },
   {
    "path": "src/native-coordinate-operands.mjs",
-   "sha256": "9f7f6cbb5a9fedc855ce30fe08f88024065ff880c16d3d25f14424bd83cd8785",
-   "size": 3804
+   "sha256": "842585932745d15bbe46eb71b6f131e16328968cca9edf20265d0a751b8aa680",
+   "size": 3733
   },
   {
    "path": "src/native-coordinate-point-records.mjs",
-   "sha256": "1e5f6ab5cd9ff068345bea406a2138c4066b969d678d90986d6230b9a16ce841",
-   "size": 5138
+   "sha256": "b2abee1f5ff5d68aecff2a6c2444fb9cb66bb963b3d08d6da43fbee169096f73",
+   "size": 5173
   },
   {
    "path": "src/native-curve-morph-records.mjs",
-   "sha256": "ce635c615ab6676a7a43a36a00ea1ec99c1602c47acd4a091cdc16e1a515e21b",
-   "size": 4313
+   "sha256": "6cd9ded418f2542459f5e301a5225a67d9810b5ea2fd82000b077805608e216a",
+   "size": 4428
   },
   {
    "path": "src/native-curve10-template.mjs",
-   "sha256": "231f751e2accd9623f21f4c53805461bb8930328c2b22ca9ee4995004d6af840",
-   "size": 83035
+   "sha256": "39d7a12fd1dee378f5c1561894ff4ef8e5dff30e33670ec7b7140cf173110754",
+   "size": 62729
   },
   {
    "path": "src/native-cut-records.mjs",
-   "sha256": "c8d87fa8ba858c92d53b77c473f687e3934c275a8ba81cd2abf8e293bcf38f4b",
-   "size": 5303
+   "sha256": "76ff78bf9a3644d977cbafee513a8ae5724f8f8b2bb3794fd452ccf8e90343f6",
+   "size": 5158
   },
   {
    "path": "src/native-dart-shortening.mjs",
-   "sha256": "fbd4c1fc30ba7716f8b38d37d17b07bc41d1c9c8deea6c9686a9103a0a77784f",
-   "size": 6413
+   "sha256": "cc311a30aae454fe3441919a9065c237b13370d56938f029cc509459f74649bc",
+   "size": 6353
   },
   {
    "path": "src/native-dimension-cache.mjs",
-   "sha256": "541d8fb64f643aea2cf0e50aeb6717bf5364523f23263db590a0b6e9a2110117",
-   "size": 9717
+   "sha256": "a1431d947ab540bea2836c8185cc7e7ebb85a20b731da6d0330b7a56f2aa98f1",
+   "size": 9858
   },
   {
    "path": "src/native-dimension-graphics.mjs",
-   "sha256": "35b4a5aae8cdaef96716016ee1261f6bbae9f62e6bf47b97969ebdf315438ad7",
-   "size": 8347
+   "sha256": "9d7f9ae3ed82c267d3c25c75185402c7593826dbb55625ff37ff97d61e0be6d9",
+   "size": 8395
   },
   {
    "path": "src/native-drawing.js",
-   "sha256": "80e3afdb305dbbc13211fae102f85f1ce4f9344507b23e1fc45780f24ebd8133",
-   "size": 8061
+   "sha256": "c624231cf04cb9f2db9130d57ecf91e59ab9ffa393642358af437967edbc11c7",
+   "size": 8065
   },
   {
    "path": "src/native-endpoint-notch-records.mjs",
-   "sha256": "3758052876c6df7943472fa265218aed56ea98b02a597f2bd76f33d78f2e3f38",
-   "size": 5462
+   "sha256": "078fbd59e2859aa66e79ebffee08d5163bb89ece83829c1679205056b01465da",
+   "size": 5450
   },
   {
    "path": "src/native-insert-line-template.mjs",
-   "sha256": "c03283b5ee563efaa4e4eb3461753c65b1fa5b6214caeac33ab99e6043370c03",
-   "size": 5677
-  },
-  {
-   "path": "src/native-insert-part-template.mjs",
-   "sha256": "d71d7e6bafecb60caf41f8a90ff2a842a2f1b7220ae86fd3bd968da9104ea30b",
-   "size": 2630
-  },
-  {
-   "path": "src/native-insert-point-template.mjs",
-   "sha256": "2f2f88d83a41a6044fd743dc3f15a544e85bf0eb1314e1a1df040d5a30b113c8",
-   "size": 5705
-  },
-  {
-   "path": "src/native-intersection-notch-records.mjs",
-   "sha256": "90695c51044df38660b42af2d3680afc66c2d23eeb7e94dd7107ece50b06ec00",
+   "sha256": "2acb994736c6b6305117e0cd942145b0b6bb4aae5d4a54b470c3dfd7dcd7858d",
    "size": 5701
   },
   {
+   "path": "src/native-insert-part-template.mjs",
+   "sha256": "81de61b8732a83a0bf2937992694a32e70119203ea5784b8c05e55cbaebba900",
+   "size": 2684
+  },
+  {
+   "path": "src/native-insert-point-template.mjs",
+   "sha256": "b184de6eab8dccd0ae6fe3dc334f603a0b9cb28dad41235cc2949e5c30c946f7",
+   "size": 5685
+  },
+  {
+   "path": "src/native-intersection-notch-records.mjs",
+   "sha256": "2e65ce95d4f9ba9a737eb08d396bcaad99a2b174141e9aefa9dc263844d4386b",
+   "size": 5712
+  },
+  {
    "path": "src/native-join-records.mjs",
-   "sha256": "dd93aac08aba8532637bfad85b7a0cd132a0f050749467a722e806c48e20dc08",
-   "size": 5178
+   "sha256": "d417002700191b70a5ca143c9cd3127989968d865e44d366aa53dc68d8fec8de",
+   "size": 5279
   },
   {
    "path": "src/native-line-attributes.mjs",
-   "sha256": "292e0a34a7c7c9dcd01d1611183d02b275e854400f4ed88b59591579a5eb3e8a",
-   "size": 5031
+   "sha256": "31d7ff6b58d5c108f02fd70aebb9199c326efa562d0bb7f17fa6617633459f56",
+   "size": 5352
   },
   {
    "path": "src/native-line-translation.js",
-   "sha256": "efc7aca5cef229c60c0f0e988aafefb92bc61d17f0b0555fef34593451d1be47",
-   "size": 21853
+   "sha256": "038c5b15cc9af23943b116b2ea65c038f200c815f34341b53a0b19efc932a5ab",
+   "size": 21903
   },
   {
    "path": "src/native-line10-lengths.mjs",
-   "sha256": "1f60e9ad56a0e8643644379b3c330dd27dcd2f70116ab9dbdcd412b9a1206cb5",
-   "size": 7732
+   "sha256": "16f5f7adaa24cc2a7f5709d39db49ca642afda0e4213aec1ab454b0cf6695f48",
+   "size": 7532
   },
   {
    "path": "src/native-line10-template.mjs",
-   "sha256": "570f4f071700787957f6b5744c3232902b689f53008c975f02b29fd0f2375bc7",
-   "size": 6033
+   "sha256": "59b06ddb51cfe391bc7c455e87174abb09506b41620291f50a019f35cbb9ce87",
+   "size": 5100
   },
   {
    "path": "src/native-line20-template.mjs",
-   "sha256": "35e0893830a0549775a39f8d983ea5b31b958f44702d9edc9d164f397e39ea1c",
-   "size": 7322
+   "sha256": "d5c3efbd3edde43853689becc3800d680275fc2f10b7870471cd5d2cb8254ab2",
+   "size": 7284
   },
   {
    "path": "src/native-linked-point-records.mjs",
-   "sha256": "77eb7984e8a9c047b3eb47302ec512c7760dcfb3bb37c2bc6b4b822d093d8204",
-   "size": 19500
+   "sha256": "d4670bb2b74bc1e8e5ff85e68fe9cbbaac940c6117e5aa7e13ef27cd0c9a19e9",
+   "size": 19443
   },
   {
    "path": "src/native-literal-text-codec.mjs",
-   "sha256": "05fb83649799ffc2ea0239c2f5a302ca8f3c2e09c357ce65a7fc663cc51cee27",
-   "size": 6618
+   "sha256": "3e3057b50f88893a18ae17c17eb01a2ee7edfc4673a326ebbd8df794b5d1d730",
+   "size": 6621
   },
   {
    "path": "src/native-literal-text.mjs",
-   "sha256": "aba63a6965ba7acb4cb418c459c819aa3cf3e49fde4b8113a566c4a2e1bd6744",
-   "size": 18593
+   "sha256": "67b16a30a3a3f834421b37e70309eb3426861fee9d1d32c26b957c1248727dc2",
+   "size": 18651
   },
   {
    "path": "src/native-mdl.js",
-   "sha256": "56d0804890a4f4ed8d76940e3eff25fc9b3c34f6f332fc6acd8575b1e1551137",
-   "size": 69024
+   "sha256": "fe4c08abe565db7b61e9ab1165bddf3d6a4e8879e3516757abae2cd296600eda",
+   "size": 68387
   },
   {
    "path": "src/native-measurements.js",
-   "sha256": "b0bbc18dad181f42410f574bfb80431055281150a6ddafce483f537aff8e182a",
-   "size": 19177
+   "sha256": "da095ceddc51ce5c3b9feac73601fb951fe72a48aca7128447dae1a72fc3b9c3",
+   "size": 19072
   },
   {
    "path": "src/native-n38-anchors.js",
-   "sha256": "130c02f38c88822e9d528178c9b28266034fd726c31f9eb90df5e4fa60661990",
-   "size": 22026
+   "sha256": "d7c07fbcb0d7eaa7315a98f1dec2b2a481e8c80c7b789236d871ee3151909e28",
+   "size": 25511
   },
   {
    "path": "src/native-n38-bytes.js",
-   "sha256": "50b0255b2bbef5b8ebd3fffd2fe0ccfdd3379951ee93a4de673f6b8b0e3fc6e0",
-   "size": 6045
+   "sha256": "8a1c247ec376734f5697be630ba46769932e2b796a8a325f96a81dd075f858c6",
+   "size": 6023
   },
   {
    "path": "src/native-n38-expression.js",
-   "sha256": "af6ba38b04b0712b7b10c5516bed2a70a753d007ae55683abc19b4f4dfd171a5",
-   "size": 11610
+   "sha256": "7509111e3e316954e46d89f39e491ad61f9d84dec3dde16d49cbe28c41071aad",
+   "size": 11510
   },
   {
    "path": "src/native-n38-parametric-engine.js",
-   "sha256": "03645d47876cd024c0749be9b18680945bcf8283bbddd885c7d1c56df4c31e34",
-   "size": 50344
+   "sha256": "d1671af4bb787364db665cb0ca11df580e14bf6f586066d2dafec5ba2c25d450",
+   "size": 50377
   },
   {
    "path": "src/native-n38-tables.js",
-   "sha256": "b148e5773dae80584ccb225d0874c4fa7dee8a4b06b72e2d19b74b3f1ed2928f",
-   "size": 5427
+   "sha256": "e4f01258c6ad4284dea87443ede8448b5ef7171ee6c40b33c2baff3b29c150a4",
+   "size": 5110
   },
   {
    "path": "src/native-n38-ui.js",
-   "sha256": "43a3aa1aab07c83d228778f4b2a57b6eade612c13d8d8baa438fc860e8b207fe",
-   "size": 31195
+   "sha256": "c1752e1471ae5be7e6946e89abbc1f8f1bf18686fd75f60498ec86f78c210f07",
+   "size": 31034
   },
   {
    "path": "src/native-notch-conversion.mjs",
-   "sha256": "5ffccacfebfa8ba5f4b7ca0bc56f13ebcd5386c6939f1dcee7de8cb7cf67caae",
-   "size": 12712
+   "sha256": "5933110f43d3a8064f661ed38ff9ff25d8a69e8ecf59a95964efdb44d0c67f21",
+   "size": 12718
   },
   {
    "path": "src/native-owned-parts.js",
-   "sha256": "312f5c207e9a299cb300d9d50793d14b7f0b583d8dd11dd651da02ce950f33a9",
-   "size": 21843
+   "sha256": "0f649f50d415f6dd3ab79d44c4d6e74f67c5f61cd6f5478b8ef1691403fb8de9",
+   "size": 21926
   },
   {
    "path": "src/native-parameter-transfer.js",
-   "sha256": "98b9537d1c0d93d999f712997a6c395ae53f6436bfc5ec691a0e3ad1b2a85823",
-   "size": 16319
+   "sha256": "47eab746bd8ffba7e26ffa4be4078a78804c530819447a8059614e2b466f6e99",
+   "size": 16616
   },
   {
    "path": "src/native-parametric-example.js",
-   "sha256": "cbefc691a9e30f43c0d001fea6cf1e232d2b45614915c7d581279b2c49e24520",
-   "size": 18588
+   "sha256": "9c40ec469177aa43b45980abd89de842e56fdeaf8997c87a16592ee5ae7ab269",
+   "size": 18462
   },
   {
    "path": "src/native-parametric-point.js",
-   "sha256": "174d3f1d2999fbb3290da1624cdb4666b7180a5f426a3d0ea7fb442ae17decc6",
-   "size": 18106
+   "sha256": "0eb758a19a918c69e73f87e9f12880d1fee184a28c1491518f4ce64d9807f8cd",
+   "size": 18296
   },
   {
    "path": "src/native-part-drawing-adapter.js",
-   "sha256": "99aba674b904f732f995fe2009dd547c49a57d9c160c3a2821d7d98f4863f554",
-   "size": 2714
+   "sha256": "2c1ad4c68df7c077f8f9776c4caec8809c7f05bed0e5f2f3da649733fe11b4ce",
+   "size": 2792
   },
   {
    "path": "src/native-part-drawing.js",
-   "sha256": "413abaf72b215f9b008d0439844333ce4fbd11729b43f892c7e08a91756fc1cd",
-   "size": 30130
+   "sha256": "19a0dc8bc6a7254f072d9ebef965e3fb82cb2187c4d3b93de670324dae997ae1",
+   "size": 30594
   },
   {
    "path": "src/native-part-properties-ui.js",
-   "sha256": "28034256963dde82e2b2ace84e61ba8ac334a7d3ff81f705b9d9d26d1adc07d3",
-   "size": 20737
+   "sha256": "5f6bdba5e20637dd256a0b1b7e4653cd22f74e9e77d28818fcedc3b74ed23bbb",
+   "size": 20771
   },
   {
    "path": "src/native-part-properties.js",
-   "sha256": "7add294f43c22cec09ebe80a4d2d2ba99c424082bb01f55978fa0a8485fc6044",
-   "size": 10001
+   "sha256": "c728aa4b205c7c03bf9ba1620e018c97c9021deec9e4226a6ec5a8d8a67d8619",
+   "size": 9885
   },
   {
    "path": "src/native-part-text-codec.mjs",
-   "sha256": "1b713842142e7b9174141e487b2ec26ccfccd009cbabb583f5942a07e5feb907",
-   "size": 3719
+   "sha256": "08691fbb55a58bb6c93db3ff2ba9f535a31caa904378b0c59eb3b2611ec32d18",
+   "size": 3599
   },
   {
    "path": "src/native-part-text.mjs",
-   "sha256": "eb7a0414638dbec6d68d156949be5d709c6e6587ec58429368efa47935909440",
-   "size": 9907
+   "sha256": "2a182e6ba5f8fffe7a62845186b8fbe4163c552878e11e8f53f829f5db540885",
+   "size": 9773
   },
   {
    "path": "src/native-pattern-seam-template.mjs",
@@ -721,93 +726,93 @@
   },
   {
    "path": "src/native-pattern-seam.mjs",
-   "sha256": "ef716407e2b5e53ff92e8f483f9c7f4f3bac277b251b2190d8f4e28b73d1e5fb",
-   "size": 11822
+   "sha256": "d7a42691e936981f212ffdd91590d8af575ae2a1f84839bb051f6025957cce6c",
+   "size": 11558
   },
   {
    "path": "src/native-perforation10-template.mjs",
-   "sha256": "fc587f7d283139fa7a2333f635f9748f7f43c9b08a0c86bf44345c27332af793",
-   "size": 212930
+   "sha256": "9ce5a8d442dac04e0b1b34c02a2b78eeaee2a37af771d9e7bb0caa47cb513fda",
+   "size": 212935
   },
   {
    "path": "src/native-perforation10.mjs",
-   "sha256": "156d5920a919a84fe0c02effb363bc40c020a5da808ea7754fc25d226798d680",
-   "size": 12774
+   "sha256": "96858ba4ed24afd408bf7a9654a4ce48dd552862fcec06ad69f70affa439bfdb",
+   "size": 12999
   },
   {
    "path": "src/native-perpendicular-records.mjs",
-   "sha256": "003f1fa1ecddc6fb8644cc0785f2945da5e36079646506c6c3cf1063c1dcd787",
-   "size": 7993
+   "sha256": "1561de426d3e81cd51294822f929391d04b271700b2bebaccfa1d320eb541c67",
+   "size": 8078
   },
   {
    "path": "src/native-point-mirror-records.mjs",
-   "sha256": "725228d4c8758a42e44acf7596eb2d472b0db89dd446110fedf5736208b3e865",
-   "size": 8163
+   "sha256": "6e25b9a74f846ecd934046dc3ff1b7a0893cdfb107022ea3cfc5c0af044dacc0",
+   "size": 8240
   },
   {
    "path": "src/native-point-move-records.mjs",
-   "sha256": "d4b5081770991600f5b8bac919d16080ab399376b1afef0c130a27f3b9c9197c",
-   "size": 7807
+   "sha256": "03bb4c653b2d7327f11ccf340c56911a3de848966ff9d0b581632b260bbb296d",
+   "size": 7637
   },
   {
    "path": "src/native-point-position.mjs",
-   "sha256": "9f7d85ad029c9c9f29e24c87c3b0f248b07146035e4fa3811b6b24d530e2d722",
-   "size": 6100
+   "sha256": "854696b282dd5529084f2a1e67b3844c299169648734e07bbad83029bf2db54e",
+   "size": 6200
   },
   {
    "path": "src/native-point-rotate-records.mjs",
-   "sha256": "758cb1591cc3b0ddde93c26c439902db42c87d96d16a7227d6f9cbeb3e25c2d2",
-   "size": 9213
+   "sha256": "93e3a6d9df8e9b5cfb9924226e2979f9f48b2ad3ba608369202b5e0fe5ed6c19",
+   "size": 9175
   },
   {
    "path": "src/native-point-turnmove-records.mjs",
-   "sha256": "f2175828e13bf34a9de087241fcde1d35e317c9b04303e41363923826781b12d",
-   "size": 10538
+   "sha256": "26456b700da03d8d8cf96f13e86e2fe57860ec86d87615ddd391bcdb99261c0a",
+   "size": 10447
   },
   {
    "path": "src/native-production-properties.js",
-   "sha256": "cf711700b434cbfd351e6088fc5d037891c147c2583f5f5432070fb5de07d624",
-   "size": 16117
+   "sha256": "cbd3907e6910a6927565c3f33eed981bee560ae5090a09662c8d9a39956fa0a8",
+   "size": 16323
   },
   {
    "path": "src/native-qs-point-selection.mjs",
-   "sha256": "17f9ffba4883a658b0627ea128f9984f7ec924edc1896ed73ed95ed6b6ae8d6e",
-   "size": 7751
+   "sha256": "fd736690a7355d4d90b7c28aa3fc01113c5a103fb824997d4f2265f83edc3ddf",
+   "size": 7662
   },
   {
    "path": "src/native-raster0-record.mjs",
-   "sha256": "de1347afdb103ddb9b6289db77a8587efb0a63d1093913fb94bddce98e3bdae4",
-   "size": 8566
+   "sha256": "88d469e5d37878636bd42afaa07ca6d0ea6c54bf7d030115a5b24c344feb444f",
+   "size": 8694
   },
   {
    "path": "src/native-raster20-template.mjs",
-   "sha256": "d155ce9f3a515f3d3bb529960dc4a767a68642b1d06d8e0d068be885b72f2599",
-   "size": 4849
+   "sha256": "39bdfbf8bf90f08baf0802b3f89ff4af7639e9915c8a1fd1fcf421e061d51901",
+   "size": 6064
   },
   {
    "path": "src/native-recorded-dimensions-ui.js",
-   "sha256": "b7b4e2ce839fba1fb179ed057ea69bce45bcf519b1fa30abb3a21fc9b1fdb121",
-   "size": 6135
+   "sha256": "cd96b4bdea93104693d86dd2a52715408fef4442029e47dd2abbf82c6f8080e8",
+   "size": 6243
   },
   {
    "path": "src/native-recorded-dimensions.mjs",
-   "sha256": "bace8be5d3b458276fb21ff28e4c35b8cb3f40d8aef3f4c739a3709344b091ae",
-   "size": 15765
+   "sha256": "725c3f967b06601b6ac857309fbe9d4e5739119b50ec8abf74b98ea236462a09",
+   "size": 16033
   },
   {
    "path": "src/native-reflection-records.mjs",
-   "sha256": "ee3f93aca55edc4c879d76019f625cd4c4358df6e833f979d1e099fd297cb8c6",
-   "size": 6189
+   "sha256": "9c62c46aec9eafc8f3d6385d650eb4f016c05b7530e828ebec9f874d4b70c25f",
+   "size": 6284
   },
   {
    "path": "src/native-seam10-template.mjs",
-   "sha256": "541ef3603fc5256dbb173bcb8f6cd8aa1b92723b59f0262ae3cd4bd814ae3410",
-   "size": 5804
+   "sha256": "e1c6010d51a2cd9efc0c0aa9aeac1b745c052d35173b2730fe9601b2e5eae99a",
+   "size": 6887
   },
   {
    "path": "src/native-seam10.mjs",
-   "sha256": "bfdcc31299110cbdef54abd78467ab58e3097b3a1041db7571cbe3e15a34e8d2",
-   "size": 12553
+   "sha256": "ff97e08bdc8234f9124343fd3dd7f66da25c054c518a7a56c17f6bc46d473cb9",
+   "size": 12594
   },
   {
    "path": "src/native-seam40-template.mjs",
@@ -816,8 +821,8 @@
   },
   {
    "path": "src/native-seam40.mjs",
-   "sha256": "b52564c044ed66c7cbf39d5ca13640f87b3325929623b439bc5af38040e891f9",
-   "size": 9733
+   "sha256": "e618ef129ed03a756ba33eb91d001bd9c4e184ae973065c822b8cb2d86d0a567",
+   "size": 9716
   },
   {
    "path": "src/native-seam50-template.mjs",
@@ -826,48 +831,48 @@
   },
   {
    "path": "src/native-sequence-line-record.mjs",
-   "sha256": "7eb91a19c9fd6c864891365d22cefdc28712a42992fc4fd2cbd3d94e4ab90d0d",
-   "size": 4525
+   "sha256": "0556aa2dcb27916b08e8556570382e8a77bf3283bbbde2eed8f22fdd25ce75c3",
+   "size": 4504
   },
   {
    "path": "src/native-symbol-type.mjs",
-   "sha256": "b7436d1917c49a2e13bbea901744a15f272a24c95ec975483106a44bddd0b836",
-   "size": 8032
+   "sha256": "6c6f13c1dc325ad4d8b11dede39ad2ab268f60304ff218d467ef29f45e033583",
+   "size": 8233
   },
   {
    "path": "src/native-transform-hints.mjs",
-   "sha256": "552c6356f254830165c8c7b88e20713710315e738de96b179ee0bc2fcf59331b",
-   "size": 4294
+   "sha256": "1dec43b5b64556cb5b67bdaedb1512694d3fc9c6418db0b418e5922803fbba71",
+   "size": 4304
   },
   {
    "path": "src/native-x-table-operations.js",
-   "sha256": "a658cc0bcb89e99c22190b060e719bd252f447662d183f58d13fd7b711d7a15f",
-   "size": 11734
+   "sha256": "da829f0665077eccbdbbe32eed4187fa16f9db5af410a807d5460841e7bc4573",
+   "size": 11769
   },
   {
    "path": "src/native-x-values.js",
-   "sha256": "6d0a254e01262ddd59af4c39bb4e74dc279c60f02bb48d04e632be5386d7b143",
-   "size": 13990
+   "sha256": "5ba11333982d2fa8ccca4930a62b945f62412ff07803c1769ce46ed2e434b238",
+   "size": 14334
   },
   {
    "path": "src/native-xz-transfer.js",
-   "sha256": "6d75d121d40d317c069a444821493895df13bcbcadf969ccf281dccb1969c361",
-   "size": 10895
+   "sha256": "e4f513a7e3fe27c6ab6cdd8215118ecf68e07534d2c544a1b02c8ab1ad7bfb65",
+   "size": 11043
   },
   {
    "path": "src/native-z-inspector-ui.js",
-   "sha256": "160fb7b176bb5f844c6a15fc7317649be3e48c98c8307406d036b3457a4fc7a1",
-   "size": 17560
+   "sha256": "02d9f84286caddd6594113ab87d9961ebd7b9f15424f3bb2fdf182fc29830c36",
+   "size": 17363
   },
   {
    "path": "src/native-z-observed-snapshot.js",
-   "sha256": "d9015f055380ff4839b4e647788f45814e5e3f7e8c21d60ae62795477cd716a0",
-   "size": 11738
+   "sha256": "4ee20e53455f6a49ebed80d21f95e1c4f5dbf0e70e52ea82096b02db9b78c6ff",
+   "size": 11708
   },
   {
    "path": "src/native-z-values.js",
-   "sha256": "c4f770f2712b98e1e1c7abc1949f22b11bc2955eb4ba1ec840cfe3e2e1c2a794",
-   "size": 11950
+   "sha256": "8ac85f3a014173dafd6ec3c4f0374b5c1cc60be2f5ea501b31affc1da450d5ae",
+   "size": 11991
   },
   {
    "path": "src/native.css",
@@ -876,543 +881,543 @@
   },
   {
    "path": "src/natural-parametric-spline.mjs",
-   "sha256": "c8fe67da266dbf5c26a0dbc8fe0bee6006285045d73496cd2be7cb3ba9056d78",
-   "size": 5566
+   "sha256": "e807efcfca9f256378260a128875f05bf5a755b36dcc8ccab10446989e3390ea",
+   "size": 5613
   },
   {
    "path": "src/notch-history-kernel.mjs",
-   "sha256": "06d0e394ec864cfedc1d06a4d26181476f6438777bc955976ae2e75bcb41bd29",
-   "size": 15327
+   "sha256": "86305b17f236e5ac940dd8adbedac3af190e1bed82cabbbf5138bb5c711e25b8",
+   "size": 15299
   },
   {
    "path": "src/original-assistant-contour.mjs",
-   "sha256": "49e377f5156ce95fc6f3b63c35ac3266831201e3b14d232078cf36be5114cfa1",
-   "size": 11360
+   "sha256": "172a8e76c3072e414787280244019c952a15976fade12509d5e668e0decbf212",
+   "size": 11363
   },
   {
    "path": "src/original-assistant-seam.mjs",
-   "sha256": "5c105112d029b48de7db325eadd7b0497f1dc224863e1715fae97524b1a7a4f3",
-   "size": 12178
+   "sha256": "3597d1a7880b2b3711d39a214fd2c41ea0f528399587ce8c6cca5b221fe44c17",
+   "size": 11924
   },
   {
    "path": "src/original-assistant-ui.js",
-   "sha256": "996a0992ec5159d4ca02c260faaca3a238c7c2110ff52fce71c6f0aad535e2f1",
-   "size": 17665
+   "sha256": "6132aabc0fe89a69e2092871d31d5e960f6471f2cc1aa232daa2a6df6c63fb5d",
+   "size": 17724
   },
   {
    "path": "src/original-attribute-chain.mjs",
-   "sha256": "3f7e3631cbe60a4f961cf10eddacea2cb6f81125172ac71e08c5076fc6628d54",
-   "size": 4941
+   "sha256": "67a910e7cef95b6334f154f854c9a48c6e449cdbff461acaa2fa92a65a7a30af",
+   "size": 4875
   },
   {
    "path": "src/original-bartack10-ui.js",
-   "sha256": "b74c9316fd2916bde27ba338f6405d152d3cb1cdd9417e7e7441998b16f3afa8",
-   "size": 16094
+   "sha256": "ebbce79e5af1de8725068811d3018cda8a11f8a9883fd2454f3133366fdb9e0f",
+   "size": 16061
   },
   {
    "path": "src/original-bartack10.mjs",
-   "sha256": "b9e089c058fb6830467858eedd7ce1ff96cc3afae487c75742f8fe8ded605fd0",
-   "size": 12634
+   "sha256": "049a06a3c07d4792e1b22500e910f3f30544aacbf8968114024530a7e9df8393",
+   "size": 12753
   },
   {
    "path": "src/original-buttonhole10-ui.js",
-   "sha256": "ab7a5d99503f4c87c6070328fda31db2db40298b5af4c0968ca67354d70be543",
-   "size": 16111
+   "sha256": "8d70adff2a240dfe827a19f10795630c921706794820e59675262334df8e39d7",
+   "size": 16107
   },
   {
    "path": "src/original-buttonhole10.mjs",
-   "sha256": "d502032701472d6d238f1c13816e6af0d63af9889b3135cb4f056414c8a05a18",
-   "size": 12829
+   "sha256": "27b283819c2a44bb1cb145cf206eb90a1afb9e1b2b5ef8e91412a6172f3b2bce",
+   "size": 12450
   },
   {
    "path": "src/original-buttonhole20-ui.js",
-   "sha256": "5c195ab9bb3a87eb93637fd71df93efa38ff211f9d0ea016dbcf4121021c7964",
-   "size": 16046
+   "sha256": "a1376cd5c43d169076114319ae6c30f177fcef9e83da73fcb85bf473b8679f5f",
+   "size": 16167
   },
   {
    "path": "src/original-buttonhole20.mjs",
-   "sha256": "d59996f672e3140a3498c6c3b9a3a955890ca7dd4adc4720eedb61752ff129aa",
-   "size": 12476
+   "sha256": "8640d03cbb75050d128262fffba751e69700bb9ad66cbd42ab11f31fd435af68",
+   "size": 12678
   },
   {
    "path": "src/original-buttonhole40-ui.js",
-   "sha256": "17915925ad1e14f785d8dcab7f1906f4f600168d3ffb06339c5d79d02213b27e",
-   "size": 15952
+   "sha256": "68bb1c1060130d6aea9c6aa474ffcbd90330593c50611246853ab65c89c0846b",
+   "size": 15776
   },
   {
    "path": "src/original-buttonhole40.mjs",
-   "sha256": "0c7e66a1acc32e14607efef180c6b2b926543b71413cf6ae00473e842ab242ab",
-   "size": 12629
+   "sha256": "a67e41931c2109327bd2391e9b2483ef7c8d88fb70b1d53ad69dda285092aab5",
+   "size": 12582
   },
   {
    "path": "src/original-chamfer-create.mjs",
-   "sha256": "381d5657d355fe9f896599a18bde8113982c7c37ac3cbd5307d9b8d70529cfe0",
-   "size": 12862
+   "sha256": "e6da922cd9fdb917cec8ed79e677a238b2491beb5d73806a060356d757e0e9f5",
+   "size": 12926
   },
   {
    "path": "src/original-chamfer-ui.js",
-   "sha256": "10cf83e05de320a0bca1b8582225d1d34bb9d5646e683a46cbe4f7452d600221",
-   "size": 10020
+   "sha256": "9f958a0919d210385dbf3c1fedb169dcff6f202dbd211ce4e24cc4264f18f2b2",
+   "size": 9825
   },
   {
    "path": "src/original-circle-create.mjs",
-   "sha256": "a124e5c79a4895e24c6c9072b3227b2ffff5cd46b91f4f4d122e0c0fea8e0e1e",
-   "size": 18901
+   "sha256": "14af95b79402c75ab33e5413c3ea4d74e3d4ace526e1952337f9d62af8c8f6b8",
+   "size": 19079
   },
   {
    "path": "src/original-circular-corner-create.mjs",
-   "sha256": "62a698e6cf6ee5de1e3d9c2d687e62e927247968c56a9558787196bff474e410",
-   "size": 12482
+   "sha256": "11f09c9e0a28b5393e4a0517971be6384f1b5b8ad408fef97b10620c4f09ccc2",
+   "size": 12683
   },
   {
    "path": "src/original-circular-corner-ui.js",
-   "sha256": "130f284b092ffb240498c5979609421afd9fe33b97a850c95a8ee71a9b2344e6",
-   "size": 9799
+   "sha256": "8c44ccb6a8a1f3bd3946c2f5462d48388dfeb839ac4e9f24b2bd2d011ab44137",
+   "size": 9635
   },
   {
    "path": "src/original-computed-corner-ui.js",
-   "sha256": "14d83d9ff4efd42ed51575108eb12dde5f3879ce3e007ebcab05ba066338509a",
-   "size": 10462
+   "sha256": "aa16b3ed6f13f440bee233e4f6cdc037a403271eefee5894aebc854a58880495",
+   "size": 10422
   },
   {
    "path": "src/original-computed-corner.mjs",
-   "sha256": "e4ea02a98cd5a34b9318126f7ab716d21b3408dfccd75e412fdba646fa93ea46",
-   "size": 9605
+   "sha256": "f4a8ef586d8b65a4779d1e93dd3fe5987247e3dc1425a9c5cf6683086160c224",
+   "size": 9635
   },
   {
    "path": "src/original-coordinate-point-create.mjs",
-   "sha256": "0b65c8b2245ef4696b3a35d6f6d79b060d22320985fdf0ff024dfcdabdcb3da8",
-   "size": 10197
+   "sha256": "972e62e05fb586eda66d1dc36d70d7aea1b75d46a5cf5cd39101625b11737629",
+   "size": 10214
   },
   {
    "path": "src/original-corner-edit.mjs",
-   "sha256": "ecba76da185ded2059b014c4c6a7edb31244a790bbbf6af644bfb3ba3226b0c7",
-   "size": 11786
+   "sha256": "9c57747fbf37c8ad6896a349ca37a6e84c9d3eb3302a395e03670b394a1d3c0e",
+   "size": 11767
   },
   {
    "path": "src/original-corner-ui.js",
-   "sha256": "a5202e826d6a6cbb4a1aa662ed359f5b840ca5fd46277d72bb1d0493de4834b0",
-   "size": 18745
+   "sha256": "993b6f48fb226fb75a3e8a028ba3042a6910f919b76b4e3461f34835d14ada43",
+   "size": 18818
   },
   {
    "path": "src/original-curve-controls-ui.js",
-   "sha256": "14a6a8416c46127a05ba154d7b448b626283340fadd18342097640019b34460f",
-   "size": 12955
+   "sha256": "63814423012ab8b445e7973d213394b95e88b48db20ef7ee9f02fd195c5efaf7",
+   "size": 12893
   },
   {
    "path": "src/original-curve-controls.mjs",
-   "sha256": "e86763362de51d364e3014ee2a586e8c3dfc5c360996f4969f2c43e4cd286b52",
-   "size": 10587
+   "sha256": "a620ffb7628e6a36a85c2a3d4d3ffc758e82262396595787414b9771b848653c",
+   "size": 10733
   },
   {
    "path": "src/original-curve-morph-ui.js",
-   "sha256": "4bfd47d2aaad267123aee37aea2028d266fc9ebf0bffbd58528bdbac310d4fa4",
-   "size": 14506
+   "sha256": "8a3bc864008e9b4fd15e8328eead9c542510a697bd0763d944c18fdbb79f44b0",
+   "size": 14239
   },
   {
    "path": "src/original-curve-morph.mjs",
-   "sha256": "76cab7d345f41e95d1e287a64012fc54f3bfc34eac93c461cfdede4eabfa451c",
-   "size": 8294
+   "sha256": "b5bc047676eb403be7595dfed936ea2ae768b88b22ec6fe9b51a52cb9b7de84b",
+   "size": 8289
   },
   {
    "path": "src/original-curve-points.mjs",
-   "sha256": "1b3b200815d2f55e30b43369f978383b929f287ac063a4b3f4371c4f65aa4d3a",
-   "size": 13889
+   "sha256": "5b0347e5ada1c12b987abe75f39ead35907c9d5576aad7f83e254fc4cc7f813e",
+   "size": 13795
   },
   {
    "path": "src/original-curve-replace.mjs",
-   "sha256": "dd1571f297779b1bf2d0b7f41486645b4962855db346ce876d7b0d66a30a75af",
-   "size": 7204
+   "sha256": "8a0ca71d8aaa03c0be3fc809c4f4337f378e536cf2a5d9e0d7a9f69f4b773179",
+   "size": 6989
   },
   {
    "path": "src/original-curve10-create.mjs",
-   "sha256": "36b6638d17ea2a09c67c17ea4066afb5d3ffab7dca9e8457a277d1cafc626b56",
-   "size": 13040
+   "sha256": "e67e603e282ca7739703822e4b6288a99ef29d1f252ec4c23d1b4b16a79b48c8",
+   "size": 13119
   },
   {
    "path": "src/original-cut-tools.mjs",
-   "sha256": "d667755e12e18612634cd124d12681d7f5b87d3cf38e2bebeaf899167fd33781",
-   "size": 19820
+   "sha256": "11931c3a4a9eb7a98b89f1c03e3c6612e639f1840b94a487225751f9f27952e9",
+   "size": 20167
   },
   {
    "path": "src/original-cut-ui.js",
-   "sha256": "fc48ce3249882d7f8378a8309dbf6f1c5326a74d973ab51e1254316cf45bf334",
-   "size": 16781
+   "sha256": "2e9ac7d88006f156ce1a29090a9710234ea8c5c8491d2e69202bcf9b0f63068c",
+   "size": 16734
   },
   {
    "path": "src/original-dart-shortening-ui.js",
-   "sha256": "ab86c1f3aa7469041355002b4f2c707d7059d4e663526f9abfa8e92728dc6e73",
-   "size": 9678
+   "sha256": "5970e57bb281a8e38580f08df0602b6b2f6523b93c79d1a6f5ff33ae725d5155",
+   "size": 9695
   },
   {
    "path": "src/original-dart-shortening.mjs",
-   "sha256": "1f6badfb41b41c9a3d9bedf216c3220a73a8841bf44f4407d87f0dd1729553eb",
-   "size": 7929
+   "sha256": "6da8c0db56280365513f08a3625e8c74511c40ccecddd207d2156d14dc2e8fa2",
+   "size": 7971
   },
   {
    "path": "src/original-delete-selection.mjs",
-   "sha256": "251eb2493c87d63270aaa960a49e482207e224a1ab0257c4fc99409772e9bf25",
-   "size": 3579
+   "sha256": "9483f6cf5810f7e0300510e42117625c77bb6a60f0301caeb2f28cdc82cffadf",
+   "size": 3551
   },
   {
    "path": "src/original-delete-ui.js",
-   "sha256": "e8e948654ada997c3bc6e207cf3076aacfe664fbffe5f7fd1c8609b5f2de4e41",
-   "size": 18044
+   "sha256": "9837ba8c4c8c4c6384a652d9e098561d93c63090eaf635cf2ec2a24f8b27e5b7",
+   "size": 18191
   },
   {
    "path": "src/original-direct-corner-ui.js",
-   "sha256": "c0be2a8f66bd680dcbdb489f1f6b0ad9de2c6795c9bee585daf121ca0b484f95",
-   "size": 9126
+   "sha256": "83d8a3db4be51f57aa75dba623cbd04dae74c4d92c245fe9f6611f6990c7c026",
+   "size": 9105
   },
   {
    "path": "src/original-direct-corner.mjs",
-   "sha256": "4cb1ea54d9ae3bd48e88d578098e1937f778d3e95ffe817622095d90e5cc3270",
-   "size": 8442
+   "sha256": "5b71f6f9822cb21676d47a767d42d2b30ad950d52f70b9f609a782d432a1cf8b",
+   "size": 8332
   },
   {
    "path": "src/original-drawing-endpoints.mjs",
-   "sha256": "7268d3a0ea2fc89798582ae53cfe130b08d14eda29bc0fe23580e8c2c9d1b4e0",
-   "size": 3070
+   "sha256": "0ece462061e58a497f81d56b051452c5986ab377480a8ebf4b0d8aea3597d1f0",
+   "size": 3197
   },
   {
    "path": "src/original-endpoint-notch.mjs",
-   "sha256": "66262324ca4cc62a3e19c1890d3a71a14d9285662a6d63a6458ed585e2b3710e",
-   "size": 12432
+   "sha256": "5421ea654d0caae3227c8e5ee3b9c587059c38264a26a9397081d7eec8981677",
+   "size": 12770
   },
   {
    "path": "src/original-geometry-edit-ui.js",
-   "sha256": "cc5926fa945c85b5593a74c53e437e1f22688fd03502fbbb04c9efa23a6e01a0",
-   "size": 9253
+   "sha256": "e1ff10405b773fa5de0cb5d57e528442733223b442a80605c6002fe2401a9325",
+   "size": 9214
   },
   {
    "path": "src/original-geometry-edit.mjs",
-   "sha256": "5d1ded9cc067d4090d826b88053b0c1c11317a8186a49dc2c9976d88eb41550a",
-   "size": 69027
+   "sha256": "7676fa4189a595db399f33b1037524d9be36a7db1bf93d8d48662813a65f3767",
+   "size": 69043
   },
   {
    "path": "src/original-grain-marker.mjs",
-   "sha256": "52d2caa1383565be92fa24600aa4ea1fc16fd4fc69a4e84c8f555843d3c5670e",
-   "size": 21633
+   "sha256": "863d3946876f95dfd230d8305c3bce26eededac421668d954bcf4ed4980dbec1",
+   "size": 21791
   },
   {
    "path": "src/original-grain-ui.js",
-   "sha256": "c13f400e77f220fb74132b030bb6b4401649bc82909e01b3fa2c1673bfd0ebe9",
-   "size": 17403
+   "sha256": "94c8471a7fce2b89dbf1b3a59074f58ad28849936d29a425d92386afcb377796",
+   "size": 16982
   },
   {
    "path": "src/original-insert-ui.js",
-   "sha256": "97b0184aa91b23e376e2844ebccd8b1fcf75c4d38b4328806b10b8af85902a00",
-   "size": 29788
+   "sha256": "a51b1af75767da3feb1d45f75387bdb001a960f502fe7260c84640e06896cb4a",
+   "size": 29652
   },
   {
    "path": "src/original-insert.mjs",
-   "sha256": "cb8b48c10d0e5ae55a17d54ad42eafe2fe8caa950c2cac82375d30c7d9d03eeb",
-   "size": 28313
+   "sha256": "5c3cd32a5f4802d5436a6c9898d07412884f2b10da0ebbfbd89e5ee483c927db",
+   "size": 28378
   },
   {
    "path": "src/original-intersection-notch.mjs",
-   "sha256": "d00624385fc9d291922232309da6e810f7fa04e62f57d9047c7c5c9280b057b4",
-   "size": 14263
+   "sha256": "4986308ebf16c983124008caa80673837e96f1aea73b1cffbd964cdcd9bb8845",
+   "size": 14291
   },
   {
    "path": "src/original-join-chain.mjs",
-   "sha256": "977bb409c347e5e4a771def2aa8438d1f2610c4af5f5a420421577a02c11e806",
-   "size": 5966
+   "sha256": "5b64e2cab2d2e631e94acf658adc6117899f7f2de9f9ffb3d41e02d300c89af3",
+   "size": 6066
   },
   {
    "path": "src/original-join-tools.mjs",
-   "sha256": "d0afb32e42d3f73e49a1ede395c07df895205883ea4c745b18a8c454b6ca0710",
-   "size": 8866
+   "sha256": "516fa4e531f195d242141f1e2d35bb63653a8aa4590014c8f0534a5a71bf39e6",
+   "size": 8788
   },
   {
    "path": "src/original-join-ui.js",
-   "sha256": "787d58d2db231789395f365dd68417c42b09392c0b8a0286d288642adda7d3a4",
-   "size": 19308
+   "sha256": "a683bb99c00414f93de178b18667383efd28df78b1a122b8f21b79eff5e495f1",
+   "size": 19251
   },
   {
    "path": "src/original-length-edit.mjs",
-   "sha256": "a7fbbee8753924aaa3f935fb92dec630800a35989a45819165ab76f16f5d7c75",
-   "size": 8922
+   "sha256": "1af3e835750b7a548a113421d00fe42b81e4d46d82ffe9e72e1ceb1797085928",
+   "size": 8907
   },
   {
    "path": "src/original-length-tools.mjs",
-   "sha256": "e1306fe27b79e6084865d1a881f54d4b6333c1b09d84a2b3392bb004a7850485",
-   "size": 12439
+   "sha256": "b1836bb9a27bc7b825455a8e23bb747215b8c7eab0cc1616b16bdc4195e02ca9",
+   "size": 12434
   },
   {
    "path": "src/original-length-ui.js",
-   "sha256": "fcb4eccd47136c3bfc7957e64e15bb2ed0dae5b2583bb273fe942507daecf5b4",
-   "size": 27270
+   "sha256": "77458fc388e87dd51fe57e2e72f9334faff6ceecefe01c988894968ad9fec4ae",
+   "size": 26537
   },
   {
    "path": "src/original-line-style.mjs",
-   "sha256": "b26fbf2e218b193d818093764de1a069638b20ecb97ba9ea8c761038fd1792d2",
-   "size": 10679
+   "sha256": "e885decf74552707732a25886d9efdc90be222b41d610f891dc16b2ab8ae1b57",
+   "size": 10801
   },
   {
    "path": "src/original-line10-create.mjs",
-   "sha256": "aa32799aad95de79bbd8e96a47e3014b406bfbd37f2aee477c1b43afaa22fba5",
-   "size": 12488
+   "sha256": "d76b8ded4db66662a2d42ccf434b977405a3570ee05bae7aeefab5ee2b339a0c",
+   "size": 12527
   },
   {
    "path": "src/original-line10-edit.mjs",
-   "sha256": "8c1afd1998454979e298d0257990b9b6d38a2d2d1e67958c63a62d543bbe873d",
-   "size": 11723
+   "sha256": "7d9c69d5b1ae290e9ed0d8a7931093f71528a31998e46978b01ecff8cefb9e99",
+   "size": 11770
   },
   {
    "path": "src/original-line10-ui.js",
-   "sha256": "720c83ab1e63997e1d0baf63832595558de918d100cd6cd886d7e936cb1a60e9",
-   "size": 49883
+   "sha256": "9793c7c663306cc7c072a7a5b5aedb0b3a5f6493566e67c9d3b314815386387f",
+   "size": 49856
   },
   {
    "path": "src/original-line20-create.mjs",
-   "sha256": "ce11e1857b0f650b3b1ad050cfa741af17c9ef3bf9ef63fb331174d65ecfa0a9",
-   "size": 12011
+   "sha256": "ed20137fb07d39c159b9936aa85ddafe36413082d8cc7c4b261f18e42addf54f",
+   "size": 12070
   },
   {
    "path": "src/original-line20-edit.mjs",
-   "sha256": "590cdda955852ea77c84655791dcc07d7094fe882814ffa7a66f3a26a10ab6f4",
-   "size": 7317
+   "sha256": "2e2405dee2fc214290dcb0552bebbc30c3c7f4b3e2261b32e871b3026b11aaa8",
+   "size": 7298
   },
   {
    "path": "src/original-linked-point.mjs",
-   "sha256": "82737cba35cd3c4a3dcb82ef75521ce523e8b004002e58639ac6d203e4577f5a",
-   "size": 9515
+   "sha256": "ffb8a4af42deee7164a8b8eb49ccf0da65b1d1cb7b3b952f4b4d70e0a0dcd6fe",
+   "size": 9723
   },
   {
    "path": "src/original-notch-conversion-ui.js",
-   "sha256": "25a8c285943b547133d7f937d730524f9fa66deafc4ebabc5f58b5b472ac39e7",
-   "size": 11878
+   "sha256": "818faae85d662770a12020ecc139f70e4baf8949c7e03d0ca7fce458f2308bed",
+   "size": 11737
   },
   {
    "path": "src/original-notch-conversion.mjs",
-   "sha256": "12389ca6b6d7c12f63c9609702fb3b626680cce54c7b0905ea088f6e4cc12e51",
-   "size": 13282
+   "sha256": "388cb5b6028e68edd96a9b9e2cfe7b122021415ed140a762d0244798023af44e",
+   "size": 13208
   },
   {
    "path": "src/original-notch-ui.js",
-   "sha256": "11e3adca3183d6d452ad208cda411d3fbff06e85919d752a7b0f463d659e5d1c",
-   "size": 25884
+   "sha256": "c9bc78e76dde813599829b66cda61780c54481613b0e8c319be6e4ff9ec90a37",
+   "size": 25777
   },
   {
    "path": "src/original-offset-edit.mjs",
-   "sha256": "8cf1ff5213d09e482d7968e762c6504beb542c4f8dab71f49b1617e69149fd15",
-   "size": 6657
+   "sha256": "158d0356b9e0f39a83757c88595810e092129af5b26d624e397078bf9fcce384",
+   "size": 6636
   },
   {
    "path": "src/original-parallel-ui.js",
-   "sha256": "b85a9c8161481fc03d19cf91154ea295e6beb15ae6f77680f898743c6be6472d",
-   "size": 14234
+   "sha256": "ab5a06750c4b7f6c000a5cb6c835f6c82fd33b9be8a6ae0bd2e621b2b7f33783",
+   "size": 14759
   },
   {
    "path": "src/original-part-name.mjs",
-   "sha256": "c0df462201a53939be2173c7a4f9a3cd6688a1b10256c2fbccce1d5a1920a2cb",
-   "size": 7641
+   "sha256": "e945f6b03b7cb64cdf5cead7154eacc19301f1f3eb526d107bd2c33f43d15090",
+   "size": 7595
   },
   {
    "path": "src/original-path-delete.mjs",
-   "sha256": "4f6dc912a202d92af77597ee6d1ddb7997db8534220abced8f0bea73f008f4d1",
-   "size": 10889
+   "sha256": "ddf30217cc4a8cf64e9c9773cb71aa47a33aeec0c293d9a2855e7295ab6cb930",
+   "size": 10956
   },
   {
    "path": "src/original-pattern-seam.mjs",
-   "sha256": "c9263144b13e6abd0aca9c28cb9cb333b1aed8cc0a5131fda035e5af90c98a94",
-   "size": 15302
+   "sha256": "966b63560b217c51a98bee6716a50a5000539857d554f0192d5e6067e5658718",
+   "size": 14973
   },
   {
    "path": "src/original-perforation10-ui.js",
-   "sha256": "5a16deed0022095bf33b9ceb4c32f6031fa22a0bb8214a11390ee7a8243f57f1",
-   "size": 14542
+   "sha256": "50fbe26663f90aabe9a7f963f6a4e73d96a1d3c4a36f698705bf780bae5422b7",
+   "size": 14654
   },
   {
    "path": "src/original-perforation10.mjs",
-   "sha256": "a49eb460f614c0527b7c35afd837c88bab54766ff8fe8a70d5560d5577cbde71",
-   "size": 12568
+   "sha256": "e28267c42fb40fba9dc315959d0632b837b4f6c0afac31556a71b495a8f54d17",
+   "size": 12504
   },
   {
    "path": "src/original-perpendicular.mjs",
-   "sha256": "30eb83fccdd4fdbee044955e490ce860978607be5500456c13932b2adb56b604",
-   "size": 8733
+   "sha256": "29d0d9bcf9236ae924f531842f1ef621fb26c0c57518144fad3a9f2df86a8445",
+   "size": 8872
   },
   {
    "path": "src/original-point-drag.mjs",
-   "sha256": "6df2137ed42392cf3908b287cf29da421316528fffbf286826c4cfc76bb1d523",
-   "size": 9727
+   "sha256": "412e7636eff641ef09d8b0e2193195184e3b21b0ba7a635d7c10bb2729d21fd3",
+   "size": 9665
   },
   {
    "path": "src/original-point-edit.mjs",
-   "sha256": "472df3e273c2360e6f059dbf20fe059fb3ac7961d87f62bce0ef45d235ba798e",
-   "size": 13305
+   "sha256": "3a6761a96775d6f27195cbfe821b00d3223b34afb28355183ec7c82073248ac4",
+   "size": 13216
   },
   {
    "path": "src/original-point-editor-ui.js",
-   "sha256": "472f4b6d6a1dc6ea86564460fc992e8d4ac93c4c7f65bc70657087eb9b9f9b50",
-   "size": 25324
+   "sha256": "45b1a4ca80fc791b93ae8f8c0a3cb84573899c3a3cdbdc3fbaed0f8858e70eec",
+   "size": 25393
   },
   {
    "path": "src/original-point-mirror-ui.js",
-   "sha256": "b10153546c46e1c5bdae655aa6f44dbc293e139156911f28f7df99b9443b6398",
-   "size": 13397
+   "sha256": "355a86bcc6e861c22fd471452fa4235bab57bb25431608e5f4672827e72879a5",
+   "size": 13255
   },
   {
    "path": "src/original-point-mirror.mjs",
-   "sha256": "3195abec2a285080d03c9dccb530872692ee0bebd1538e184155069f5fcd7769",
-   "size": 6529
+   "sha256": "815b1ac8e1f14a107ac1f354b7e5132e72b6d0a170c8ae466f1e8648a819c185",
+   "size": 6572
   },
   {
    "path": "src/original-point-move-ui.js",
-   "sha256": "ed59aa98b5d9f29197f4eb8b10058b9650eee4b1acbc84931dce7fb9bbdf5f38",
-   "size": 13322
+   "sha256": "317c50b6e1cdb9a5a1fbf411c06b470e08d22a983e4baa11dec4623006d28cbc",
+   "size": 13333
   },
   {
    "path": "src/original-point-move.mjs",
-   "sha256": "f0ed3f766d4497910180baadf9a23a1304f3fe16c34c95655e9c87e6fa845883",
-   "size": 6323
+   "sha256": "348a93c2667c2a4b8e9d091c8b239381a7db692bd29e2b1e1a06a5caf6795c05",
+   "size": 6328
   },
   {
    "path": "src/original-point-rotate-ui.js",
-   "sha256": "037ed4eb0fc209e46d980a75e1260ece521a5a37c90c49988d1c1b06f5382a72",
-   "size": 13684
+   "sha256": "e11a1afc8f0ade1d3f23759dee86e6a5e3d8aebfd366821c06adf68dc90b7cc4",
+   "size": 13843
   },
   {
    "path": "src/original-point-rotate.mjs",
-   "sha256": "2179dd1cb80870216e54c5ec75d69e8c0bbbaebcfaa8029b06edc325d2c01c39",
-   "size": 6619
+   "sha256": "87ed8c9b85b31e04dd4fc46deec3f0f01b1b564fad8fb0c278a3af946ccbf9c7",
+   "size": 6666
   },
   {
    "path": "src/original-point-tools-ui.js",
-   "sha256": "1b138bbb216f73daf64cebb0bb1a75b01c75340405c44a95b1c6fd2028004b3a",
-   "size": 25058
+   "sha256": "6c380cc996bc1a08edc82bb9bfd4517047c728be2dbe89da2888590c895cdb98",
+   "size": 25145
   },
   {
    "path": "src/original-point-tools.mjs",
-   "sha256": "28e8603546fd10e371873be1a549ff6646ebf4489efa34ef4d6e5936df0b7fb3",
-   "size": 7528
+   "sha256": "26f29a53a713a50bac7d61e0ca0fd1207f4c6b4d600796dfa562be9f0d86a6a3",
+   "size": 7220
   },
   {
    "path": "src/original-point-turnmove-ui.js",
-   "sha256": "df3f0df59eb249599d3ecfc58ccf5c716de72cfaa9d0434f64767fe9059daa91",
-   "size": 13891
+   "sha256": "e3cd32fc06162009ce1ee0e3578a06005023a411ed16b5dc33de90589fd17e26",
+   "size": 13650
   },
   {
    "path": "src/original-point-turnmove.mjs",
-   "sha256": "096b4bbb524104096cda41bfeaa7c582ed52031bd8b3e89496928322d4ccf64e",
-   "size": 6888
+   "sha256": "3215779d674533579ac9d480e532cd52677e0fcf6f74e1d589649ce54d17b7c8",
+   "size": 6793
   },
   {
    "path": "src/original-raster0.mjs",
-   "sha256": "269340739f25e4ac315435bcaf50857e40d3c65338427c5c1929570d320d4a12",
-   "size": 8505
+   "sha256": "80bfa79956f1c080a5c4d4df39dd885526c583e92ed164737dd0abe494b810c9",
+   "size": 8326
   },
   {
    "path": "src/original-raster20-create.mjs",
-   "sha256": "d5c540ba696a5d8c212edb7a11a212ba4cabe48c6379fba6868003cee41046f6",
-   "size": 12465
+   "sha256": "b95e838bfdb2f92805ef4e04b9036958c204c09184080c451bdefa3ef97ee12c",
+   "size": 12424
   },
   {
    "path": "src/original-raster20-edit.mjs",
-   "sha256": "7abaa6a935919d27008248c947a3ba8b5b6d431553ef506780b569a73700c420",
-   "size": 6760
+   "sha256": "1f9e787564babf605d0027da6d4599608478d617119f99120a4f1b7bfafa74cc",
+   "size": 6711
   },
   {
    "path": "src/original-raster20-range.mjs",
-   "sha256": "88b2b401261ed9e620407d173856250eeff53353b2becfef3bcf3264d0e448c7",
-   "size": 5532
+   "sha256": "83ced2d38fa7a009b273b475fff50b91742898c8ef5f9affc78399252bfabfb8",
+   "size": 5599
   },
   {
    "path": "src/original-raster20-ui.js",
-   "sha256": "076831e4a8e74bb5148853b82651e4520e46317569b9f1aad1dfeadf1f5c7467",
-   "size": 18645
+   "sha256": "75b102bd4dff384da097e0633bfb98d99edf222f652987fd711ebf37206a60d5",
+   "size": 18698
   },
   {
    "path": "src/original-reference-line.mjs",
-   "sha256": "430b8a05605ab0b789dfa0b4ab308861e50b8306e0bdc1191ebb2508aa3dcf5f",
-   "size": 12290
+   "sha256": "7f0ae582b6d7fe631a1e7be5e255d2b32add8b1307d96b1bf580f57c03b2a2d9",
+   "size": 12147
   },
   {
    "path": "src/original-reflection-ui.js",
-   "sha256": "99975701bebc8f332a44d835d6bae87e2d572a2b88e80b4db355677a99e18313",
-   "size": 11751
+   "sha256": "e9a6c999f8dfba1e2fa8d03f2d303a7c50b5cc8a8b8ea2907f4e9053f418127f",
+   "size": 11546
   },
   {
    "path": "src/original-reflection.mjs",
-   "sha256": "0fc51962cb15c03c75cd672f4b1a663fb1edc435c4b3c90bf14008866b049e11",
-   "size": 6014
+   "sha256": "81aae4bb1cec9bcee8ce2ca3d24690605e6cee05bfe3d336555547f8c1f2aa57",
+   "size": 6006
   },
   {
    "path": "src/original-scalar-edit.mjs",
-   "sha256": "19f315a935affd9c8804aecb5bbb3ff663a18c6cc246150329f410b8aa9b86b2",
-   "size": 3366
+   "sha256": "cb07e0bba13a5ad973b48999e4935c3f600f88dee535eb64bf5ea8cca3d44241",
+   "size": 3435
   },
   {
    "path": "src/original-seam10-ui.js",
-   "sha256": "05c884cddddbcf22852a179a2c22e0c294293865fdbdb1fa872cf38b2bf98cca",
-   "size": 17097
+   "sha256": "93e8bae5786ad6edb8139477bf8b33074452e2518ba0e820d91fab3fcc5bcfc5",
+   "size": 17285
   },
   {
    "path": "src/original-seam10.mjs",
-   "sha256": "1fde4da73fd3e03f7cb1d815f502ff5dbcf368029092342172cf07c515cf5a2c",
-   "size": 12768
+   "sha256": "87f9b621c107e3d04657c01a70498d50799eb6610d39ea4d68228bf504080199",
+   "size": 13113
   },
   {
    "path": "src/original-seam40.mjs",
-   "sha256": "68456fd12b3a575deb77dc0b0acb5abebf0760f0a0e3f611fa2201e350c3ed5a",
-   "size": 12534
+   "sha256": "23b1c5259f2ec3dec002d0b98ad84cf63d71aef4e3729a53ac3c89a2705e3352",
+   "size": 12550
   },
   {
    "path": "src/original-sequence-line.mjs",
-   "sha256": "0be77d11215eb215a5e61277c827d974803af3e9de31f6a4465b937559b2b13c",
-   "size": 8315
+   "sha256": "af5190b04302a5ceaced84b09585b52c581cc3054376e4cd27fe7e58bf1c7bc0",
+   "size": 8406
   },
   {
    "path": "src/original-shape-edit.mjs",
-   "sha256": "b628b0456aab43892314481146ad411af36712353347a81b24c942dc6181e71e",
-   "size": 11093
+   "sha256": "7a012b50a68d683c1b56d0e0b05b8769dd6b0ee7d78d2b1645b8b7c632447a05",
+   "size": 11111
   },
   {
    "path": "src/original-shape-ui.js",
-   "sha256": "278bce2a4d0cef1d12857e3c40099af708c5da42eb7bb9eb6a2b37e5062a31e6",
-   "size": 18180
+   "sha256": "53900415292ad802622f7d06d379c244f88d1f89b76980daef46589e98871b48",
+   "size": 18377
   },
   {
    "path": "src/original-style-ui.js",
-   "sha256": "6caf139d319485d30ff90f74a1dd62a967b2b4fb4a5e176be595753f0afa3dc1",
-   "size": 16065
+   "sha256": "f75952f17887181e378833947e2092086a71029bd3646cfe92ec50652fb28109",
+   "size": 16287
   },
   {
    "path": "src/original-symbol-type-ui.js",
-   "sha256": "6752198b44b6165b7092fa18481ccdd9a52232ef17f5e6bb3f347cc1b2dd8590",
-   "size": 13295
+   "sha256": "54ea28a24968b0510a4873a678df014a18153a067347c9327df30d51cf506009",
+   "size": 13061
   },
   {
    "path": "src/original-symbol-type.mjs",
-   "sha256": "e1c799cb633e14c3165ac042dcfdbb60e86326c4ca19bc12925af37d5ec65818",
-   "size": 7638
+   "sha256": "9181255d27708ebd92990cc2a8103d892f8e6ff832ba2583d656f6e8c20305d0",
+   "size": 7791
   },
   {
    "path": "src/original-text-ui.js",
-   "sha256": "be3e1454b56168f6ace1ed311e19789c30d48b9341e50955033e45361adeb508",
-   "size": 13034
+   "sha256": "fc2f1ecf2bb02c45bf29a798469c7cfec1b55b6b694731f29e65b600fc00db3d",
+   "size": 13224
   },
   {
    "path": "src/original-x-add.mjs",
-   "sha256": "8a721d12d3d4fe59238e043987b6d4420b84d563e0a96759ecd3744ac9c2bf06",
-   "size": 9327
+   "sha256": "ac6045094d9397830eba723b0797bd765a8f7afa4284dba70297467f543896c5",
+   "size": 9422
   },
   {
    "path": "src/owned-part-alignment.mjs",
-   "sha256": "628392bfe3bb51fc06749739a2197dbd18e30215cb8e99cb153b276e12cd831f",
-   "size": 7210
+   "sha256": "818c0e2b1ef450e4fa50066b1118a3c84d4f7f02e6b1536901a30a08f2ac2abd",
+   "size": 7212
   },
   {
    "path": "src/owned-parts-ui.js",
-   "sha256": "85873495bc4aec24b8bfe3cd1878818acb6a4df1a37d29db4158015b114dc5d4",
-   "size": 12911
+   "sha256": "51a38f99d49dce155b6cee24b3e58fc2c8e4ff762d22a3cbd4b299b6d92c94f0",
+   "size": 13118
   },
   {
    "path": "src/parallel-path-kernel.mjs",
-   "sha256": "c65154688d83b16c9c2de4baf6a9e446c6b6fa6a1e4c58438ba6308a498f91f3",
-   "size": 12848
+   "sha256": "0024e5de5fc3c53d38827ddf8e1062a3ccf296903dd4c5214af1751fb8f596df",
+   "size": 12807
   },
   {
    "path": "src/parameter-layout.css",
@@ -1421,38 +1426,38 @@
   },
   {
    "path": "src/parametric-construction-preview.mjs",
-   "sha256": "66b0ac9284e7da9f2bd85993e97c73d0093d165e90250ebd154d8560457c56b1",
-   "size": 9886
+   "sha256": "d8c58b4c5eb369b4faaf2af307a3c7d25f0cf9d1e978a84a3c05e6b0d0299691",
+   "size": 9847
   },
   {
    "path": "src/part-history-engine.mjs",
-   "sha256": "c2b2d5623b6c96a187a9b76ea0f5dea17d2b6ba982f100c32f2fe4a2fff1acfa",
-   "size": 81696
+   "sha256": "135c0f18b7a02387a250050d42dbda93dd3dbbe78aaa0cd8fdbfa82533a99680",
+   "size": 81916
   },
   {
    "path": "src/part-inheritance-kernel.mjs",
-   "sha256": "c714abd6a62f1ff200b7b6476e8f691f1795d0e7e567f7297ea6ee6f67374e25",
-   "size": 11447
+   "sha256": "13b89e0cb89d5d05edd1358f208e4c6a119dbef91902b19c3f14fccf084e0232",
+   "size": 11443
   },
   {
    "path": "src/part-link-guard.mjs",
-   "sha256": "dddb82a2f3a17a1618c483cce21c74c23093b70d34696c6e383ea943bb0372b6",
-   "size": 49280
+   "sha256": "2e18a807a705a818016203a6019c4fba82f27705698adc5b09f795cef690027b",
+   "size": 49299
   },
   {
    "path": "src/part-parameter-session.js",
-   "sha256": "77353925d552d09984dfe6f2114e9d5a17420e26ce5bbdfa9dc7f2d90e4502c6",
-   "size": 9649
+   "sha256": "a9d0853c7d5d55ab65fbce2683e7590bfb4d2fe7bac639cfe9bbff666592601a",
+   "size": 9656
   },
   {
    "path": "src/point-construction-position.mjs",
-   "sha256": "960e399e6c4342ca01adf8cc15b7b54fae7be6616328d6bb93c2ecf97080ea57",
-   "size": 6633
+   "sha256": "c84a7b92c89d6a3536707af6fa607bf67f16c063966e42ab310eb21f6981fe20",
+   "size": 6834
   },
   {
    "path": "src/point-construction-ui.js",
-   "sha256": "868bab0efa85400ef8c8b32d2495c2eeae0de4ffdf57dcebe2afc38b6836374e",
-   "size": 17048
+   "sha256": "a12b3f3987ac701ae6d30cc81cbe40efba605d4d265a0d6be83827dd066ed738",
+   "size": 17141
   },
   {
    "path": "src/point-construction.css",
@@ -1461,48 +1466,48 @@
   },
   {
    "path": "src/qq-reference-schema.mjs",
-   "sha256": "9da44911545c9f09507c1c9bfc71702cd1f6cf2cadbc3f0567e20bbda221139a",
-   "size": 17388
+   "sha256": "33aef48845b866d2ec2ec11310f073dd37e7df61452556e110e4acb5b7877607",
+   "size": 17637
   },
   {
    "path": "src/qs-numeric-reference-schema.mjs",
-   "sha256": "b021b653348c040afb71a50a7e8f1c06b3f40b1131fe8b6a9edc71cc953d8e6a",
-   "size": 11917
+   "sha256": "037a9056d263e86d047adb5614eb04f0131c3053bbe19d13ed9af4f346f164bb",
+   "size": 11818
   },
   {
    "path": "src/raster20-link-schema.mjs",
-   "sha256": "922dc563e2db8f6f544763e9be6d64e3b8d29477584d20aa782aacd7102d951e",
-   "size": 5118
+   "sha256": "b7eb9daa44ebcb9c1e8e617cc6919c117416ec043054bda255c370941f9e0c34",
+   "size": 5194
   },
   {
    "path": "src/raster20-range-schema.mjs",
-   "sha256": "f8df3ef904621c07514fd34b1c347a9781eb5893ee9c68687877e0f1581526f4",
-   "size": 5418
+   "sha256": "aa9e7d7360cd709e46c336e691a0d0ba332fc32f36b9216e3e2ae2fca70093db",
+   "size": 5301
   },
   {
    "path": "src/replace-curve-kernel.mjs",
-   "sha256": "5df248f00758df600e95d84699614837895da5053dd1824826332d0368b37e74",
-   "size": 10332
+   "sha256": "37b2946109d0652e2d75b818d59cb5ffea9a7599fb1610ec2dc949d5e6a75278",
+   "size": 10458
   },
   {
    "path": "src/round-corner-inputs.mjs",
-   "sha256": "3ba8eff36bc1eab4ddbe0d949c555c442d8474a57a2cc8aae7a3cd3e98fa92c1",
-   "size": 12370
+   "sha256": "4e00c7ff1d3c8884470fdff89dafda0ecc31bb1b6187c02c80f54bdfffc9669e",
+   "size": 12433
   },
   {
    "path": "src/round-corner-kernel.mjs",
-   "sha256": "385873e86c1c204f22d0b8dddf317ec3e64ea3552c1275b977749d1f546365c6",
-   "size": 13041
+   "sha256": "e1d10f53d3f1fa15d51c4f325e89005a23af60aaf274e47781444cd416649ed0",
+   "size": 13101
   },
   {
    "path": "src/standard-size-catalog.js",
-   "sha256": "c23233418b40faa2b5d890d1c61d65c4e0a3cfd677ca020988832e9f9e750346",
-   "size": 4831
+   "sha256": "a09eaa9f748bf66561503695092b5a1d3ba3c6ac15cc71863db482aa83869678",
+   "size": 4893
   },
   {
    "path": "src/straight-transform-kernel.mjs",
-   "sha256": "936dab21271d640cca88c708f4e9d05473f8e2187416c790ea035ad779572168",
-   "size": 36380
+   "sha256": "7d4fe2efe27fcccff83c3e5eaf2c95005758ac8237695c42f40840ba76017196",
+   "size": 36446
   },
   {
    "path": "src/style.css",
@@ -1511,8 +1516,8 @@
   },
   {
    "path": "src/ui-0113-start.js",
-   "sha256": "682e87f61200b9685058a1ea1aa9d2adfbb2c4b9c60ff38fc0028b2df382b1af",
-   "size": 3727
+   "sha256": "4bc4cf32585c1b17e487d7a701cfa4631edcf03d7595081cce3f471e77b84bf5",
+   "size": 3726
   },
   {
    "path": "src/ui-0113.css",
@@ -1531,13 +1536,13 @@
   },
   {
    "path": "src/ui-guide-0113.js",
-   "sha256": "828b323c370887348e34bc489bd9f650b0027c63a61a320a117a77ade238c184",
-   "size": 12915
+   "sha256": "86545d50c88fd250c6dcfc6fa6739bbbadc261bd4cf52460b9e2ff10a0ae45ad",
+   "size": 12832
   },
   {
    "path": "src/unchanged-parameter-commit.mjs",
-   "sha256": "bf7472cbb52e6f2820adcf720e2381f3ad6e64e58368ddd5499372a147845590",
-   "size": 4948
+   "sha256": "9acad902121a4be7b375468ea429617b3f213aeb507a3f7583d2ab048ede3bbc",
+   "size": 4985
   },
   {
    "path": "src/ux-0112.css",
@@ -1551,23 +1556,23 @@
   },
   {
    "path": "src/x-values-scope-ui.js",
-   "sha256": "b6626c85a133d844c577d478585234a19627c6f7c8eb0566d76c9734528d72fe",
-   "size": 24042
+   "sha256": "821a3d3b36a075729818ffde7a2c00d1d091cd4a0c42ced17e76cdfab25b2b62",
+   "size": 24315
   },
   {
    "path": "src/xz-project.js",
-   "sha256": "40e4fa5d69704b524e23daa6992f9ae64e77c9b65e7fc2fcfef3711bc0924d6c",
-   "size": 4223
+   "sha256": "bb30f522c1c5b0c0ee76a110e9bec31ab1ff56044db5fc6cd2896fa6f7a296a3",
+   "size": 4304
   },
   {
    "path": "src/xz-table-editing.js",
-   "sha256": "0e6edd73aa29989695c82c09c54637d31b39a1d77e65a38311e062e9d17a7130",
-   "size": 26380
+   "sha256": "c25d566b00e3b64f46cd7c3a4952f292c69d7447872291e40b24f17fce90f451",
+   "size": 26299
   },
   {
    "path": "src/xz-workspace-ui.js",
-   "sha256": "5217fda2627b22b824d505e55a1d20613dbdb8fc5a9b7408a319164452b257eb",
-   "size": 27707
+   "sha256": "6b61f75f65024546b59fd92ff858482d63c305d5b6921eba12c87341ff284ddd",
+   "size": 27802
   },
   {
    "path": "src/xz-workspace.css",
@@ -1576,8 +1581,8 @@
   },
   {
    "path": "src/z-formula-assistant.js",
-   "sha256": "36a0190617b96b28316cbcabdc592fa5cefea0f48689964d906258c0c60a0861",
-   "size": 19347
+   "sha256": "53c67e2753d3557873c255dbf120201eb20d3180b3e2ef0ec5535be100f63d35",
+   "size": 19072
   }
  ]
 }
