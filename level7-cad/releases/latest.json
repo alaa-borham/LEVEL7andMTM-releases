@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.299",
- "notes": "Automatic updates again when the core is unchanged; the full program on the releases page.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.299/app",
+ "version": "0.9.300",
+ "notes": "The line tools' icons; the lines group's fixed icon.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.300/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "978af0c4156f788b07e146cd68654ac7d4d791a38193cabaa4fad360877674ed",
-   "size": 175693
+   "sha256": "f14c67ccc98d7217f3f920ce8cc2ab35ea1b84b9c9c56f26456fdc50486cfaf0",
+   "size": 176082
   },
   {
    "path": "assets/icon.ico",
@@ -33,6 +33,31 @@
    "path": "assets/icon.svg",
    "sha256": "a7b99ab4fa5730aa6b8f352291103bc6abd6178165cd6688aedc3e74ccb73699",
    "size": 712
+  },
+  {
+   "path": "assets/icons/line.png",
+   "sha256": "86fb470e643bcb28cc665f66ecbfabf9268130beba75374aab4296a4371b4e55",
+   "size": 4714
+  },
+  {
+   "path": "assets/icons/lineAngle.png",
+   "sha256": "1dd44eede3b2b9aab8e02049b05db6f9a185aa17606ca9a7ebc4146f85289619",
+   "size": 4349
+  },
+  {
+   "path": "assets/icons/lineGroup.png",
+   "sha256": "ae880157ce6e7455084b07b6e67a915131169269250aa2656d443d7fdb2a81e7",
+   "size": 7981
+  },
+  {
+   "path": "assets/icons/parallel.png",
+   "sha256": "bb455b246cec227acd2099000b593a29eebbc477717229d8acd1744a055e6a8d",
+   "size": 4816
+  },
+  {
+   "path": "assets/icons/parallelMany.png",
+   "sha256": "293f75d8ba2e37dbd6640f4aabdb3cb25b0420efd824f0eaf0d021ecfec9bc60",
+   "size": 4632
   },
   {
    "path": "assets/l7design/assets/index-DzZItTLu.js",
@@ -131,7 +156,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "5e1cfc0220dd2a13b0fe12ab47443d1e7ffc7e1f3360344059ec43d6a17764c8",
+   "sha256": "57b3898691bdbf7d9ac440194a9572b807299921e7013f40afa60c0b3f2216d6",
    "size": 301
   },
   {
@@ -376,13 +401,13 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "efa28ebc7effb9f45af929cc6bf4e68d79e02570425834a4dfbd4c31909ee724",
-   "size": 77302
+   "sha256": "e1422c6aff591b992587706ab97d7ee69e8124eefc98b44a6df266fdf26dacca",
+   "size": 77550
   },
   {
    "path": "src/l7-icons.js",
-   "sha256": "92614722fcc8292095c3f4fdf5c349f7d151f6e5ff3c7e234104408d168f3164",
-   "size": 15504
+   "sha256": "0747bd22699ae25b362105cd0753c983db77a089315e609d266734daf265d1dc",
+   "size": 15416
   },
   {
    "path": "src/l7-license.css",
