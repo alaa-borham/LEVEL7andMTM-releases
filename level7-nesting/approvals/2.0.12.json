@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.12",
+ "notes": "A marker from LEVEL7 and MTM opens ready to nest (one marker)\r\n\r\n«إرسال إلى LEVEL7 Nesting» in LEVEL7 and MTM 0.9.305 opens its DXF-AAMA here: its copies are stated exactly (each piece's\r\ncount for one marker), so the order is set to one marker — nothing to type before «Nest».\r\n\r\nar: الماركر المرسل من برنامج الرسم يفتح جاهزاً للتعشيق مباشرة\r\n\r\n\r\n",
+ "approved": "2026-11-12T16:08:09.397Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.12-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.12/LEVEL7Nesting-2.0.12-Setup.exe",
+  "sha256": "71a08ab8c188e7cf002e4655b12e03e6ac47b371846a4ab675dbb6c3445acd3e",
+  "size": 55916686
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.12\",\"sha256\":\"71a08ab8c188e7cf002e4655b12e03e6ac47b371846a4ab675dbb6c3445acd3e\",\"size\":55916686,\"approved\":\"2026-11-12T16:08:09.397Z\"}",
+  "sig": "9ibd7LpS5tzmwhvM05ua3+H/h4xUM6eIdjoYBPR452IzirAlJuTPfzSrmLs2r4rP1b7W6bQRu1Y3pE2N487vCg=="
+ }
+}
