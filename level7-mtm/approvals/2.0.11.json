@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.11",
+ "notes": "Updates only with the admin's approval (LEVEL7 CAD MTM Admin 1.3.0)\r\n\r\nThe program reads the version the admin offers (level7-<program>/latest.json in the public releases repository),\r\nchecks his signature over the installer's fingerprint and size with the admin's key built in (the same key as the\r\nsign-in: licence.approved_setup), downloads it from the releases repository only, checks its SHA-256 and installs it.\r\nAn offer not signed by him (another key, another file, version or program, another host) is refused; nothing is\r\noffered from this program's own (private) repository any more.\r\n\r\nar: التحديثات تصل فقط بعد اعتماد المدير من برنامج المدير\r\n\r\n\r\n",
+ "approved": "2026-11-12T15:20:41.190Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.11-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.11/LEVEL7MTM-2.0.11-Setup.exe",
+  "sha256": "80da1b1f64953876492c230bbe67d53e17ee74a9f9e00404d475ba06e09817d2",
+  "size": 61447439
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.11\",\"sha256\":\"80da1b1f64953876492c230bbe67d53e17ee74a9f9e00404d475ba06e09817d2\",\"size\":61447439,\"approved\":\"2026-11-12T15:20:41.190Z\"}",
+  "sig": "5q+6lA+4bOrYIXMJrC7+tAZf/TrOLNR+OI608NZ9eG9cI/yDmZymdP7C5ANSw5oyK5MqNI12kt5/LoPZ21cfAw=="
+ }
+}
