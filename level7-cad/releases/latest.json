@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.304",
- "notes": "0.9.304: يستقبل الطلبات من LEVEL7 MTM بدل جرافس (بدون نافذة، بصلاحيات المدير) — يحتاج البرنامج الكامل",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.304/app",
+ "version": "0.9.305",
+ "notes": "0.9.305: «إرسال إلى LEVEL7 Nesting» من نافذة التعشيق — يحتاج البرنامج الكامل",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.305/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "c119845e3224fa499298a62bfb2544c6ae0c59a8b8611e4539e1d74e5212cba5",
-   "size": 178443
+   "sha256": "12028f5415b069d40c6bd1350a36a0a15fab257547ffb3b4e97578adf3100868",
+   "size": 179030
   },
   {
    "path": "assets/icon.ico",
@@ -155,9 +155,9 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-DvlAXKIb.js",
-   "sha256": "dffffab3bf3dda7cdf2dd486c2fcfdb50be15b5174d61984c335edc4256e3412",
-   "size": 982735
+   "path": "assets/l7design/assets/index-BwVceMNX.js",
+   "sha256": "8604019395e778e4ba30fc41fe2e7fdbbc4d65953f3dab452eb81badcc4cf2f4",
+   "size": 983417
   },
   {
    "path": "assets/l7design/assets/index-PYmrzbVA.css",
@@ -166,7 +166,7 @@
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "1890f4d3a9cdc0ff781fbcc02cf651fd5895e514b70271832d3db94a7f9b7cae",
+   "sha256": "aded09ad348344aae7cd6697c915979e1445e30c5a0d0dcefc5cb042d003e4d8",
    "size": 3594
   },
   {
@@ -181,8 +181,8 @@
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "401f6aebe8e7bc287460f3695431d9f11f7c20311d953adcd6a0f65ca084e0ba",
-   "size": 111291
+   "sha256": "130f73105e602e0a3c927db7b59067555920e539ed47a1b8f550e8ae3b4fa96a",
+   "size": 119349
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -191,8 +191,8 @@
   },
   {
    "path": "desktop/preload.cjs",
-   "sha256": "f6509770c21e59cd882c86debf5acc8058b1abfa9aee7d38225221a9326b54b8",
-   "size": 10874
+   "sha256": "a354c13528c121d9a818a654ca3021d3a79098c8db247a1eeeed644ccd193602",
+   "size": 9719
   },
   {
    "path": "desktop/remote-update.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "6fddb082996baf4df6b011549f34620ed325baa04bba8a1f55523acd4df81d72",
+   "sha256": "955f25eb06641442f843cdfc82008cc13bbfe92930de74ca7dd4d2c7b2efe54c",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "8613443e407bfa774c9dd76ed9de82c7bb66ca01262b17632f7c82c48eb1d6bc",
-   "size": 77170
+   "sha256": "9d43d21fe264619903ae305e30820ac7b4824266f02c901ca6e8770197902525",
+   "size": 78028
   },
   {
    "path": "src/l7-icons.js",
