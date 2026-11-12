@@ -1,0 +1,461 @@
+{
+ "note": "0.9.295: every tool and command the admin can close for a user (from the drawing engine and the program's bar) — 1.2.3: the programs a user may use are chosen above the tools (app:cad / app:nesting / app:mtm in the closed list)",
+ "groups": [
+  {
+   "name": "النقاط",
+   "items": [
+    [
+     "point",
+     "نقطة حرة"
+    ],
+    [
+     "pointOn",
+     "نقطة على خط"
+    ],
+    [
+     "intersect",
+     "نقطة تقاطع"
+    ],
+    [
+     "pointMove",
+     "نقطة منقولة باتجاه خط"
+    ]
+   ]
+  },
+  {
+   "name": "الخطوط",
+   "items": [
+    [
+     "line",
+     "خط بين نقطتين"
+    ],
+    [
+     "lineAngle",
+     "خط بزاوية وطول"
+    ],
+    [
+     "parallel",
+     "خط موازي"
+    ],
+    [
+     "parallelMany",
+     "موازٍ لعدة خطوط ومنحنيات"
+    ]
+   ]
+  },
+  {
+   "name": "التعديل",
+   "items": [
+    [
+     "setLength",
+     "تعديل طول خط"
+    ],
+    [
+     "trim",
+     "قص / تمديد لحد"
+    ]
+   ]
+  },
+  {
+   "name": "التحويلات",
+   "items": [
+    [
+     "mirrorCopy",
+     "انعكاس حول خط (نسخة)"
+    ],
+    [
+     "mirrorMove",
+     "انعكاس حول خط (نقل)"
+    ],
+    [
+     "mirrorPts",
+     "انعكاس بمحور من نقطة إلى نقطة"
+    ],
+    [
+     "mirrorDir",
+     "انعكاس بمحور من نقطة واتجاه"
+    ],
+    [
+     "scalePts",
+     "تكبير وتصغير حول نقطة"
+    ],
+    [
+     "scaleDir",
+     "تكبير وتصغير باتجاه"
+    ],
+    [
+     "rotatePts",
+     "تدوير حول نقطة بزاوية"
+    ],
+    [
+     "rotateAlign",
+     "تدوير من نقطة إلى نقطة (قفل البنسة)"
+    ],
+    [
+     "rotateSpread",
+     "قص وفتح (Slash & Spread)"
+    ],
+    [
+     "dart",
+     "بنسة على خط"
+    ]
+   ]
+  },
+  {
+   "name": "الغرز",
+   "items": [
+    [
+     "stitchLock",
+     "غرزة مستقيمة (Lockstitch)"
+    ],
+    [
+     "stitchDouble",
+     "غرزة مزدوجة"
+    ],
+    [
+     "stitchZigzag",
+     "غرزة زجزاج"
+    ],
+    [
+     "stitchDeco",
+     "غرز زخرفية"
+    ],
+    [
+     "stitchGather",
+     "كشكشة (Gather)"
+    ]
+   ]
+  },
+  {
+   "name": "العلامات",
+   "items": [
+    [
+     "grainLine",
+     "خط النسيج (Grain line)"
+    ],
+    [
+     "symButton",
+     "زر"
+    ],
+    [
+     "symDrill",
+     "ثقب (Drill hole)"
+    ],
+    [
+     "symCross",
+     "علامة +"
+    ],
+    [
+     "convertNotch",
+     "تحويل النوتش (Convert notch)"
+    ]
+   ]
+  },
+  {
+   "name": "النصوص",
+   "items": [
+    [
+     "textCreate",
+     "نص على الرسم"
+    ]
+   ]
+  },
+  {
+   "name": "الحذف",
+   "items": [
+    [
+     "delText",
+     "حذف نص"
+    ],
+    [
+     "delGrain",
+     "حذف خط اتجاه القماش"
+    ],
+    [
+     "delTextFrame",
+     "حذف نصوص داخل إطار"
+    ],
+    [
+     "delSymbolsFrame",
+     "حذف العلامات الداخلية داخل إطار"
+    ],
+    [
+     "delStitchesFrame",
+     "حذف الغرز داخل إطار"
+    ],
+    [
+     "delNotchesFrame",
+     "حذف النوتشات داخل إطار"
+    ],
+    [
+     "delPoints",
+     "حذف نقاط"
+    ],
+    [
+     "delLines",
+     "حذف خطوط ومنحنيات"
+    ],
+    [
+     "delPointsFrame",
+     "حذف نقاط داخل إطار"
+    ],
+    [
+     "delLinesFrame",
+     "حذف خطوط ومنحنيات داخل إطار"
+    ],
+    [
+     "delAllFrame",
+     "حذف الكل داخل إطار"
+    ]
+   ]
+  },
+  {
+   "name": "القطع",
+   "items": [
+    [
+     "seamAllowance",
+     "مسافة الخياطة (قياسي / مسافة / غير متوازي / بدون)"
+    ],
+    [
+     "piece",
+     "قطعة من الحدود"
+    ],
+    [
+     "notch",
+     "نوتش"
+    ]
+   ]
+  },
+  {
+   "name": "القياس من الرسم",
+   "items": [
+    [
+     "seamCheck",
+     "مقارنة أطوال الخياطات"
+    ],
+    [
+     "measureDist",
+     "قياس مسافة ← Z"
+    ],
+    [
+     "measureLength",
+     "قياس طول ← Z"
+    ]
+   ]
+  },
+  {
+   "name": "الوراثة",
+   "items": [
+    [
+     "inheritObjects",
+     "وراثة عناصر من بارت سابق"
+    ],
+    [
+     "inheritBlock",
+     "وراثة قالب أساسي من المكتبة"
+    ],
+    [
+     "thobeTemplates",
+     "قوالب الثوب الجاهزة"
+    ],
+    [
+     "saveBlock",
+     "حفظ البارت في مكتبة القوالب"
+    ],
+    [
+     "inheritPart",
+     "وراثة بارت كامل"
+    ]
+   ]
+  },
+  {
+   "name": "المنحنيات",
+   "items": [
+    [
+     "curve",
+     "منحنى عبر نقاط"
+    ]
+   ]
+  },
+  {
+   "name": "الزوايا",
+   "items": [
+    [
+     "cornerSharp",
+     "زاوية حادة"
+    ],
+    [
+     "cornerRound",
+     "زاوية مستديرة"
+    ],
+    [
+     "cornerChamfer",
+     "قطع الزاوية"
+    ],
+    [
+     "cornerSquare",
+     "زاوية قائمة على الحد (خط القص)"
+    ]
+   ]
+  },
+  {
+   "name": "الربط",
+   "items": [
+    [
+     "linkSingle",
+     "ربط خطين متلامسين (Link simple single)"
+    ],
+    [
+     "linkChain",
+     "ربط سلسلة خطوط (Link simple chain)"
+    ],
+    [
+     "link",
+     "ربط خطين بينهما فراغ (Link)"
+    ],
+    [
+     "linkCoord",
+     "ربط منسق (Link co-ordinated)"
+    ],
+    [
+     "joinPieces",
+     "ربط قطعتين في قطعة واحدة (Join pieces)"
+    ],
+    [
+     "reverseLine",
+     "عكس اتجاه الخط (Change line direction)"
+    ]
+   ]
+  },
+  {
+   "name": "الأبعاد",
+   "items": [
+    [
+     "dimAligned",
+     "بُعد مائل (مسافة)"
+    ],
+    [
+     "dimH",
+     "بُعد أفقي"
+    ],
+    [
+     "dimV",
+     "بُعد رأسي"
+    ],
+    [
+     "dimLength",
+     "بُعد طول خط أو منحنى"
+    ],
+    [
+     "dimLengthQuick",
+     "قياس طول بنقرة واحدة"
+    ],
+    [
+     "dimSum",
+     "مجموع أطوال (Σ)"
+    ],
+    [
+     "dimAngle",
+     "بُعد زاوية"
+    ]
+   ]
+  },
+  {
+   "name": "أوامر الشريط (ماركر، تصدير، تدريج…)",
+   "items": [
+    [
+     "product",
+     "معلومات المنتج · Product info"
+    ],
+    [
+     "save",
+     "حفظ التصميم · Ctrl+S"
+    ],
+    [
+     "fit",
+     "ملء الشاشة بالرسم · F6"
+    ],
+    [
+     "gradeview",
+     "عرض التدريج: المقاسات فوق بعض ← جنباً إلى جنب ← إيقاف (كل نقرة تنتقل ل"
+    ],
+    [
+     "visibility",
+     "الرؤية: ما يظهر على الرسم · Alt+O"
+    ],
+    [
+     "arrange",
+     "ترتيب البارتات: كل البارتات بصور كبيرة"
+    ],
+    [
+     "undo",
+     "تراجع · Ctrl+Z"
+    ],
+    [
+     "redo",
+     "إعادة · Ctrl+Y"
+    ],
+    [
+     "new",
+     "تصميم جديد · Ctrl+N"
+    ],
+    [
+     "open",
+     "فتح تصميم · Ctrl+O"
+    ],
+    [
+     "marker",
+     "التعشيق: ترتيب قطع بارتات الإنتاج (كل المقاسات والكميات) على القماش حس"
+    ],
+    [
+     "iso",
+     "ملف القص بعد التعشيق: ISO لماكينة القص (Bullmer / FK / Yin) أو PLT، من"
+    ],
+    [
+     "aama",
+     "AAMA للمقاس الحالي (للتعشيق)Ctrl+E"
+    ],
+    [
+     "aamaAll",
+     "AAMA لكل المقاسات"
+    ],
+    [
+     "aamaGraded",
+     "AAMA مع قواعد التدرج + RUL"
+    ],
+    [
+     "plt",
+     "PLT للمقاس الحالي (للبلوتر)"
+    ],
+    [
+     "pltAll",
+     "PLT لكل المقاسات"
+    ],
+    [
+     "dxf",
+     "DXF خطوط البناء"
+    ],
+    [
+     "printTiles",
+     "للطباعة على طابعة عادية بلا بلوتر: صفحات A4 تُلصق معاً"
+    ],
+    [
+     "testPart",
+     "Test run current part"
+    ],
+    [
+     "gradePart",
+     "Grade current part"
+    ],
+    [
+     "testAll",
+     "Test run all parts · Ctrl+Shift+6"
+    ],
+    [
+     "gradeAll",
+     "Grade all parts · Ctrl+6"
+    ]
+   ]
+  }
+ ]
+}
