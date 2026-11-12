@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.305",
- "notes": "0.9.305: «إرسال إلى LEVEL7 Nesting» من نافذة التعشيق — يحتاج البرنامج الكامل",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.305/app",
+ "version": "0.9.306",
+ "notes": "0.9.306: البرنامج كملف تثبيت (Setup)، والتحديثات الكبيرة تُثبَّت وحدها بعد الاعتماد — يُثبَّت يدوياً مرة واحدة",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.306/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "12028f5415b069d40c6bd1350a36a0a15fab257547ffb3b4e97578adf3100868",
-   "size": 179030
+   "sha256": "9d830268b471e13160c90ae439aa96dd965c63193e32a2139d2f1ad8a3d28fc8",
+   "size": 179819
   },
   {
    "path": "assets/icon.ico",
@@ -181,8 +181,8 @@
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "130f73105e602e0a3c927db7b59067555920e539ed47a1b8f550e8ae3b4fa96a",
-   "size": 119349
+   "sha256": "eb9e7d276d1c399b7df093a440f0c39da8d5a8eea9660eb40647954901aae044",
+   "size": 112623
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -191,13 +191,13 @@
   },
   {
    "path": "desktop/preload.cjs",
-   "sha256": "a354c13528c121d9a818a654ca3021d3a79098c8db247a1eeeed644ccd193602",
-   "size": 9719
+   "sha256": "9a919c382c983cbb8921a1c074061198f529f9f25ad0e4c77dfddb1631ff049e",
+   "size": 10752
   },
   {
    "path": "desktop/remote-update.cjs",
-   "sha256": "e1a95a9635dc0372577fa68487c2a6bf42ca6fa63d1f2fbe1291b1d4b1fd4934",
-   "size": 30575
+   "sha256": "db91d0534a07c8cd072bad69f3ce215e3adcab9e8aaa5279bf1a6035736a9894",
+   "size": 42371
   },
   {
    "path": "examples/draft-blocks.dxf",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "955f25eb06641442f843cdfc82008cc13bbfe92930de74ca7dd4d2c7b2efe54c",
+   "sha256": "f88671d53af87d6b8f741ebe7e542fba0b9b587d1655927ee20fb0410fbf6a60",
    "size": 301
   },
   {
@@ -576,8 +576,8 @@
   },
   {
    "path": "src/native-app.js",
-   "sha256": "586441542ddc3e74d53bb352364a6d3eece88a4e4ba8e01963343816e55234fb",
-   "size": 192078
+   "sha256": "135fd22f4006410fad41a071b140526c1e7997ec7ae99348d510dd8972548338",
+   "size": 191916
   },
   {
    "path": "src/native-bartack10-template.mjs",
@@ -1646,8 +1646,8 @@
   },
   {
    "path": "src/ui-0113.css",
-   "sha256": "19381d2b89e4e83c2a2c90d14d097b9c50cfe80d59277d7850066a715690aca1",
-   "size": 11336
+   "sha256": "51c126c6b4504f85a46cf25f6fd08d4e5b89ec53add9d387133ec3c3f8dbc2f9",
+   "size": 11464
   },
   {
    "path": "src/ui-dark-0117.css",
