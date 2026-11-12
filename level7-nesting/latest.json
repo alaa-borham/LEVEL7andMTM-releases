@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.11",
+ "notes": "Updates only with the admin's approval (LEVEL7 CAD MTM Admin 1.3.0)\r\n\r\nThe program reads the version the admin offers (level7-<program>/latest.json in the public releases repository),\r\nchecks his signature over the installer's fingerprint and size with the admin's key built in (the same key as the\r\nsign-in: licence.approved_setup), downloads it from the releases repository only, checks its SHA-256 and installs it.\r\nAn offer not signed by him (another key, another file, version or program, another host) is refused; nothing is\r\noffered from this program's own (private) repository any more.\r\n\r\nar: التحديثات تصل فقط بعد اعتماد المدير من برنامج المدير\r\n\r\n\r\n",
+ "approved": "2026-11-12T15:20:25.953Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.11-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.11/LEVEL7Nesting-2.0.11-Setup.exe",
+  "sha256": "aaf02e0eda00c1ce22547fd638864b73435aa0aa21d21653509a19910dcba6c1",
+  "size": 55921511
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.11\",\"sha256\":\"aaf02e0eda00c1ce22547fd638864b73435aa0aa21d21653509a19910dcba6c1\",\"size\":55921511,\"approved\":\"2026-11-12T15:20:25.953Z\"}",
+  "sig": "u27M8t8ef4BsoRwBQuQjNhlkqkISXMOrcORxA6Sr+EqBgc4frbJjLPcRbbiJ2nftSKLsMXRCk5zX1wERrB8ABg=="
+ }
+}
