@@ -82,6 +82,35 @@ jobs:
           $r = Get-Content co/level7-report.json | ConvertFrom-Json
           if ($p.ExitCode -ne 4 -or $r.licence -ne $false) { throw "an order was made with no user signed in" }
           "refused with no user (exit 4, $($r.reason))"
+      # 0.9.306: the full program as an installer (it is what the programs install themselves when a release changes the
+      # sealed core): built here from the program just checked, installed silently, the installed program starts sealed
+      - uses: actions/checkout@v4
+        with:
+          path: repo
+      - name: the installer (Setup) - built, installed silently, the installed program starts sealed
+        shell: pwsh
+        run: |
+          $v = "${{ needs.build.outputs.v }}"
+          $d = "$PWD\w\LEVEL7-and-MTM-$v-win32-x64"
+          $iscc = "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe"
+          if (!(Test-Path $iscc)) { choco install innosetup -y --no-progress }
+          & $iscc "/DAppVersion=$v" "/DSourceDir=$d" "/O$PWD\setup" repo\tools\installer-cad.iss
+          if ($LASTEXITCODE -ne 0) { throw "iscc failed" }
+          $s = "setup\LEVEL7-and-MTM-$v-Setup.exe"
+          $p = Start-Process -FilePath $s -ArgumentList "/VERYSILENT","/SUPPRESSMSGBOXES","/NORESTART","/DIR=$PWD\inst" -PassThru -Wait
+          if ($p.ExitCode -ne 0) { throw "the installer failed ($($p.ExitCode))" }
+          if (!(Test-Path "$env:USERPROFILE\Desktop\LEVEL7 and MTM.lnk") -and !(Test-Path "$env:PUBLIC\Desktop\LEVEL7 and MTM.lnk")) { "note: no desktop shortcut found" }
+          $p = Start-Process -FilePath "$PWD\inst\LEVEL7 and MTM.exe" -ArgumentList "--l7-smoke=$PWD\smoke3.json" -PassThru
+          if (-not $p.WaitForExit(120000)) { $p.Kill(); throw "the installed program did not finish" }
+          Get-Content smoke3.json
+          $j = Get-Content smoke3.json | ConvertFrom-Json
+          if (-not $j.ok -or -not $j.sealed -or $j.version -ne $v) { throw "the installed program did not start sealed" }
+          (Get-Item $s).Length
+      - uses: actions/upload-artifact@v4
+        with:
+          name: setup
+          path: setup/LEVEL7-and-MTM-${{ needs.build.outputs.v }}-Setup.exe
+          retention-days: 1
       - name: one byte changed in the sealed core - it must not start
         shell: pwsh
         run: |
@@ -101,14 +130,26 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: program
+      - uses: actions/download-artifact@v4
+        with:
+          name: setup
       - env:
           GH_TOKEN: ${{ github.token }}
           V: ${{ needs.build.outputs.v }}
         run: |
           NOTES=$(node -p "require('./level7-cad/releases/manifests/$V.json').notes || ''")
-          BODY=$(printf 'LEVEL7 and MTM %s — Windows (64-bit)\n\n%s\n\nالتركيب: فك الملف، ثم افتح «LEVEL7 - first run.cmd» أول مرة فقط، وبعدها «LEVEL7 and MTM.exe».\nيعمل فقط باسم مستخدم وكلمة سر من المدير، وعلى جهاز يوافق عليه.' "$V" "$NOTES")
+          BODY=$(printf 'LEVEL7 and MTM %s — Windows (64-bit)\n\n%s\n\nالتثبيت: شغّل «LEVEL7-and-MTM-%s-Setup.exe» (لا يحتاج صلاحيات المدير، ويضع اختصاراً على سطح المكتب). بعد ذلك تصل الإصدارات المعتمدة وحدها، حتى التي تحتاج البرنامج الكامل.\nأو الملف المضغوط: فكّه، ثم افتح «LEVEL7 - first run.cmd» أول مرة فقط.\nيعمل فقط باسم مستخدم وكلمة سر من المدير، وعلى جهاز يوافق عليه.' "$V" "$NOTES" "$V")
+          SETUP="LEVEL7-and-MTM-$V-Setup.exe"
           if gh release view "v$V" >/dev/null 2>&1; then
-            gh release upload "v$V" "LEVEL7-and-MTM-$V-win32-x64.zip" --clobber
+            gh release upload "v$V" "LEVEL7-and-MTM-$V-win32-x64.zip" "$SETUP" --clobber
           else
-            gh release create "v$V" "LEVEL7-and-MTM-$V-win32-x64.zip" --title "LEVEL7 and MTM $V" --notes "$BODY" --latest
+            gh release create "v$V" "$SETUP" "LEVEL7-and-MTM-$V-win32-x64.zip" --title "LEVEL7 and MTM $V" --notes "$BODY" --latest
           fi
+          # 0.9.306: the installer's fingerprint where the programs read it (they install it themselves when it is needed)
+          SHA=$(sha256sum "$SETUP" | cut -d' ' -f1); SIZE=$(stat -c %s "$SETUP")
+          mkdir -p level7-cad/releases/setups
+          printf '{"version":"%s","url":"https://github.com/%s/releases/download/v%s/%s","sha256":"%s","size":%s}\n' "$V" "$GITHUB_REPOSITORY" "$V" "$SETUP" "$SHA" "$SIZE" > "level7-cad/releases/setups/$V.json"
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "level7-cad/releases/setups/$V.json"
+          git commit -m "LEVEL7 and MTM $V: its installer's fingerprint"
+          for i in 1 2 3 4; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
