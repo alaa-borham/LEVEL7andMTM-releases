@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.2.3",
+ "version": "1.2.4",
  "core": "1.2.0",
- "notes": "Admin screen 1.2.3: «البرامج المسموحة له» under the password",
- "dir": "level7-cad/admin/v/1.2.3/ui",
+ "notes": "Admin screen 1.2.4: each program's permissions in a tab of its own",
+ "dir": "level7-cad/admin/v/1.2.4/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,18 +13,18 @@
   },
   {
    "path": "admin.js",
-   "sha256": "9c40ee1fc0a0fe80e345a3051862d7de403c86993e34cc40a34750a1faeaa207",
-   "size": 19352
+   "sha256": "c8ed98baf45b3b3921b48c873f65a65f6c1a63e81d389570b72333756d43fc78",
+   "size": 21657
   },
   {
    "path": "admin.css",
-   "sha256": "e55ee41c4f8d275a67e22ec49a6f605c1c7943d6a92c026cb2f053ca41b76e73",
-   "size": 5814
+   "sha256": "335f03cfa53a9d9002d6e8c37a029f4c3ae5e6b9b88595a5df2b3a0a925f1fb1",
+   "size": 6268
   },
   {
    "path": "catalogue.json",
-   "sha256": "f98d2b20be78d72c481166512e7b9e9d4b64a1d380c1a949eec59a9f8c290cc4",
-   "size": 8236
+   "sha256": "062866d849cd04355aba7b4d1f65817c53854f869c008cdb4b92585ef8809130",
+   "size": 13019
   },
   {
    "path": "icon.png",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "691b15ae1e1ee16fdf3061d62a02457a793adc927c2ea042eaa3c75973d0fffa",
+   "sha256": "90cdab2ea7fb8faab9eef16982e799c262bf1a2781b544e4176960e63d8a9179",
    "size": 41
   }
  ]
