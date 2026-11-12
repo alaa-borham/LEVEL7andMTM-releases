@@ -97,3 +97,4 @@ nav.tabs button{font-size:16.5px;font-weight:600;padding:12px 22px}
 .relbox h3 .now{margin-inline-start:auto;font-size:14px;font-weight:400;color:var(--muted)}.relbox h3 .now b{color:var(--ok);font-size:15px}
 .relbox h4{margin:12px 0 8px;color:var(--muted);font-weight:600}
 .relbox .empty.small{padding:14px;font-size:14px}.relbox .msg{margin:0 0 12px}.rel i{font-style:normal;color:var(--muted);font-size:13px}
+.relbox details.older{margin:0 0 10px}.relbox details.older summary{cursor:pointer;color:var(--muted);padding:6px 4px 10px;font-size:14px}

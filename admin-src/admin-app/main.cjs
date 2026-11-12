@@ -4,7 +4,7 @@
 // LEVEL7 and MTM reads it; it approves new releases of the program (which makes them available to the computers).
 // The key file stays where the admin keeps it (opened with its pass phrase each time); the GitHub token is kept
 // encrypted by Windows (safeStorage) on this computer.
-const { app, BrowserWindow, ipcMain, dialog, safeStorage, session, Menu } = require('electron');
+const { app, BrowserWindow, ipcMain, dialog, safeStorage, session, Menu, net: electronNet } = require('electron');
 const fs = require('node:fs');
 const path = require('node:path');
 const L = require('./license.cjs');
@@ -18,6 +18,9 @@ const TEST_DIR = DEV ? process.env.L7_TEST_DIALOG_DIR || '' : '';
 const PUBKEY = DEV && process.env.L7_LICENSE_PUBKEY ? process.env.L7_LICENSE_PUBKEY : L.BUILT_IN_PUBLIC_KEY;
 const CAD_DRAFT = DEV && process.env.L7A_CAD_DRAFT ? process.env.L7A_CAD_DRAFT : path.join(LOCAL, 'LEVEL7 CAD', 'License', 'admin-draft.json');
 const REPO = L.RELEASES_REPO;
+// tests: GitHub itself replaced by a local server (its API and its upload address)
+const GH_API = DEV && process.env.L7A_GH_API ? process.env.L7A_GH_API : 'https://api.github.com';
+const GH_UPLOADS = DEV && process.env.L7A_GH_UPLOADS ? process.env.L7A_GH_UPLOADS : 'https://uploads.github.com';
 const crypto = require('node:crypto');
 
 // ---- the screen's files (updated from inside the program). In the built program the core (this file, the key, signing,
@@ -83,7 +86,7 @@ const setToken = t => fs.writeFileSync(tokenFile, safeStorage.isEncryptionAvaila
 
 // ---- the releases repository: read and write files (a folder in tests)
 const net = () => session.fromPartition('level7-admin', { cache: false });
-const api = p => `https://api.github.com/repos/${REPO}/contents/${p}`;
+const api = p => `${GH_API}/repos/${REPO}/contents/${p}`;
 const head = () => ({ Authorization: 'Bearer ' + getToken(), Accept: 'application/vnd.github+json', 'User-Agent': 'LEVEL7-CAD-MTM-Admin', 'Content-Type': 'application/json' });
 async function readRepo(p) {
   if (TARGET_DIR) { try { return fs.readFileSync(path.join(TARGET_DIR, p), 'utf8'); } catch { return null; } }
@@ -164,7 +167,7 @@ function register() {
     const t = String(token || '').trim();
     if (!/^(github_pat_|ghp_)[A-Za-z0-9_]{20,}$/.test(t)) throw Error('هذا لا يشبه رمز GitHub (يبدأ بـ github_pat_).');
     if (!TARGET_DIR) {
-      const r = await net().fetch(`https://api.github.com/repos/${REPO}`, { headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json', 'User-Agent': 'LEVEL7-CAD-MTM-Admin' } });
+      const r = await net().fetch(`${GH_API}/repos/${REPO}`, { headers: { Authorization: 'Bearer ' + t, Accept: 'application/vnd.github+json', 'User-Agent': 'LEVEL7-CAD-MTM-Admin' } });
       if (!r.ok) throw Error('الرمز غير صالح، أو لا يصل إلى المستودع ' + REPO + '.');
       const j = await r.json();
       if (j.permissions && j.permissions.push === false) throw Error('الرمز يقرأ فقط: أعطه صلاحية Contents: Read and write.');
@@ -324,7 +327,7 @@ async function appBuilds(x, a) {
     }).filter(Boolean);
   }
   if (!getToken()) throw Error('رمز GitHub غير محفوظ.');
-  const r = await gh(`https://api.github.com/repos/${x.repo}/releases?per_page=8`);
+  const r = await gh(`${GH_API}/repos/${x.repo}/releases?per_page=8`);
   if (r.status === 404 || r.status === 403 || r.status === 401) throw Error(`رمز GitHub لا يصل إلى المستودع ${x.repo}. أضف هذا المستودع إلى الرمز في GitHub (صلاحية Contents: Read)، ثم احفظ الرمز هنا مرة أخرى.`);
   if (!r.ok) throw Error('GitHub: HTTP ' + r.status);
   return (await r.json()).filter(rel => !rel.draft && !rel.prerelease && vOk(String(rel.tag_name || '').replace(/^v/, ''))).map(rel => {
@@ -334,9 +337,23 @@ async function appBuilds(x, a) {
 }
 async function appSetupBytes(x, b) {
   if (b.setup.file) return fs.readFileSync(b.setup.file);
-  // the asset itself: GitHub answers with a redirect to its storage, which must not get the token
-  let r = await gh(`https://api.github.com/repos/${x.repo}/releases/assets/${b.setup.id}`, { headers: { Accept: 'application/octet-stream' }, redirect: 'manual' });
-  if (r.status >= 300 && r.status < 400) r = await net().fetch(r.headers.get('location'), { headers: { 'User-Agent': 'LEVEL7-CAD-MTM-Admin' } });
+  // the asset itself: GitHub answers with a redirect to its storage, which must not get the token (1.3.1: read with
+  // net.request — fetch with redirect «manual» only fails with «Redirect was cancelled»)
+  const url = `${GH_API}/repos/${x.repo}/releases/assets/${b.setup.id}`;
+  const where = await new Promise((resolve, reject) => {
+    const rq = electronNet.request({ url, session: net(), redirect: 'manual', useSessionCookies: false });
+    const h = { ...head(), Accept: 'application/octet-stream' }; delete h['Content-Type'];
+    for (const [k, v] of Object.entries(h)) rq.setHeader(k, v);
+    rq.on('redirect', (status, method, location) => { resolve({ location }); try { rq.abort(); } catch {} });
+    rq.on('response', res => { const parts = []; res.on('data', c => parts.push(c)); res.on('end', () => resolve({ status: res.statusCode, body: Buffer.concat(parts) })); res.on('error', reject); });
+    rq.on('error', reject);
+    rq.end();
+  });
+  if (!where.location) {
+    if (where.status !== 200) throw Error('تعذر تنزيل ' + b.setup.name + ': HTTP ' + where.status);
+    return where.body;                                       // (served directly)
+  }
+  const r = await net().fetch(where.location, { headers: { 'User-Agent': 'LEVEL7-CAD-MTM-Admin' } });
   if (!r.ok) throw Error('تعذر تنزيل ' + b.setup.name + ': HTTP ' + r.status);
   return Buffer.from(await r.arrayBuffer());
 }
@@ -346,17 +363,17 @@ async function publishSetup(x, v, name, bytes, notes) {
   if (TARGET_DIR) {
     const d = path.join(TARGET_DIR, '_releases', tag); fs.mkdirSync(d, { recursive: true }); fs.writeFileSync(path.join(d, name), bytes);
   } else {
-    let r = await gh(`https://api.github.com/repos/${REPO}/releases/tags/${tag}`);
+    let r = await gh(`${GH_API}/repos/${REPO}/releases/tags/${tag}`);
     let rel = r.ok ? await r.json() : null;
     if (!rel) {
-      r = await gh(`https://api.github.com/repos/${REPO}/releases`, { method: 'POST', body: JSON.stringify({ tag_name: tag, target_commitish: 'main', name: `${x.name} ${v}`, body: String(notes || '').slice(0, 20000), make_latest: 'false' }) });
+      r = await gh(`${GH_API}/repos/${REPO}/releases`, { method: 'POST', body: JSON.stringify({ tag_name: tag, target_commitish: 'main', name: `${x.name} ${v}`, body: String(notes || '').slice(0, 20000), make_latest: 'false' }) });
       if (!r.ok) throw Error(r.status === 403 ? 'رمز GitHub لا يملك صلاحية إنشاء إصدار في ' + REPO + ' (Contents: Read and write).' : 'تعذر إنشاء الإصدار على GitHub: HTTP ' + r.status);
       rel = await r.json();
     }
     const had = (rel.assets || []).find(a => a.name === name);
-    if (had && had.size !== bytes.length) await gh(`https://api.github.com/repos/${REPO}/releases/assets/${had.id}`, { method: 'DELETE' });
+    if (had && had.size !== bytes.length) await gh(`${GH_API}/repos/${REPO}/releases/assets/${had.id}`, { method: 'DELETE' });
     if (!had || had.size !== bytes.length) {
-      r = await gh(`https://uploads.github.com/repos/${REPO}/releases/${rel.id}/assets?name=${encodeURIComponent(name)}`, { method: 'POST', headers: { 'Content-Type': 'application/octet-stream' }, body: bytes });
+      r = await gh(`${GH_UPLOADS}/repos/${REPO}/releases/${rel.id}/assets?name=${encodeURIComponent(name)}`, { method: 'POST', headers: { 'Content-Type': 'application/octet-stream' }, body: bytes });
       if (!r.ok) throw Error('تعذر رفع ' + name + ': HTTP ' + r.status);
     }
   }

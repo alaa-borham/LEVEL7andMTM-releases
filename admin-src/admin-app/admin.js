@@ -205,8 +205,10 @@
         const vnum = v => v.split('.').map(Number);
         const isNewer = v => { if (!cur) return true; const x = vnum(v), y = vnum(cur); for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] > y[i]; return false; };
         const waiting = r.versions.filter(v => isNewer(v.version));
+        // 1.3.1: the newest first; the older ones folded away (nothing approved yet: they were all shown as waiting)
+        const row = (v, i) => `<div class="rel"><b>${esc(v.version)}</b><span>${i === 0 ? 'أحدث إصدار — ' : ''}${firstLine(v.notes) || 'إصدار جديد'} <i dir="ltr">(${(v.size / 1048576).toFixed(1)} MB)</i></span><button class="${i === 0 ? 'primary big' : ''}" data-app-approve="${k}:${esc(v.version)}">اعتماد ونشر للأجهزة</button></div>`;
         box.innerHTML = `<h3>${esc(r.name)}<span class="now">المتاح للأجهزة الآن: <b dir="ltr">${esc(cur || '—')}</b></span></h3>
-          ${waiting.length ? waiting.map((v, i) => `<div class="rel"><b>${esc(v.version)}</b><span>${i === 0 ? 'أحدث إصدار — ' : ''}${firstLine(v.notes) || 'إصدار جديد'} <i dir="ltr">(${(v.size / 1048576).toFixed(1)} MB)</i></span><button class="${i === 0 ? 'primary big' : ''}" data-app-approve="${k}:${esc(v.version)}">اعتماد ونشر للأجهزة</button></div>`).join('')
+          ${waiting.length ? row(waiting[0], 0) + (waiting.length > 1 ? `<details class="older"><summary>إصدارات أقدم (${waiting.length - 1})</summary>${waiting.slice(1).map(v => row(v, 1)).join('')}</details>` : '')
             : '<div class="empty small">لا يوجد إصدار جديد بانتظار الاعتماد.</div>'}`;
       }).catch(e => { if (box.isConnected) box.innerHTML = `<h3>${esc(APP_LIST.find(x => x[0] === k)[1])}</h3><div class="msg bad">${esc(e.message)}</div>`; });
     }

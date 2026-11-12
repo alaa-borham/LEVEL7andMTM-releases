@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.3.0",
- "core": "1.3.0",
- "notes": "1.3.0: اعتماد إصدارات LEVEL7 MTM وLEVEL7 Nesting من برنامج المدير — يحتاج البرنامج الكامل (admin-v1.3.0)",
- "dir": "level7-cad/admin/v/1.3.0/ui",
+ "version": "1.3.1",
+ "core": "1.3.1",
+ "notes": "1.3.1: إصلاح «Redirect was cancelled» عند اعتماد MTM/Nesting — يحتاج البرنامج الكامل (admin-v1.3.1)",
+ "dir": "level7-cad/admin/v/1.3.1/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,13 +13,13 @@
   },
   {
    "path": "admin.js",
-   "sha256": "a3e1ecd1d1c2d3b8946ac3969a7c86514641147d867adbef2f19b85cf99d1b8d",
-   "size": 25770
+   "sha256": "85eef06a9fc42f55f8dc6a4a121b045afdb6bb5fc208644c252874077f7f2d93",
+   "size": 26086
   },
   {
    "path": "admin.css",
-   "sha256": "75b0e030ec871bb2e85f4099208e450587f682671fce1244ce970e9619bf25a8",
-   "size": 10421
+   "sha256": "ddbea7391405bc8bafc1e36cf17282c5050f1740ba2c05171aa7d42e6784375d",
+   "size": 10560
   },
   {
    "path": "catalogue.json",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "89abf3e92468abe24887d5ea384ce16865ddaf1d708050bfc8e095bb8001e8a3",
+   "sha256": "7cdc91c98c9c5ba6054bc923b7edb2d1a92fbdd77da6047c10da22f6e7d62018",
    "size": 41
   }
  ]
