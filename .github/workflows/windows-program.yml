@@ -63,6 +63,25 @@ jobs:
           Get-Content smoke1.json
           $j = Get-Content smoke1.json | ConvertFrom-Json
           if (-not $j.ok -or -not $j.sealed -or $j.version -ne "${{ needs.build.outputs.v }}") { throw "not started sealed" }
+      - name: the command line for LEVEL7 MTM works (0.9.304+) and keeps the admin's control
+        shell: pwsh
+        run: |
+          $v = "${{ needs.build.outputs.v }}"
+          if ([version]$v -lt [version]"0.9.304") { "no command line before 0.9.304"; exit 0 }
+          $d = "w/LEVEL7-and-MTM-$v-win32-x64"
+          $p = Start-Process -FilePath "$d/LEVEL7 and MTM.exe" -ArgumentList "--cli","--self-test","--out","$PWD\st" -PassThru
+          if (-not $p.WaitForExit(120000)) { $p.Kill(); throw "self-test did not finish" }
+          Get-Content st/level7-selftest.json
+          $j = Get-Content st/level7-selftest.json | ConvertFrom-Json
+          if (-not $j.ok -or -not $j.sealed -or $p.ExitCode -ne 0) { throw "the command line does not work in the sealed program" }
+          '{"version":1,"name":"t","measurements":[{"id":1,"name":"w","value":100}],"variables":[],"steps":[],"names":{},"nextId":1,"pieces":[]}' | Set-Content m.level7
+          '{"customer":"c","order":"1","measurements":{"X1":120}}' | Set-Content o.json
+          $p = Start-Process -FilePath "$d/LEVEL7 and MTM.exe" -ArgumentList "--cli","--model","$PWD\m.level7","--order","$PWD\o.json","--out","$PWD\co" -PassThru
+          if (-not $p.WaitForExit(120000)) { $p.Kill(); throw "did not finish" }
+          Get-Content co/level7-report.json
+          $r = Get-Content co/level7-report.json | ConvertFrom-Json
+          if ($p.ExitCode -ne 4 -or $r.licence -ne $false) { throw "an order was made with no user signed in" }
+          "refused with no user (exit 4, $($r.reason))"
       - name: one byte changed in the sealed core - it must not start
         shell: pwsh
         run: |
