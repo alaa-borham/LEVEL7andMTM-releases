@@ -1,0 +1,28 @@
+# Deletes old releases (and their tags) of this repository: those whose tag matches MATCH, except the tags in KEEP.
+# Run by hand only (Actions → cleanup-releases → Run workflow).
+name: cleanup-releases
+on:
+  workflow_dispatch:
+    inputs:
+      match:
+        description: "regular expression: the tags that may be deleted"
+        required: true
+      keep:
+        description: "tags kept (space separated)"
+        required: true
+permissions:
+  contents: write
+jobs:
+  clean:
+    runs-on: ubuntu-latest
+    steps:
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          R: ${{ github.repository }}
+          MATCH: ${{ inputs.match }}
+          KEEP: ${{ inputs.keep }}
+        run: |
+          for t in $(gh release list -R "$R" --limit 300 --json tagName -q ".[].tagName"); do
+            if ! echo "$t" | grep -Eq "$MATCH"; then echo "not matched: $t"; continue; fi
+            case " $KEEP " in *" $t "*) echo "kept: $t";; *) echo "deleted: $t"; gh release delete "$t" -R "$R" --yes --cleanup-tag;; esac
+          done
