@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.303",
- "notes": "A whole program closed for a user (LEVEL7 and MTM unticked in the admin program).",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.303/app",
+ "version": "0.9.304",
+ "notes": "0.9.304: يستقبل الطلبات من LEVEL7 MTM بدل جرافس (بدون نافذة، بصلاحيات المدير) — يحتاج البرنامج الكامل",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.304/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "3b431004d330045cb7ac0bad1f1061eb009855de823b3b4ece332981baec33fb",
-   "size": 177351
+   "sha256": "c119845e3224fa499298a62bfb2544c6ae0c59a8b8611e4539e1d74e5212cba5",
+   "size": 178443
   },
   {
    "path": "assets/icon.ico",
@@ -155,9 +155,9 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-DzZItTLu.js",
-   "sha256": "abcf4a1008ef6a7324e6b1c2c9f6062f16374ee2e9c8de20c5a01730379b9276",
-   "size": 979932
+   "path": "assets/l7design/assets/index-DvlAXKIb.js",
+   "sha256": "dffffab3bf3dda7cdf2dd486c2fcfdb50be15b5174d61984c335edc4256e3412",
+   "size": 982735
   },
   {
    "path": "assets/l7design/assets/index-PYmrzbVA.css",
@@ -166,8 +166,13 @@
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "eda42f680290ce9ae45b2af1a6ca029f8f80c5e0adf1de949476ac4c411f6e83",
+   "sha256": "1890f4d3a9cdc0ff781fbcc02cf651fd5895e514b70271832d3db94a7f9b7cae",
    "size": 3594
+  },
+  {
+   "path": "desktop/cli/level7.cjs",
+   "sha256": "4681a23c056068cc301720c2c339bb0a9fa85e46958299539047a59d4c14519d",
+   "size": 137089
   },
   {
    "path": "desktop/license.cjs",
@@ -176,8 +181,8 @@
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "641d32ca29bf0e08011e75c4fee66b4b3e00e5b677c5a35633f04561097fd788",
-   "size": 93512
+   "sha256": "401f6aebe8e7bc287460f3695431d9f11f7c20311d953adcd6a0f65ca084e0ba",
+   "size": 111291
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -251,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "62868bae0c8f8176dec5e0145f8ba4a7fcd52fe15d34e6c8e025d17a41541bbe",
+   "sha256": "6fddb082996baf4df6b011549f34620ed325baa04bba8a1f55523acd4df81d72",
    "size": 301
   },
   {
