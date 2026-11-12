@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.306",
- "notes": "0.9.306: البرنامج كملف تثبيت (Setup)، والتحديثات الكبيرة تُثبَّت وحدها بعد الاعتماد — يُثبَّت يدوياً مرة واحدة",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.306/app",
+ "version": "0.9.307",
+ "notes": "0.9.307: طلبية LEVEL7 MTM تُصنع من التصميم المحفوظ على بارت بلا قطع (كان يُرفض: «لا توجد قطع»)",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.307/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "9d830268b471e13160c90ae439aa96dd965c63193e32a2139d2f1ad8a3d28fc8",
-   "size": 179819
+   "sha256": "e4fc361dacce61b3b6756a208a22ce11075b1b012b7d408b7d02b0bb4db6d104",
+   "size": 180329
   },
   {
    "path": "assets/icon.ico",
@@ -171,8 +171,8 @@
   },
   {
    "path": "desktop/cli/level7.cjs",
-   "sha256": "4681a23c056068cc301720c2c339bb0a9fa85e46958299539047a59d4c14519d",
-   "size": 137089
+   "sha256": "04112262544ce931b109cdc4cad3c6787edea483ba3661a53ba804f2bf1d6709",
+   "size": 136957
   },
   {
    "path": "desktop/license.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "f88671d53af87d6b8f741ebe7e542fba0b9b587d1655927ee20fb0410fbf6a60",
+   "sha256": "edab5c0deb4cafd1ce8f31154ff47e23e4d3c4b35643e120813043d556944910",
    "size": 301
   },
   {
