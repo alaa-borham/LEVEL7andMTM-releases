@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.2.5",
+ "version": "1.2.6",
  "core": "1.2.0",
- "notes": "Admin screen 1.2.5: the closable lists easy to read",
- "dir": "level7-cad/admin/v/1.2.5/ui",
+ "notes": "1.2.6: القائمة لا تقفز للأعلى بعد التحديد؛ شاشة رئيسية أوضح",
+ "dir": "level7-cad/admin/v/1.2.6/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,13 +13,13 @@
   },
   {
    "path": "admin.js",
-   "sha256": "c8ed98baf45b3b3921b48c873f65a65f6c1a63e81d389570b72333756d43fc78",
-   "size": 21657
+   "sha256": "88403ce32aaef5848602b60740ae75a2a29bfdb8aab02b2003b4a03a35f80b81",
+   "size": 22963
   },
   {
    "path": "admin.css",
-   "sha256": "10f9d41a29cb66998c6a9942c4f6926904dbf2a8497c0308464e3147fce6fc0d",
-   "size": 7396
+   "sha256": "1c54de4e69c547b74ec438b0fd082c7380bf1ec7a5a5dcefcfce2ad0b50600f9",
+   "size": 9697
   },
   {
    "path": "catalogue.json",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "7387f6646d15eff3847e84be73114b9166cbb536334d3f7100d508ce2a3716e8",
+   "sha256": "254e4643e352c5bbc6f5e6217e6c9656133f7eae86eb4d95b83fb5f14a6da05c",
    "size": 41
   }
  ]
