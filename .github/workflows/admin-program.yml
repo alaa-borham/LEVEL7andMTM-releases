@@ -1,0 +1,73 @@
+# LEVEL7 CAD MTM Admin — the full program (needed when its sealed core changes): built from admin-src/ for Windows,
+# checked on Windows (starts sealed; a changed core does not start) and put on the Releases page as «admin-v<version>»
+# (never marked latest: the latest release stays the drawing program's).
+name: admin-program
+on:
+  push:
+    branches: [main]
+    paths: ["admin-src/version.txt"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      v: ${{ steps.v.outputs.v }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: v
+        run: echo "v=$(tr -d '[:space:]' < admin-src/version.txt)" >> "$GITHUB_OUTPUT"
+      - run: bash admin-src/build-admin-windows.sh dist
+      - uses: actions/upload-artifact@v4
+        with:
+          name: admin
+          path: dist/LEVEL7-CAD-MTM-Admin-${{ steps.v.outputs.v }}-win32-x64.zip
+          retention-days: 1
+  check:
+    needs: build
+    runs-on: windows-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: admin
+      - name: unpack
+        shell: pwsh
+        run: Expand-Archive -Path LEVEL7-CAD-MTM-Admin-${{ needs.build.outputs.v }}-win32-x64.zip -DestinationPath w
+      - name: the sealed admin program starts
+        shell: pwsh
+        run: |
+          $d = "w/LEVEL7-CAD-MTM-Admin-${{ needs.build.outputs.v }}-win32-x64"
+          $p = Start-Process -FilePath "$d/LEVEL7 CAD MTM Admin.exe" -ArgumentList "--l7-smoke=$PWD\smoke1.json" -PassThru
+          if (-not $p.WaitForExit(120000)) { $p.Kill(); throw "did not finish" }
+          Get-Content smoke1.json
+          $j = Get-Content smoke1.json | ConvertFrom-Json
+          if (-not $j.ok -or -not $j.sealed) { throw "not started sealed" }
+      - name: one byte changed in the sealed core - it must not start
+        shell: pwsh
+        run: |
+          $d = "w/LEVEL7-CAD-MTM-Admin-${{ needs.build.outputs.v }}-win32-x64"
+          $f = "$d/resources/app.asar"
+          $b = [System.IO.File]::ReadAllBytes($f); $i = $b.Length - 200; $b[$i] = $b[$i] -bxor 1; [System.IO.File]::WriteAllBytes($f, $b)
+          $p = Start-Process -FilePath "$d/LEVEL7 CAD MTM Admin.exe" -ArgumentList "--l7-smoke=$PWD\smoke2.json" -PassThru
+          if (-not $p.WaitForExit(60000)) { $p.Kill() }
+          if (Test-Path smoke2.json) { Get-Content smoke2.json; throw "the changed program started" }
+          "refused to start (exit $($p.ExitCode))"
+  publish:
+    needs: [build, check]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: admin
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          V: ${{ needs.build.outputs.v }}
+        run: |
+          BODY=$(printf 'LEVEL7 CAD MTM Admin %s — برنامج المدير لويندوز (64-bit)\n\nالتركيب: فك الملف، ثم افتح «LEVEL7 Admin - first run.cmd» أول مرة فقط، وبعدها «LEVEL7 CAD MTM Admin.exe».\nمفتاح الأدمن ورمز GitHub يبقيان كما هما على الجهاز.' "$V")
+          if gh release view "admin-v$V" >/dev/null 2>&1; then
+            gh release upload "admin-v$V" "LEVEL7-CAD-MTM-Admin-$V-win32-x64.zip" --clobber
+          else
+            gh release create "admin-v$V" "LEVEL7-CAD-MTM-Admin-$V-win32-x64.zip" --title "LEVEL7 CAD MTM Admin $V" --notes "$BODY" --latest=false
+          fi
