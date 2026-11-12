@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.2.4",
+ "version": "1.2.5",
  "core": "1.2.0",
- "notes": "Admin screen 1.2.4: each program's permissions in a tab of its own",
- "dir": "level7-cad/admin/v/1.2.4/ui",
+ "notes": "Admin screen 1.2.5: the closable lists easy to read",
+ "dir": "level7-cad/admin/v/1.2.5/ui",
  "files": [
   {
    "path": "index.html",
@@ -18,8 +18,8 @@
   },
   {
    "path": "admin.css",
-   "sha256": "335f03cfa53a9d9002d6e8c37a029f4c3ae5e6b9b88595a5df2b3a0a925f1fb1",
-   "size": 6268
+   "sha256": "10f9d41a29cb66998c6a9942c4f6926904dbf2a8497c0308464e3147fce6fc0d",
+   "size": 7396
   },
   {
    "path": "catalogue.json",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "90cdab2ea7fb8faab9eef16982e799c262bf1a2781b544e4176960e63d8a9179",
+   "sha256": "7387f6646d15eff3847e84be73114b9166cbb536334d3f7100d508ce2a3716e8",
    "size": 41
   }
  ]
