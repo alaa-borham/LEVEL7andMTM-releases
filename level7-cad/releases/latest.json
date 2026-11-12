@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.302",
- "notes": "Icons on a very light grey tile; the user's icons for the points, lines, edit and transformation tools, with fixed group icons.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.302/app",
+ "version": "0.9.303",
+ "notes": "A whole program closed for a user (LEVEL7 and MTM unticked in the admin program).",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.303/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "da7732e13e511b8d9edce665abb9ff922b29d32db6a0c1ab2f61b375ca62d618",
-   "size": 176948
+   "sha256": "3b431004d330045cb7ac0bad1f1061eb009855de823b3b4ece332981baec33fb",
+   "size": 177351
   },
   {
    "path": "assets/icon.ico",
@@ -251,7 +251,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "155fe6d351c630f037f6237c42ad053ac7583a660eae5d839cbec8b694df56b8",
+   "sha256": "62868bae0c8f8176dec5e0145f8ba4a7fcd52fe15d34e6c8e025d17a41541bbe",
    "size": 301
   },
   {
@@ -511,8 +511,8 @@
   },
   {
    "path": "src/l7-license.js",
-   "sha256": "14c915946ae67d67550761c327df7d9a9d5a9f7c7b54943d3c5b89464b68bcac",
-   "size": 23097
+   "sha256": "a8cdc22fd5490c7b4f0ac7e2be3dfb6af842544c27f802be1b8d2f466bc7636e",
+   "size": 25839
   },
   {
    "path": "src/l7-splash.css",
