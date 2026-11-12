@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.15",
+ "notes": "Self-test: nothing left on Windows either (the workspaces closed, the folder checked gone)\r\n\r\nGitHub's Windows check found the self-test's folder still there: the order workspaces were left open and Windows does\r\nnot remove open files. Every workspace a command opens is now closed when it ends, and the self-test fails if its folder\r\nis not gone.\r\n\r\nar: الفحص الذاتي لا يترك أي ملف خلفه حتى على ويندوز\r\n\r\n\r\n",
+ "approved": "2026-11-12T21:36:29.499Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.15-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.15/LEVEL7Nesting-2.0.15-Setup.exe",
+  "sha256": "53cb1da958c84568fca900da91fa148fa381b34d7203f40caf5a785528b1c988",
+  "size": 55940471
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.15\",\"sha256\":\"53cb1da958c84568fca900da91fa148fa381b34d7203f40caf5a785528b1c988\",\"size\":55940471,\"approved\":\"2026-11-12T21:36:29.499Z\"}",
+  "sig": "Re94siM0Z5QbjQj/H6TzTtu6XcGn0v7co4PWdxwbcgCdeKNVPm2QnAzD2IrJT43EMSjS03hYFhL0RnVC6qpUDQ=="
+ }
+}
