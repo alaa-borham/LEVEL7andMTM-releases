@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.21",
+ "notes": "Order details: every measurement of the design for the order — from the order, or the design's own [skip ci]\r\n\r\nThe owner, to finish his customer's setup: 33 of the 50 measurements of his design did not come from the order (every\r\ncustomer got the design's own value for them) and nothing showed which. «Order details» has a second tab, «قياسات\r\nالتصميم»: each measurement (X) of the design with its value in the order's pieces and where it came from — the order\r\n(its XML code, its rule) or the design. Those from the design are marked; «المأخوذة من التصميم فقط» shows them alone;\r\nthe design's own value stands beside each, so a value far from it is seen. The tab's title counts both.\r\nWhat the drawing program used is kept with the order (not only in its work folder).\r\ntests/test_level7_safeguards.py (+3). The build is started after the full suite.\r\n\r\nar: تفاصيل الطلب: تبويب «قياسات التصميم» — كل قياس وقيمته في القطع ومصدره (الطلبية أم التصميم)\r\n\r\n\r\n",
+ "approved": "2026-11-13T12:57:46.205Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.21-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.21/LEVEL7MTM-2.0.21-Setup.exe",
+  "sha256": "0ca8e5249b8f8cfc24bd2774365ae6af2359969fb84083f4906baa338f5ff5c8",
+  "size": 61511001
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.21\",\"sha256\":\"0ca8e5249b8f8cfc24bd2774365ae6af2359969fb84083f4906baa338f5ff5c8\",\"size\":61511001,\"approved\":\"2026-11-13T12:57:46.205Z\"}",
+  "sig": "2ze6jBMy9eHaRpUf8/l/wPMHzUJyEF8XGgqIhejPdRnupW0jXUscSvJmfWgtLmk873+ZqpmSvzxIznJu4hPQAw=="
+ }
+}
