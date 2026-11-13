@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 Nesting",
  "app": "nesting",
- "version": "2.0.16",
- "notes": "The marker file is «.ALB» (the owner's extension); «.l7n» markers still open\r\n\r\nA marker is saved as <name>.ALB: the window's «save as» (a name without an extension, or typed «.alb», too), the batch\r\nlist and the command line LEVEL7 MTM uses. «.ALB» opens from the open window, by a double-click (the installer registers\r\nit) and in every command. An older «.l7n» marker (the same content) still opens and is saved in place under its own\r\nname: nothing is renamed. «info --json» says so (features: alb) and «export --help» names it, which LEVEL7 MTM reads\r\nbefore it names a marker. The cutting files (PLT, ISO, DXF) keep their extensions.\r\n\r\nar: ملف الماركر صار بامتداد ALB؛ ملفات l7n القديمة تُفتح كما هي، وملفات القص PLT و ISO لم تتغير\r\n\r\n\r\n",
- "approved": "2026-11-13T05:59:29.454Z",
+ "version": "2.0.20",
+ "notes": "A notch on a curved edge reaches the cutting files; a damaged licence file does not stop the program [skip ci]\r\n\r\nFrom the independent review of 2026-11 (each reproduced first):\r\n- LEVEL7 and MTM puts a notch where the sewing line's point, moved out by the seam allowance, lies; its cut line is a\r\n  polyline, so on a curve the notch starts a few hundredths of a millimetre beside it. The PLT and the ISO take a notch\r\n  only when it starts on the cut line (0.01 mm): such a notch was left out of both files without a word, and counted\r\n  as cut. The reader of the order's file now moves the notch onto the cut line (direction and length kept); moved by\r\n  more than 0.5 mm it is said in the file's issues, further than 10 mm the file is refused. The owner's own design was\r\n  inside the limit (0.003 mm at most): nothing of it was lost; the margin was thin.\r\n- the cutting files count the notches they really cut; one left out is said («notches_left_out», a warning line).\r\n- a licence file damaged or written by hand, or a folder that cannot be written for a moment, stopped the program and\r\n  its command line with a traceback: each counts as empty, the program goes on.\r\nA model of GRAFIS is read and cut exactly as before (its reference files unchanged).\r\n(Build 19 stopped on the new test itself: it wrote its DXF as text, which Windows gives other line ends — the file is\r\nwritten as bytes now; the command line's gate is asked with the key in the licence tests.)\r\n\r\nar: النوتش على الخط المنحني يصل إلى ملفات القص (كان يسقط بصمت إن ابتعد عن خط القص بأكثر من 0.01 مم)\r\n\r\n\r\n",
+ "approved": "2026-11-13T10:29:46.840Z",
  "setup": {
-  "name": "LEVEL7Nesting-2.0.16-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.16/LEVEL7Nesting-2.0.16-Setup.exe",
-  "sha256": "5d9a9021cbc620a25686ed6fdd248f1b932264bef94665f0a3b8151aa38df063",
-  "size": 55941577
+  "name": "LEVEL7Nesting-2.0.20-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.20/LEVEL7Nesting-2.0.20-Setup.exe",
+  "sha256": "a52c1bde9868f4780db1f56b1c6024b84918c92613fe36d542c690f575f12325",
+  "size": 55953080
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.16\",\"sha256\":\"5d9a9021cbc620a25686ed6fdd248f1b932264bef94665f0a3b8151aa38df063\",\"size\":55941577,\"approved\":\"2026-11-13T05:59:29.454Z\"}",
-  "sig": "D1p1jknqX2mlH2goLZYb8awt4LTeiZcGKzCsdwCFWzQ1U8QIL7cY68X1KF0oWDltao2j4I393Igc9Ha7YSawBQ=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.20\",\"sha256\":\"a52c1bde9868f4780db1f56b1c6024b84918c92613fe36d542c690f575f12325\",\"size\":55953080,\"approved\":\"2026-11-13T10:29:46.840Z\"}",
+  "sig": "NwhCpAcTdFPykr/oejGSNopqaYPeW6KJv0Yu1zNHNg77jSgM+B6IIwSwv+HgCHGRBN4M2jG7fvGxYai9XOYNAA=="
  }
 }
