@@ -28,7 +28,7 @@ jobs:
     outputs:
       v: ${{ steps.v.outputs.v }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
       - id: v
         env:
           WANTED: ${{ github.event.inputs.version }}
@@ -38,7 +38,7 @@ jobs:
           echo "v=$V" >> "$GITHUB_OUTPUT"
       - run: node tools/verify-release.mjs ${{ steps.v.outputs.v }}
       - run: bash tools/build-windows.sh ${{ steps.v.outputs.v }} dist
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
         with:
           name: program
           path: dist/LEVEL7-and-MTM-${{ steps.v.outputs.v }}-win32-x64.zip
@@ -48,7 +48,7 @@ jobs:
     needs: build
     runs-on: windows-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4
         with:
           name: program
       - name: unpack
@@ -84,7 +84,7 @@ jobs:
           "refused with no user (exit 4, $($r.reason))"
       # 0.9.306: the full program as an installer (it is what the programs install themselves when a release changes the
       # sealed core): built here from the program just checked, installed silently, the installed program starts sealed
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
         with:
           path: repo
       - name: the installer (Setup) - built, installed silently, the installed program starts sealed
@@ -106,7 +106,7 @@ jobs:
           $j = Get-Content smoke3.json | ConvertFrom-Json
           if (-not $j.ok -or -not $j.sealed -or $j.version -ne $v) { throw "the installed program did not start sealed" }
           (Get-Item $s).Length
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
         with:
           name: setup
           path: setup/LEVEL7-and-MTM-${{ needs.build.outputs.v }}-Setup.exe
@@ -126,11 +126,11 @@ jobs:
     needs: [build, check]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/download-artifact@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4
         with:
           name: program
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4
         with:
           name: setup
       - env:
