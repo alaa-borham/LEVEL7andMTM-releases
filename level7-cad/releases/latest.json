@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.311",
- "notes": "An order being made is let finish before the installer starts; an update that could not be installed is said when the program opens again.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.311/app",
+ "version": "0.9.312",
+ "notes": "The drawing is fast again: a part that others inherit from is worked out once, and the engine's protection no longer slows it. An order from LEVEL7 MTM on a large design takes a fraction of a second.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.312/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "b8cceea8ef75a4ed5f3a3db8b59717a416966adc1bd455b575de29eab14a6425",
-   "size": 185253
+   "sha256": "ae70df9eadafc22148a2b49dfd0c200f64f0abbc040f6df5b95bd4a9b2315257",
+   "size": 186819
   },
   {
    "path": "assets/icon.ico",
@@ -155,9 +155,9 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-BkBGDl-c.js",
-   "sha256": "8570185ef7c45e8833035d544ee62e112b118f60ed082c4f53f684162d562d9c",
-   "size": 988330
+   "path": "assets/l7design/assets/index-DGyTcdtR.js",
+   "sha256": "e41923a9b767cbad8d0ec4ec1bcedc3a343ea26c6f208b9270c19f792fcc54c5",
+   "size": 986503
   },
   {
    "path": "assets/l7design/assets/index-PYmrzbVA.css",
@@ -166,13 +166,13 @@
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "8184f59aac9254504766ffeff184de5d2402cf69ba902219414479aac881cc34",
+   "sha256": "6ec673a265237c0fb5490c30d75b06e0cb00906843f7b53b877e64f05f8cbf0e",
    "size": 3612
   },
   {
    "path": "desktop/cli/level7.cjs",
-   "sha256": "c1b9fb9a5fe6b8ad06b0f763727069c823035152349fe436c44e552141a7378e",
-   "size": 142302
+   "sha256": "d57a9108b7470e123c0cd223867f098557d7a8e4e52eb033940046a150b6eecc",
+   "size": 141235
   },
   {
    "path": "desktop/license.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "1382fc346500337ba68fd8724c9362d254464e0e2d794fca5ddfef9c19c45f7a",
+   "sha256": "f06ca59ef7f3fdea42e162659b5a6ec3689088c3796e9842bce426a6e4f61bca",
    "size": 301
   },
   {
