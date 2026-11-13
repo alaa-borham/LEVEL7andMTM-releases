@@ -8,6 +8,7 @@ const { app, BrowserWindow, ipcMain, dialog, safeStorage, session, Menu, net: el
 const fs = require('node:fs');
 const path = require('node:path');
 const L = require('./license.cjs');
+const SU = require('./self-update.cjs');
 
 const DEV = !app.isPackaged;
 const LOCAL = process.env.LOCALAPPDATA || path.join(app.getPath('home'), 'AppData', 'Local');
@@ -31,6 +32,9 @@ const SEALED = /[\\/]app\.asar([\\/]|$)/.test(__dirname);
 const UI_ROOT = DEV && process.env.L7A_UI_DIR ? process.env.L7A_UI_DIR : SEALED ? path.join(process.resourcesPath, 'app-ui') : __dirname;
 const CHECK_UI = SEALED || (DEV && !!process.env.L7A_UI_DIR);
 const ADMIN_DIR = 'level7-cad/admin';
+// 1.5.1: the program updates itself in full (see self-update.cjs). The folder it runs from; tests give one.
+const INSTALL_DIR = DEV ? process.env.L7A_INSTALL_DIR || '' : path.dirname(process.execPath);
+const UPDATES = () => path.join(DATA, 'Updates');
 const sha = b => crypto.createHash('sha256').update(b).digest('hex');
 const uiVersion = () => { try { return JSON.parse(fs.readFileSync(path.join(UI_ROOT, 'ui-version.json'), 'utf8')).version; } catch { return '0.0.0'; } };
 const newer = (a, b) => { const x = String(a).split('.').map(Number), y = String(b || '0.0.0').split('.').map(Number); for (let i = 0; i < 3; i++) if ((x[i] || 0) !== (y[i] || 0)) return (x[i] || 0) > (y[i] || 0); return false; };
@@ -70,6 +74,32 @@ async function readRepoBytes(p) {
   const r = await net().fetch(`https://raw.githubusercontent.com/${REPO}/main/${p.split('/').map(encodeURIComponent).join('/')}?t=${Date.now()}`, { cache: 'no-store' });
   if (!r.ok) throw Error('تعذر تنزيل ' + p + ': HTTP ' + r.status);
   return Buffer.from(await r.arrayBuffer());
+}
+const EXE_NAME = DEV && process.env.L7A_EXE_NAME ? process.env.L7A_EXE_NAME : SU.EXE;
+/** the program's package: from the Releases page (tests: from a folder) */
+async function programFetch(url) {
+  if (TARGET_DIR) { const f = path.join(TARGET_DIR, 'downloads', decodeURIComponent(url.split('/').pop())); return new Response(fs.existsSync(f) ? fs.readFileSync(f) : 'nf', { status: fs.existsSync(f) ? 200 : 404 }); }
+  return net().fetch(url, { cache: 'no-store' });
+}
+/** Does the unpacked new program start? (its own start check: «--l7-smoke», as the build runs it) */
+function newProgramStarts(prog) {
+  if (DEV && process.env.L7A_TEST_NO_SMOKE) return Promise.resolve(process.env.L7A_TEST_NO_SMOKE === 'ok');
+  return new Promise(resolve => {
+    const out = path.join(UPDATES(), 'smoke.json');
+    try { fs.rmSync(out, { force: true }); } catch {}
+    // (the same read permission the «first run» gives the program's folder: Windows' sandbox must be able to read it)
+    try { require('node:child_process').spawnSync(path.join(process.env.SystemRoot || 'C:\\Windows', 'System32', 'icacls.exe'), [prog, '/grant', '*S-1-15-2-1:(OI)(CI)(RX)', '/T', '/Q'], { windowsHide: true, timeout: 60000 }); } catch {}
+    let done = false;
+    const end = ok => { if (!done) { done = true; resolve(ok); } };
+    let c;
+    // (with a data folder of its own for this one start: two programs on the same folder get in each other's way)
+    const own = path.join(UPDATES(), 'smoke-data');
+    try { fs.rmSync(own, { recursive: true, force: true }); fs.mkdirSync(own, { recursive: true }); } catch {}
+    try { c = require('node:child_process').spawn(path.join(prog, EXE_NAME), ['--l7-smoke=' + out], { stdio: 'ignore', windowsHide: true, env: { ...process.env, LOCALAPPDATA: own } }); } catch { return end(false); }
+    const t = setTimeout(() => { try { c.kill(); } catch {} end(false); }, 120000);
+    c.on('error', () => { clearTimeout(t); end(false); });
+    c.on('exit', code => { clearTimeout(t); let j = null; try { j = JSON.parse(fs.readFileSync(out, 'utf8')); } catch {} try { fs.rmSync(own, { recursive: true, force: true }); } catch {} end(code === 0 && !!j?.ok); });
+  });
 }
 const POLICY = L.POLICY_PATH, APPROVALS = L.APPROVALS_DIR, MANIFESTS = L.MANIFESTS_DIR, LATEST = 'level7-cad/releases/latest.json';
 const SETUPS = 'level7-cad/releases/setups';
@@ -187,6 +217,19 @@ function users() {
   return v;
 }
 
+/** 1.5.1: what the program's own update came to (said once); what it left behind is removed */
+function lastUpdateNote() {
+  const up = UPDATES(), pf = path.join(up, 'update-pending.json'), rf = path.join(up, 'update-result.txt');
+  let p = null, r = '';
+  try { p = JSON.parse(fs.readFileSync(pf, 'utf8')); } catch { return ''; }
+  try { r = fs.readFileSync(rf, 'utf8').trim(); } catch {}
+  if (!r && Date.now() - Date.parse(p.time || 0) < 5 * 60 * 1000) return '';        // (still being installed)
+  for (const n of ['update-pending.json', 'update-result.txt', 'smoke.json']) { try { fs.rmSync(path.join(up, n), { force: true }); } catch {} }
+  try { for (const n of fs.readdirSync(up)) if (/^(new-|admin-.*\.zip)/.test(n) || (r === 'ok' && n === 'kept')) SU.fs.rmSync(path.join(up, n), { recursive: true, force: true }); } catch {}
+  if (r === 'ok' && !newer(p.to, app.getVersion())) return `تم تحديث برنامج المدير إلى ${app.getVersion()} ✓`;
+  if (r === 'ok') return `نُسخت ملفات الإصدار ${p.to} لكن البرنامج المفتوح ما زال ${app.getVersion()} — افتحه من مجلده الأصلي، أو حدّثه يدوياً من صفحة الإصدارات.`;
+  return `تعذر تحديث برنامج المدير إلى ${p.to}${r === 'failed' ? ' (أُعيد البرنامج السابق كما كان)' : ''}. حدّثه يدوياً من صفحة الإصدارات: github.com/${REPO}/releases (admin-v${p.to}).`;
+}
 const clean = e => String(e?.message || e).replace(/^Error invoking remote method '[^']+': (Error: )?/, '');
 function handle(name, fn) {
   ipcMain.handle(name, async (event, arg) => {
@@ -205,7 +248,8 @@ function register() {
   handle('state', async () => {
     const s = readJson('settings.json', {});
     const data = (d => ({ ...d, requireDevice: requireDevice(d) }))(users());
-    const note = key ? usersNote : ''; if (key) usersNote = '';      // (said on the main screen, once the key is open)
+    let note = key ? usersNote : ''; if (key) usersNote = '';      // (said on the main screen, once the key is open)
+    if (key && !note) note = lastUpdateNote();
     return { keyPath: s.keyPath || '', keyOpen: !!key, hasToken: !!getToken() || !!TARGET_DIR, note, data, device: thisDevice(), catalogue: JSON.parse(fs.readFileSync(path.join(UI_ROOT, 'catalogue.json'), 'utf8')), version: uiVersion(), core: app.getVersion() };
   });
   handle('pickKey', async () => {
@@ -311,7 +355,48 @@ function register() {
     if (!t) return null;
     const m = JSON.parse(t);
     if (m.product !== 'LEVEL7 CAD MTM Admin' || !newer(m.version, uiVersion())) return null;
-    return { version: m.version, needsFull: newer(m.core, app.getVersion()), notes: m.notes || '' };
+    const needsFull = newer(m.core, app.getVersion());
+    // 1.5.1: a release that needs the whole program — its package as the build wrote it down (when it is ready)
+    let full = null;
+    if (needsFull && INSTALL_DIR) { try { const i = SU.programInfo(await readRepo(`${ADMIN_DIR}/program/${m.core}.json`), String(m.core), REPO); if (i) full = { version: i.version, size: i.size }; } catch {} }
+    return { version: m.version, needsFull, full, notes: m.notes || '' };
+  });
+  // 1.5.1 (the owner: «أفضل عند تحديث المدير أوتوماتيك مثل الباقية»): the whole program, from inside the program
+  handle('fullUpdateInstall', async () => {
+    if (!INSTALL_DIR) throw Error('التحديث الكامل يعمل في البرنامج المثبَّت فقط.');
+    const m = JSON.parse(await readRepo(`${ADMIN_DIR}/latest.json`));
+    const v = String(m.core || '');
+    if (m.product !== 'LEVEL7 CAD MTM Admin' || !vOk(v) || !newer(v, app.getVersion())) throw Error('لا يوجد إصدار أحدث من البرنامج.');
+    const info = SU.programInfo(await readRepo(`${ADMIN_DIR}/program/${v}.json`), v, REPO);
+    if (!info) throw Error('ملف الإصدار الجديد لم يجهز بعد على GitHub. حاول بعد دقائق.');
+    const say = (phase, pct) => { try { win?.webContents.send('selfupdate:progress', { phase, pct }); } catch {} };
+    // the program's folder must be one this user can write to (it is, wherever the package was unpacked by hand)
+    try { const t = path.join(INSTALL_DIR, '.l7a-write-test'); fs.writeFileSync(t, 'x'); fs.rmSync(t); } catch { throw Error('لا يمكن الكتابة في مجلد البرنامج (' + INSTALL_DIR + '). انقل البرنامج إلى مجلد آخر، أو حدّثه يدوياً من صفحة الإصدارات.'); }
+    const up = UPDATES();
+    for (const n of (() => { try { return fs.readdirSync(up); } catch { return []; } })()) if (/^(new-|kept|admin-.*\.zip)/.test(n)) SU.fs.rmSync(path.join(up, n), { recursive: true, force: true });
+    const zip = path.join(up, `admin-${v}.zip`);
+    say('download', 0);
+    await SU.downloadTo(programFetch, info.url, zip, { size: info.size, sha256: info.sha256, onProgress: f => say('download', Math.round(f * 100)) });
+    say('unpack');
+    const fresh = path.join(up, 'new-' + v);
+    SU.extractZip(zip, fresh);
+    const prog = SU.findProgram(fresh, EXE_NAME);
+    if (!prog) throw Error('الملف المنزَّل ليس برنامج المدير؛ لم يُثبَّت شيء.');
+    SU.fs.rmSync(zip, { force: true });
+    // the new program is started once, to see that it works, before anything of this one is replaced
+    say('check');
+    if (!(await newProgramStarts(prog))) throw Error('الإصدار الجديد لم يبدأ في الفحص؛ البرنامج الحالي لم يتغير. حدّثه يدوياً من صفحة الإصدارات.');
+    const result = path.join(up, 'update-result.txt');
+    fs.rmSync(result, { force: true });
+    fs.writeFileSync(path.join(up, 'update-pending.json'), JSON.stringify({ from: app.getVersion(), to: v, time: new Date().toISOString() }));
+    const sc = SU.applyScript(up, { pid: process.pid, from: prog, to: INSTALL_DIR, exe: EXE_NAME, backup: path.join(up, 'kept'), result });
+    const child = require('node:child_process').spawn(sc.command, sc.args, { stdio: 'ignore', ...sc.options, env: { ...process.env, ...(DEV && process.env.L7A_NO_START ? { L7A_NO_START: '1' } : {}) } });
+    child.on('error', () => {});
+    if (!child.pid) { fs.rmSync(path.join(up, 'update-pending.json'), { force: true }); throw Error('تعذر بدء التثبيت؛ البرنامج الحالي لم يتغير.'); }
+    child.unref();
+    say('install');
+    setTimeout(() => app.quit(), 1500);
+    return { version: v };
   });
   handle('selfUpdateInstall', async () => {
     if (!key) throw Error('افتح المفتاح أولاً.');

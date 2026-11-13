@@ -74,7 +74,7 @@
           <div class="stat ${pub.version ? 'ok' : 'warn'}"><small>الصلاحيات المنشورة: </small><b>${pub.version ? `الإصدار ${pub.version} · ${pub.users} مستخدم` : pub.error ? 'تعذرت قراءتها الآن' : 'لا شيء بعد'}</b></div>
           <div class="stat" title="إصدار الشاشة · إصدار الجزء المختوم"><small>برنامج المدير </small><b>الإصدار ${esc(st.version)} · ${esc(st.core)}</b></div>
         </div></header>
-      ${upd ? `<div class="updbar">${upd.needsFull ? `يوجد إصدار جديد لبرنامج المدير ${esc(upd.version)} — يحتاج تحميل البرنامج كاملاً من صفحة الإصدارات: <b dir="ltr">github.com/alaa-borham/LEVEL7andMTM-releases/releases</b> (admin-v${esc(upd.version)}).` : `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.version)}</b>.`}${upd.needsFull ? '' : '<button class="primary" data-a="selfupdate">تحديث الآن</button>'}</div>` : ''}
+      ${upd ? `<div class="updbar">${upd.needsFull ? `${upd.full ? `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.full.version)}</b> (البرنامج كاملاً، ${(upd.full.size / 1048576).toFixed(0)} ميغابايت). <button class="primary" data-a="fullupdate">تحديث الآن</button> <span id="fullmsg"></span>` : `يوجد إصدار جديد لبرنامج المدير ${esc(upd.version)} — يحتاج تحميل البرنامج كاملاً من صفحة الإصدارات: <b dir="ltr">github.com/alaa-borham/LEVEL7andMTM-releases/releases</b> (admin-v${esc(upd.version)}).`}` : `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.version)}</b>.`}${upd.needsFull ? '' : '<button class="primary" data-a="selfupdate">تحديث الآن</button>'}</div>` : ''}
       ${retoken ? `<div class="card" id="retok"><b>رمز GitHub جديد</b><p>ألصق الرمز الجديد (يبدأ بـ github_pat_). يُحفظ مشفراً على هذا الجهاز مكان القديم.</p>
         <div class="field"><input type="password" id="tok" placeholder="github_pat_…"></div>
         <button class="primary" data-a="token">حفظ الرمز</button> <button data-a="retoken-close">إلغاء</button><div class="msg" id="tmsg"></div></div>` : ''}
@@ -265,6 +265,16 @@
         const r = await A.selfUpdateInstall();
         toast(`تم التحديث إلى ${r.version} ✓`);
       }
+      else if (a === 'fullupdate') {
+        // 1.5.1: the whole program — downloaded, unpacked, started once to see that it works, then put in place when
+        // this one has closed; it opens again by itself
+        t.disabled = true; t.textContent = 'يحدّث…';
+        const say = m => { const el = $('#fullmsg'); if (el) el.textContent = m; };
+        A.onUpdateProgress(p => say(p.phase === 'download' ? `ينزّل… ${p.pct}%` : p.phase === 'unpack' ? 'يفكّ الملفات…' : p.phase === 'check' ? 'يفحص الإصدار الجديد…' : 'يثبّت — سيُغلق البرنامج ويفتح من جديد خلال دقيقة.'));
+        say('ينزّل…');
+        const r = await A.fullUpdateInstall();
+        toast(`يُثبَّت الإصدار ${r.version} — سيُغلق البرنامج ويفتح من جديد.`);
+      }
       else if (a === 'add') openEditor(-1);
       else if (t.dataset.edit !== undefined) openEditor(Number(t.dataset.edit));
       else if (a === 'publish') {
@@ -335,7 +345,7 @@
       if ($('#smsg') && !st.keyOpen) $('#smsg').textContent = m, $('#smsg').className = 'msg bad';
       else if ($('#tmsg') && a === 'token') $('#tmsg').textContent = m, $('#tmsg').className = 'msg bad';
       else if (editing) emsg(m); else toast(m, true);
-      if (a === 'publish' || t.dataset.approve || t.dataset.appApprove || t.dataset.offer) { t.disabled = false; render(); }
+      if (a === 'publish' || t.dataset.approve || t.dataset.appApprove || t.dataset.offer || a === 'fullupdate') { t.disabled = false; render(); }
     }
   });
   document.addEventListener('change', e => {

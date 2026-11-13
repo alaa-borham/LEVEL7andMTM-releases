@@ -6,7 +6,7 @@
 // Usage: node build-admin.mjs <license.cjs> <out-dir> [<ui-out-dir>]
 import fs from 'node:fs'; import path from 'node:path'; import crypto from 'node:crypto'; import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url)), srcDir = path.join(here, '..', 'admin-app');
-export const CORE = ['main.cjs', 'preload.cjs', 'package.json', 'icon.ico'];
+export const CORE = ['main.cjs', 'preload.cjs', 'self-update.cjs', 'package.json', 'icon.ico'];
 export const UI = ['index.html', 'admin.js', 'admin.css', 'catalogue.json', 'icon.png', 'ui-version.json'];
 const [lic, out, uiOut] = process.argv.slice(2);
 if (!lic || !out) { console.error('usage: node build-admin.mjs <license.cjs> <out-dir> [<ui-out-dir>]'); process.exit(2); }

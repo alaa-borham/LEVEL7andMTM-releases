@@ -28,9 +28,18 @@ jobs:
     needs: build
     runs-on: windows-latest
     steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262  # v4
       - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093  # v4
         with:
           name: admin
+      # 1.5.1: the program updates itself in full — the pieces of that, on a real Windows machine: its package unpacked
+      # without any other program, the script that puts the new program in place (folders with a space and Arabic
+      # letters in their names), a failed copy put back, the wait for the program to close
+      - name: the program's own update (unpack, replace, put back) on Windows
+        shell: pwsh
+        run: |
+          node admin-src/admin-app/self-update.cjs --self-test "$PWD\LEVEL7-CAD-MTM-Admin-${{ needs.build.outputs.v }}-win32-x64.zip"
+          if ($LASTEXITCODE -ne 0) { throw "self-update check failed" }
       - name: unpack
         shell: pwsh
         run: Expand-Archive -Path LEVEL7-CAD-MTM-Admin-${{ needs.build.outputs.v }}-win32-x64.zip -DestinationPath w
@@ -71,3 +80,14 @@ jobs:
           else
             gh release create "admin-v$V" "LEVEL7-CAD-MTM-Admin-$V-win32-x64.zip" --title "LEVEL7 CAD MTM Admin $V" --notes "$BODY" --latest=false
           fi
+          # 1.5.1: the package's size and fingerprint where the admin program reads them (it updates itself in full)
+          ZIP="LEVEL7-CAD-MTM-Admin-$V-win32-x64.zip"
+          SHA=$(sha256sum "$ZIP" | cut -d' ' -f1); SIZE=$(stat -c %s "$ZIP")
+          mkdir -p level7-cad/admin/program
+          printf '{"version":"%s","url":"https://github.com/%s/releases/download/admin-v%s/%s","sha256":"%s","size":%s}\n' "$V" "$GITHUB_REPOSITORY" "$V" "$ZIP" "$SHA" "$SIZE" > "level7-cad/admin/program/$V.json"
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "level7-cad/admin/program/$V.json"
+          git commit -m "LEVEL7 CAD MTM Admin $V: its package's fingerprint" || true
+          pushed=0
+          for i in 1 2 3 4; do if git pull --rebase -q origin main && git push -q origin HEAD:main; then pushed=1; break; fi; sleep 5; done
+          if [ "$pushed" != "1" ]; then echo "::error::the package's fingerprint (level7-cad/admin/program/$V.json) could not be pushed: run this workflow again"; exit 1; fi

@@ -21,5 +21,8 @@ contextBridge.exposeInMainWorld('admin', Object.freeze({
   // 1.5.0
   tokenState: () => call('tokenState'),
   offer: version => call('offer', { version }),
-  signSetups: () => call('signSetups')
+  signSetups: () => call('signSetups'),
+  // 1.5.1: the whole program updated from inside the program
+  fullUpdateInstall: () => call('fullUpdateInstall'),
+  onUpdateProgress: fn => { ipcRenderer.removeAllListeners('selfupdate:progress'); ipcRenderer.on('selfupdate:progress', (_e, p) => { try { fn(p); } catch {} }); }
 }));
