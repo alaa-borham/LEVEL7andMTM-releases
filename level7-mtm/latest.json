@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.22",
- "notes": "Old work folders of the orders are removed [skip ci]\r\n\r\nThe review's stress run left 320 folders after 320 orders: an order's work folder (<data>/level7/<order>: the order\r\nsent to the drawing program, its report, its pieces before they are copied to the models' folder) was never removed —\r\none more for every order, for ever. Once a day now, in the background: a folder goes 3 days after its order was nested\r\n(or written again under a newer number), and after 30 days whatever became of its order; never a fresh one, never one\r\nwhose order still waits. What «قياسات التصميم» needs of the report is kept with the order first.\r\ntests/test_level7_safeguards.py (+1). The build is started after the full suite.\r\n\r\nAlso in this build: 2.0.21 — «تفاصيل الطلب» shows every measurement of the design for the order and where it came\r\nfrom (the order, or the design's own value).\r\n\r\nar: حذف مجلدات العمل القديمة للطلبيات تلقائياً (مرة كل يوم) حتى لا يمتلئ القرص\r\n\r\n\r\n",
- "approved": "2026-11-13T15:16:49.296Z",
+ "version": "2.0.24",
+ "notes": "Second review: a corrected order is never cut in its old measurement; orders wait instead of failing; nothing removed before the XML was read [skip ci]\r\n\r\nar: مراجعة ثانية: الطلبية المصحَّحة لا تُقَصّ بقياسها القديم، الطلبيات تنتظر بدل أن تفشل حين لا يعمل برنامج الرسم أو التعشيق، و«قراءة من جديد» لا تحذف شيئاً قبل قراءة الملف\r\n\r\nFrom the second independent review (2026-11), each case reproduced on 2.0.22 first (tests/test_review_2.py):\r\nWhat could cut a wrong garment\r\n- A corrected order whose making again failed: the file made before (old measurement) stayed in the nesting queue and\r\n  was cut. A model is nested only while it is the newest thing written for its order line.\r\n- The new one made but the old file not movable to the archive: both were cut.\r\n- A base pattern corrected while orders wait, their XML not readable again: cut from the old pattern. They are made again\r\n  from the order as it was read, and not nested before.\r\n- After one refusal of LEVEL7 Nesting the customer's gaps and the one-marker nesting were dropped for the whole run.\r\n- \"Read again\" removed the order line before reading the file (replaced, cut short, no customer found: the order gone).\r\n- One XML measurement filling two Xs: both went to the X carrying the XML code (a garment 570 mm long instead of 1570).\r\n- The same order line sent again under the same revision number with corrected data was ignored without a word.\r\nWhat stopped the line or lost an order\r\n- The program closed between \"XML read\" and \"order made\": never made. Made at the next look.\r\n- While the drawing program could not work every order was blocked and its XML moved to error: they wait and are made\r\n  by themselves.\r\n- One customer's cutting folder away stopped every customer's nesting; LEVEL7 Nesting there but not startable failed\r\n  every order of the queue.\r\n- The wait text stayed in the window; a file dated ahead was left out of the queue; the pattern check said \"sound\"\r\n  for orders it cannot compare with a base pattern.\r\nLicence (as LEVEL7 Nesting 2.0.22): far last day, newest policy for the command line, no policy older than version 4,\r\nno device code without the computer's id, a way out of the clock lock, files written in one step (tried again, then in\r\nplace, when another program holds the file open on Windows).\r\n(Build 23 was stopped before it finished: the last point was added after it started.)\r\n\r\n\r\n",
+ "approved": "2026-11-13T20:14:09.884Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.22-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.22/LEVEL7MTM-2.0.22-Setup.exe",
-  "sha256": "a915e93c9e773dca48bde4cddcc41edadfeb90a4488ce541961a0f33bba80952",
-  "size": 61501198
+  "name": "LEVEL7MTM-2.0.24-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.24/LEVEL7MTM-2.0.24-Setup.exe",
+  "sha256": "dd9f48639907d7e38d2db337f5b9821186097cc5beaa3392a965fb5e9eaeb989",
+  "size": 61549962
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.22\",\"sha256\":\"a915e93c9e773dca48bde4cddcc41edadfeb90a4488ce541961a0f33bba80952\",\"size\":61501198,\"approved\":\"2026-11-13T15:16:49.296Z\"}",
-  "sig": "Zvy8AJF+kSwKjmEWc2hLYP+kKXIHs6L5tVqpKvliTCfzFHE/d1TVZk2Vfs1YJOtjre3OW2M28G9nr/I2jSXsBA=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.24\",\"sha256\":\"dd9f48639907d7e38d2db337f5b9821186097cc5beaa3392a965fb5e9eaeb989\",\"size\":61549962,\"approved\":\"2026-11-13T20:14:09.884Z\"}",
+  "sig": "emigF7+KwB640Q5Q03XaVes7/jfkH879mUD99aM/kBB2lg3oCsr2GSrC0qWsMuNdsEJ5D/J2c97OiZoUUbzgAQ=="
  }
 }
