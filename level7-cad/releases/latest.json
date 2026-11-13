@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.312",
- "notes": "The drawing is fast again: a part that others inherit from is worked out once, and the engine's protection no longer slows it. An order from LEVEL7 MTM on a large design takes a fraction of a second.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.312/app",
+ "version": "0.9.313",
+ "notes": "الجولة الثانية من المراجعة: التراجع بعد «متابعة بدون حفظ» يعيد التصميم كاملاً؛ التصميم بصور خلفية كبيرة يُحفظ ويُفتح؛ خطوة غير معروفة تُبلَّغ خطأً؛ المثبِّت لا يُشغَّل إلا بتوقيع المدير؛ إصلاحات في التحديث والترخيص (قفل «الساعة رجعت» يُرفع بنشر الصلاحيات من جديد)",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.313/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "ae70df9eadafc22148a2b49dfd0c200f64f0abbc040f6df5b95bd4a9b2315257",
-   "size": 186819
+   "sha256": "f927b24bdf1e5dbff7493387d8f12c2ed5500acbc33bfb73d82a8b6c9b0be3f6",
+   "size": 189472
   },
   {
    "path": "assets/icon.ico",
@@ -155,34 +155,34 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-DGyTcdtR.js",
-   "sha256": "e41923a9b767cbad8d0ec4ec1bcedc3a343ea26c6f208b9270c19f792fcc54c5",
-   "size": 986503
-  },
-  {
    "path": "assets/l7design/assets/index-PYmrzbVA.css",
    "sha256": "b366f09c6bf97445207d9d1997203f79015a0fc74203265f33f38c2ebc8a694e",
    "size": 71097
   },
   {
+   "path": "assets/l7design/assets/index-hoa8enlU.js",
+   "sha256": "06ebeac6fcef468b84efb88631937d0d7aa00b05181fb5b05ca6ff581b8f0c23",
+   "size": 988570
+  },
+  {
    "path": "assets/l7design/index.html",
-   "sha256": "6ec673a265237c0fb5490c30d75b06e0cb00906843f7b53b877e64f05f8cbf0e",
+   "sha256": "e831181fd8130301dcfd9e974bddb1c1b35886d2dfc408ea63385d0955691eed",
    "size": 3612
   },
   {
    "path": "desktop/cli/level7.cjs",
-   "sha256": "d57a9108b7470e123c0cd223867f098557d7a8e4e52eb033940046a150b6eecc",
-   "size": 141235
+   "sha256": "aeb8d682943d10d4a443e4d83d498c179a3cf173a550cebc5840de6e623c0292",
+   "size": 142149
   },
   {
    "path": "desktop/license.cjs",
-   "sha256": "1bbfa84f3907d83ac978f24d52d499bd6ed35a0130f5fc881e1e20b8f887003b",
-   "size": 64046
+   "sha256": "3b6e0392b3370b25ae0cb79435a4083c8ca7485372404bddd4d2b85edb5afc4b",
+   "size": 77505
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "08ab3ddba27b04cfd99d0953493d7f35c7331943d12d42a20f73b524d2d69211",
-   "size": 126683
+   "sha256": "d31ae85953aeaf88f8af61acf9534b200386a0e3191ec1a44683cfccd03404fb",
+   "size": 123107
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -196,8 +196,8 @@
   },
   {
    "path": "desktop/remote-update.cjs",
-   "sha256": "1d1dd563fcd004ebb17cc37a8e93a165a191295dc3ead353524bddda52c829d0",
-   "size": 57160
+   "sha256": "be3ef0f9eec2fe9e574c9bafece843382c432300c1293bf075f705460bfd0edf",
+   "size": 66576
   },
   {
    "path": "examples/draft-blocks.dxf",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "f06ca59ef7f3fdea42e162659b5a6ec3689088c3796e9842bce426a6e4f61bca",
+   "sha256": "b2e2dbae9ef7cf666dc38975768ec687ce8537cce5b87fa54bcbd94957c1394a",
    "size": 301
   },
   {
