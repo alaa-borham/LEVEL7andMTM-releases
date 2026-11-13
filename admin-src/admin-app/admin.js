@@ -14,9 +14,14 @@
     clearTimeout(toast.t); toast.t = setTimeout(() => (t.hidden = true), bad ? 6000 : 3500);
   }
   const daysLeft = d => { if (!d) return null; const end = new Date(d + 'T23:59:59'); return Math.ceil((end - Date.now()) / 864e5); };
+  // 1.4.0: a password's record is «vh» (new: nothing in the published file signs anyone in) or «hash» (made before)
+  const hasPw = u => !!(u.vh || u.hash), oldPw = u => !u.vh && !!u.hash;
+  const mustDevice = () => st.data.requireDevice !== false;
+  const noDevice = u => mustDevice() && !(u.devices || []).length;
   const statusOf = u => {
     if (u.disabled) return ['bad', 'موقوف'];
-    if (!u.hash) return ['warn', 'بلا كلمة سر'];
+    if (!hasPw(u)) return ['warn', 'بلا كلمة سر'];
+    if (noDevice(u)) return ['warn', 'بلا جهاز مسجل — لا يعمل على أي جهاز'];
     const n = daysLeft(u.expires);
     if (n === null) return ['ok', 'يعمل — بلا نهاية'];
     if (n < 0) return ['bad', `انتهت مدته (${u.expires})`];
@@ -78,7 +83,7 @@
     }).join('');
     return `<div class="card" data-edit="${i}"><div class="top"><span class="av">${esc((u.name || '?').trim().charAt(0).toUpperCase())}</span><div class="who"><div class="name">${esc(u.name)}</div><div class="state ${c}">● ${esc(t)}</div></div>${u.admin ? '<span class="chip ok">مدير</span>' : ''}</div>
       <div class="progrows">${progs}</div>
-      <div class="tags"><span class="chip">💻 ${u.devices?.length ? `${u.devices.length} جهاز` : 'أي جهاز'}</span>${u.xz === false ? '<span class="chip warn">القياسات للعرض فقط</span>' : ''}${toolsOf(u).length ? `<span class="chip warn">${toolsOf(u).length} أداة مغلقة</span>` : ''}</div></div>`;
+      <div class="tags"><span class="chip ${noDevice(u) ? 'warn' : ''}">💻 ${u.devices?.length ? `${u.devices.length} جهاز` : mustDevice() ? 'بلا جهاز' : 'أي جهاز'}</span>${oldPw(u) ? '<span class="chip warn" title="صيغة قديمة أضعف: افتح المستخدم واكتب له كلمة سر جديدة">كلمة سر قديمة — غيّرها</span>' : ''}${u.xz === false ? '<span class="chip warn">القياسات للعرض فقط</span>' : ''}${toolsOf(u).length ? `<span class="chip warn">${toolsOf(u).length} أداة مغلقة</span>` : ''}</div></div>`;
   }
   function summary() {
     const n = { ok: 0, warn: 0, bad: 0 };
@@ -87,11 +92,15 @@
   }
   function renderUsers() {
     const list = st.data.users.map((u, i) => [u, i]).filter(([u]) => !filter || u.name.toLowerCase().includes(filter.toLowerCase()));
-    $('#main').innerHTML = `<div class="bar"><button class="primary big" data-a="add">+ مستخدم جديد</button><input id="find" placeholder="بحث بالاسم…" value="${esc(filter)}"></div>
+    $('#main').innerHTML = `<div class="bar"><button class="primary big" data-a="add">+ مستخدم جديد</button><input id="find" placeholder="بحث بالاسم…" value="${esc(filter)}"><label class="switch reqdev" title="كل مستخدم يعمل فقط على الأجهزة التي تضيف رموزها له. الرمز يظهر في شاشة الدخول عنده."><input type="checkbox" id="reqdev" ${mustDevice() ? 'checked' : ''}> كل مستخدم على أجهزته المسجلة فقط</label></div>
       ${list.length ? summary() : ''}
       ${list.length ? `<div class="grid">${list.map(([u, i]) => card(u, i)).join('')}</div>`
       : '<div class="empty">لا يوجد مستخدمون. اضغط «+ مستخدم جديد».</div>'}`;
     const f = $('#find');
+    $('#reqdev').addEventListener('change', async e => {
+      if (!e.target.checked && !confirm('إيقاف إلزام الأجهزة؟ كل مستخدم بلا أجهزة مسجلة سيعمل على أي جهاز.')) { e.target.checked = true; return; }
+      await A.setRequireDevice(e.target.checked); st = await A.state(); render();
+    });
     f.addEventListener('input', () => { filter = f.value; renderUsers(); const g = $('#find'); g.focus(); g.setSelectionRange(g.value.length, g.value.length); });
   }
 
@@ -123,8 +132,8 @@
       <nav class="etabs">${ETABS.map(([k, t]) => `<button data-etab="${k}" class="${tab === k ? 'on' : ''}">${t}${k !== 'general' && u.blocked.includes('app:' + k) ? ' ✕' : k !== 'general' && closedOf(u, k).length ? ` (${closedOf(u, k).length})` : ''}</button>`).join('')}</nav><div class="body">
       <section class="etab" data-sec="general" ${tab === 'general' ? '' : 'hidden'}>
       <div class="field"><label>الاسم (يكتبه عند الدخول)</label><input type="text" id="e-name" value="${esc(u.name)}" dir="auto"></div>
-      <div class="field"><label>كلمة السر ${u.hash ? '(موجودة — اكتب جديدة لتغييرها)' : ''}</label><div class="row"><input type="text" id="e-pw" value="${esc(editing.pw)}" dir="ltr" placeholder="${u.hash ? '••••••' : '6 أحرف أو أكثر'}"><button data-e="gen">توليد كلمة سر</button></div>
-        ${editing.pw ? `<p>أعطها للمستخدم: <span class="pw">${esc(editing.pw)}</span></p>` : ''}</div>
+      <div class="field"><label>كلمة السر ${hasPw(u) ? '(موجودة — اكتب جديدة لتغييرها)' : ''}</label><div class="row"><input type="text" id="e-pw" value="${esc(editing.pw)}" dir="ltr" placeholder="${hasPw(u) ? '••••••' : '6 أحرف أو أكثر'}"><button data-e="gen">توليد كلمة سر</button></div>
+        ${editing.pw ? `<p>أعطها للمستخدم: <span class="pw">${esc(editing.pw)}</span></p>` : oldPw(u) ? '<p class="state warn" id="e-oldpw">كلمة السر محفوظة بالصيغة القديمة (أضعف). اكتب كلمة سر جديدة أو اضغط «توليد كلمة سر» لتصير بالصيغة الآمنة.</p>' : ''}</div>
       <div class="field"><label>البرامج المسموحة له</label><div class="row progs">${PROGRAMS.map(([k, nm]) => `<label class="prog ${u.blocked.includes(k) ? 'off' : ''}"><input type="checkbox" data-app="${k}" ${u.blocked.includes(k) ? '' : 'checked'}> ${nm}</label>`).join('')}</div>
         ${PROGRAMS.every(([k]) => u.blocked.includes(k)) ? '<p class="state bad">لا يعمل في أي برنامج.</p>' : ''}</div>
       <div class="field"><label>مدة التشغيل</label><div class="row seg">
@@ -133,9 +142,9 @@
         <p class="state ${n === null ? 'ok' : n < 0 ? 'bad' : n <= 7 ? 'warn' : 'ok'}">${n === null ? 'يعمل بلا نهاية' : n < 0 ? 'انتهت مدته' : `يعمل حتى ${u.expires} (باقي ${n} يوماً)`}</p></div>
       <label class="switch"><input type="checkbox" id="e-admin" ${u.admin ? 'checked' : ''}> مدير</label>
       <label class="switch"><input type="checkbox" id="e-dis" ${u.disabled ? 'checked' : ''}> موقوف (لا يعمل في أي برنامج)</label>
-      <div class="field"><label>الأجهزة المسموحة (فارغ = أي جهاز) — الرمز يظهر في شاشة الدخول عند المستخدم، وهو نفسه في البرامج الثلاثة</label>
-        <div class="row devs">${(u.devices || []).map((c, k) => `<span class="chip">${esc(c)}<button data-dev="${k}">✕</button></span>`).join('') || '<span class="chip">أي جهاز</span>'}</div>
-        <div class="row" ><input type="text" id="e-dev" dir="ltr" placeholder="ABCDE-FGHJK"><button data-e="adddev">إضافة جهاز</button></div></div>
+      <div class="field"><label>الأجهزة المسموحة ${mustDevice() ? '(بلا جهاز = لا يعمل)' : '(فارغ = أي جهاز)'} — الرمز يظهر في شاشة الدخول عند المستخدم، وهو نفسه في البرامج الثلاثة</label>
+        <div class="row devs">${(u.devices || []).map((c, k) => `<span class="chip">${esc(c)}<button data-dev="${k}">✕</button></span>`).join('') || (mustDevice() ? '<span class="chip warn">بلا جهاز — لا يعمل على أي جهاز</span>' : '<span class="chip">أي جهاز</span>')}</div>
+        <div class="row" ><input type="text" id="e-dev" dir="ltr" placeholder="ABCDE-FGHJK"><button data-e="adddev">إضافة جهاز</button>${st.device && !(u.devices || []).includes(st.device) ? `<button data-e="thisdev" title="رمز هذا الكمبيوتر: ${esc(st.device)}">+ هذا الجهاز (<span dir="ltr">${esc(st.device)}</span>)</button>` : ''}</div></div>
       </section>
       <section class="etab" data-sec="cad" ${tab === 'cad' ? '' : 'hidden'}>
       ${allowed('cad')}
@@ -169,8 +178,8 @@
     if (!u.name) return emsg('اكتب الاسم.');
     if (st.data.users.some((x, k) => k !== i && x.name.trim().toLowerCase() === u.name.toLowerCase())) return emsg('هذا الاسم موجود.');
     try {
-      if (editing.pw) Object.assign(u, await A.hash(u.name, editing.pw));
-      else if (!u.hash) return emsg('اكتب كلمة سر (أو اضغط «توليد كلمة سر»).');
+      if (editing.pw) { delete u.hash; delete u.vh; delete u.n; Object.assign(u, await A.hash(u.name, editing.pw)); }
+      else if (!hasPw(u)) return emsg('اكتب كلمة سر (أو اضغط «توليد كلمة سر»).');
       else u.id = (await A.hash(u.name)).id;
     } catch (e) { return emsg(e.message); }
     const list = st.data.users.slice();
@@ -233,7 +242,11 @@
       else if (t.dataset.edit !== undefined) openEditor(Number(t.dataset.edit));
       else if (a === 'publish') {
         t.disabled = true; t.textContent = 'ينشر…';
-        const r = await A.publish();
+        let r = await A.publish();
+        if (r.ask) {
+          if (!confirm(`بلا جهاز مسجل: ${r.noDevice.join('، ')}\nلن يعملوا على أي جهاز حتى تضيف رموز أجهزتهم.\nانشر على أي حال؟`)) { t.disabled = false; render(); return; }
+          r = await A.publish(true);
+        }
         st = await A.state(); pub = await A.published().catch(() => pub); render();
         toast(`نُشرت الصلاحيات (الإصدار ${r.version}) ✓ — تصل للأجهزة خلال 30 دقيقة أو عند فتح البرنامج.`);
       } else if (t.dataset.appApprove) {
@@ -261,6 +274,9 @@
         const c = $('#e-dev').value.trim().toUpperCase();
         if (!/^[A-Z2-9]{5}-[A-Z2-9]{5}$/.test(c)) return emsg('رمز الجهاز بالشكل ABCDE-FGHJK (من شاشة الدخول عند المستخدم).');
         editing.u.devices = [...new Set([...(editing.u.devices || []), c])]; drawEditor();
+      } else if (ed === 'thisdev') {
+        readEditor();
+        editing.u.devices = [...new Set([...(editing.u.devices || []), st.device])]; drawEditor();
       } else if (t.dataset.etab) { readEditor(); editing.tab = t.dataset.etab; drawEditor(); d0Scroll(); }
       else if (t.dataset.dev !== undefined) { readEditor(); editing.u.devices.splice(Number(t.dataset.dev), 1); drawEditor(); }
       else if (t.dataset.dur) {

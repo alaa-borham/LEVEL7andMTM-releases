@@ -117,12 +117,20 @@ async function publishedPolicy() {
   return t ? L.verifyEnvelope(t, PUBKEY) : null;
 }
 
+// 1.4.0: a password's record. New ones («vh», «n»): the published file holds only the SHA-256 of the password's key, so
+// nothing in it signs anyone in. A record made before («hash») is kept as it is until the admin changes that password.
+const secret = u => (u.vh ? { salt: u.salt, vh: u.vh, n: u.n } : { salt: u.salt, hash: u.hash });
+const hasSecret = u => !!(u.salt && (u.vh || u.hash));
+// this computer's code (the one the three programs show on their sign-in screen here)
+const thisDevice = () => L.deviceCode(DEV && process.env.L7A_MACHINE ? process.env.L7A_MACHINE : L.machineGuid());
+/** every user works only on computers approved for him — unless the admin switched it off */
+const requireDevice = d => d.requireDevice !== false;
 // ---- the users kept on this computer (names here only); the first time: taken from the design program's screen
 function users() {
   const u = readJson('users.json', null);
   if (u) return u;
   const cad = (() => { try { return JSON.parse(fs.readFileSync(CAD_DRAFT, 'utf8')); } catch { return null; } })();
-  const list = (cad?.users || []).filter(x => x && x.name).map(x => ({ name: x.name, id: x.id, salt: x.salt, hash: x.hash, expires: x.expires || null, xz: x.xz !== false, admin: !!x.admin, disabled: !!x.disabled, devices: x.devices || [], blocked: x.blocked || [] }));
+  const list = (cad?.users || []).filter(x => x && x.name).map(x => ({ name: x.name, id: x.id, ...secret(x), expires: x.expires || null, xz: x.xz !== false, admin: !!x.admin, disabled: !!x.disabled, devices: x.devices || [], blocked: x.blocked || [] }));
   const v = { users: list, lastVersion: cad?.lastVersion || 0, imported: !!list.length };
   writeJson('users.json', v);
   return v;
@@ -145,7 +153,7 @@ const pick = async (save, title, name, ext) => {
 function register() {
   handle('state', async () => {
     const s = readJson('settings.json', {});
-    return { keyPath: s.keyPath || '', keyOpen: !!key, hasToken: !!getToken() || !!TARGET_DIR, data: users(), catalogue: JSON.parse(fs.readFileSync(path.join(UI_ROOT, 'catalogue.json'), 'utf8')), version: uiVersion(), core: app.getVersion() };
+    return { keyPath: s.keyPath || '', keyOpen: !!key, hasToken: !!getToken() || !!TARGET_DIR, data: (d => ({ ...d, requireDevice: requireDevice(d) }))(users()), device: thisDevice(), catalogue: JSON.parse(fs.readFileSync(path.join(UI_ROOT, 'catalogue.json'), 'utf8')), version: uiVersion(), core: app.getVersion() };
   });
   handle('pickKey', async () => {
     const f = await pick(false, 'ملف مفتاح الأدمن', 'level7-admin-key.pem', 'pem');
@@ -177,8 +185,14 @@ function register() {
   });
   handle('saveUsers', async ({ list }) => {
     const d = users();
-    d.users = (Array.isArray(list) ? list : []).map(u => ({ name: String(u.name || '').trim(), id: u.id, salt: u.salt, hash: u.hash, expires: u.expires || null, xz: u.xz !== false, admin: !!u.admin, disabled: !!u.disabled, devices: (u.devices || []).filter(c => /^[A-Z2-9]{5}-[A-Z2-9]{5}$/.test(c)), blocked: (u.blocked || []).filter(k => typeof k === 'string') }));
+    d.users = (Array.isArray(list) ? list : []).map(u => ({ name: String(u.name || '').trim(), id: u.id, ...secret(u), expires: u.expires || null, xz: u.xz !== false, admin: !!u.admin, disabled: !!u.disabled, devices: (u.devices || []).filter(c => /^[A-Z2-9]{5}-[A-Z2-9]{5}$/.test(c)), blocked: (u.blocked || []).filter(k => typeof k === 'string') }));
     d.dirty = true;
+    writeJson('users.json', d);
+    return true;
+  });
+  handle('setRequireDevice', async ({ on }) => {
+    const d = users();
+    d.requireDevice = !!on; d.dirty = true;
     writeJson('users.json', d);
     return true;
   });
@@ -196,23 +210,28 @@ function register() {
     const p = await publishedPolicy();
     return { version: p?.version || 0, users: p?.users.length || 0, issued: p?.issued || '' };
   });
-  handle('publish', async () => {
+  handle('publish', async ({ anyway }) => {
     if (!key) throw Error('افتح المفتاح أولاً.');
     const d = users();
     const list = d.users.filter(u => u.name);
     if (!list.length) throw Error('لا يوجد مستخدمون.');
-    const no = list.filter(u => !u.hash).map(u => u.name);
+    const no = list.filter(u => !hasSecret(u)).map(u => u.name);
     if (no.length) throw Error('بلا كلمة سر: ' + no.join('، '));
     if (!list.some(u => u.admin && !u.disabled)) throw Error('اجعل مستخدماً واحداً على الأقل «مديراً» يعمل (أنت)، حتى لا يُغلق البرنامج عليك.');
     const ids = new Set();
     for (const u of list) { const id = L.userId(u.name); if (ids.has(id)) throw Error('اسم مكرر: ' + u.name); ids.add(id); u.id = id; }
+    // 1.4.0: with «every user on his own computers», a user with no computer approved works on none: the admin is told who
+    // before it is published, and says so himself
+    const must = requireDevice(d);
+    const noDevice = must ? list.filter(u => !u.disabled && !(u.devices || []).length).map(u => u.name) : [];
+    if (noDevice.length && !anyway) return { ask: true, noDevice };
     const pub = await publishedPolicy();
     const version = Math.max(pub?.version || 0, d.lastVersion || 0) + 1;
-    const env = L.signPolicy({ version, issued: new Date().toISOString(), users: list.map(u => ({ id: u.id, salt: u.salt, hash: u.hash, expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [] })) }, key.privateKey);
+    const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [] })) }, key.privateKey);
     await writeRepo(POLICY, JSON.stringify(env, null, 1), `LEVEL7 policy ${version}`);
     d.lastVersion = version; d.dirty = false; d.users = list;
     writeJson('users.json', d);
-    return { version };
+    return { version, noDevice };
   });
   // ---- the program's own update (its screen): the newest version published in the releases repository
   handle('selfUpdate', async () => {

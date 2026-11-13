@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.3.1",
- "core": "1.3.1",
- "notes": "1.3.1: إصلاح «Redirect was cancelled» عند اعتماد MTM/Nesting — يحتاج البرنامج الكامل (admin-v1.3.1)",
- "dir": "level7-cad/admin/v/1.3.1/ui",
+ "version": "1.4.0",
+ "core": "1.4.0",
+ "notes": "1.4.0: كلمات السر الجديدة تُنشر بصيغة لا تكفي للدخول؛ «كل مستخدم على أجهزته المسجلة فقط» (مفعّل)؛ زر «+ هذا الجهاز»؛ علامة «كلمة سر قديمة — غيّرها».",
+ "dir": "level7-cad/admin/v/1.4.0/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,13 +13,13 @@
   },
   {
    "path": "admin.js",
-   "sha256": "85eef06a9fc42f55f8dc6a4a121b045afdb6bb5fc208644c252874077f7f2d93",
-   "size": 26086
+   "sha256": "08d5962ada74cff703a8ea5c6eace76f5daf6b112b792ed660253ab799f15015",
+   "size": 28584
   },
   {
    "path": "admin.css",
-   "sha256": "ddbea7391405bc8bafc1e36cf17282c5050f1740ba2c05171aa7d42e6784375d",
-   "size": 10560
+   "sha256": "a3b5b6f48b12eb252af3579ac0ca03becd2a6a5f39c1d783b51479b2d6b75468",
+   "size": 10830
   },
   {
    "path": "catalogue.json",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "7cdc91c98c9c5ba6054bc923b7edb2d1a92fbdd77da6047c10da22f6e7d62018",
+   "sha256": "7f86bf43bea9d0403ab517d7cc0d0a815b945ec495b295d0c8d221a9ce4ddf3b",
    "size": 41
   }
  ]

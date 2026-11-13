@@ -98,3 +98,6 @@ nav.tabs button{font-size:16.5px;font-weight:600;padding:12px 22px}
 .relbox h4{margin:12px 0 8px;color:var(--muted);font-weight:600}
 .relbox .empty.small{padding:14px;font-size:14px}.relbox .msg{margin:0 0 12px}.rel i{font-style:normal;color:var(--muted);font-size:13px}
 .relbox details.older{margin:0 0 10px}.relbox details.older summary{cursor:pointer;color:var(--muted);padding:6px 4px 10px;font-size:14px}
+/* 1.4.0: «every user on his own computers» beside the search; the "no computer" chip in the editor reads right to left */
+.bar .reqdev{margin:0;margin-inline-start:auto;font-size:14.5px}.bar .reqdev input{width:18px}
+.devs .chip.warn{font:13px inherit;direction:rtl}
