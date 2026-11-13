@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.308",
- "notes": "0.9.308: ملف التصميم يُحفظ بامتداد ALA (ملفات level7 القديمة تُفتح كما هي)؛ مخرجات القص والطباعة لم تتغير",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.308/app",
+ "version": "0.9.309",
+ "notes": "0.9.309: تصحيحات الفحص الكامل — كل تصميم يُحفظ في ملفه (كان Ctrl+S قد يكتب فوق تصميم آخر)، طلبيات MTM تُفحص قياساتها وبارتاتها، وحمايات للتحديث التلقائي",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.309/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "7fffef4dd6008e9cbf33a46f972a91f16c4089f06cc496f91659f2e771cbd6b3",
-   "size": 181011
+   "sha256": "4b12733239414e79e2064601e196b7be259ec7b51c301e9aea89d268aa8ffb7c",
+   "size": 182647
   },
   {
    "path": "assets/icon.ico",
@@ -155,9 +155,9 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-BrP67AcQ.js",
-   "sha256": "d62b3597040e5527b577634cf6b5d9e0c6eb7e351217e8f2a997a76965e6f749",
-   "size": 984028
+   "path": "assets/l7design/assets/index-BkBGDl-c.js",
+   "sha256": "8570185ef7c45e8833035d544ee62e112b118f60ed082c4f53f684162d562d9c",
+   "size": 988330
   },
   {
    "path": "assets/l7design/assets/index-PYmrzbVA.css",
@@ -166,23 +166,23 @@
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "a429395f441c0f2888c23977ab4f0e37c7747a610340938f41eb1ede536cd43d",
+   "sha256": "8184f59aac9254504766ffeff184de5d2402cf69ba902219414479aac881cc34",
    "size": 3612
   },
   {
    "path": "desktop/cli/level7.cjs",
-   "sha256": "0c274df8a7cf88877fd079e3a2a3571b53588efda8059c5af15db9d96308a1b4",
-   "size": 136844
+   "sha256": "c1b9fb9a5fe6b8ad06b0f763727069c823035152349fe436c44e552141a7378e",
+   "size": 142302
   },
   {
    "path": "desktop/license.cjs",
-   "sha256": "c31fbffb98b4dab5c135359327a36a79866ce44b2cd9c519b10e28df9a5a7517",
-   "size": 50559
+   "sha256": "6579a758b4df2eecc984bb8cd4ee7f1452cb87b8596a840efbbd039a1f692ce0",
+   "size": 48275
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "6fd07111291eb223d4b928c98f3a542bad964a9a5fe44394baa6549c11c6591a",
-   "size": 113989
+   "sha256": "95d51a23884c1ae6951e016d63d32b88f50a0ca23491a020e5ec397014e8de54",
+   "size": 122282
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -191,13 +191,13 @@
   },
   {
    "path": "desktop/preload.cjs",
-   "sha256": "9a919c382c983cbb8921a1c074061198f529f9f25ad0e4c77dfddb1631ff049e",
-   "size": 10752
+   "sha256": "e61c1252bf31756d917df452feb5e1a986886d119b6ef2c4c904122d15f5fa08",
+   "size": 10920
   },
   {
    "path": "desktop/remote-update.cjs",
-   "sha256": "db91d0534a07c8cd072bad69f3ce215e3adcab9e8aaa5279bf1a6035736a9894",
-   "size": 42371
+   "sha256": "c933ca5c2bd4c4a1474641a20176e5444c5f036bf00ea2cff1e3c369c92dedc0",
+   "size": 52883
   },
   {
    "path": "examples/draft-blocks.dxf",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "7853b087c3f935dacc277d8cd6553e3eac325b747ac97e0671c93038a4d07858",
+   "sha256": "5cab0277136ea671f748312fa9b2aa2e117e5086598f9d1167235d4a031fd0ae",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "b5e12351fd5a97345b0046318e5805ddd8a13d890cc5c3915e6094ddd7f00683",
-   "size": 78033
+   "sha256": "d2e4cd8b404007a30e4e14d7b76b2908e04824f52c1e682935037915b4f30e9d",
+   "size": 79133
   },
   {
    "path": "src/l7-icons.js",
