@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.16",
- "notes": "Windows' «OpenWith.exe» is not the drawing program (found by GitHub's Windows check) [skip ci]\r\n\r\nFor a file type no program has, Windows answers its own «OpenWith.exe» as the program that opens it; with nothing chosen\r\nand nothing installed LEVEL7 MTM took it for LEVEL7 and MTM. Only «LEVEL7 and MTM.exe» is taken from that answer.\r\nThe test that showed it on Windows (it passed on Linux, where no file types are asked) no longer asks this computer's own\r\nfile types, and a new one gives «OpenWith.exe» as the answer on any system: it fails on the code before.\r\nThe failed build took number 15: this version is 2.0.16.\r\n\r\nar: MTM لا يأخذ برنامج ويندوز «فتح باستخدام» على أنه برنامج الرسم\r\n\r\n\r\n",
- "approved": "2026-11-13T06:00:05.387Z",
+ "version": "2.0.17",
+ "notes": "A design's part is tied to its number, not its name [skip ci]\r\n\r\nOwner: \"when a part's name changes no action is needed — it is tied to the part's number\". The parts table keeps the\r\nnames of the day it was saved; a LEVEL7 and MTM design's part renamed afterwards was refused («other design version?»)\r\nand its order held. A design's part is now taken by its number alone and the row shows the design's name of today (a\r\nGRAFIS model's parts are compared as before). «القطع الثابتة» said «not in the model» for a part without a name (the\r\nowner's 007-010): only a number the design does not have is marked. Both tests fail on 2.0.16.\r\n\r\nar: بارت التصميم مرتبط برقمه فقط؛ تغيير اسمه لا يوقف الطلبية\r\n\r\n\r\n",
+ "approved": "2026-11-13T06:55:01.921Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.16-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.16/LEVEL7MTM-2.0.16-Setup.exe",
-  "sha256": "533737176c5a7de35e5ea2d8b394618cbd52cf65ffb45682eea687c505586ede",
-  "size": 61474297
+  "name": "LEVEL7MTM-2.0.17-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.17/LEVEL7MTM-2.0.17-Setup.exe",
+  "sha256": "e0fd91ebc70b34b095ff7867b67483a80840579d73410ed756e42daf7b7b042d",
+  "size": 61458692
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.16\",\"sha256\":\"533737176c5a7de35e5ea2d8b394618cbd52cf65ffb45682eea687c505586ede\",\"size\":61474297,\"approved\":\"2026-11-13T06:00:05.387Z\"}",
-  "sig": "36iQtr8WI9z0ouOeDOO5a0VnYCqb+OOQaw0Cxt9V/p+2QWpj56xrIR7u5py5CTRihKouI+5g82vZzUBPGMAGBA=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.17\",\"sha256\":\"e0fd91ebc70b34b095ff7867b67483a80840579d73410ed756e42daf7b7b042d\",\"size\":61458692,\"approved\":\"2026-11-13T06:55:01.921Z\"}",
+  "sig": "bzfhmyd1SEd5aMwJqJJyyvED607U7py62z9q2fCwVVJSUb3hkN+RRQS6Oo2Y0w+vYAhKBHokQxc2tPHGxd3kBA=="
  }
 }
