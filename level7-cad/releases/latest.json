@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.310",
- "notes": "Security release: a remembered sign-in can no longer be made from the published permissions file; every user on approved computers when the admin's permissions say so; an older permissions file put back, or the clock set back, is refused.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.310/app",
+ "version": "0.9.311",
+ "notes": "An order being made is let finish before the installer starts; an update that could not be installed is said when the program opens again.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.311/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "b1edf701292b7ce370530c63e2435ddb4f739ebfbbf1a879c787744c9744679d",
-   "size": 184310
+   "sha256": "b8cceea8ef75a4ed5f3a3db8b59717a416966adc1bd455b575de29eab14a6425",
+   "size": 185253
   },
   {
    "path": "assets/icon.ico",
@@ -176,13 +176,13 @@
   },
   {
    "path": "desktop/license.cjs",
-   "sha256": "d2d90a0ebc745973f4dfa9fd43d4a06c68b5643bd89c650a474e5f7c3711aa92",
-   "size": 59388
+   "sha256": "1bbfa84f3907d83ac978f24d52d499bd6ed35a0130f5fc881e1e20b8f887003b",
+   "size": 64046
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "3a831c5b2fcc991dcd065e8215192725769f73ed7b0e0f078a63ce795334788d",
-   "size": 123335
+   "sha256": "08ab3ddba27b04cfd99d0953493d7f35c7331943d12d42a20f73b524d2d69211",
+   "size": 126683
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -191,13 +191,13 @@
   },
   {
    "path": "desktop/preload.cjs",
-   "sha256": "e61c1252bf31756d917df452feb5e1a986886d119b6ef2c4c904122d15f5fa08",
-   "size": 10920
+   "sha256": "66911dce911e9761d09552e8f2ea73e4cf27595f91c2fda1f10e48655e490144",
+   "size": 10296
   },
   {
    "path": "desktop/remote-update.cjs",
-   "sha256": "c933ca5c2bd4c4a1474641a20176e5444c5f036bf00ea2cff1e3c369c92dedc0",
-   "size": 52883
+   "sha256": "1d1dd563fcd004ebb17cc37a8e93a165a191295dc3ead353524bddda52c829d0",
+   "size": 57160
   },
   {
    "path": "examples/draft-blocks.dxf",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "c5eba24974513d089d58f302630b97b4c6255524e4593c0fecb431580684ece0",
+   "sha256": "1382fc346500337ba68fd8724c9362d254464e0e2d794fca5ddfef9c19c45f7a",
    "size": 301
   },
   {
@@ -576,8 +576,8 @@
   },
   {
    "path": "src/native-app.js",
-   "sha256": "135fd22f4006410fad41a071b140526c1e7997ec7ae99348d510dd8972548338",
-   "size": 191916
+   "sha256": "1784328794c59c62428888adbe6375f26d78b7c7aa2d9d3e16414dc074a3b8d3",
+   "size": 192694
   },
   {
    "path": "src/native-bartack10-template.mjs",
