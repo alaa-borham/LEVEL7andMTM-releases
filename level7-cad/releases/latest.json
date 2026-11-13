@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.309",
- "notes": "0.9.309: تصحيحات الفحص الكامل — كل تصميم يُحفظ في ملفه (كان Ctrl+S قد يكتب فوق تصميم آخر)، طلبيات MTM تُفحص قياساتها وبارتاتها، وحمايات للتحديث التلقائي",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.309/app",
+ "version": "0.9.310",
+ "notes": "Security release: a remembered sign-in can no longer be made from the published permissions file; every user on approved computers when the admin's permissions say so; an older permissions file put back, or the clock set back, is refused.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.310/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "4b12733239414e79e2064601e196b7be259ec7b51c301e9aea89d268aa8ffb7c",
-   "size": 182647
+   "sha256": "b1edf701292b7ce370530c63e2435ddb4f739ebfbbf1a879c787744c9744679d",
+   "size": 184310
   },
   {
    "path": "assets/icon.ico",
@@ -176,13 +176,13 @@
   },
   {
    "path": "desktop/license.cjs",
-   "sha256": "6579a758b4df2eecc984bb8cd4ee7f1452cb87b8596a840efbbd039a1f692ce0",
-   "size": 48275
+   "sha256": "d2d90a0ebc745973f4dfa9fd43d4a06c68b5643bd89c650a474e5f7c3711aa92",
+   "size": 59388
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "95d51a23884c1ae6951e016d63d32b88f50a0ca23491a020e5ec397014e8de54",
-   "size": 122282
+   "sha256": "3a831c5b2fcc991dcd065e8215192725769f73ed7b0e0f078a63ce795334788d",
+   "size": 123335
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "5cab0277136ea671f748312fa9b2aa2e117e5086598f9d1167235d4a031fd0ae",
+   "sha256": "c5eba24974513d089d58f302630b97b4c6255524e4593c0fecb431580684ece0",
    "size": 301
   },
   {
