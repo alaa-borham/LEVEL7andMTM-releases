@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.22",
+ "notes": "Second review: close notches both cut (ISO), orders in one marker counted right, materials said, licence hardened [skip ci]\r\n\r\nar: مراجعة ثانية: حزّان متقاربان يُقطعان كلاهما في ملف Bullmer، عدّ صحيح لعدة طلبيات في ماركر واحد، تحذير عند خامتين في ماركر، وتقوية الترخيص\r\n\r\nFrom the second independent review (2026-11), each case reproduced on 2.0.20 first (tests/test_review_2.py):\r\n- Bullmer / IECHO file: of two notches closer than 2 mm the second was dropped and still counted as cut.\r\n- nest A --with B without --sizes left order A out of the marker (exit 0).\r\n- Several orders in one marker were refused as \"more than one marker takes\" (sizes multiplied by the pieces of all orders).\r\n- Pieces of several materials in one marker, or production pieces of another material left out: said in the output of nest;\r\n  what the reader said (a notch moved onto the cut line) is shown by nest too.\r\n- A rules file as LEVEL7 and MTM writes it (\"RULE: DELTA n\") is read; with rules the notch lines are read for the sample\r\n  size and said for the graded ones.\r\n- Licence: a last day of 9999-12-31 no longer stops the program; the command line goes by the newest policy any of the\r\n  three programs has read on this computer; a policy older than version 4 is never taken with the program's key; a\r\n  computer whose id cannot be read has no device code; a clock that was ahead for a moment is lifted when the admin\r\n  publishes again; the licence files are written in one step — and when the file is held open by another program\r\n  (Windows) the write is tried again, then made in place.\r\n(Build 21 was stopped before it finished: the last point was added after it started.)\r\n\r\n\r\n",
+ "approved": "2026-11-13T20:14:08.400Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.22-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.22/LEVEL7Nesting-2.0.22-Setup.exe",
+  "sha256": "c1471482a0179f4a153ee41bc5388ed055a0c153789fb3f6f34f95129609976c",
+  "size": 55961514
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.22\",\"sha256\":\"c1471482a0179f4a153ee41bc5388ed055a0c153789fb3f6f34f95129609976c\",\"size\":55961514,\"approved\":\"2026-11-13T20:14:08.400Z\"}",
+  "sig": "7+GLpok/Xkd8l+V7/4XRg4VzOHpwu1A/s3CVYtG0t+NyORyTt0VsVjIx2x7vdB1QmfNVR/g92w4ajf+ZL2mmDw=="
+ }
+}
