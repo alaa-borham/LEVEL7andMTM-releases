@@ -1,4 +1,4 @@
 {
- "payload": "{\"version\":3,\"issued\":\"2026-11-13T10:40:40.956Z\",\"requireDevice\":true,\"users\":[{\"id\":\"728cbd1cc1553fb5a90b9efc745fb7ebe74aca28dddb935c28a22dffd97e2c77\",\"salt\":\"/lJhAAc00FcBHtjbun1PHQ==\",\"hash\":\"z/2ywf2GkFMqQuW8R+97qtPRk9rRKRREN2nMNQuBu38=\",\"expires\":null,\"disabled\":false,\"xz\":true,\"admin\":true,\"devices\":[\"WW6ZT-ADT8Q\"],\"blocked\":[]}],\"product\":\"LEVEL7 and MTM\",\"kind\":\"policy\"}",
- "sig": "wv2aXGOuK5kUHyb09uFrtTDje8X6cCnaowFNxBRM2lMS3wrTD4nMhtrFJXY6IRSiFalXjdiuaUQOHf+/MsrWDg=="
+ "payload": "{\"version\":4,\"issued\":\"2026-11-13T10:42:20.924Z\",\"requireDevice\":true,\"users\":[{\"id\":\"728cbd1cc1553fb5a90b9efc745fb7ebe74aca28dddb935c28a22dffd97e2c77\",\"salt\":\"YBqxtp7U/UlczRmb8VLXBg==\",\"vh\":\"PSE/Gn/BelqibwxWsnM/XZEW7QQwa5xNNEQFWemfImI=\",\"n\":65536,\"expires\":null,\"disabled\":false,\"xz\":true,\"admin\":true,\"devices\":[\"WW6ZT-ADT8Q\"],\"blocked\":[]}],\"product\":\"LEVEL7 and MTM\",\"kind\":\"policy\"}",
+ "sig": "BUyyAt7H+84utvbUdb/tCeY61HPyh7M1Ss12xp1f4M1/bHpi2YmiBvAct+jGkbL1P1PUGcnTpitXP3h+sJ7rDw=="
 }
