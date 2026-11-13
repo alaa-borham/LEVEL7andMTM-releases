@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 Nesting",
  "app": "nesting",
- "version": "2.0.20",
- "notes": "A notch on a curved edge reaches the cutting files; a damaged licence file does not stop the program [skip ci]\r\n\r\nFrom the independent review of 2026-11 (each reproduced first):\r\n- LEVEL7 and MTM puts a notch where the sewing line's point, moved out by the seam allowance, lies; its cut line is a\r\n  polyline, so on a curve the notch starts a few hundredths of a millimetre beside it. The PLT and the ISO take a notch\r\n  only when it starts on the cut line (0.01 mm): such a notch was left out of both files without a word, and counted\r\n  as cut. The reader of the order's file now moves the notch onto the cut line (direction and length kept); moved by\r\n  more than 0.5 mm it is said in the file's issues, further than 10 mm the file is refused. The owner's own design was\r\n  inside the limit (0.003 mm at most): nothing of it was lost; the margin was thin.\r\n- the cutting files count the notches they really cut; one left out is said («notches_left_out», a warning line).\r\n- a licence file damaged or written by hand, or a folder that cannot be written for a moment, stopped the program and\r\n  its command line with a traceback: each counts as empty, the program goes on.\r\nA model of GRAFIS is read and cut exactly as before (its reference files unchanged).\r\n(Build 19 stopped on the new test itself: it wrote its DXF as text, which Windows gives other line ends — the file is\r\nwritten as bytes now; the command line's gate is asked with the key in the licence tests.)\r\n\r\nar: النوتش على الخط المنحني يصل إلى ملفات القص (كان يسقط بصمت إن ابتعد عن خط القص بأكثر من 0.01 مم)\r\n\r\n\r\n",
- "approved": "2026-11-13T10:29:46.840Z",
+ "version": "2.0.22",
+ "notes": "Second review: close notches both cut (ISO), orders in one marker counted right, materials said, licence hardened [skip ci]\r\n\r\nar: مراجعة ثانية: حزّان متقاربان يُقطعان كلاهما في ملف Bullmer، عدّ صحيح لعدة طلبيات في ماركر واحد، تحذير عند خامتين في ماركر، وتقوية الترخيص\r\n\r\nFrom the second independent review (2026-11), each case reproduced on 2.0.20 first (tests/test_review_2.py):\r\n- Bullmer / IECHO file: of two notches closer than 2 mm the second was dropped and still counted as cut.\r\n- nest A --with B without --sizes left order A out of the marker (exit 0).\r\n- Several orders in one marker were refused as \"more than one marker takes\" (sizes multiplied by the pieces of all orders).\r\n- Pieces of several materials in one marker, or production pieces of another material left out: said in the output of nest;\r\n  what the reader said (a notch moved onto the cut line) is shown by nest too.\r\n- A rules file as LEVEL7 and MTM writes it (\"RULE: DELTA n\") is read; with rules the notch lines are read for the sample\r\n  size and said for the graded ones.\r\n- Licence: a last day of 9999-12-31 no longer stops the program; the command line goes by the newest policy any of the\r\n  three programs has read on this computer; a policy older than version 4 is never taken with the program's key; a\r\n  computer whose id cannot be read has no device code; a clock that was ahead for a moment is lifted when the admin\r\n  publishes again; the licence files are written in one step — and when the file is held open by another program\r\n  (Windows) the write is tried again, then made in place.\r\n(Build 21 was stopped before it finished: the last point was added after it started.)\r\n\r\n\r\n",
+ "approved": "2026-11-13T20:14:27.984Z",
  "setup": {
-  "name": "LEVEL7Nesting-2.0.20-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.20/LEVEL7Nesting-2.0.20-Setup.exe",
-  "sha256": "a52c1bde9868f4780db1f56b1c6024b84918c92613fe36d542c690f575f12325",
-  "size": 55953080
+  "name": "LEVEL7Nesting-2.0.22-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.22/LEVEL7Nesting-2.0.22-Setup.exe",
+  "sha256": "c1471482a0179f4a153ee41bc5388ed055a0c153789fb3f6f34f95129609976c",
+  "size": 55961514
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.20\",\"sha256\":\"a52c1bde9868f4780db1f56b1c6024b84918c92613fe36d542c690f575f12325\",\"size\":55953080,\"approved\":\"2026-11-13T10:29:46.840Z\"}",
-  "sig": "NwhCpAcTdFPykr/oejGSNopqaYPeW6KJv0Yu1zNHNg77jSgM+B6IIwSwv+HgCHGRBN4M2jG7fvGxYai9XOYNAA=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.22\",\"sha256\":\"c1471482a0179f4a153ee41bc5388ed055a0c153789fb3f6f34f95129609976c\",\"size\":55961514,\"approved\":\"2026-11-13T20:14:27.984Z\"}",
+  "sig": "TDG/l4nkN2VqZbaev0526xUnrDeZYtUPdyGRB77orlG+1YIHwHeNLZTNpBFu0130/TfX4hQGEYpDoc5zlrmGCg=="
  }
 }
