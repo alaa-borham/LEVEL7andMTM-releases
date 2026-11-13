@@ -152,4 +152,8 @@ jobs:
           git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add "level7-cad/releases/setups/$V.json"
           git commit -m "LEVEL7 and MTM $V: its installer's fingerprint"
-          for i in 1 2 3 4; do git pull --rebase -q origin main && git push -q origin HEAD:main && break; sleep 5; done
+          # (the loop's own result was 0 even when no push went through: the fingerprint was then missing, the job green,
+          # and the programs waited at «يُحضَّر على GitHub» for ever — now the job fails and says so)
+          pushed=0
+          for i in 1 2 3 4; do if git pull --rebase -q origin main && git push -q origin HEAD:main; then pushed=1; break; fi; sleep 5; done
+          if [ "$pushed" != "1" ]; then echo "::error::the installer's fingerprint (level7-cad/releases/setups/$V.json) could not be pushed: run this workflow again"; exit 1; fi
