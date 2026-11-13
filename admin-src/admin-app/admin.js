@@ -133,7 +133,7 @@
       <section class="etab" data-sec="general" ${tab === 'general' ? '' : 'hidden'}>
       <div class="field"><label>الاسم (يكتبه عند الدخول)</label><input type="text" id="e-name" value="${esc(u.name)}" dir="auto"></div>
       <div class="field"><label>كلمة السر ${hasPw(u) ? '(موجودة — اكتب جديدة لتغييرها)' : ''}</label><div class="row"><input type="text" id="e-pw" value="${esc(editing.pw)}" dir="ltr" placeholder="${hasPw(u) ? '••••••' : '6 أحرف أو أكثر'}"><button data-e="gen">توليد كلمة سر</button></div>
-        ${editing.pw ? `<p>أعطها للمستخدم: <span class="pw">${esc(editing.pw)}</span></p>` : oldPw(u) ? '<p class="state warn" id="e-oldpw">كلمة السر محفوظة بالصيغة القديمة (أضعف). اكتب كلمة سر جديدة أو اضغط «توليد كلمة سر» لتصير بالصيغة الآمنة.</p>' : ''}</div>
+        ${editing.pw ? `<p>أعطها للمستخدم: <span class="pw">${esc(editing.pw)}</span></p>` : oldPw(u) ? '<p class="state warn" id="e-oldpw">كلمة السر محفوظة بالصيغة القديمة (أضعف). اكتب كلمة سر جديدة أو اضغط «توليد كلمة سر» لتصير بالصيغة الآمنة.<br>قبل تغييرها: تأكد أن برامج هذا المستخدم محدَّثة (LEVEL7 and MTM 0.9.310، و LEVEL7 MTM و LEVEL7 Nesting 2.0.19 أو أحدث) — الإصدارات الأقدم لا تقبل كلمة السر الجديدة.</p>' : ''}</div>
       <div class="field"><label>البرامج المسموحة له</label><div class="row progs">${PROGRAMS.map(([k, nm]) => `<label class="prog ${u.blocked.includes(k) ? 'off' : ''}"><input type="checkbox" data-app="${k}" ${u.blocked.includes(k) ? '' : 'checked'}> ${nm}</label>`).join('')}</div>
         ${PROGRAMS.every(([k]) => u.blocked.includes(k)) ? '<p class="state bad">لا يعمل في أي برنامج.</p>' : ''}</div>
       <div class="field"><label>مدة التشغيل</label><div class="row seg">
