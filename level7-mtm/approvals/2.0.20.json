@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.20",
+ "notes": "«Nest again» reads the order's file where it was opened from when no ERP folder is chosen [skip ci]\r\n\r\nThe owner, on his computer (2.0.19): «إعادة التعشيق» stopped with «مجلد process غير محدد أو لا يمكن الوصول إليه» — his\r\norders are opened by hand, no ERP orders folder is chosen and no copy of the XML is kept (as installed), so an order\r\ncould not be made again at all. With no ERP folder chosen the order's file is read again where it was read from: the\r\nfile itself, never an old copy. Gone from there, the message says where it was.\r\n(With an ERP folder chosen nothing changes: only from «process», as before.)\r\ntests/test_level7_safeguards.py (+1, fails on 2.0.19). The build is started after the full suite.\r\n\r\nAlso in this build (2.0.19, in case that one was passed over): the security review's corrections («تذكرني», every user\r\non approved computers) and what cut an order twice or held the nesting queue.\r\n\r\nar: «إعادة التعشيق» تعمل لطلبية فُتحت يدوياً (بلا مجلد ERP): تُقرأ من مكانها الأصلي\r\n\r\n\r\n",
+ "approved": "2026-11-13T11:50:33.522Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.20-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.20/LEVEL7MTM-2.0.20-Setup.exe",
+  "sha256": "866a20f835aed2cf377931b4e3c26e0c8e93200188aef4301887b8f98f1a7e23",
+  "size": 61501332
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.20\",\"sha256\":\"866a20f835aed2cf377931b4e3c26e0c8e93200188aef4301887b8f98f1a7e23\",\"size\":61501332,\"approved\":\"2026-11-13T11:50:33.522Z\"}",
+  "sig": "FuDcyOTMCJmOA60J/dVJGcxT0SRYut/2xFR1fDdPiQF5gVyLj53tmt4r2FpM/3JnJi1EOgGlt4yrFDYvpj7AAg=="
+ }
+}
