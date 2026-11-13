@@ -17,5 +17,9 @@ contextBridge.exposeInMainWorld('admin', Object.freeze({
   appReleases: app => call('appReleases', { app }),
   appApprove: (app, version) => call('appApprove', { app, version }),
   selfUpdate: () => call('selfUpdate'),
-  selfUpdateInstall: () => call('selfUpdateInstall')
+  selfUpdateInstall: () => call('selfUpdateInstall'),
+  // 1.5.0
+  tokenState: () => call('tokenState'),
+  offer: version => call('offer', { version }),
+  signSetups: () => call('signSetups')
 }));

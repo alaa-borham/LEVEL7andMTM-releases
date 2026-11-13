@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.4.1",
- "core": "1.4.1",
- "notes": "1.4.1: كلمات السر الجديدة تُنشر بصيغة لا تكفي للدخول؛ «كل مستخدم على أجهزته المسجلة فقط»؛ زر «+ هذا الجهاز»؛ تنبيه قبل تغيير كلمة السر.",
- "dir": "level7-cad/admin/v/1.4.1/ui",
+ "version": "1.5.0",
+ "core": "1.5.0",
+ "notes": "1.5.0: ملف المستخدمين لا يُستبدل إن تعذرت قراءته (نسخة قبل كل تغيير)؛ نسخة واحدة من البرنامج؛ تغيير رمز GitHub؛ «انشر للأجهزة» لإصدار معتمد لم يُعرض؛ توقيع مثبِّت برنامج الرسم تلقائياً",
+ "dir": "level7-cad/admin/v/1.5.0/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,13 +13,13 @@
   },
   {
    "path": "admin.js",
-   "sha256": "f623f896986bf0c2d793bd39b20089b5fed84b61b8e8f94bbbb3a66f32c51d3c",
-   "size": 28838
+   "sha256": "6507307a2fe675a60a15807e7f89293d1373f9985e8bcafc0803c97a20dbe2c8",
+   "size": 32587
   },
   {
    "path": "admin.css",
-   "sha256": "a3b5b6f48b12eb252af3579ac0ca03becd2a6a5f39c1d783b51479b2d6b75468",
-   "size": 10830
+   "sha256": "c4cc69e0d5380bde6414b9120a38f672d425b8c4f451afc192338c498906673d",
+   "size": 11016
   },
   {
    "path": "catalogue.json",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "a8cea4eb85d28fd33aaf66f9e056cfc06af0e46b9a95d40d5ae8e1b6e05da9e5",
+   "sha256": "eaf5606b51cba198feb16cb13a3299f1e8f1361ecd602da5fcb05a9edad85c0e",
    "size": 41
   }
  ]

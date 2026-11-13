@@ -6,6 +6,7 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   let st = null, pub = { version: 0 }, tab = 'users', editing = null, filter = '', releases = null, upd = null;
+  let tok = { ok: true }, retoken = false;      // 1.5.0: does the saved GitHub token work; its field shown again
   const app = $('#app');
 
   function toast(m, bad = false) {
@@ -30,12 +31,18 @@
   const toolName = k => { for (const g of st.catalogue.groups) for (const [kk, n] of g.items) if (kk === k) return n; return k; };
 
   async function load() {
-    st = await A.state();
+    // 1.5.0: the users' file could not be read — said on the screen, nothing is changed (it was replaced by an empty list)
+    try { st = await A.state(); } catch (e) {
+      app.innerHTML = `<div class="app"><header><div class="logo">LEVEL7 CAD MTM Admin</div></header><main><div class="setup"><div class="card"><h2>تعذر فتح قائمة المستخدمين</h2><p class="msg bad" id="fatal">${esc(e.message || e)}</p></div></div></main></div>`;
+      return;
+    }
     if (st.keyOpen && st.hasToken) {
-      try { pub = await A.published(); } catch { pub = { version: 0 }; }
+      try { pub = await A.published(); } catch (e) { pub = { version: 0, error: e.message || String(e) }; }
       try { upd = await A.selfUpdate(); } catch { upd = null; }
+      try { tok = await A.tokenState(); } catch { tok = { ok: true }; }
     }
     render();
+    if (st.note) alert(st.note);
   }
 
   // ---- first: the key (each time) and the GitHub token (once)
@@ -63,11 +70,14 @@
       <header><div class="logo">LEVEL7 CAD MTM Admin<small>برنامج المدير</small></div>
         <div class="stats">
           <div class="stat ok"><small>المفتاح</small><b>🔑 مفتوح</b></div>
-          <div class="stat ok"><small>GitHub</small><b>✓ متصل</b></div>
-          <div class="stat ${pub.version ? 'ok' : 'warn'}"><small>الصلاحيات المنشورة: </small><b>${pub.version ? `الإصدار ${pub.version} · ${pub.users} مستخدم` : 'لا شيء بعد'}</b></div>
+          <div class="stat ${tok.ok ? 'ok' : tok.soft ? 'warn' : 'bad'}" id="ghstat"><small>GitHub</small><b>${tok.ok ? '✓ متصل' : '⚠ ' + esc(tok.why || 'لا يعمل')}</b> <button class="mini" data-a="retoken" title="إدخال رمز GitHub جديد (عند انتهاء مدة الرمز)">تغيير الرمز</button></div>
+          <div class="stat ${pub.version ? 'ok' : 'warn'}"><small>الصلاحيات المنشورة: </small><b>${pub.version ? `الإصدار ${pub.version} · ${pub.users} مستخدم` : pub.error ? 'تعذرت قراءتها الآن' : 'لا شيء بعد'}</b></div>
           <div class="stat" title="إصدار الشاشة · إصدار الجزء المختوم"><small>برنامج المدير </small><b>الإصدار ${esc(st.version)} · ${esc(st.core)}</b></div>
         </div></header>
       ${upd ? `<div class="updbar">${upd.needsFull ? `يوجد إصدار جديد لبرنامج المدير ${esc(upd.version)} — يحتاج تحميل البرنامج كاملاً من صفحة الإصدارات: <b dir="ltr">github.com/alaa-borham/LEVEL7andMTM-releases/releases</b> (admin-v${esc(upd.version)}).` : `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.version)}</b>.`}${upd.needsFull ? '' : '<button class="primary" data-a="selfupdate">تحديث الآن</button>'}</div>` : ''}
+      ${retoken ? `<div class="card" id="retok"><b>رمز GitHub جديد</b><p>ألصق الرمز الجديد (يبدأ بـ github_pat_). يُحفظ مشفراً على هذا الجهاز مكان القديم.</p>
+        <div class="field"><input type="password" id="tok" placeholder="github_pat_…"></div>
+        <button class="primary" data-a="token">حفظ الرمز</button> <button data-a="retoken-close">إلغاء</button><div class="msg" id="tmsg"></div></div>` : ''}
       <nav class="tabs"><button data-tab="users" class="${tab === 'users' ? 'on' : ''}">المستخدمون (${d.users.length})</button><button data-tab="rel" class="${tab === 'rel' ? 'on' : ''}">التحديثات</button></nav>
       <main id="main"></main>
       <div class="pubbar" ${d.dirty ? '' : 'hidden'}><span>لديك تغييرات لم تُنشر بعد — لا تصل للأجهزة حتى تنشرها.</span><button class="primary big" data-a="publish">نشر الآن</button></div>
@@ -204,8 +214,14 @@
     $('#main').innerHTML = `<p class="relnote">الأجهزة لا تثبّت أي إصدار جديد إلا بعد اعتمادك.</p>
       <section class="relbox" data-relapp="cad"><h3>LEVEL7 and MTM <small>برنامج الرسم</small><span class="now">المتاح للأجهزة الآن: <b dir="ltr">${esc(releases.latest || '—')}</b></span></h3>
       ${pending.length ? pending.map(v => `<div class="rel"><b>${esc(v.version)}</b><span>إصدار جديد بانتظار اعتمادك</span><button class="primary big" data-approve="${esc(v.version)}">اعتماد ونشر للأجهزة</button></div>`).join('') : '<div class="empty small">لا يوجد إصدار جديد بانتظار الاعتماد.</div>'}
-      ${done.length ? `<h4>معتمدة</h4>${done.map(v => `<div class="rel"><b>${esc(v.version)}</b><span>معتمد ✓${v.version === releases.latest ? ' — متاح للأجهزة' : ''}</span></div>`).join('')}` : ''}</section>
+      ${done.length ? `<h4>معتمدة</h4>${done.map(v => `<div class="rel"><b>${esc(v.version)}</b><span>معتمد ✓${v.version === releases.latest ? ' — متاح للأجهزة' : ''}${v.setup === 'signed' ? ' · المثبِّت موقَّع ✓' : v.setup === 'built' ? ' · المثبِّت جاهز: يُوقَّع الآن…' : ''}</span>${v.canOffer ? `<button class="primary" data-offer="${esc(v.version)}">انشر للأجهزة</button>` : ''}</div>`).join('')}` : ''}</section>
       ${APP_LIST.map(([k, n]) => `<section class="relbox" data-relapp="${k}"><h3>${n}</h3><div class="empty small">يقرأ…</div></section>`).join('')}`;
+    // 1.5.0: the installer of an approved release, built on GitHub since: its fingerprint signed with the admin's key
+    if (!renderReleases.signing) {
+      renderReleases.signing = true;
+      A.signSetups().then(r => { renderReleases.signing = false; if (r.signed.length) { toast(`وُقِّع مثبِّت الإصدار ${r.signed.join('، ')} ✓`); if (tab === 'rel') renderReleases(); } })
+        .catch(e => { renderReleases.signing = false; toast('تعذر توقيع المثبِّت: ' + (e.message || e), true); });
+    }
     for (const [k] of APP_LIST) {
       const box = $(`[data-relapp="${k}"]`);
       A.appReleases(k).then(r => {
@@ -223,6 +239,7 @@
     }
   }
 
+  const watchSetup = { t: 0 };
   // ---- events
   document.addEventListener('click', async e => {
     const t = e.target.closest('button,[data-edit]');
@@ -231,7 +248,17 @@
     try {
       if (a === 'pick') { await A.pickKey(); st = await A.state(); renderSetup(); }
       else if (a === 'open') { await A.openKey($('#pass').value); await load(); }
-      else if (a === 'token') { await A.setToken($('#tok').value); st = await A.state(); toast('حُفظ رمز GitHub.'); if (st.keyOpen) await load(); else renderSetup(); }
+      else if (a === 'token') { await A.setToken($('#tok').value); retoken = false; st = await A.state(); toast('حُفظ رمز GitHub.'); if (st.keyOpen) await load(); else renderSetup(); }
+      else if (a === 'retoken') { retoken = true; render(); $('#tok')?.focus(); }
+      else if (a === 'retoken-close') { retoken = false; render(); }
+      else if (t.dataset.offer) {
+        const v = t.dataset.offer;
+        if (!confirm(`عرض الإصدار ${v} للأجهزة؟ ستثبّته كل الأجهزة.`)) return;
+        t.disabled = true; t.textContent = 'ينشر…';
+        const r = await A.offer(v);
+        toast(`الإصدار ${r.version} صار متاحاً للأجهزة ✓`);
+        renderReleases();
+      }
       else if (t.dataset.tab) { tab = t.dataset.tab; render(); }
       else if (a === 'selfupdate') {
         t.disabled = true; t.textContent = 'يحدّث…';
@@ -248,7 +275,7 @@
           r = await A.publish(true);
         }
         st = await A.state(); pub = await A.published().catch(() => pub); render();
-        toast(`نُشرت الصلاحيات (الإصدار ${r.version}) ✓ — تصل للأجهزة خلال 30 دقيقة أو عند فتح البرنامج.`);
+        toast(`نُشرت الصلاحيات (الإصدار ${r.version}) ✓ — تصل للأجهزة خلال 30 دقيقة أو عند فتح البرنامج.` + (r.changed ? ' حُفظ تغيير أثناء النشر: اضغط «نشر الآن» مرة أخرى ليصل هو أيضاً.' : ''));
       } else if (t.dataset.appApprove) {
         const [k, v] = t.dataset.appApprove.split(':'), n = k === 'mtm' ? 'LEVEL7 MTM' : 'LEVEL7 Nesting';
         if (!confirm(`اعتماد ${n} ${v}؟ ستثبّته كل الأجهزة.`)) return;
@@ -261,8 +288,11 @@
         if (!confirm(`اعتماد الإصدار ${v}؟ ستثبّته كل الأجهزة.`)) return;
         t.disabled = true; t.textContent = 'يعتمد…';
         const r = await A.approve(v);
-        toast(`اعتُمد الإصدار ${r.version} ✓${r.offered ? ' — صار متاحاً للأجهزة' : ''}`);
+        toast(`اعتُمد الإصدار ${r.version} ✓${r.offered ? ' — صار متاحاً للأجهزة. المثبِّت يُبنى الآن (نحو 10 دقائق) ويُوقَّع تلقائياً ما دام هذا البرنامج مفتوحاً.' : ''}`);
         renderReleases();
+        // 1.5.0: the installer is built on GitHub in the next minutes: looked for every minute (40 at most) and signed
+        clearInterval(watchSetup.t); let n = 0;
+        if (r.offered) watchSetup.t = setInterval(() => { if (++n > 40) return clearInterval(watchSetup.t); A.signSetups().then(x => { if (x.signed.length) { clearInterval(watchSetup.t); toast(`وُقِّع مثبِّت الإصدار ${x.signed.join('، ')} ✓ — الأجهزة تثبّته الآن.`); if (tab === 'rel') renderReleases(); } }).catch(() => {}); }, 60000);
       } else if (ed === 'close') closeEditor();
       else if (ed === 'save') await saveEditor();
       else if (ed === 'gen') {
@@ -305,7 +335,7 @@
       if ($('#smsg') && !st.keyOpen) $('#smsg').textContent = m, $('#smsg').className = 'msg bad';
       else if ($('#tmsg') && a === 'token') $('#tmsg').textContent = m, $('#tmsg').className = 'msg bad';
       else if (editing) emsg(m); else toast(m, true);
-      if (a === 'publish' || t.dataset.approve || t.dataset.appApprove) { t.disabled = false; render(); }
+      if (a === 'publish' || t.dataset.approve || t.dataset.appApprove || t.dataset.offer) { t.disabled = false; render(); }
     }
   });
   document.addEventListener('change', e => {

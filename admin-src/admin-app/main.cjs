@@ -43,6 +43,21 @@ function signedByAdmin(manifestText, approvalText) {
     return a.product === 'LEVEL7 CAD MTM Admin' && a.kind === 'admin-ui' && a.manifestSha256 === sha(Buffer.from(manifestText, 'utf8'));
   } catch { return false; }
 }
+/** the screen as it was before an update of it that did not finish (also one cut by a stop of the computer) */
+function restoreUi(backup) {
+  let j = null;
+  try { j = JSON.parse(fs.readFileSync(path.join(backup, '.files'), 'utf8')); } catch { return false; }
+  for (const p of j.files || []) {
+    try { fs.rmSync(path.join(UI_ROOT, p + '.new'), { force: true }); } catch {}
+    try {
+      if ((j.added || []).includes(p)) fs.rmSync(path.join(UI_ROOT, p), { force: true });
+      else if (fs.existsSync(path.join(backup, p))) fs.copyFileSync(path.join(backup, p), path.join(UI_ROOT, p));
+    } catch {}
+  }
+  try { if (j.approved === null) fs.rmSync(file('admin-ui-approved.json'), { force: true }); else if (typeof j.approved === 'string') fs.writeFileSync(file('admin-ui-approved.json'), j.approved); } catch {}
+  try { fs.rmSync(path.join(backup, '.files'), { force: true }); } catch {}
+  return true;
+}
 function uiIntact() {
   let built = null;
   try { built = JSON.parse(fs.readFileSync(path.join(__dirname, 'ui-manifest.json'), 'utf8')); } catch {}
@@ -57,6 +72,14 @@ async function readRepoBytes(p) {
   return Buffer.from(await r.arrayBuffer());
 }
 const POLICY = L.POLICY_PATH, APPROVALS = L.APPROVALS_DIR, MANIFESTS = L.MANIFESTS_DIR, LATEST = 'level7-cad/releases/latest.json';
+const SETUPS = 'level7-cad/releases/setups';
+/** the version offered to the computers now ('' = none yet); a read that fails is an error, never «none» */
+async function offeredVersion() {
+  let t;
+  try { t = await readRepo(LATEST); } catch (e) { throw Error('تعذرت قراءة الإصدار المعروض للأجهزة الآن (' + String(e?.message || e) + '). لم يُغيَّر شيء — حاول بعد قليل.'); }
+  if (!t) return '';
+  try { return String(JSON.parse(t).version || ''); } catch { throw Error('ملف الإصدار المعروض للأجهزة غير مقروء. لم يُغيَّر شيء.'); }
+}
 // 1.3.0: LEVEL7 MTM and LEVEL7 Nesting — built in their own (private) repositories; a version the admin approves here is
 // copied to the public releases repository (a release «<tag><version>» with its installer) and offered with his signature
 // in <dir>/latest.json: the programs install only an installer whose fingerprint the admin signed.
@@ -75,7 +98,14 @@ app.enableSandbox();
 
 const file = n => path.join(DATA, n);
 const readJson = (n, d) => { try { return JSON.parse(fs.readFileSync(file(n), 'utf8')); } catch { return d; } };
-const writeJson = (n, v) => fs.writeFileSync(file(n), JSON.stringify(v, null, 1));
+// 1.5.0 (review): a file is written beside its place and then put there in one step (a stop in the middle of a write left
+// half a file — for users.json: every user gone). users.json also keeps a copy of what it held before each change.
+const writeJson = (n, v) => {
+  const f = file(n), t = f + '.tmp';
+  fs.writeFileSync(t, JSON.stringify(v, null, 1));
+  if (n === 'users.json') { try { const old = JSON.parse(fs.readFileSync(f, 'utf8')); if (old && Array.isArray(old.users)) fs.copyFileSync(f, f + '.bak'); } catch {} }
+  fs.renameSync(t, f);
+};
 let key = null; // { privateKey, publicKey } while the program is open
 let win = null;
 
@@ -111,9 +141,11 @@ async function writeRepo(p, text, message) {
   const r = await net().fetch(api(p), { method: 'PUT', headers: head(), body: JSON.stringify({ message, content: Buffer.from(text).toString('base64'), branch: 'main', ...(sha ? { sha } : {}) }) });
   if (!r.ok) throw Error(r.status === 401 || r.status === 403 ? 'رمز GitHub لا يملك صلاحية الكتابة (أو انتهت مدته).' : 'تعذر النشر على GitHub: HTTP ' + r.status);
 }
-/** the policy published now (its version), verified with the program's key */
+/** the policy published now (its version), verified with the program's key. 1.5.0 (review): a read that FAILED (GitHub not
+ *  reachable for a moment, the token expired) is an error — it was taken as «nothing published yet»: the header said so,
+ *  and a publish at that moment could go out with a version LOWER than the one the computers hold (they ignore it). */
 async function publishedPolicy() {
-  const t = await readRepo(POLICY).catch(() => null);
+  const t = await readRepo(POLICY);
   return t ? L.verifyEnvelope(t, PUBKEY) : null;
 }
 
@@ -126,9 +158,28 @@ const thisDevice = () => L.deviceCode(DEV && process.env.L7A_MACHINE ? process.e
 /** every user works only on computers approved for him — unless the admin switched it off */
 const requireDevice = d => d.requireDevice !== false;
 // ---- the users kept on this computer (names here only); the first time: taken from the design program's screen
+// 1.5.0 (review): a users.json that could not be READ (cut short by a stop while it was written, held by another program for
+// a moment) counted as «no users yet»: the list was replaced at once by an empty one — or by the design program's draft of
+// months ago — without a word; the names exist nowhere else. Now: not there = the first time (as before); there but not
+// readable = the copy of the last change is put back and the admin is told; no copy either = nothing is touched and the
+// program says so.
+let usersNote = '';
 function users() {
-  const u = readJson('users.json', null);
-  if (u) return u;
+  const f = file('users.json');
+  let text = null, bad = null;
+  try { text = fs.readFileSync(f, 'utf8'); } catch (e) { if (e.code !== 'ENOENT') bad = e; }
+  if (text !== null) { try { const u = JSON.parse(text); if (u && Array.isArray(u.users)) return u; bad = Error('ليس قائمة مستخدمين'); } catch (e) { bad = e; } }
+  if (bad) {
+    let kept = null;
+    try { const b = JSON.parse(fs.readFileSync(f + '.bak', 'utf8')); if (b && Array.isArray(b.users)) kept = b; } catch {}
+    if (kept && text !== null) {
+      try { fs.copyFileSync(f, file('users.damaged-' + Date.now() + '.json')); } catch {}
+      const t = f + '.tmp'; fs.writeFileSync(t, JSON.stringify(kept, null, 1)); fs.renameSync(t, f);
+      usersNote = `ملف المستخدمين كان تالفاً: استُعيدت النسخة المحفوظة قبل آخر تغيير (${kept.users.length} مستخدم). راجع القائمة قبل النشر.`;
+      return kept;
+    }
+    throw Error(`ملف المستخدمين (users.json) لا يمكن قراءته الآن (${bad.code || bad.message}). لم يُغيَّر شيء. أغلق البرنامج وافتحه من جديد؛ إن تكرر ذلك فلا تنشر، وأرسل مجلد البرنامج للدعم: ${DATA}`);
+  }
   const cad = (() => { try { return JSON.parse(fs.readFileSync(CAD_DRAFT, 'utf8')); } catch { return null; } })();
   const list = (cad?.users || []).filter(x => x && x.name).map(x => ({ name: x.name, id: x.id, ...secret(x), expires: x.expires || null, xz: x.xz !== false, admin: !!x.admin, disabled: !!x.disabled, devices: x.devices || [], blocked: x.blocked || [] }));
   const v = { users: list, lastVersion: cad?.lastVersion || 0, imported: !!list.length };
@@ -153,7 +204,9 @@ const pick = async (save, title, name, ext) => {
 function register() {
   handle('state', async () => {
     const s = readJson('settings.json', {});
-    return { keyPath: s.keyPath || '', keyOpen: !!key, hasToken: !!getToken() || !!TARGET_DIR, data: (d => ({ ...d, requireDevice: requireDevice(d) }))(users()), device: thisDevice(), catalogue: JSON.parse(fs.readFileSync(path.join(UI_ROOT, 'catalogue.json'), 'utf8')), version: uiVersion(), core: app.getVersion() };
+    const data = (d => ({ ...d, requireDevice: requireDevice(d) }))(users());
+    const note = key ? usersNote : ''; if (key) usersNote = '';      // (said on the main screen, once the key is open)
+    return { keyPath: s.keyPath || '', keyOpen: !!key, hasToken: !!getToken() || !!TARGET_DIR, note, data, device: thisDevice(), catalogue: JSON.parse(fs.readFileSync(path.join(UI_ROOT, 'catalogue.json'), 'utf8')), version: uiVersion(), core: app.getVersion() };
   });
   handle('pickKey', async () => {
     const f = await pick(false, 'ملف مفتاح الأدمن', 'level7-admin-key.pem', 'pem');
@@ -207,8 +260,20 @@ function register() {
     return out;
   });
   handle('published', async () => {
-    const p = await publishedPolicy();
+    let p = null;
+    try { p = await publishedPolicy(); } catch (e) { return { version: 0, users: 0, issued: '', error: clean(e) }; }
     return { version: p?.version || 0, users: p?.users.length || 0, issued: p?.issued || '' };
+  });
+  // 1.5.0 (review): does the saved GitHub token still work? (an expired one left the header saying «متصل» and no place to
+  // enter a new one)
+  handle('tokenState', async () => {
+    if (TARGET_DIR) return { ok: true };
+    if (!getToken()) return { ok: false, why: 'لا يوجد رمز محفوظ.' };
+    try {
+      const r = await net().fetch(`${GH_API}/repos/${REPO}`, { headers: head() });
+      if (r.status === 401 || r.status === 403) return { ok: false, why: 'رمز GitHub لا يعمل (انتهت مدته أو أُلغي).' };
+      return r.ok ? { ok: true } : { ok: false, soft: true, why: 'GitHub: HTTP ' + r.status };
+    } catch (e) { return { ok: false, soft: true, why: 'لا اتصال بـ GitHub الآن.' }; }
   });
   handle('publish', async ({ anyway }) => {
     if (!key) throw Error('افتح المفتاح أولاً.');
@@ -225,13 +290,20 @@ function register() {
     const must = requireDevice(d);
     const noDevice = must ? list.filter(u => !u.disabled && !(u.devices || []).length).map(u => u.name) : [];
     if (noDevice.length && !anyway) return { ask: true, noDevice };
-    const pub = await publishedPolicy();
+    let pub;
+    try { pub = await publishedPolicy(); } catch (e) { throw Error('تعذرت قراءة الصلاحيات المنشورة الآن (' + clean(e) + '). لم يُنشر شيء — حاول بعد قليل.'); }
+    const before = JSON.stringify([d.users, d.requireDevice]);
     const version = Math.max(pub?.version || 0, d.lastVersion || 0) + 1;
     const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [] })) }, key.privateKey);
     await writeRepo(POLICY, JSON.stringify(env, null, 1), `LEVEL7 policy ${version}`);
-    d.lastVersion = version; d.dirty = false; d.users = list;
-    writeJson('users.json', d);
-    return { version, noDevice };
+    // 1.5.0 (review): what was saved WHILE this was being published (a user added during «ينشر…») was written over by the
+    // list of before — the user gone from the file and the screen, no «unpublished changes». The file as it is now counts.
+    const now = users();
+    const changed = JSON.stringify([now.users, now.requireDevice]) !== before;
+    now.lastVersion = Math.max(version, now.lastVersion || 0);
+    if (!changed) { now.dirty = false; now.users = list; }
+    writeJson('users.json', now);
+    return { version, noDevice, changed };
   });
   // ---- the program's own update (its screen): the newest version published in the releases repository
   handle('selfUpdate', async () => {
@@ -260,13 +332,20 @@ function register() {
     const approval = JSON.stringify({ payload, sig: crypto.sign(null, Buffer.from(payload, 'utf8'), key.privateKey).toString('base64') });
     const backup = path.join(DATA, 'ui-backup');
     fs.rmSync(backup, { recursive: true, force: true }); fs.mkdirSync(backup, { recursive: true });
-    const done = [];
+    // 1.5.0 (review): a stop while a screen file was being written left that file half written, said «البرنامج الحالي لم
+    // يتغير» — and the program did not start any more. Every new file is written beside its place first; only when all are
+    // there are they put in place (one step each); whatever goes wrong, every file goes back, and one that was added goes.
+    const done = [], added = [];
+    const prevApproved = (() => { try { return fs.readFileSync(file('admin-ui-approved.json'), 'utf8'); } catch { return null; } })();
     try {
-      for (const [p] of got) { const t2 = path.join(UI_ROOT, p); if (fs.existsSync(t2)) fs.copyFileSync(t2, path.join(backup, p)); }
-      for (const [p, b] of got) { fs.writeFileSync(path.join(UI_ROOT, p), b); done.push(p); }
+      for (const [p] of got) { const t2 = path.join(UI_ROOT, p); if (fs.existsSync(t2)) fs.copyFileSync(t2, path.join(backup, p)); else added.push(p); }
+      fs.writeFileSync(path.join(backup, '.files'), JSON.stringify({ files: got.map(g => g[0]), added, approved: prevApproved }));
+      for (const [p, b] of got) fs.writeFileSync(path.join(UI_ROOT, p + '.new'), b);
+      for (const [p] of got) { done.push(p); fs.renameSync(path.join(UI_ROOT, p + '.new'), path.join(UI_ROOT, p)); }
       writeJson('admin-ui-approved.json', { manifest: text, approval });
+      fs.rmSync(path.join(backup, '.files'), { force: true });
     } catch (e) {
-      for (const p of done) { try { fs.copyFileSync(path.join(backup, p), path.join(UI_ROOT, p)); } catch {} }
+      restoreUi(backup);
       throw Error('تعذر كتابة ملفات البرنامج (' + clean(e) + '). البرنامج الحالي لم يتغير.');
     }
     setTimeout(() => win?.reload(), 300);
@@ -279,7 +358,8 @@ function register() {
     try { latest = JSON.parse(await readRepo(LATEST)).version; } catch {}
     const cmp = (a, b) => { const x = a.split('.').map(Number), y = b.split('.').map(Number); for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] - y[i]; return 0; };
     vs.sort(cmp);
-    return { latest, versions: vs.map(v => ({ version: v, approved: ap.has(v) })) };
+    let setups = []; try { setups = await listRepo(SETUPS); } catch {}
+    return { latest, versions: vs.map(v => ({ version: v, approved: ap.has(v), canOffer: ap.has(v) && !!latest && cmp(v, latest) > 0, setup: setups.includes(v + '.signed.json') ? 'signed' : setups.includes(v + '.json') ? 'built' : '' })) };
   });
   handle('appReleases', async ({ app: a }) => {
     const x = appOf(a);
@@ -294,6 +374,10 @@ function register() {
     if (!vOk(v)) throw Error('رقم إصدار غير صالح.');
     const b = (await appBuilds(x, a)).find(q => q.version === v);
     if (!b) throw Error(`الإصدار ${v} غير موجود في ${x.repo}.`);
+    // 1.5.0 (review): only the page hid older builds — from a window opened earlier an older build became «the offered one»
+    let offered = '';
+    try { const t = await readRepo(`${x.dir}/latest.json`); if (t) offered = String(JSON.parse(t).version || ''); } catch (e) { throw Error('تعذرت قراءة الإصدار المعروض للأجهزة الآن (' + clean(e) + '). لم يُنشر شيء — حاول بعد قليل.'); }
+    if (offered && newer(offered, v)) throw Error(`المعروض للأجهزة الآن (${offered}) أحدث من ${v}: لم يُنشر شيء.`);
     const bytes = await appSetupBytes(x, b);
     if (bytes.length !== b.setup.size) throw Error('حجم الملف المنزَّل غير مطابق؛ لم يُنشر شيء.');
     const fingerprint = sha(bytes);
@@ -311,19 +395,57 @@ function register() {
     const v = String(version || '').replace(/[^0-9.]/g, '');
     const text = await readRepo(`${MANIFESTS}/${v}.json`);
     if (!text) throw Error('لا توجد قائمة ملفات للإصدار ' + v + '.');
+    // 1.5.0 (review): what is offered to the computers now is read FIRST, and a read that fails stops everything — it was
+    // taken as «nothing offered yet», and approving an older waiting release put it back in place of the newer one.
+    const cur = await offeredVersion();
     const env = L.signApproval(text, key.privateKey);
     if (!L.approvedManifest(text, JSON.stringify(env), PUBKEY)) throw Error('تعذر التحقق من الاعتماد.');
     await writeRepo(`${APPROVALS}/${v}.json`, JSON.stringify(env, null, 1), `LEVEL7 release ${v} approved`);
     // a prepared release (its files in its own folder): approving it makes it available to the computers
     const m = JSON.parse(text);
     let offered = false;
-    if (m.baseUrl) {
-      let cur = '';
-      try { cur = JSON.parse(await readRepo(LATEST)).version; } catch {}
-      const newer = (a, b) => { const x = a.split('.').map(Number), y = (b || '0.0.0').split('.').map(Number); for (let i = 0; i < 3; i++) if (x[i] !== y[i]) return x[i] > y[i]; return false; };
-      if (newer(v, cur)) { await writeRepo(LATEST, text, `LEVEL7 and MTM ${v} offered to the computers`); offered = true; }
+    if (m.baseUrl && newer(v, cur)) {
+      try { await writeRepo(LATEST, text, `LEVEL7 and MTM ${v} offered to the computers`); offered = true; } catch (e) {
+        throw Error(`اعتُمد الإصدار ${v} لكن تعذر عرضه للأجهزة (${clean(e)}). اضغط «انشر للأجهزة» بجانبه بعد قليل.`);
+      }
     }
     return { version: v, offered };
+  });
+  // 1.5.0 (review): an approved release that is not offered (the second write failed that day) had no button any more —
+  // no computer got it until the next release. «انشر للأجهزة» offers an approved release that is newer than the offered one.
+  handle('offer', async ({ version }) => {
+    const v = String(version || '').replace(/[^0-9.]/g, '');
+    const text = await readRepo(`${MANIFESTS}/${v}.json`);
+    const ap = await readRepo(`${APPROVALS}/${v}.json`);
+    if (!text || !ap || !L.approvedManifest(text, ap, PUBKEY)) throw Error('الإصدار ' + v + ' غير معتمد.');
+    const cur = await offeredVersion();
+    if (!newer(v, cur)) throw Error(`المعروض للأجهزة الآن (${cur}) ليس أقدم من ${v}.`);
+    if (!JSON.parse(text).baseUrl) throw Error('هذا الإصدار لا يُعرض للأجهزة بهذه الطريقة.');
+    await writeRepo(LATEST, text, `LEVEL7 and MTM ${v} offered to the computers`);
+    return { version: v };
+  });
+  // 1.5.0 (security review): the installer of LEVEL7 and MTM is built on GitHub AFTER the release was approved; the
+  // computers took its fingerprint from a file nobody signed — whoever could write to the releases repository could give
+  // every computer another installer. Its fingerprint is signed here with the admin's key (when this screen is open and the
+  // installer is ready); the program installs an installer only with that signature (0.9.313).
+  handle('signSetups', async () => {
+    if (!key) return { signed: [], waiting: [] };
+    const names = await listRepo(SETUPS);
+    const ap = new Set((await listRepo(APPROVALS)).filter(n => n.endsWith('.json')).map(n => n.slice(0, -5)));
+    const signed = [], waiting = [], have = [];
+    for (const n of names) {
+      const mm = /^(\d+\.\d+\.\d+)\.json$/.exec(n);
+      if (!mm || !ap.has(mm[1])) continue;
+      const v = mm[1];
+      if (names.includes(v + '.signed.json')) { have.push(v); continue; }
+      let j = null; try { j = JSON.parse(await readRepo(`${SETUPS}/${n}`)); } catch {}
+      if (!j || j.version !== v || !/^[0-9a-f]{64}$/.test(j.sha256 || '') || !Number.isInteger(j.size) || !String(j.url || '').startsWith(`https://github.com/${REPO}/releases/download/`)) { waiting.push(v); continue; }
+      const payload = JSON.stringify({ product: L.PRODUCT, kind: 'cad-setup', version: v, url: j.url, sha256: j.sha256, size: j.size, approved: new Date().toISOString() });
+      const env = { payload, sig: crypto.sign(null, Buffer.from(payload, 'utf8'), key.privateKey).toString('base64') };
+      await writeRepo(`${SETUPS}/${v}.signed.json`, JSON.stringify(env, null, 1), `LEVEL7 and MTM ${v}: installer signed by the admin`);
+      signed.push(v);
+    }
+    return { signed, waiting, have };
   });
 }
 
@@ -399,9 +521,16 @@ async function publishSetup(x, v, name, bytes, notes) {
   return `https://github.com/${REPO}/releases/download/${tag}/${encodeURIComponent(name)}`;
 }
 
+// 1.5.0 (review): the program opened twice worked on the same list — the second window saved its older list over the
+// first one's changes, and publishing then removed a user. One copy only: a second start shows the first.
+const SMOKE = process.argv.some(a => a.startsWith('--l7-smoke='));
+if (!SMOKE && !app.requestSingleInstanceLock()) { app.exit(0); }
+app.on('second-instance', () => { if (win) { if (win.isMinimized()) win.restore(); win.show(); win.focus(); } });
 app.whenReady().then(async () => {
   Menu.setApplicationMenu(null);
-  if (CHECK_UI && !uiIntact()) {
+  // (an update of the screen cut by a stop of the computer: the screen of before is put back)
+  if (CHECK_UI && !uiIntact() && restoreUi(path.join(DATA, 'ui-backup')) && uiIntact()) { /* as before the update */ }
+  else if (CHECK_UI && !uiIntact()) {
     // (the build check «--l7-smoke» has no one to press OK: it only exits)
     if (!process.argv.some(a => a.startsWith('--l7-smoke='))) dialog.showErrorBox('LEVEL7 CAD MTM Admin', 'ملفات البرنامج ليست كما اعتمدها المدير. أعد تحميل البرنامج كاملاً.');
     return app.exit(4);
