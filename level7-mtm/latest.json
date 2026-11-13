@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.17",
- "notes": "A design's part is tied to its number, not its name [skip ci]\r\n\r\nOwner: \"when a part's name changes no action is needed — it is tied to the part's number\". The parts table keeps the\r\nnames of the day it was saved; a LEVEL7 and MTM design's part renamed afterwards was refused («other design version?»)\r\nand its order held. A design's part is now taken by its number alone and the row shows the design's name of today (a\r\nGRAFIS model's parts are compared as before). «القطع الثابتة» said «not in the model» for a part without a name (the\r\nowner's 007-010): only a number the design does not have is marked. Both tests fail on 2.0.16.\r\n\r\nar: بارت التصميم مرتبط برقمه فقط؛ تغيير اسمه لا يوقف الطلبية\r\n\r\n\r\n",
- "approved": "2026-11-13T06:55:01.921Z",
+ "version": "2.0.19",
+ "notes": "Security: «remember me» cannot be made from the published file; what cut an order twice or held the queue [skip ci]\r\n\r\nFrom the security review of the three programs (2026-11):\r\n- «تذكرني»: the remembered sign-in could be written from the published permissions file alone (signing in as any\r\n  user with no password). A password the admin makes with Admin 1.4 is published in a form that signs nobody in, and\r\n  a remembered sign-in holds on its own computer only. A password not changed yet works as before.\r\n- Every user on approved computers when the admin's permissions say so; the sign-in window shows this computer's code.\r\n- An older permissions file put back, or the clock set back after a licence file was removed, is refused.\r\n- The update's installer is downloaded to the program's own folder, not the shared Temp; the build's tools pinned.\r\n\r\nFrom the independent review (each reproduced first, each with a test that fails on 2.0.18):\r\n- orders of the same fabric nested in one marker, with two nestings at once: the order nested with another was given\r\n  back to the queue before their marker was made and was cut a second time, alone — it stays taken now;\r\n- a model that cannot be opened (held by another program) raised an error at every look and every model after it\r\n  waited for ever — it is passed over for a minute, and named in the window after the third time;\r\n- when LEVEL7 Nesting cannot work (nobody signed in on this computer, not found, the cutting folder away) every order\r\n  of the queue was failed and moved to the errors folder — they wait now, the reason is shown, and the nesting goes on\r\n  by itself;\r\n- the pattern check looked at one piece of each NAME: pieces of several parts named alike («قطعة 1») are each checked;\r\n- an error nobody foresaw while an order is made (its work folder cannot be made) left the line read and never made,\r\n  with nothing said — «Needs attention», with the reason;\r\n- two customers with orders of the same number in one folder: the second took the first one's waiting file for an\r\n  older writing of itself and archived it — the second is held with the reason, the first untouched;\r\n- LEVEL7 MTM opened twice on the same data read the orders and nested them twice — one at a time now;\r\n- «Nest again» for an order of LEVEL7 and MTM said «not a readable GRAFIS file» — it is nested again;\r\n- a licence file damaged, or a folder not writable for a moment, stopped the program with a traceback.\r\n\r\nar: إصلاحات الأمان (تذكرني، ربط الأجهزة) وما كان يقصّ طلبية مرتين أو يوقف طابور النستنج\r\n\r\n\r\n",
+ "approved": "2026-11-13T10:30:21.828Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.17-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.17/LEVEL7MTM-2.0.17-Setup.exe",
-  "sha256": "e0fd91ebc70b34b095ff7867b67483a80840579d73410ed756e42daf7b7b042d",
-  "size": 61458692
+  "name": "LEVEL7MTM-2.0.19-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.19/LEVEL7MTM-2.0.19-Setup.exe",
+  "sha256": "62a9ab6102c11f3719dded76876242d261f98ef839b156fa04c6ec1e0e5c2647",
+  "size": 61501591
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.17\",\"sha256\":\"e0fd91ebc70b34b095ff7867b67483a80840579d73410ed756e42daf7b7b042d\",\"size\":61458692,\"approved\":\"2026-11-13T06:55:01.921Z\"}",
-  "sig": "bzfhmyd1SEd5aMwJqJJyyvED607U7py62z9q2fCwVVJSUb3hkN+RRQS6Oo2Y0w+vYAhKBHokQxc2tPHGxd3kBA=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.19\",\"sha256\":\"62a9ab6102c11f3719dded76876242d261f98ef839b156fa04c6ec1e0e5c2647\",\"size\":61501591,\"approved\":\"2026-11-13T10:30:21.828Z\"}",
+  "sig": "extSBjFdzIJyU4DQ33FwdfODGXxnGbVArWZ7W2Y3FhCgFqbL+9wUp/qrY99S2xvTw9XiOfUoBemsFW6O98R2CQ=="
  }
 }
