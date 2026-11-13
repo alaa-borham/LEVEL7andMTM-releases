@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.16",
+ "notes": "Windows' «OpenWith.exe» is not the drawing program (found by GitHub's Windows check) [skip ci]\r\n\r\nFor a file type no program has, Windows answers its own «OpenWith.exe» as the program that opens it; with nothing chosen\r\nand nothing installed LEVEL7 MTM took it for LEVEL7 and MTM. Only «LEVEL7 and MTM.exe» is taken from that answer.\r\nThe test that showed it on Windows (it passed on Linux, where no file types are asked) no longer asks this computer's own\r\nfile types, and a new one gives «OpenWith.exe» as the answer on any system: it fails on the code before.\r\nThe failed build took number 15: this version is 2.0.16.\r\n\r\nar: MTM لا يأخذ برنامج ويندوز «فتح باستخدام» على أنه برنامج الرسم\r\n\r\n\r\n",
+ "approved": "2026-11-13T06:00:05.387Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.16-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.16/LEVEL7MTM-2.0.16-Setup.exe",
+  "sha256": "533737176c5a7de35e5ea2d8b394618cbd52cf65ffb45682eea687c505586ede",
+  "size": 61474297
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.16\",\"sha256\":\"533737176c5a7de35e5ea2d8b394618cbd52cf65ffb45682eea687c505586ede\",\"size\":61474297,\"approved\":\"2026-11-13T06:00:05.387Z\"}",
+  "sig": "36iQtr8WI9z0ouOeDOO5a0VnYCqb+OOQaw0Cxt9V/p+2QWpj56xrIR7u5py5CTRihKouI+5g82vZzUBPGMAGBA=="
+ }
+}
