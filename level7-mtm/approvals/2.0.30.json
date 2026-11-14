@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.30",
+ "notes": "Language test: the rule tested on every system; LANG checked only off Windows [skip ci]\r\n\r\nar: اختبار اللغة: على ويندوز تُقرأ لغة ويندوز نفسها لا متغير LANG، فصار الاختبار يفحص القاعدة مباشرة\r\n\r\nThe Windows build ran the language test with LANG=ar_SA / fr_FR and got \"en\": Windows does not read LANG, it reads\r\nits own language (English on the build machine) — the program was right, the test was not. The rule is now one\r\nfunction, language_of(tag), tested everywhere; the LANG run is skipped on Windows.\r\n\r\n\r\n",
+ "approved": "2026-11-14T19:44:58.800Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.30-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.30/LEVEL7MTM-2.0.30-Setup.exe",
+  "sha256": "28bbdb4acd66ee8216dadf7b6150b0bdc493e0fd2d1bcf67cc255efa150731e9",
+  "size": 61571623
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.30\",\"sha256\":\"28bbdb4acd66ee8216dadf7b6150b0bdc493e0fd2d1bcf67cc255efa150731e9\",\"size\":61571623,\"approved\":\"2026-11-14T19:44:58.800Z\"}",
+  "sig": "AZ7BU39uvs9KA/AXKRn+aTKpjmxLcZouDkz+iwSEJQKAyXk+jYhfLFzH+6uedyqpiVBoiMiqeuS3NhvlcuBaDA=="
+ }
+}
