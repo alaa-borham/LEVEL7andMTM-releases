@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.23",
+ "notes": "Bullmer / IECHO file: every notch is cut at its own place (the owner's choice) [skip ci]\r\n\r\nar: ملف Bullmer / IECHO (‎.iso): كل حزّ يُقطع في مكانه بالضبط وعمودياً كما رُسم (كان يُزاح حتى 2 مم ويميل، كما يكتبه GRAFIS)\r\n\r\nThe owner: «الحزّ في مكانه بالضبط في ملف .iso أيضاً». The Bullmer file copies GRAFIS' own: a vertex closer than 2 mm to\r\nthe last kept one is dropped, and a notch whose point fell on a dropped vertex was cut from the last kept vertex — its\r\nbase up to 2 mm beside its place, the cut slanted. Now a point that carries a notch is never dropped; the contour\r\nitself is cut exactly as before (which of its points are kept is decided without the points put in for the notches).\r\nThe PLT was exact already: the two cutting files of a marker agree now.\r\nOn the owner's design of today (13 pieces, 5 notches) the largest shift was 0.20 mm; on curves with a point every\r\n2–4 mm the review measured up to 1.94 mm.\r\nThe file exactly as GRAFIS writes it stays available: preset «bullmer_as_grafis» (the reference test uses it).\r\ntests/test_notch_exact_iso.py (7): fails on 2.0.22 (two of four notches started 1.1 and 1.9 mm beside their place).\r\n\r\n\r\n",
+ "approved": "2026-11-14T06:35:08.381Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.23-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.23/LEVEL7Nesting-2.0.23-Setup.exe",
+  "sha256": "599a3a5e3dd575f451300502d11ec122373c066afc6643261d8ba5478303b542",
+  "size": 55974256
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.23\",\"sha256\":\"599a3a5e3dd575f451300502d11ec122373c066afc6643261d8ba5478303b542\",\"size\":55974256,\"approved\":\"2026-11-14T06:35:08.381Z\"}",
+  "sig": "5dEcVwUMIGrnfmPmCw3tOl6lLDXT0OImYTgPnp2ZO+LhKj+vJc+M/lnL8zYhtKA289OoEEQJykpYifzCdNSBDw=="
+ }
+}
