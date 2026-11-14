@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.316",
- "notes": "تصحيح مهم لـ 0.9.314 و 0.9.315: عند فتح تصميم قديم كان البارت المفتوح عند آخر حفظ يبقى مشيراً إلى رقم أصله القديم (أخطاء «العنصر … غير موجود في البارت 5»)؛ أُصلح، والتصميم الذي حُفظ بالخطأ يُصلَح عند فتحه ثم يُحفظ مرة. جديد: جروبات البارتات — حدِّد البارتات في قائمة البارتات (Ctrl + نقر) ثم «جروب»: تُعرض متجاورة ككتلة واحدة في عرض كل البارتات، باسم ولون، ويمكن إظهار جروب وحده. تحديث صغير.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.316/app",
+ "version": "0.9.317",
+ "notes": "الرسم يملأ عرض الشاشة كله حين لا توجد أداة مختارة (كان ربع العرض يُترك فارغاً لبطاقة الأداة دائماً). عند اختيار أداة يُفسح الرسم مكان بطاقتها بنفسه — فقط إن كانت ستغطيه — ويعود ليملأ العرض حين تُترك الأداة؛ والعرض الذي كبّرته أو حرّكته بنفسك لا يُمَس. جديد: مفتاح Delete يحذف القياس الذي تحت المؤشر (المتوهّج) أو القياس النشط؛ الخط الذي يقيسه يبقى، و Ctrl+Z يُرجع القياس.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.317/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "9f1edd81f56616c97e180cd93ee6bc8b9385ad6e523f14afa5bd13ab67c91a3d",
-   "size": 196263
+   "sha256": "b224d13b7d6138e06c487256c3eb650b9076fd0dc0316b146a18a92d10bdddca",
+   "size": 198343
   },
   {
    "path": "assets/icon.ico",
@@ -155,9 +155,9 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-DeNN7q3s.js",
-   "sha256": "f86c03954877ad60c5b016b27b9fffdcf691d13e43ad54a02951d82c9329ab1c",
-   "size": 1019724
+   "path": "assets/l7design/assets/index-DfGUEj1M.js",
+   "sha256": "f091a945cb62f5a0018015117712b4b32836762bced1cb3fb089fd99464638a7",
+   "size": 1021042
   },
   {
    "path": "assets/l7design/assets/index-DgbQzOuX.css",
@@ -166,7 +166,7 @@
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "220d45734520ebadc99ca166b7afcbc2b652d00209bf3ad2fb4e1db559eb82ba",
+   "sha256": "1e271bb427ad042a134b6981cdb9c0ff2a39ff8865df59b46924d4ed3f7cea2c",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "64ca4f89e5aa65f6e5065e0047424f7f7868f8a9ea51c8b07848ef20387cdfad",
+   "sha256": "58cea5e95f6670bf0e242ff4965c842090cd9021445db6bd1ea80e176c6e767d",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "03463c0eb56c45bfd7082694f2cdd73aeadf7b9d057b7e6eb68148543f67170a",
-   "size": 80442
+   "sha256": "cb353568eccb27257cf738127828580d29972c3ea6c31310cae095f54e31bb93",
+   "size": 81019
   },
   {
    "path": "src/l7-icons.js",
