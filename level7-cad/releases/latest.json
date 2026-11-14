@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.317",
- "notes": "الرسم يملأ عرض الشاشة كله حين لا توجد أداة مختارة (كان ربع العرض يُترك فارغاً لبطاقة الأداة دائماً). عند اختيار أداة يُفسح الرسم مكان بطاقتها بنفسه — فقط إن كانت ستغطيه — ويعود ليملأ العرض حين تُترك الأداة؛ والعرض الذي كبّرته أو حرّكته بنفسك لا يُمَس. جديد: مفتاح Delete يحذف القياس الذي تحت المؤشر (المتوهّج) أو القياس النشط؛ الخط الذي يقيسه يبقى، و Ctrl+Z يُرجع القياس.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.317/app",
+ "version": "0.9.318",
+ "notes": "جديد: نوتش على مسافة محددة — انقر حافة القطعة بأداة النوتش قرب الطرف الذي تقيس منه، ثم اكتب المسافة مباشرة (رقم أو X/Z) واضغط Enter؛ الطرف المقيس منه يُعلَّم على الرسم. وتجميع الجروبات: جروب بارتاته متفاوتة الارتفاع (فيه بارت طويل) كان يبقى صفاً واحداً طويلاً؛ صار يُرتَّب في أعمدة متجاورة مثل باقي الجروبات. ويحمل هذا الإصدار كل ما في 0.9.317: الرسم يملأ عرض الشاشة حين لا توجد أداة مختارة، ومفتاح Delete يحذف القياس الذي تحت المؤشر.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.318/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "b224d13b7d6138e06c487256c3eb650b9076fd0dc0316b146a18a92d10bdddca",
-   "size": 198343
+   "sha256": "ba98e1906205e0647b912a859459b29e4c26bdb0bfa5a35433efced6927c3ed5",
+   "size": 200546
   },
   {
    "path": "assets/icon.ico",
@@ -155,18 +155,18 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-DfGUEj1M.js",
-   "sha256": "f091a945cb62f5a0018015117712b4b32836762bced1cb3fb089fd99464638a7",
-   "size": 1021042
+   "path": "assets/l7design/assets/index-BtQOakUj.css",
+   "sha256": "2fdccce1ff376469ab010f9b170e69fab30b02b565e8fd7b1c04c494cbaa03d4",
+   "size": 71670
   },
   {
-   "path": "assets/l7design/assets/index-DgbQzOuX.css",
-   "sha256": "50539e3a5f48917c1adfce3f87f1a25382753014665128e255738aee72ff8474",
-   "size": 71487
+   "path": "assets/l7design/assets/index-DVEAwqq4.js",
+   "sha256": "919f58759da84d655415d64e190df31d45f5d2b80c78b19b01750f9febd43c75",
+   "size": 1025777
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "1e271bb427ad042a134b6981cdb9c0ff2a39ff8865df59b46924d4ed3f7cea2c",
+   "sha256": "c6ead7051b61e55eea5d9d41baa8a3e30a104c498bb31319c423e268518ef80c",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "58cea5e95f6670bf0e242ff4965c842090cd9021445db6bd1ea80e176c6e767d",
+   "sha256": "ce63ddef7b0e5747cf12a52b0e94c2d9845b43e837ef6a72181a0230aaf82d71",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "cb353568eccb27257cf738127828580d29972c3ea6c31310cae095f54e31bb93",
-   "size": 81019
+   "sha256": "1a436d2ebb5b311810eb93f822481e7698d6d1a5c2e3dab695991eb48a3edb64",
+   "size": 80997
   },
   {
    "path": "src/l7-icons.js",
