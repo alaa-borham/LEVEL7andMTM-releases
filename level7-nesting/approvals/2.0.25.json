@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.25",
+ "notes": "A piece whose cut line crosses itself: a clear message naming it [skip ci]\r\n\r\nar: قطعة يتقاطع خط قصّها مع نفسه: تُرفض الطلبية برسالة واضحة باسم القطعة (كانت تتوقف برسالة تقنية «MultiPolygon»)\r\n\r\nThe owner's choice from the list of what was left. A piece whose cut line crosses itself (a figure of eight) went into\r\nthe nesting as several pieces of cloth and the order stopped with «'MultiPolygon' object has no attribute 'exterior'».\r\nThe reader now refuses it, in Arabic and English, naming the piece (and the size, with a rules file): «correct the\r\npiece in LEVEL7 and MTM». A line that only touches itself, or crosses itself by a sliver under 1 mm², is read as\r\nbefore. grow_rect takes the largest outline of a shape in several parts instead of failing.\r\ntests/test_aama_guard.py (+3): two fail on 2.0.24 (the command said «MultiPolygon»). Full suite: 288 passed, 3 skipped.\r\n\r\n\r\n",
+ "approved": "2026-11-14T15:23:09.407Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.25-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.25/LEVEL7Nesting-2.0.25-Setup.exe",
+  "sha256": "60d19e620daeec27975e7c0ecfdf8bbbd7200e8c8ab78656cc8436cc8173bf97",
+  "size": 55968259
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.25\",\"sha256\":\"60d19e620daeec27975e7c0ecfdf8bbbd7200e8c8ab78656cc8436cc8173bf97\",\"size\":55968259,\"approved\":\"2026-11-14T15:23:09.407Z\"}",
+  "sig": "DtaFu2iGCjzVa6GsUlZcU4eSQYJCZOMGygWNRZHL3kR3yJ+gcGDFSUVjVhl3hYmZCsJPYtP5OETAfkyj5w5XAg=="
+ }
+}
