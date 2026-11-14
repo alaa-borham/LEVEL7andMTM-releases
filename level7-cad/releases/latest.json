@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.318",
- "notes": "جديد: نوتش على مسافة محددة — انقر حافة القطعة بأداة النوتش قرب الطرف الذي تقيس منه، ثم اكتب المسافة مباشرة (رقم أو X/Z) واضغط Enter؛ الطرف المقيس منه يُعلَّم على الرسم. وتجميع الجروبات: جروب بارتاته متفاوتة الارتفاع (فيه بارت طويل) كان يبقى صفاً واحداً طويلاً؛ صار يُرتَّب في أعمدة متجاورة مثل باقي الجروبات. ويحمل هذا الإصدار كل ما في 0.9.317: الرسم يملأ عرض الشاشة حين لا توجد أداة مختارة، ومفتاح Delete يحذف القياس الذي تحت المؤشر.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.318/app",
+ "version": "0.9.319",
+ "notes": "جديد: أدوات الأبعاد تقيس على الخط الخارجي للقطعة (خط القص) كما تقيس على الخطوط الداخلية — البُعد المائل والأفقي والرأسي والزاوية تلتقط زوايا خط القص والمكان المقابل لأي نقطة على حافة القطعة (العرض من القص إلى القص)، وبُعد الطول والمجموع Σ يأخذان طول خط القص عند النقر عليه. البُعد يتبع مسافة الخياطة إن تغيّرت. لم يدخل بعد: نقطة في أي مكان على الخط الخارجي، وأداتا «قياس ← Z».",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.319/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "ba98e1906205e0647b912a859459b29e4c26bdb0bfa5a35433efced6927c3ed5",
-   "size": 200546
+   "sha256": "552f79f782441d834fadd1cc76e1e4e824bd8ec570e2f6848aec66bf41ae30dd",
+   "size": 202341
   },
   {
    "path": "assets/icon.ico",
@@ -160,13 +160,13 @@
    "size": 71670
   },
   {
-   "path": "assets/l7design/assets/index-DVEAwqq4.js",
-   "sha256": "919f58759da84d655415d64e190df31d45f5d2b80c78b19b01750f9febd43c75",
-   "size": 1025777
+   "path": "assets/l7design/assets/index-D7mujadK.js",
+   "sha256": "5da4bebefd085d11c86c700173ea85b4d48df4e89186a0a7f9bae5ac93d7c3f0",
+   "size": 1033767
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "c6ead7051b61e55eea5d9d41baa8a3e30a104c498bb31319c423e268518ef80c",
+   "sha256": "10dc4e7e3a02c55b62f3f55c02b876cd82d1705835b5cf7112d31d1513f9b190",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "ce63ddef7b0e5747cf12a52b0e94c2d9845b43e837ef6a72181a0230aaf82d71",
+   "sha256": "5501b1e06f83e2f06c491a76b1af30f80983b6b3e487d11b9f0df408815fdfe2",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "1a436d2ebb5b311810eb93f822481e7698d6d1a5c2e3dab695991eb48a3edb64",
-   "size": 80997
+   "sha256": "08bc5c6dd4abfd6bfb08444530ec3ec5e67dd8a1bebb75e750be27046c429ff0",
+   "size": 81205
   },
   {
    "path": "src/l7-icons.js",
