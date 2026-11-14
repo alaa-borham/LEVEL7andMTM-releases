@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.26",
+ "notes": "The pieces of a LEVEL7 and MTM design are compared with the design itself [skip ci]\r\n\r\nar: مقارنة قطع الطلبية بالتصميم نفسه (تصاميم LEVEL7 and MTM): قطعة أطول أو أعرض من ضعف ما في التصميم (أو أقل من نصفه) أو فيها تجويف عميق ليس في التصميم — لا يُكتب لها ملف قص، ويُذكر رقم البارت. مفتاحها «مقارنة القطع بالتصميم» في نافذة التشغيل\r\n\r\nThe owner's choice (2026-11-14): «the comparison on, when it stops no sound order». An order of a LEVEL7 and MTM design\r\nwas only looked at for crossings and sharp tips: its pieces could not be compared with a base pattern (LEVEL7 Nesting\r\ncannot open a design, and the drawing program's pieces share a name — «قطعة 1» in every part). Now:\r\n- the design is made once per content in its own measurements (an order without measurements, by the drawing\r\n  program), read as an order's pieces are, and kept; a piece is known by its part number AND its name;\r\n- a piece more than twice as long or as wide as in the design (or less than half), or whose solidity fell by more\r\n  than 0.20, stops the order before the nesting, and again at the marker: «… far from the base pattern (part 008:\r\n  14399 mm long, in the design 1681 mm)» — the size measured however the piece is turned;\r\n- the limits of the GRAFIS patterns (0.06 / 0.75) are NOT used for a design: measured on the owner's design with 400\r\n  orders of measurements that go together and 400 with one measurement typed wrong, they stopped 102 of the 400 sound\r\n  orders; the limits here stopped none, and 143 of the 400 wrong ones (86 without the comparison);\r\n- while the drawing program cannot work nothing is compared (said: «not compared with a base pattern») and it is not\r\n  asked again at every model; a marker without part numbers is not compared;\r\n- the owner's switch «Compare the pieces with the design» (on): off for a garment far from the design's own size.\r\nGRAFIS patterns are compared exactly as before.\r\ntests/test_design_compare.py (10, all fail on 2.0.25; two run the real drawing program and the real LEVEL7 Nesting).\r\nThree older tests of the whole line draw their design in a real length now (their order was three times the\r\ndesign's 500 mm: stopped, as it must be).\r\n\r\n\r\n",
+ "approved": "2026-11-14T08:52:21.741Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.26-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.26/LEVEL7MTM-2.0.26-Setup.exe",
+  "sha256": "2087657d537cbd501c05f60ee3b3b02c2009724850730415804765cc507792f6",
+  "size": 61566405
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.26\",\"sha256\":\"2087657d537cbd501c05f60ee3b3b02c2009724850730415804765cc507792f6\",\"size\":61566405,\"approved\":\"2026-11-14T08:52:21.741Z\"}",
+  "sig": "el7jpf2YFZAdI7pALCk4xLNpjwZ8XIDULBTVwYndILrGkME+UrHeRN3IVaIbs7frtYgUIf/l72yt+zoIy2czBQ=="
+ }
+}
