@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.30",
- "notes": "Language test: the rule tested on every system; LANG checked only off Windows [skip ci]\r\n\r\nar: اختبار اللغة: على ويندوز تُقرأ لغة ويندوز نفسها لا متغير LANG، فصار الاختبار يفحص القاعدة مباشرة\r\n\r\nThe Windows build ran the language test with LANG=ar_SA / fr_FR and got \"en\": Windows does not read LANG, it reads\r\nits own language (English on the build machine) — the program was right, the test was not. The rule is now one\r\nfunction, language_of(tag), tested everywhere; the LANG run is skipped on Windows.\r\n\r\n\r\n",
- "approved": "2026-11-14T19:44:58.800Z",
+ "version": "2.0.31",
+ "notes": "The size table of an .ALA design is saved [skip ci]\r\n\r\nar: حفظ جدول المقاسات لموديل تصميمه ‎.ALA كان يقرأ التصميم كملف GRAFIS («not a GRAFIS file: signature\r\n'GRAFIS-Modelldatei' missing at offset 8»)؛ صار يُقرأ كتصميم LEVEL7 and MTM\r\n\r\nThe owner, with a picture of «ضبط جدول المقاسات» on the model «NEW 2028-2.ALA»: saving read the design with the\r\nGRAFIS reader. xtable._apply_part and carry_codes, and the order's X sheet (grafis_handover.x_sheet), read the X table\r\nthrough _xvalues now (a LEVEL7 and MTM design: its one table, part 000), as the page already did to show it.\r\ntests/test_xvalues_on_ala.py (2; the first fails before with the owner's message).\r\n\r\n\r\n",
+ "approved": "2026-11-14T22:37:35.602Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.30-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.30/LEVEL7MTM-2.0.30-Setup.exe",
-  "sha256": "28bbdb4acd66ee8216dadf7b6150b0bdc493e0fd2d1bcf67cc255efa150731e9",
-  "size": 61571623
+  "name": "LEVEL7MTM-2.0.31-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.31/LEVEL7MTM-2.0.31-Setup.exe",
+  "sha256": "4499be45791e80d10d8fe5caec6f8c0a18fd8e1289f94f0a784e3a7bc225d834",
+  "size": 61576492
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.30\",\"sha256\":\"28bbdb4acd66ee8216dadf7b6150b0bdc493e0fd2d1bcf67cc255efa150731e9\",\"size\":61571623,\"approved\":\"2026-11-14T19:44:58.800Z\"}",
-  "sig": "AZ7BU39uvs9KA/AXKRn+aTKpjmxLcZouDkz+iwSEJQKAyXk+jYhfLFzH+6uedyqpiVBoiMiqeuS3NhvlcuBaDA=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.31\",\"sha256\":\"4499be45791e80d10d8fe5caec6f8c0a18fd8e1289f94f0a784e3a7bc225d834\",\"size\":61576492,\"approved\":\"2026-11-14T22:37:35.602Z\"}",
+  "sig": "J8hXA3rmphBRspsn6ZrbPwZX9a+xz5M2cF0lt3TMhd9Vf1Fh9wLNlD+EdamL4zRZJl5KhS7eMncjLC9zPCPyAA=="
  }
 }
