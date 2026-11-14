@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.313",
- "notes": "الجولة الثانية من المراجعة: التراجع بعد «متابعة بدون حفظ» يعيد التصميم كاملاً؛ التصميم بصور خلفية كبيرة يُحفظ ويُفتح؛ خطوة غير معروفة تُبلَّغ خطأً؛ المثبِّت لا يُشغَّل إلا بتوقيع المدير؛ إصلاحات في التحديث والترخيص (قفل «الساعة رجعت» يُرفع بنشر الصلاحيات من جديد)",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.313/app",
+ "version": "0.9.314",
+ "notes": "البارتات مرقّمة بالتسلسل دائماً (001، 002، 003 …): تصميم يبدأ من 5 أو فيه فجوة يُعاد ترقيمه عند الفتح، ولا يتغيّر أي ارتباط بين البارتات. «تراجع» في بارت يعيد رسم ذلك البارت وحده حتى بعد تغيير القائمة. لكل بارت رقم دائم يتبعه به جدول القطع في LEVEL7 MTM 2.0.27 — اعتمد MTM 2.0.27 وحدِّثه أولاً إن كان عندك جدول قطع.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.314/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "f927b24bdf1e5dbff7493387d8f12c2ed5500acbc33bfb73d82a8b6c9b0be3f6",
-   "size": 189472
+   "sha256": "030430adf20c03573f15ac89f1e068b947c1712138bfe1376c98ae7572540320",
+   "size": 192151
   },
   {
    "path": "assets/icon.ico",
@@ -160,19 +160,19 @@
    "size": 71097
   },
   {
-   "path": "assets/l7design/assets/index-hoa8enlU.js",
-   "sha256": "06ebeac6fcef468b84efb88631937d0d7aa00b05181fb5b05ca6ff581b8f0c23",
-   "size": 988570
+   "path": "assets/l7design/assets/index-tX7mP_cy.js",
+   "sha256": "0359e9a910d5a7b24a6091e5f5b31f031b6728a35af076b4faff4b81bd2ad2ee",
+   "size": 1000792
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "e831181fd8130301dcfd9e974bddb1c1b35886d2dfc408ea63385d0955691eed",
+   "sha256": "f21f7a1b15943b3831d8b46203ea99fe21b8f48047cc9a8c17b985b9c8d8b413",
    "size": 3612
   },
   {
    "path": "desktop/cli/level7.cjs",
-   "sha256": "aeb8d682943d10d4a443e4d83d498c179a3cf173a550cebc5840de6e623c0292",
-   "size": 142149
+   "sha256": "ab01761d988a128568495b6ff8d405aca7203650293ab16d6c7ff0793887e765",
+   "size": 144496
   },
   {
    "path": "desktop/license.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "b2e2dbae9ef7cf666dc38975768ec687ce8537cce5b87fa54bcbd94957c1394a",
+   "sha256": "98ef455bdc2222130c8879781604b88d18ac91bae86273805d54e2b32ec95677",
    "size": 301
   },
   {
