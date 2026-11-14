@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.25",
+ "notes": "A marker and cutting files for each fabric of an order [skip ci]\r\n\r\nar: ماركر وملفات قص لكل قماش في الطلبية: قماش الثوب كما هو، وكل قماش آخر (بطانة، حشو) في ماركر خاص بعرضه — يُحدَّد العرض في «العملاء ← التعشيق: أقمشة أخرى»\r\n\r\nThe owner's choice: «ماركر لكل قماش». An order whose pieces are of several fabrics (the garment's fabric, a lining, an\r\ninterlining) had every piece nested into one marker of the order's fabric. Now:\r\n- the garment's own fabric (GRAFIS' «O», the drawing program's «قماش الوجه» — else the one with the most cloth) is\r\n  nested as before, at the order's width;\r\n- every other fabric gets its own marker and cutting files («<order> - <fabric>.plt / .iso»), at the width set for it:\r\n  Customers → Nesting → «Other fabrics (material = width in cm)», e.g. F=90, E=112 (a product takes its customer's);\r\n- a fabric with no width set holds the order with the reason — never guessed, never mixed; an older LEVEL7 Nesting\r\n  (before 2.0.24) is said to need its update;\r\n- when one fabric's marker cannot be made, the cutting files of the fabrics made before it are not left in the folder.\r\nAn order of one fabric is nested exactly as before. Needs LEVEL7 Nesting 2.0.24.\r\ntests/test_review_2.py (+7, six fail on 2.0.24; one runs the real drawing program and the real LEVEL7 Nesting).\r\n\r\n\r\n",
+ "approved": "2026-11-14T07:29:21.160Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.25-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.25/LEVEL7MTM-2.0.25-Setup.exe",
+  "sha256": "47f92f09af99ebeb3174612549f29671905dcacdbde527f04f0387ff8a967e0e",
+  "size": 61565052
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.25\",\"sha256\":\"47f92f09af99ebeb3174612549f29671905dcacdbde527f04f0387ff8a967e0e\",\"size\":61565052,\"approved\":\"2026-11-14T07:29:21.160Z\"}",
+  "sig": "vdwUFQI09YP+P8WB7ShoPcsYM1ChEWxUvEmMM6ieDSMYg34SEP2RUtLTkeXWv9Kvzz29K/Hizyj5YBVCL18WCg=="
+ }
+}
