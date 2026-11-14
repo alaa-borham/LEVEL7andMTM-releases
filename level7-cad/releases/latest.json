@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.322",
- "notes": "جديد: لغة واحدة على الشاشة — إذا كانت لغة ويندوز عربية تظهر الأسماء والوصف بالعربية فقط، وإذا كانت إنجليزية فبالإنجليزية فقط (القوائم، الشريط، الأدوات وبطاقاتها، نافذة البارتات، نوافذ الرسم). ومن قائمة View ← اللغة يمكن اختيار: تلقائية، العربية، الإنجليزية، أو اللغتان معاً. المرحلة الأولى: الرسائل التي تظهر أثناء العمل ما زالت بالعربية في الوضع الإنجليزي.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.322/app",
+ "version": "0.9.323",
+ "notes": "أرقام الأبعاد وأسماء الجروبات والأطوال تصغر الآن مع تصغير الرسم (كانت تبقى كبيرة فتغطي البارتات)، وتعود لحجمها عند التكبير. والمنحنى المرسوم لا يبقى نشطاً بنقطتين حمراوين عند طرفيه، ولا تُرسم نقاط عند أطراف الخطوط والمنحنيات ونقاطها؛ مقابض المنحنى تظهر بدبل كليك عليه.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.323/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "b1ebe0ea12ba1ac2ec66920a14d8549f5830d0b5368fb7d469129975b8b28e3c",
-   "size": 206354
+   "sha256": "26572d5f7084c084df8e6618cc1c4641e5710e7bab20bc994e112c782b2a795f",
+   "size": 207761
   },
   {
    "path": "assets/icon.ico",
@@ -160,13 +160,13 @@
    "size": 71670
   },
   {
-   "path": "assets/l7design/assets/index-b8Sdry55.js",
-   "sha256": "da6a8b63cda0ca5cb06c6464338007df5f87d3034b08116e1904f88b9bab95b7",
-   "size": 1038766
+   "path": "assets/l7design/assets/index-CpZYW9Mu.js",
+   "sha256": "e1d39fef0486266da7e36880a8f7ee7c5867341c5b21265d39785455ccf4265a",
+   "size": 1039959
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "b08916b9110b69ca6161e82b2787aa6daeafbf2222b83f8be5ecd4d9c237b399",
+   "sha256": "f8630110d8063884088ad84437a94d289b0a3c5490a696d027247b07210efc5d",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "76c706eb945054a7dd90afe7eec031ffc8abef31b17b40753d4a22cad9925217",
+   "sha256": "66370a62534fadf2636b6058b7021a5fc73c40b62ee8b20c1ad7128849d1255f",
    "size": 301
   },
   {
