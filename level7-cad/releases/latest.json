@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.314",
- "notes": "البارتات مرقّمة بالتسلسل دائماً (001، 002، 003 …): تصميم يبدأ من 5 أو فيه فجوة يُعاد ترقيمه عند الفتح، ولا يتغيّر أي ارتباط بين البارتات. «تراجع» في بارت يعيد رسم ذلك البارت وحده حتى بعد تغيير القائمة. لكل بارت رقم دائم يتبعه به جدول القطع في LEVEL7 MTM 2.0.27 — اعتمد MTM 2.0.27 وحدِّثه أولاً إن كان عندك جدول قطع.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.314/app",
+ "version": "0.9.315",
+ "notes": "نسخة البارت («دوبلكيت»، ومع البنات) تحمل سجل رسمه كاملاً: Ctrl+Z يرجع فيها خطوة خطوة كما في الأصل. والبارت تحت المؤشر (صورته في الشريط الجانبي أو في الرسم) يظهر رقمه واسمه في الشريط السفلي بعد اسم الملف، بفاصل ملوّن واضح. تحديث صغير فوق 0.9.314.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.315/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "030430adf20c03573f15ac89f1e068b947c1712138bfe1376c98ae7572540320",
-   "size": 192151
+   "sha256": "aa30221222f673456f29206628394597836002be1fa4be7809a10197d1d1e42f",
+   "size": 193590
   },
   {
    "path": "assets/icon.ico",
@@ -155,18 +155,18 @@
    "size": 4102
   },
   {
+   "path": "assets/l7design/assets/index-BUmsqty8.js",
+   "sha256": "8044aeb8212b2795a48fd157bc77cf1ebf0d447637e0fc7e01a439134e7a2e07",
+   "size": 1005883
+  },
+  {
    "path": "assets/l7design/assets/index-PYmrzbVA.css",
    "sha256": "b366f09c6bf97445207d9d1997203f79015a0fc74203265f33f38c2ebc8a694e",
    "size": 71097
   },
   {
-   "path": "assets/l7design/assets/index-tX7mP_cy.js",
-   "sha256": "0359e9a910d5a7b24a6091e5f5b31f031b6728a35af076b4faff4b81bd2ad2ee",
-   "size": 1000792
-  },
-  {
    "path": "assets/l7design/index.html",
-   "sha256": "f21f7a1b15943b3831d8b46203ea99fe21b8f48047cc9a8c17b985b9c8d8b413",
+   "sha256": "12b9f64160f25d3f984a07db64223e65a5493bb97d8f788c70fe7da38bbe0805",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "98ef455bdc2222130c8879781604b88d18ac91bae86273805d54e2b32ec95677",
+   "sha256": "060749048b0c9d443b34d5704bae2261bd0e7565b9cd9ea26b66f4c04c4fca4f",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "d2e4cd8b404007a30e4e14d7b76b2908e04824f52c1e682935037915b4f30e9d",
-   "size": 79133
+   "sha256": "45ae31991560620e32fdf6fd7999aa761e7ba865e81bebdcb181c5fd99a09bd9",
+   "size": 80384
   },
   {
    "path": "src/l7-icons.js",
@@ -1656,8 +1656,8 @@
   },
   {
    "path": "src/ui-design-0118.css",
-   "sha256": "fb1f6f29d17ef5d0717aa71c0f8eb7ecba98e2f48c6a6042c6b16d6d2a4add15",
-   "size": 22349
+   "sha256": "849254f14964142f498d686fdeefbd83c0c3849c27506d2c41219efa39d3c5a6",
+   "size": 23171
   },
   {
    "path": "src/ui-guide-0113.js",
