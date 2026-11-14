@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.325",
- "notes": "LEVEL7 and MTM 0.9.325: in English the drawing's windows read from left to right (Arabic and both as before)",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.325/app",
+ "version": "0.9.326",
+ "notes": "LEVEL7 and MTM 0.9.326: in English mode the texts of the program behind the window (update status, file errors, login) are in English too",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.326/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "6a06a297bdf057d46b323c3d3580976172dd89f4b52da4a56479036755dd9705",
-   "size": 209568
+   "sha256": "eee3f63b37824a0ad59bdf3f5959c93a4baa0087ef934c39974e4fee3daf7355",
+   "size": 210551
   },
   {
    "path": "assets/icon.ico",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "384a9c27c6e9f1a688dd9b558963845a3d421e5c2bd78ac89b9000cf3ef955cf",
+   "sha256": "ffaa51004100104edfb76e73c41144a24bb208f36ebc673fb07ec78e71076d7c",
    "size": 301
   },
   {
@@ -511,13 +511,13 @@
   },
   {
    "path": "src/l7-lang-dict.js",
-   "sha256": "f9e0cb2c23ba3778e984ea82613e5905314430db917045d209485b261d6bcd07",
-   "size": 208969
+   "sha256": "113e5f651e6dea31b44a99cad846122cf5b14f77f9696d05a934a767779e630f",
+   "size": 224539
   },
   {
    "path": "src/l7-lang.js",
-   "sha256": "97a518eba64c7e3d5c88e3578c8a55a2b5a6deb8ce8f0d630ef97d05b24d1b74",
-   "size": 15795
+   "sha256": "6664bffa13b2307e6973bcc368a131115df24833c1e60d130891f8b1e1869543",
+   "size": 16211
   },
   {
    "path": "src/l7-license.css",
