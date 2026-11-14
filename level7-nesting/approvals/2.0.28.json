@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.28",
+ "notes": "Language test: the rule tested on every system; LANG checked only off Windows [skip ci]\r\n\r\nar: اختبار اللغة: على ويندوز تُقرأ لغة ويندوز نفسها لا متغير LANG، فصار الاختبار يفحص القاعدة مباشرة\r\n\r\nThe Windows build ran the language test with LANG=ar_SA / fr_FR and got \"en\": Windows does not read LANG, it reads\r\nits own language (English on the build machine) — the program was right, the test was not. The rule is now one\r\nfunction, language_of(tag), tested everywhere; the LANG run is skipped on Windows.\r\n\r\n\r\n",
+ "approved": "2026-11-14T19:44:50.843Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.28-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.28/LEVEL7Nesting-2.0.28-Setup.exe",
+  "sha256": "b8145bee3580c5508b3a4d190140aaddaf12c00ad533084d4bdd483369229aad",
+  "size": 55975092
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.28\",\"sha256\":\"b8145bee3580c5508b3a4d190140aaddaf12c00ad533084d4bdd483369229aad\",\"size\":55975092,\"approved\":\"2026-11-14T19:44:50.843Z\"}",
+  "sig": "hkzrvC5b6FtH8O5PTXZawCQ61ArI6HXz+RQS7XHV9MoYd7UR5B5czRREL2Pspba82QZVcfaRTKQ67G3uqClKDg=="
+ }
+}
