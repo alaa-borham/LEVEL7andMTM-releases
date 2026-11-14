@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.319",
- "notes": "جديد: أدوات الأبعاد تقيس على الخط الخارجي للقطعة (خط القص) كما تقيس على الخطوط الداخلية — البُعد المائل والأفقي والرأسي والزاوية تلتقط زوايا خط القص والمكان المقابل لأي نقطة على حافة القطعة (العرض من القص إلى القص)، وبُعد الطول والمجموع Σ يأخذان طول خط القص عند النقر عليه. البُعد يتبع مسافة الخياطة إن تغيّرت. لم يدخل بعد: نقطة في أي مكان على الخط الخارجي، وأداتا «قياس ← Z».",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.319/app",
+ "version": "0.9.320",
+ "notes": "جديد: استواء بارتات الجروب من أسفل — في قائمة البارتات (Ctrl+T) زر ثالث بجانب «جروب» و«فك»: حدِّد بارتاً من الجروب واضغطه، فتقف بارتات ذلك الجروب مستوية من أسفل على خط واحد في «إظهار كل البارتات»؛ ضغطة ثانية تعيدها مستوية من أعلى. الاختيار للجروب وحده ومحفوظ في ملف التصميم، ولا يغيّر شيئاً في القص.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.320/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "552f79f782441d834fadd1cc76e1e4e824bd8ec570e2f6848aec66bf41ae30dd",
-   "size": 202341
+   "sha256": "d094bd1e74276897b57adb5b0651b360bdf423a0b05a822cff0d7c40b633f53f",
+   "size": 203650
   },
   {
    "path": "assets/icon.ico",
@@ -155,18 +155,18 @@
    "size": 4102
   },
   {
+   "path": "assets/l7design/assets/index-BQEUWn-D.js",
+   "sha256": "479d1d267d7fb33861a7c346e707e7fefb55c1634bddc5951f8fb871fdf026cc",
+   "size": 1035402
+  },
+  {
    "path": "assets/l7design/assets/index-BtQOakUj.css",
    "sha256": "2fdccce1ff376469ab010f9b170e69fab30b02b565e8fd7b1c04c494cbaa03d4",
    "size": 71670
   },
   {
-   "path": "assets/l7design/assets/index-D7mujadK.js",
-   "sha256": "5da4bebefd085d11c86c700173ea85b4d48df4e89186a0a7f9bae5ac93d7c3f0",
-   "size": 1033767
-  },
-  {
    "path": "assets/l7design/index.html",
-   "sha256": "10dc4e7e3a02c55b62f3f55c02b876cd82d1705835b5cf7112d31d1513f9b190",
+   "sha256": "ad86c998708490125e21426d1a2f618bfcdd0de127214723451196427b0d9750",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "5501b1e06f83e2f06c491a76b1af30f80983b6b3e487d11b9f0df408815fdfe2",
+   "sha256": "4c2791debf67c32d666d725785a9b2b9b1572eb8ee1ba63c05f9ff511b2f3254",
    "size": 301
   },
   {
