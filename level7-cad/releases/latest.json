@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.321",
- "notes": "جديد: أدوات الأبعاد تلتقط أي مكان على الخط الخارجي للقطعة (خط القص)، لا الزوايا فقط؛ والمكان يتحرك مع الباترون. والبرنامج أسرع مع التصاميم الكبيرة: كل تغيير في تصميم من 27 بارتاً صار نحو نصف الزمن (صور البارتات تُحسب فقط لما يتغيّر، والحفظ التلقائي يُكتب بعد توقف العمل).",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.321/app",
+ "version": "0.9.322",
+ "notes": "جديد: لغة واحدة على الشاشة — إذا كانت لغة ويندوز عربية تظهر الأسماء والوصف بالعربية فقط، وإذا كانت إنجليزية فبالإنجليزية فقط (القوائم، الشريط، الأدوات وبطاقاتها، نافذة البارتات، نوافذ الرسم). ومن قائمة View ← اللغة يمكن اختيار: تلقائية، العربية، الإنجليزية، أو اللغتان معاً. المرحلة الأولى: الرسائل التي تظهر أثناء العمل ما زالت بالعربية في الوضع الإنجليزي.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.322/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "08a28b68e368acc6705b8845d12dc54f051ead1dd4ba7adeb5ab63628d4c9284",
-   "size": 205037
+   "sha256": "b1ebe0ea12ba1ac2ec66920a14d8549f5830d0b5368fb7d469129975b8b28e3c",
+   "size": 206354
   },
   {
    "path": "assets/icon.ico",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "816f127fe4c3b75f4cc4100c16a8bd254f8c18871ca02aa693a3e1271e037de8",
+   "sha256": "76c706eb945054a7dd90afe7eec031ffc8abef31b17b40753d4a22cad9925217",
    "size": 301
   },
   {
@@ -501,13 +501,23 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "08bc5c6dd4abfd6bfb08444530ec3ec5e67dd8a1bebb75e750be27046c429ff0",
-   "size": 81205
+   "sha256": "a459f2d79bf54b605fea4d684411ccd212795e24007522e56c83208c6437f2ba",
+   "size": 81529
   },
   {
    "path": "src/l7-icons.js",
    "sha256": "3a1f5b47243a07d074c7aebc3ae5de6168183993f1bab771e7b7c5873db96d4f",
    "size": 12930
+  },
+  {
+   "path": "src/l7-lang-dict.js",
+   "sha256": "81faeed5b6199c33ca42a839e484ffce9eaac4f9768e2ad42937a39fd7be3ed1",
+   "size": 115883
+  },
+  {
+   "path": "src/l7-lang.js",
+   "sha256": "5b015501ce5bbacc0507129554e91d73825cb739d62f7ba5c362aac1ff9680d7",
+   "size": 11700
   },
   {
    "path": "src/l7-license.css",
@@ -1641,8 +1651,8 @@
   },
   {
    "path": "src/ui-0113-start.js",
-   "sha256": "a20310b2aed2539fb16f72a9cf97e9f1ef896e8053ce47ed32bdbfa22363a054",
-   "size": 3730
+   "sha256": "bcccfa08eb32f024a5548806becccaccbfd8cbca7b7171a89d645197e112ce7b",
+   "size": 6463
   },
   {
    "path": "src/ui-0113.css",
@@ -1661,8 +1671,8 @@
   },
   {
    "path": "src/ui-guide-0113.js",
-   "sha256": "aa05b5319cb3cbeba22b458799f4644aac59a1bd155d76863fa978a0a784c764",
-   "size": 12806
+   "sha256": "27483a52a1899abd47b333f5efafe1c904e262c35e57f703054b99ce7bdb3c1d",
+   "size": 12983
   },
   {
    "path": "src/unchanged-parameter-commit.mjs",
