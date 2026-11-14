@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.323",
- "notes": "أرقام الأبعاد وأسماء الجروبات والأطوال تصغر الآن مع تصغير الرسم (كانت تبقى كبيرة فتغطي البارتات)، وتعود لحجمها عند التكبير. والمنحنى المرسوم لا يبقى نشطاً بنقطتين حمراوين عند طرفيه، ولا تُرسم نقاط عند أطراف الخطوط والمنحنيات ونقاطها؛ مقابض المنحنى تظهر بدبل كليك عليه.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.323/app",
+ "version": "0.9.324",
+ "notes": "LEVEL7 and MTM 0.9.324: the messages shown while working (notes, warnings, errors, questions) in the window's language — in English mode they are in English too",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.324/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "26572d5f7084c084df8e6618cc1c4641e5710e7bab20bc994e112c782b2a795f",
-   "size": 207761
+   "sha256": "a6b0625a7a4a09d583041bfedf70407df8ff8b2029ab8c958b84701964e15dfb",
+   "size": 208673
   },
   {
    "path": "assets/icon.ico",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "66370a62534fadf2636b6058b7021a5fc73c40b62ee8b20c1ad7128849d1255f",
+   "sha256": "acb9e1c5287ff07b62f0fc1b6206e2c78d8347e3d7289d1c401ae82b2cf02cb7",
    "size": 301
   },
   {
@@ -511,13 +511,13 @@
   },
   {
    "path": "src/l7-lang-dict.js",
-   "sha256": "81faeed5b6199c33ca42a839e484ffce9eaac4f9768e2ad42937a39fd7be3ed1",
-   "size": 115883
+   "sha256": "f9e0cb2c23ba3778e984ea82613e5905314430db917045d209485b261d6bcd07",
+   "size": 208969
   },
   {
    "path": "src/l7-lang.js",
-   "sha256": "5b015501ce5bbacc0507129554e91d73825cb739d62f7ba5c362aac1ff9680d7",
-   "size": 11700
+   "sha256": "74917158ab0fb68c63514178b03eb05f12946690afdc569f507810bad06b428c",
+   "size": 14538
   },
   {
    "path": "src/l7-license.css",
