@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.320",
- "notes": "جديد: استواء بارتات الجروب من أسفل — في قائمة البارتات (Ctrl+T) زر ثالث بجانب «جروب» و«فك»: حدِّد بارتاً من الجروب واضغطه، فتقف بارتات ذلك الجروب مستوية من أسفل على خط واحد في «إظهار كل البارتات»؛ ضغطة ثانية تعيدها مستوية من أعلى. الاختيار للجروب وحده ومحفوظ في ملف التصميم، ولا يغيّر شيئاً في القص.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.320/app",
+ "version": "0.9.321",
+ "notes": "جديد: أدوات الأبعاد تلتقط أي مكان على الخط الخارجي للقطعة (خط القص)، لا الزوايا فقط؛ والمكان يتحرك مع الباترون. والبرنامج أسرع مع التصاميم الكبيرة: كل تغيير في تصميم من 27 بارتاً صار نحو نصف الزمن (صور البارتات تُحسب فقط لما يتغيّر، والحفظ التلقائي يُكتب بعد توقف العمل).",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.321/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "d094bd1e74276897b57adb5b0651b360bdf423a0b05a822cff0d7c40b633f53f",
-   "size": 203650
+   "sha256": "08a28b68e368acc6705b8845d12dc54f051ead1dd4ba7adeb5ab63628d4c9284",
+   "size": 205037
   },
   {
    "path": "assets/icon.ico",
@@ -155,18 +155,18 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-BQEUWn-D.js",
-   "sha256": "479d1d267d7fb33861a7c346e707e7fefb55c1634bddc5951f8fb871fdf026cc",
-   "size": 1035402
-  },
-  {
    "path": "assets/l7design/assets/index-BtQOakUj.css",
    "sha256": "2fdccce1ff376469ab010f9b170e69fab30b02b565e8fd7b1c04c494cbaa03d4",
    "size": 71670
   },
   {
+   "path": "assets/l7design/assets/index-b8Sdry55.js",
+   "sha256": "da6a8b63cda0ca5cb06c6464338007df5f87d3034b08116e1904f88b9bab95b7",
+   "size": 1038766
+  },
+  {
    "path": "assets/l7design/index.html",
-   "sha256": "ad86c998708490125e21426d1a2f618bfcdd0de127214723451196427b0d9750",
+   "sha256": "b08916b9110b69ca6161e82b2787aa6daeafbf2222b83f8be5ecd4d9c237b399",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "4c2791debf67c32d666d725785a9b2b9b1572eb8ee1ba63c05f9ff511b2f3254",
+   "sha256": "816f127fe4c3b75f4cc4100c16a8bd254f8c18871ca02aa693a3e1271e037de8",
    "size": 301
   },
   {
