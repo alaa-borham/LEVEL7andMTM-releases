@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.27",
+ "notes": "The parts table follows a design's parts when the drawing program renumbers them [skip ci]\r\n\r\nar: جدول القطع يتبع بارتات التصميم عند إعادة ترقيمها في برنامج الرسم (0.9.314 يرقّم البارتات 1، 2، 3 … دائماً): كل صف يبقى على بارته أينما صار رقمه؛ بارت أُزيل من التصميم = الطلبية تُوقَف بالسبب، ولا يُؤخذ بارت آخر مكانه\r\n\r\nThe drawing program (0.9.314, the owner: «الترقيم لابد أن يكون متسلسلاً، ولا يتغير أي ارتباط») numbers a design's parts\r\n1, 2, 3 … whenever the list changes, and gives every part a permanent number («uid») that never changes. The parts\r\ntable knew a part by its number alone: after a renumbering its rows would have named OTHER parts — an order cut from\r\nthe wrong pieces, or without some of them, and nothing said. Now:\r\n- a row follows its part by the permanent number: saved from now on with it; a row saved before (no permanent number\r\n  in it) — the number it has IS the part's permanent number, as the drawing program keeps it for a design of before;\r\n- the order tells the drawing program each part's permanent number (an older drawing program ignores it);\r\n- a part removed from the design holds the order with the reason («part 005 (collar) is not in …»), and the row is\r\n  never taken for the part that took its number; the fixed pieces page says which rows go when it is saved;\r\n- the pages (fixed pieces, piece options, rules editor) show the numbers of today and save the permanent ones.\r\nA design that was never renumbered, and GRAFIS models: exactly as before. Needs nothing of LEVEL7 Nesting.\r\nUpdate this BEFORE the drawing program 0.9.314 saves a renumbered design: for such a design the drawing program\r\nrefuses an order that names its parts by number only (an older LEVEL7 MTM), with the reason.\r\ntests/test_parts_follow.py (5; four fail on 2.0.26 — one of them with a draft part taken for the front; they run the\r\nreal drawing program). One older test now expects the permanent number in the order it checks.\r\nIncludes 2.0.26 (the pieces compared with the design itself), not approved yet.\r\n\r\n\r\n",
+ "approved": "2026-11-14T10:07:51.836Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.27-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.27/LEVEL7MTM-2.0.27-Setup.exe",
+  "sha256": "fd93bc887f120fd14c1914bf94ae0b602737b5d88bb02bbaa709db71af45e37f",
+  "size": 61568404
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.27\",\"sha256\":\"fd93bc887f120fd14c1914bf94ae0b602737b5d88bb02bbaa709db71af45e37f\",\"size\":61568404,\"approved\":\"2026-11-14T10:07:51.836Z\"}",
+  "sig": "6eyZFjBIiccJmAKtr7peQbGd0AoSJOso3vqrS51fbzaaHwbnAskNnq0CnlpfrlwgR3Nh2kKirYqhb3FvmbhKBA=="
+ }
+}
