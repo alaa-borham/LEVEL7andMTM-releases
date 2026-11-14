@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.24",
- "notes": "Second review: a corrected order is never cut in its old measurement; orders wait instead of failing; nothing removed before the XML was read [skip ci]\r\n\r\nar: مراجعة ثانية: الطلبية المصحَّحة لا تُقَصّ بقياسها القديم، الطلبيات تنتظر بدل أن تفشل حين لا يعمل برنامج الرسم أو التعشيق، و«قراءة من جديد» لا تحذف شيئاً قبل قراءة الملف\r\n\r\nFrom the second independent review (2026-11), each case reproduced on 2.0.22 first (tests/test_review_2.py):\r\nWhat could cut a wrong garment\r\n- A corrected order whose making again failed: the file made before (old measurement) stayed in the nesting queue and\r\n  was cut. A model is nested only while it is the newest thing written for its order line.\r\n- The new one made but the old file not movable to the archive: both were cut.\r\n- A base pattern corrected while orders wait, their XML not readable again: cut from the old pattern. They are made again\r\n  from the order as it was read, and not nested before.\r\n- After one refusal of LEVEL7 Nesting the customer's gaps and the one-marker nesting were dropped for the whole run.\r\n- \"Read again\" removed the order line before reading the file (replaced, cut short, no customer found: the order gone).\r\n- One XML measurement filling two Xs: both went to the X carrying the XML code (a garment 570 mm long instead of 1570).\r\n- The same order line sent again under the same revision number with corrected data was ignored without a word.\r\nWhat stopped the line or lost an order\r\n- The program closed between \"XML read\" and \"order made\": never made. Made at the next look.\r\n- While the drawing program could not work every order was blocked and its XML moved to error: they wait and are made\r\n  by themselves.\r\n- One customer's cutting folder away stopped every customer's nesting; LEVEL7 Nesting there but not startable failed\r\n  every order of the queue.\r\n- The wait text stayed in the window; a file dated ahead was left out of the queue; the pattern check said \"sound\"\r\n  for orders it cannot compare with a base pattern.\r\nLicence (as LEVEL7 Nesting 2.0.22): far last day, newest policy for the command line, no policy older than version 4,\r\nno device code without the computer's id, a way out of the clock lock, files written in one step (tried again, then in\r\nplace, when another program holds the file open on Windows).\r\n(Build 23 was stopped before it finished: the last point was added after it started.)\r\n\r\n\r\n",
- "approved": "2026-11-13T20:14:09.884Z",
+ "version": "2.0.25",
+ "notes": "A marker and cutting files for each fabric of an order [skip ci]\r\n\r\nar: ماركر وملفات قص لكل قماش في الطلبية: قماش الثوب كما هو، وكل قماش آخر (بطانة، حشو) في ماركر خاص بعرضه — يُحدَّد العرض في «العملاء ← التعشيق: أقمشة أخرى»\r\n\r\nThe owner's choice: «ماركر لكل قماش». An order whose pieces are of several fabrics (the garment's fabric, a lining, an\r\ninterlining) had every piece nested into one marker of the order's fabric. Now:\r\n- the garment's own fabric (GRAFIS' «O», the drawing program's «قماش الوجه» — else the one with the most cloth) is\r\n  nested as before, at the order's width;\r\n- every other fabric gets its own marker and cutting files («<order> - <fabric>.plt / .iso»), at the width set for it:\r\n  Customers → Nesting → «Other fabrics (material = width in cm)», e.g. F=90, E=112 (a product takes its customer's);\r\n- a fabric with no width set holds the order with the reason — never guessed, never mixed; an older LEVEL7 Nesting\r\n  (before 2.0.24) is said to need its update;\r\n- when one fabric's marker cannot be made, the cutting files of the fabrics made before it are not left in the folder.\r\nAn order of one fabric is nested exactly as before. Needs LEVEL7 Nesting 2.0.24.\r\ntests/test_review_2.py (+7, six fail on 2.0.24; one runs the real drawing program and the real LEVEL7 Nesting).\r\n\r\n\r\n",
+ "approved": "2026-11-14T07:29:21.160Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.24-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.24/LEVEL7MTM-2.0.24-Setup.exe",
-  "sha256": "dd9f48639907d7e38d2db337f5b9821186097cc5beaa3392a965fb5e9eaeb989",
-  "size": 61549962
+  "name": "LEVEL7MTM-2.0.25-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.25/LEVEL7MTM-2.0.25-Setup.exe",
+  "sha256": "47f92f09af99ebeb3174612549f29671905dcacdbde527f04f0387ff8a967e0e",
+  "size": 61565052
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.24\",\"sha256\":\"dd9f48639907d7e38d2db337f5b9821186097cc5beaa3392a965fb5e9eaeb989\",\"size\":61549962,\"approved\":\"2026-11-13T20:14:09.884Z\"}",
-  "sig": "emigF7+KwB640Q5Q03XaVes7/jfkH879mUD99aM/kBB2lg3oCsr2GSrC0qWsMuNdsEJ5D/J2c97OiZoUUbzgAQ=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.25\",\"sha256\":\"47f92f09af99ebeb3174612549f29671905dcacdbde527f04f0387ff8a967e0e\",\"size\":61565052,\"approved\":\"2026-11-14T07:29:21.160Z\"}",
+  "sig": "vdwUFQI09YP+P8WB7ShoPcsYM1ChEWxUvEmMM6ieDSMYg34SEP2RUtLTkeXWv9Kvzz29K/Hizyj5YBVCL18WCg=="
  }
 }
