@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.326",
- "notes": "LEVEL7 and MTM 0.9.326: in English mode the texts of the program behind the window (update status, file errors, login) are in English too",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.326/app",
+ "version": "0.9.327",
+ "notes": "LEVEL7 and MTM 0.9.327 (full program): the program's own Windows dialogs (closing question, window stopped, LEVEL7 Nesting not found) follow the window's language",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.327/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "eee3f63b37824a0ad59bdf3f5959c93a4baa0087ef934c39974e4fee3daf7355",
-   "size": 210551
+   "sha256": "1d06e01c224a1a5d4c272d73a85b75fdf8dc99e76c874ddf13ef89812617821b",
+   "size": 211425
   },
   {
    "path": "assets/icon.ico",
@@ -181,8 +181,8 @@
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "d31ae85953aeaf88f8af61acf9534b200386a0e3191ec1a44683cfccd03404fb",
-   "size": 123107
+   "sha256": "6b2cebebc5bb9b1e421bb7de338e5b562757f011475efe9f3958d1163100f014",
+   "size": 132502
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "ffaa51004100104edfb76e73c41144a24bb208f36ebc673fb07ec78e71076d7c",
+   "sha256": "7a48e24177d7ddf089e8c12c04cb7ff138b8cf608329d3f2dbdfd65664a0af8d",
    "size": 301
   },
   {
