@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 Nesting",
  "app": "nesting",
- "version": "2.0.22",
- "notes": "Second review: close notches both cut (ISO), orders in one marker counted right, materials said, licence hardened [skip ci]\r\n\r\nar: مراجعة ثانية: حزّان متقاربان يُقطعان كلاهما في ملف Bullmer، عدّ صحيح لعدة طلبيات في ماركر واحد، تحذير عند خامتين في ماركر، وتقوية الترخيص\r\n\r\nFrom the second independent review (2026-11), each case reproduced on 2.0.20 first (tests/test_review_2.py):\r\n- Bullmer / IECHO file: of two notches closer than 2 mm the second was dropped and still counted as cut.\r\n- nest A --with B without --sizes left order A out of the marker (exit 0).\r\n- Several orders in one marker were refused as \"more than one marker takes\" (sizes multiplied by the pieces of all orders).\r\n- Pieces of several materials in one marker, or production pieces of another material left out: said in the output of nest;\r\n  what the reader said (a notch moved onto the cut line) is shown by nest too.\r\n- A rules file as LEVEL7 and MTM writes it (\"RULE: DELTA n\") is read; with rules the notch lines are read for the sample\r\n  size and said for the graded ones.\r\n- Licence: a last day of 9999-12-31 no longer stops the program; the command line goes by the newest policy any of the\r\n  three programs has read on this computer; a policy older than version 4 is never taken with the program's key; a\r\n  computer whose id cannot be read has no device code; a clock that was ahead for a moment is lifted when the admin\r\n  publishes again; the licence files are written in one step — and when the file is held open by another program\r\n  (Windows) the write is tried again, then made in place.\r\n(Build 21 was stopped before it finished: the last point was added after it started.)\r\n\r\n\r\n",
- "approved": "2026-11-13T20:14:27.984Z",
+ "version": "2.0.23",
+ "notes": "Bullmer / IECHO file: every notch is cut at its own place (the owner's choice) [skip ci]\r\n\r\nar: ملف Bullmer / IECHO (‎.iso): كل حزّ يُقطع في مكانه بالضبط وعمودياً كما رُسم (كان يُزاح حتى 2 مم ويميل، كما يكتبه GRAFIS)\r\n\r\nThe owner: «الحزّ في مكانه بالضبط في ملف .iso أيضاً». The Bullmer file copies GRAFIS' own: a vertex closer than 2 mm to\r\nthe last kept one is dropped, and a notch whose point fell on a dropped vertex was cut from the last kept vertex — its\r\nbase up to 2 mm beside its place, the cut slanted. Now a point that carries a notch is never dropped; the contour\r\nitself is cut exactly as before (which of its points are kept is decided without the points put in for the notches).\r\nThe PLT was exact already: the two cutting files of a marker agree now.\r\nOn the owner's design of today (13 pieces, 5 notches) the largest shift was 0.20 mm; on curves with a point every\r\n2–4 mm the review measured up to 1.94 mm.\r\nThe file exactly as GRAFIS writes it stays available: preset «bullmer_as_grafis» (the reference test uses it).\r\ntests/test_notch_exact_iso.py (7): fails on 2.0.22 (two of four notches started 1.1 and 1.9 mm beside their place).\r\n\r\n\r\n",
+ "approved": "2026-11-14T06:35:08.381Z",
  "setup": {
-  "name": "LEVEL7Nesting-2.0.22-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.22/LEVEL7Nesting-2.0.22-Setup.exe",
-  "sha256": "c1471482a0179f4a153ee41bc5388ed055a0c153789fb3f6f34f95129609976c",
-  "size": 55961514
+  "name": "LEVEL7Nesting-2.0.23-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.23/LEVEL7Nesting-2.0.23-Setup.exe",
+  "sha256": "599a3a5e3dd575f451300502d11ec122373c066afc6643261d8ba5478303b542",
+  "size": 55974256
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.22\",\"sha256\":\"c1471482a0179f4a153ee41bc5388ed055a0c153789fb3f6f34f95129609976c\",\"size\":55961514,\"approved\":\"2026-11-13T20:14:27.984Z\"}",
-  "sig": "TDG/l4nkN2VqZbaev0526xUnrDeZYtUPdyGRB77orlG+1YIHwHeNLZTNpBFu0130/TfX4hQGEYpDoc5zlrmGCg=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.23\",\"sha256\":\"599a3a5e3dd575f451300502d11ec122373c066afc6643261d8ba5478303b542\",\"size\":55974256,\"approved\":\"2026-11-14T06:35:08.381Z\"}",
+  "sig": "5dEcVwUMIGrnfmPmCw3tOl6lLDXT0OImYTgPnp2ZO+LhKj+vJc+M/lnL8zYhtKA289OoEEQJykpYifzCdNSBDw=="
  }
 }
