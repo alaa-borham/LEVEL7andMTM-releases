@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.24",
+ "notes": "A marker for each fabric: nest --material NAME [skip ci]\r\n\r\nar: ماركر لكل قماش: خيار جديد يجعل الماركر يحمل قطع خامة واحدة فقط (البطانة أو الحشو في ماركر خاص بعرضه)\r\n\r\nThe owner's choice: «ماركر لكل قماش». An order's file with pieces of two fabrics (the garment's fabric and a lining)\r\nwas nested into one marker. `nest FILE --material NAME` (repeatable) makes a marker with the pieces of these materials\r\nonly — exactly these; a material the file does not have is said, nothing is made. LEVEL7 MTM 2.0.25 asks for one\r\nmarker for each fabric of an order, each at its own width.\r\ntests/test_review_2.py::test_a_marker_for_each_fabric (fails on 2.0.23).\r\n\r\n\r\n",
+ "approved": "2026-11-14T07:29:03.583Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.24-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.24/LEVEL7Nesting-2.0.24-Setup.exe",
+  "sha256": "9b1b2153ab04b47b1e014b7826badd31fdd41015e590a94720658e27673f59b3",
+  "size": 55960907
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.24\",\"sha256\":\"9b1b2153ab04b47b1e014b7826badd31fdd41015e590a94720658e27673f59b3\",\"size\":55960907,\"approved\":\"2026-11-14T07:29:03.583Z\"}",
+  "sig": "uTcexCe6IV/IDgST7unhlLdkdFf33FrDb8IPlr33+0wtMIA5IASDxyDjMGVVVxxMTY2UWJiq7dxBbtHdzp6FDQ=="
+ }
+}
