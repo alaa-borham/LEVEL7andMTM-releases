@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.31",
- "notes": "The size table of an .ALA design is saved [skip ci]\r\n\r\nar: حفظ جدول المقاسات لموديل تصميمه ‎.ALA كان يقرأ التصميم كملف GRAFIS («not a GRAFIS file: signature\r\n'GRAFIS-Modelldatei' missing at offset 8»)؛ صار يُقرأ كتصميم LEVEL7 and MTM\r\n\r\nThe owner, with a picture of «ضبط جدول المقاسات» on the model «NEW 2028-2.ALA»: saving read the design with the\r\nGRAFIS reader. xtable._apply_part and carry_codes, and the order's X sheet (grafis_handover.x_sheet), read the X table\r\nthrough _xvalues now (a LEVEL7 and MTM design: its one table, part 000), as the page already did to show it.\r\ntests/test_xvalues_on_ala.py (2; the first fails before with the owner's message).\r\n\r\n\r\n",
- "approved": "2026-11-14T22:37:35.602Z",
+ "version": "2.0.32",
+ "notes": "Order numbers «ANS-262563_1-1»: order, piece, repeat [skip ci]\r\n\r\nar: رقم الطلب بالشكل «ANS-262563_1-1» (رقم الأوردر ANS-262563، رقم القطعة 1، رقم التكرار 1) صار يُقرأ، بدل «رقم الطلب بشكل غير معروف»\r\n\r\nThe owner, with a picture of «<Order Number=\"ANS-262563_1-1\">» marking the order number (ANS-262563), the piece (1)\r\nand the repeat (1): the order was held «needs review — line number in an unknown form». LINE_PIECE reads\r\nreseller-order_piece-repeat; the repeat is the revision (as the last number of 9-53-1_2). The old forms unchanged.\r\ntests/test_customers.py::test_order_numbers_piece_then_repeat (fails before).\r\n\r\n\r\n",
+ "approved": "2026-11-14T23:16:58.511Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.31-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.31/LEVEL7MTM-2.0.31-Setup.exe",
-  "sha256": "4499be45791e80d10d8fe5caec6f8c0a18fd8e1289f94f0a784e3a7bc225d834",
-  "size": 61576492
+  "name": "LEVEL7MTM-2.0.32-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.32/LEVEL7MTM-2.0.32-Setup.exe",
+  "sha256": "94065362ad3dd39b718337457af5cb441c4fb9c393e5bdb24cdd45fa2076e6be",
+  "size": 61580146
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.31\",\"sha256\":\"4499be45791e80d10d8fe5caec6f8c0a18fd8e1289f94f0a784e3a7bc225d834\",\"size\":61576492,\"approved\":\"2026-11-14T22:37:35.602Z\"}",
-  "sig": "J8hXA3rmphBRspsn6ZrbPwZX9a+xz5M2cF0lt3TMhd9Vf1Fh9wLNlD+EdamL4zRZJl5KhS7eMncjLC9zPCPyAA=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.32\",\"sha256\":\"94065362ad3dd39b718337457af5cb441c4fb9c393e5bdb24cdd45fa2076e6be\",\"size\":61580146,\"approved\":\"2026-11-14T23:16:58.511Z\"}",
+  "sig": "H9mduw/YANkD6xV2xorWq5M8BWKKO3RCbNuXJOkSQIQPB4IoXIq/EDMNXCOCBXz7VAcgwIkiL70qt1tQ/C/5Cg=="
  }
 }
