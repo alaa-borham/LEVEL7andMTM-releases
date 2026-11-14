@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.315",
- "notes": "نسخة البارت («دوبلكيت»، ومع البنات) تحمل سجل رسمه كاملاً: Ctrl+Z يرجع فيها خطوة خطوة كما في الأصل. والبارت تحت المؤشر (صورته في الشريط الجانبي أو في الرسم) يظهر رقمه واسمه في الشريط السفلي بعد اسم الملف، بفاصل ملوّن واضح. تحديث صغير فوق 0.9.314.",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.315/app",
+ "version": "0.9.316",
+ "notes": "تصحيح مهم لـ 0.9.314 و 0.9.315: عند فتح تصميم قديم كان البارت المفتوح عند آخر حفظ يبقى مشيراً إلى رقم أصله القديم (أخطاء «العنصر … غير موجود في البارت 5»)؛ أُصلح، والتصميم الذي حُفظ بالخطأ يُصلَح عند فتحه ثم يُحفظ مرة. جديد: جروبات البارتات — حدِّد البارتات في قائمة البارتات (Ctrl + نقر) ثم «جروب»: تُعرض متجاورة ككتلة واحدة في عرض كل البارتات، باسم ولون، ويمكن إظهار جروب وحده. تحديث صغير.",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.316/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "aa30221222f673456f29206628394597836002be1fa4be7809a10197d1d1e42f",
-   "size": 193590
+   "sha256": "9f1edd81f56616c97e180cd93ee6bc8b9385ad6e523f14afa5bd13ab67c91a3d",
+   "size": 196263
   },
   {
    "path": "assets/icon.ico",
@@ -155,18 +155,18 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-BUmsqty8.js",
-   "sha256": "8044aeb8212b2795a48fd157bc77cf1ebf0d447637e0fc7e01a439134e7a2e07",
-   "size": 1005883
+   "path": "assets/l7design/assets/index-DeNN7q3s.js",
+   "sha256": "f86c03954877ad60c5b016b27b9fffdcf691d13e43ad54a02951d82c9329ab1c",
+   "size": 1019724
   },
   {
-   "path": "assets/l7design/assets/index-PYmrzbVA.css",
-   "sha256": "b366f09c6bf97445207d9d1997203f79015a0fc74203265f33f38c2ebc8a694e",
-   "size": 71097
+   "path": "assets/l7design/assets/index-DgbQzOuX.css",
+   "sha256": "50539e3a5f48917c1adfce3f87f1a25382753014665128e255738aee72ff8474",
+   "size": 71487
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "12b9f64160f25d3f984a07db64223e65a5493bb97d8f788c70fe7da38bbe0805",
+   "sha256": "220d45734520ebadc99ca166b7afcbc2b652d00209bf3ad2fb4e1db559eb82ba",
    "size": 3612
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "060749048b0c9d443b34d5704bae2261bd0e7565b9cd9ea26b66f4c04c4fca4f",
+   "sha256": "64ca4f89e5aa65f6e5065e0047424f7f7868f8a9ea51c8b07848ef20387cdfad",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "45ae31991560620e32fdf6fd7999aa761e7ba865e81bebdcb181c5fd99a09bd9",
-   "size": 80384
+   "sha256": "03463c0eb56c45bfd7082694f2cdd73aeadf7b9d057b7e6eb68148543f67170a",
+   "size": 80442
   },
   {
    "path": "src/l7-icons.js",
@@ -1656,8 +1656,8 @@
   },
   {
    "path": "src/ui-design-0118.css",
-   "sha256": "849254f14964142f498d686fdeefbd83c0c3849c27506d2c41219efa39d3c5a6",
-   "size": 23171
+   "sha256": "364edef49c04216935ede5e06b5dd0596affaf6274676ad3ae5cdb882ea8c7e5",
+   "size": 23448
   },
   {
    "path": "src/ui-guide-0113.js",
