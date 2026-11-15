@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.33",
+ "notes": "A folder closed to writing is said plainly [skip ci]\r\n\r\nar: بدل «[Errno 13] Permission denied» يقول البرنامج: «ويندوز لا يسمح لـ LEVEL7 MTM بالكتابة في المجلد … (يطلب إذن المسؤول) — أعطِ Users صلاحية التعديل»، أو «برنامج آخر يمسك الملف»\r\n\r\nThe owner's 17 held orders: «[Errno 13] Permission denied: 'F:/LEVEL7-WORK/LEVEL7ALA-ALB-IN\\….dxf.part'» —\r\ncreating a file in that folder asked him for an administrator's permission, which the program cannot give.\r\nwrite_refused() tells a folder closed to writing (a small file of its own cannot be made there either: give the\r\nUsers the Modify right) from one file held by another program; other errors are said as they were. Used where the\r\norder's model / pieces are written into the input folder. tests/test_write_refused.py (3).\r\n\r\n\r\n",
+ "approved": "2026-11-15T05:43:34.164Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.33-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.33/LEVEL7MTM-2.0.33-Setup.exe",
+  "sha256": "f9ebcfc80d89d57e962ef8f8f0a33fd69a9c3aefa9a2ff3d698864b7b597235b",
+  "size": 61589904
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.33\",\"sha256\":\"f9ebcfc80d89d57e962ef8f8f0a33fd69a9c3aefa9a2ff3d698864b7b597235b\",\"size\":61589904,\"approved\":\"2026-11-15T05:43:34.164Z\"}",
+  "sig": "uRYd4Mwkm0rAti1diuMMB5WsCGn/gI3WHY5N4pNrdgCXOLkRyfTlTjxGZxDTmtrEve/6n+PJIuW1cDnM/C8DCw=="
+ }
+}
