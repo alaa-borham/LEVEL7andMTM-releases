@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.329",
- "notes": "LEVEL7 and MTM 0.9.329 (full program): round 3 of the review — fixes and security",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.329/app",
+ "version": "0.9.330",
+ "notes": "LEVEL7 and MTM 0.9.330 (full program from 0.9.328): round 3 of the review; a link to a later part offered for repair (the owner's part 015)",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.330/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "4b42df75dd7dc0f25d2252e11671fc8d76de4dbecfd26e784782b3e717210e86",
-   "size": 214579
+   "sha256": "ea61a5afdc955fa01cfaa79b110e1795388de1b688114952c05dde9e03ce4a32",
+   "size": 215489
   },
   {
    "path": "assets/icon.ico",
@@ -155,9 +155,9 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-2HyaQqRg.js",
-   "sha256": "36c98f8049f56aaf7d3fdf7542285eab987ffd8a3e2eb7b78553a6f94c019ca4",
-   "size": 1049179
+   "path": "assets/l7design/assets/index-BJuc8TdO.js",
+   "sha256": "914eb0ef5a47ded3d30ceadfd1bbbdedeff97411d0382e2ca8108d99ba4a92f1",
+   "size": 1049396
   },
   {
    "path": "assets/l7design/assets/index-C52WllZp.css",
@@ -166,7 +166,7 @@
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "c6ead30f8a5beffdf6968746721ce72ce6ae99aa6e6610e9493b87d305a06c80",
+   "sha256": "5b263ab5459087eade4be9a5a0895b6e4d9ff080a6cb8d383c44d80afd1077d1",
    "size": 4097
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "d4171a1fd4d79ce8f847314b5de7973a51f0b7e254332178cb9f96032f35f869",
+   "sha256": "565d2fec7c6792637a0cac62187fcb399eed3cc3999f61a55397c059b36a7af9",
    "size": 301
   },
   {
@@ -511,8 +511,8 @@
   },
   {
    "path": "src/l7-lang-dict.js",
-   "sha256": "be5e1985154756d9d28a8171e815bebc3c48d6a27fb58c3954703841b3f4096f",
-   "size": 224442
+   "sha256": "c84939fa38e893adf3353d82272bdc52d82dcbc986df5d41b7db569ce644c755",
+   "size": 226741
   },
   {
    "path": "src/l7-lang.js",
