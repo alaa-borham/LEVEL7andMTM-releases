@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.34",
+ "notes": "The marker view: grain lines and names inside their pieces [skip ci]\r\n\r\nar: في عرض الماركر: خط اتجاه النسيج لا يخرج من قطعته، واسم القطعة يُكتب داخلها ويصغر في القطع الصغيرة\r\n\r\nThe owner's picture of the marker (grain lines and names over the pockets onto the pieces beside them): «اجعل دائماً\r\nالخطوط لا تخرج خارج حدود قطعتها». MarkerView: grain_inside() cuts the grain line to the inside of its piece (the heads\r\ninside a short line too); the name is written in millimetres at the piece's middle, 40 mm high at most and smaller\r\nuntil it fits (it was as large on the screen whatever the piece). tests/test_cad_workspace.py (new test).\r\n\r\n\r\n",
+ "approved": "2026-11-15T08:59:16.511Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.34-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.34/LEVEL7MTM-2.0.34-Setup.exe",
+  "sha256": "1da37dc47d0f5a9b95af5ac79302f1eb796d41dc2b4ce0a0e36d420be38fee49",
+  "size": 62772869
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.34\",\"sha256\":\"1da37dc47d0f5a9b95af5ac79302f1eb796d41dc2b4ce0a0e36d420be38fee49\",\"size\":62772869,\"approved\":\"2026-11-15T08:59:16.511Z\"}",
+  "sig": "dZi23yOlT+xiteFr5TMb2Zo6FkKkRES+BXGS9rxFhK9H2buC2l1WbzSLPDHgeJAPOHfb89W747w3jZxJEMH5CQ=="
+ }
+}
