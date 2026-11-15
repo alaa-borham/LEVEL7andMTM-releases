@@ -1,0 +1,4 @@
+{
+ "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"cad-setup\",\"version\":\"0.9.330\",\"url\":\"https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/v0.9.330/LEVEL7-and-MTM-0.9.330-Setup.exe\",\"sha256\":\"26ddb02dc965a2365e0f826485cb0e45a08fb471368109c8769c47e6da2f8510\",\"size\":117122605,\"approved\":\"2026-11-15T13:44:46.524Z\"}",
+ "sig": "g2VjeObixUezrAJL1mYQndxtruPQ9n8odh5uDnPPcCembTZG2XCQNpegrt+u8XkJ9hRRnaQjdlFsnwvY5UQ1Dg=="
+}
