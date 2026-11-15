@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.328",
- "notes": "LEVEL7 and MTM 0.9.328 (full program): grain lines and cutter names stay inside their pieces",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.328/app",
+ "version": "0.9.329",
+ "notes": "LEVEL7 and MTM 0.9.329 (full program): round 3 of the review — fixes and security",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.329/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "7eb038236017be69d7cf824308e7510dba8bdef179b490d6cc654018ab09398c",
-   "size": 212568
+   "sha256": "4b42df75dd7dc0f25d2252e11671fc8d76de4dbecfd26e784782b3e717210e86",
+   "size": 214579
   },
   {
    "path": "assets/icon.ico",
@@ -155,24 +155,24 @@
    "size": 4102
   },
   {
+   "path": "assets/l7design/assets/index-2HyaQqRg.js",
+   "sha256": "36c98f8049f56aaf7d3fdf7542285eab987ffd8a3e2eb7b78553a6f94c019ca4",
+   "size": 1049179
+  },
+  {
    "path": "assets/l7design/assets/index-C52WllZp.css",
    "sha256": "24173c80eba2fc2cc48ba27939550e203b4c9a2d943a4d597a3d268c912462c3",
    "size": 71774
   },
   {
-   "path": "assets/l7design/assets/index-DDAZcL1s.js",
-   "sha256": "9953f6811348db304784458487b71024f8ef7cb17b93aa4e234ff0aee0c03e71",
-   "size": 1044057
-  },
-  {
    "path": "assets/l7design/index.html",
-   "sha256": "571d0e1bd14e647e27a738f0aab13c28dbfa39f4c565859a7c05f76eb07b7dcd",
-   "size": 3612
+   "sha256": "c6ead30f8a5beffdf6968746721ce72ce6ae99aa6e6610e9493b87d305a06c80",
+   "size": 4097
   },
   {
    "path": "desktop/cli/level7.cjs",
-   "sha256": "490a672d76cd2b140e580a95084f66fa07b4963ed25010e9c3edb5320ad8dd3b",
-   "size": 146866
+   "sha256": "58e3209ab4b3b0868205a371eb9a41827940f7ea66dc6eddbbe2522247b81920",
+   "size": 148560
   },
   {
    "path": "desktop/license.cjs",
@@ -181,8 +181,8 @@
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "6b2cebebc5bb9b1e421bb7de338e5b562757f011475efe9f3958d1163100f014",
-   "size": 132502
+   "sha256": "e179adff6dc8d3f32d0794e5cb13481c2ac50f9d2fc8bd4e31b4dc3349dd11a8",
+   "size": 131304
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "f6060bc884ef1b7bd91a7d3f3717a0515a61be3801a1976c5192b606ad4cdd25",
+   "sha256": "d4171a1fd4d79ce8f847314b5de7973a51f0b7e254332178cb9f96032f35f869",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "a459f2d79bf54b605fea4d684411ccd212795e24007522e56c83208c6437f2ba",
-   "size": 81529
+   "sha256": "7277e9f4355ec34c5ccfd05f31db0f4a875d64ac540262dfa6cf15c1aa0e8241",
+   "size": 81812
   },
   {
    "path": "src/l7-icons.js",
@@ -511,13 +511,13 @@
   },
   {
    "path": "src/l7-lang-dict.js",
-   "sha256": "113e5f651e6dea31b44a99cad846122cf5b14f77f9696d05a934a767779e630f",
-   "size": 224539
+   "sha256": "be5e1985154756d9d28a8171e815bebc3c48d6a27fb58c3954703841b3f4096f",
+   "size": 224442
   },
   {
    "path": "src/l7-lang.js",
-   "sha256": "6664bffa13b2307e6973bcc368a131115df24833c1e60d130891f8b1e1869543",
-   "size": 16211
+   "sha256": "b2754b603573d62779ffae270bd9e3fc7d8057c6f225176cf0e43dec7d5d8e7c",
+   "size": 17538
   },
   {
    "path": "src/l7-license.css",
