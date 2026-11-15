@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.327",
- "notes": "LEVEL7 and MTM 0.9.327 (full program): the program's own Windows dialogs (closing question, window stopped, LEVEL7 Nesting not found) follow the window's language",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.327/app",
+ "version": "0.9.328",
+ "notes": "LEVEL7 and MTM 0.9.328 (full program): grain lines and cutter names stay inside their pieces",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.328/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "1d06e01c224a1a5d4c272d73a85b75fdf8dc99e76c874ddf13ef89812617821b",
-   "size": 211425
+   "sha256": "7eb038236017be69d7cf824308e7510dba8bdef179b490d6cc654018ab09398c",
+   "size": 212568
   },
   {
    "path": "assets/icon.ico",
@@ -160,19 +160,19 @@
    "size": 71774
   },
   {
-   "path": "assets/l7design/assets/index-CMhkKbe_.js",
-   "sha256": "59ba2ded62e43744b7a31db3373616a4e9e2f8fed9093bc594331f270833a3ae",
-   "size": 1039935
+   "path": "assets/l7design/assets/index-DDAZcL1s.js",
+   "sha256": "9953f6811348db304784458487b71024f8ef7cb17b93aa4e234ff0aee0c03e71",
+   "size": 1044057
   },
   {
    "path": "assets/l7design/index.html",
-   "sha256": "c6d5dd3ff704d964d9ddfbc07f129bf00fb79f0edfed61a78f2a1ec6678541a3",
+   "sha256": "571d0e1bd14e647e27a738f0aab13c28dbfa39f4c565859a7c05f76eb07b7dcd",
    "size": 3612
   },
   {
    "path": "desktop/cli/level7.cjs",
-   "sha256": "ab01761d988a128568495b6ff8d405aca7203650293ab16d6c7ff0793887e765",
-   "size": 144496
+   "sha256": "490a672d76cd2b140e580a95084f66fa07b4963ed25010e9c3edb5320ad8dd3b",
+   "size": 146866
   },
   {
    "path": "desktop/license.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "7a48e24177d7ddf089e8c12c04cb7ff138b8cf608329d3f2dbdfd65664a0af8d",
+   "sha256": "f6060bc884ef1b7bd91a7d3f3717a0515a61be3801a1976c5192b606ad4cdd25",
    "size": 301
   },
   {
