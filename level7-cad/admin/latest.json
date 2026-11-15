@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.5.1",
- "core": "1.5.1",
- "notes": "1.5.1: برنامج المدير يحدّث نفسه كاملاً بنقرة «تحديث الآن» (لا حاجة لتحميله يدوياً بعد هذا الإصدار). 1.5.0: ملف المستخدمين لا يُستبدل إن تعذرت قراءته؛ نسخة واحدة من البرنامج؛ تغيير رمز GitHub؛ «انشر للأجهزة»؛ توقيع مثبِّت برنامج الرسم تلقائياً",
- "dir": "level7-cad/admin/v/1.5.1/ui",
+ "version": "1.6.0",
+ "core": "1.6.0",
+ "notes": "1.6.0: صفحة «حد الإنتاج اليومي» — يوم العمل (بداية ونهاية) وحد يومي لكل عميل لسحب ملفات XML في LEVEL7 MTM (يحتاج LEVEL7 MTM 2.0.43 أو أحدث)",
+ "dir": "level7-cad/admin/v/1.6.0/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,13 +13,13 @@
   },
   {
    "path": "admin.js",
-   "sha256": "7394df6e8f8608f17af8ee59a4a4576084d8c386e63b1af5536a77e09217f5ab",
-   "size": 33789
+   "sha256": "4e35ea26fb1099638ce5198e396e6af361b302e48b779c011360d2de61149ce0",
+   "size": 39605
   },
   {
    "path": "admin.css",
-   "sha256": "c4cc69e0d5380bde6414b9120a38f672d425b8c4f451afc192338c498906673d",
-   "size": 11016
+   "sha256": "c5ab60bbb638ed8b6f62cf72c9927bdb2c991ec2fbde0b7dca1ca9bfbb3cb1ad",
+   "size": 11724
   },
   {
    "path": "catalogue.json",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "860bfb6825f5bd010d64942f7e4fba258a5d1e836ea9bf673d6a468b57032253",
+   "sha256": "5d86ad58b9df255e29ed74962dcd952c9aa2b957269476bbec7a7ec291de2dda",
    "size": 41
   }
  ]
