@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.42",
+ "notes": "The «nestings at once» hint says they share the processor [skip ci]\r\n\r\nar: شرح «عدد التعشيقات في وقت واحد»: يتقاسمون المعالج، وبرامجك أولاً (كان: كل تعشيق يستخدم نواة)\r\n\r\nSince 876746a the nestings at the same time share the processors and run below the owner's programs; the hint said\r\neach used one core. Full suite before this text: 453 passed, 59 skipped; language and window tests after it.\r\n\r\n\r\n",
+ "approved": "2026-11-15T19:15:46.590Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.42-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.42/LEVEL7MTM-2.0.42-Setup.exe",
+  "sha256": "01461e96a9948804ed360cd960fa6fd6181fa13afcf941f1d764a265558d6dc6",
+  "size": 62797403
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.42\",\"sha256\":\"01461e96a9948804ed360cd960fa6fd6181fa13afcf941f1d764a265558d6dc6\",\"size\":62797403,\"approved\":\"2026-11-15T19:15:46.590Z\"}",
+  "sig": "9ow7hnntqEv6BiCgwsmiEH/pz3GF9Y8aU/vUu+pUHaoaSJf4T/cL7IDOPzDW17jh+KQCv0OF3PhVQDJVW6V8CA=="
+ }
+}
