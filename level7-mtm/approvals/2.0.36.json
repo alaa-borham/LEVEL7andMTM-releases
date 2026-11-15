@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.36",
+ "notes": "Round 3 stress test: the fabric width checked; plain words for closed folders [skip ci]\r\n\r\nar: عرض القماش من XML يُفحص (خارج 20–400 سم: الطلبية تقف للمراجعة)؛ رسالة واضحة لمجلد لم يُنشأ بعد ولقرص للقراءة فقط ولمجلد عمل البرنامج المقفول\r\n\r\nFound by the round-3 stress test:\r\n- Width=\"14500\" (a ×10 slip for 1450) was imported ready and went to cutting files for a fabric 14.5 m wide;\r\n  0, -1450 and 145 failed only at the nesting. A width outside 200–4000 mm (as the other fabrics' 20–400 cm) holds the\r\n  line for review at import (fabric.width_range); the profile can set min_mm / max_mm.\r\n- write_refused names the folder that refused when the order's folder was not made yet, and says a read-only drive\r\n  (errno 30) in plain words; the program's own work folder closed (PermissionError / EROFS) is said so too instead of\r\n  the bare Errno 13 (any other cause stays «the order could not be made»).\r\n- test_round3_fabrics skipped where the drawing program's command line is not (the Windows build: build 35 failed).\r\nTests: test_xml_import, test_write_refused (each fails before).\r\n\r\n\r\n",
+ "approved": "2026-11-15T13:36:28.970Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.36-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.36/LEVEL7MTM-2.0.36-Setup.exe",
+  "sha256": "0fdf7a3a516e26082c3debcd8efb801ccb1783697cb593cc9046c8a4f56e412d",
+  "size": 62781005
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.36\",\"sha256\":\"0fdf7a3a516e26082c3debcd8efb801ccb1783697cb593cc9046c8a4f56e412d\",\"size\":62781005,\"approved\":\"2026-11-15T13:36:28.970Z\"}",
+  "sig": "ejvtfnlniw7B7saY9ijCQY+83KGt49Spw7pbTO26gyMMHzBo0f13I5hHSyvbrtfgKOmTFGepOOQl656HM416Ag=="
+ }
+}
