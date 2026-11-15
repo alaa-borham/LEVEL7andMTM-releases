@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.36",
- "notes": "Round 3 stress test: the fabric width checked; plain words for closed folders [skip ci]\r\n\r\nar: عرض القماش من XML يُفحص (خارج 20–400 سم: الطلبية تقف للمراجعة)؛ رسالة واضحة لمجلد لم يُنشأ بعد ولقرص للقراءة فقط ولمجلد عمل البرنامج المقفول\r\n\r\nFound by the round-3 stress test:\r\n- Width=\"14500\" (a ×10 slip for 1450) was imported ready and went to cutting files for a fabric 14.5 m wide;\r\n  0, -1450 and 145 failed only at the nesting. A width outside 200–4000 mm (as the other fabrics' 20–400 cm) holds the\r\n  line for review at import (fabric.width_range); the profile can set min_mm / max_mm.\r\n- write_refused names the folder that refused when the order's folder was not made yet, and says a read-only drive\r\n  (errno 30) in plain words; the program's own work folder closed (PermissionError / EROFS) is said so too instead of\r\n  the bare Errno 13 (any other cause stays «the order could not be made»).\r\n- test_round3_fabrics skipped where the drawing program's command line is not (the Windows build: build 35 failed).\r\nTests: test_xml_import, test_write_refused (each fails before).\r\n\r\n\r\n",
- "approved": "2026-11-15T13:36:28.970Z",
+ "version": "2.0.37",
+ "notes": "A repeat in the line goes on to the cut; the newer one follows it, with a notice [skip ci]\r\n\r\nar: التكرار الذي دخل الخط (صُنع ملف قطعه) يكمل حتى القص عند وصول تكرار أحدث، والأحدث يُقص بعده؛ وإذا قُصّ تكرار سابق لسطر الطلب يظهر تنبيه في القائمة والتقرير اليومي\r\n\r\nThe owner on the repeat number (ANS-262563_1-1): «اذا 1 قد تم اصداره فيخرج كامل الي الاخير ثم يتبعه 2 حتى الاخير، 3\r\nحتى الاخير هكذا»; «issued» = its model made (entered the line); a notice only when a repeat is cut after an earlier one.\r\n- mdl_intake.in_line(): a superseded repeat with a model written is no longer stopped («… is superseded») at the\r\n  nesting (LEVEL7 and GRAFIS paths): it is cut, with an info line naming the newer repeat. One never made is replaced.\r\n- ui/cad.order_rows: such a repeat is listed; a repeat cut after an earlier repeat of the same order line was cut has\r\n  «repeat … was cut on …» (shown in its details); report.day_report lists them.\r\ntests/test_repeats.py (3; the two of the new rule fail before, the replaced one passes on both).\r\n\r\n\r\n",
+ "approved": "2026-11-15T15:13:02.676Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.36-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.36/LEVEL7MTM-2.0.36-Setup.exe",
-  "sha256": "0fdf7a3a516e26082c3debcd8efb801ccb1783697cb593cc9046c8a4f56e412d",
-  "size": 62781005
+  "name": "LEVEL7MTM-2.0.37-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.37/LEVEL7MTM-2.0.37-Setup.exe",
+  "sha256": "3cc9a5f003f6ed2db561e4c71b9c996c7a9b2539b5b7b49dba4468857476e6e9",
+  "size": 62778159
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.36\",\"sha256\":\"0fdf7a3a516e26082c3debcd8efb801ccb1783697cb593cc9046c8a4f56e412d\",\"size\":62781005,\"approved\":\"2026-11-15T13:36:28.970Z\"}",
-  "sig": "ejvtfnlniw7B7saY9ijCQY+83KGt49Spw7pbTO26gyMMHzBo0f13I5hHSyvbrtfgKOmTFGepOOQl656HM416Ag=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.37\",\"sha256\":\"3cc9a5f003f6ed2db561e4c71b9c996c7a9b2539b5b7b49dba4468857476e6e9\",\"size\":62778159,\"approved\":\"2026-11-15T15:13:02.676Z\"}",
+  "sig": "lj/+4h/MdTQl5/Ks03G0T0v0KVUw7YkRFl6qI2gyV1XSLVNSu6R0Xil9VI7yz0qIq1/LKsmH9hkum18pIulaBQ=="
  }
 }
