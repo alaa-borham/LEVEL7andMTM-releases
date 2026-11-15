@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.29",
+ "notes": "Grain lines and piece names stay inside their pieces [skip ci]\r\n\r\nar: خط اتجاه النسيج واسم القطعة لا يخرجان خارج حدود قطعتهما — في ملف القص (PLT / ISO / DXF) وعلى الشاشة\r\n\r\nThe owner, with a picture of a marker whose grain lines and names ran out of the pockets and the placket onto the\r\npieces beside them: «اجعل دائماً الخطوط لا تخرج خارج حدود قطعتها».\r\n- geometry.grain_inside: the grain line cut to the inside of its piece (5 mm from the cut line), in its direction;\r\n  drawn beside the piece: the same direction through its middle, as long as it was or as the piece allows.\r\n- geometry.fit_text: the piece's name centred in its piece (its middle, or the point deepest inside) and smaller\r\n  until it fits (12 mm at most, 4 mm at least) — it started at the middle and ran to the right.\r\n- Used in marker_scene (every export) and in the marker view.\r\ntests/test_inside_piece.py (fails before).\r\n\r\n\r\n",
+ "approved": "2026-11-15T08:59:09.217Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.29-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.29/LEVEL7Nesting-2.0.29-Setup.exe",
+  "sha256": "91f1c3f83d5b5e66168897318c26aad26123d9f3b2acab22f56420d104a24f19",
+  "size": 55971621
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.29\",\"sha256\":\"91f1c3f83d5b5e66168897318c26aad26123d9f3b2acab22f56420d104a24f19\",\"size\":55971621,\"approved\":\"2026-11-15T08:59:09.217Z\"}",
+  "sig": "RgbV1sFBAzR4bvQ6MM0YGHXe4h0L0zjKRXE/cTXXtw4OLY8covSAz8BC64CfZn7ItLI6D62zXhXr7PvC4KtlAA=="
+ }
+}
