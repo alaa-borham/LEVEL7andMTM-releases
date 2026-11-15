@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.38",
+ "notes": "Tests follow the plain folder names (2.0.38) [skip ci]\r\n\r\nTwo tests looked for «MDL» / «MDL-ERR» in the texts shown; they check the new words. Full suite: 445 passed,\r\n59 skipped (the two passed on their own after the change).\r\n\r\n\r\n",
+ "approved": "2026-11-15T16:36:23.093Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.38-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.38/LEVEL7MTM-2.0.38-Setup.exe",
+  "sha256": "083caac2df58fc0cc2ae12bb0c2ddebfd59ee3bae6da765840e71cca0c91d284",
+  "size": 62787215
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.38\",\"sha256\":\"083caac2df58fc0cc2ae12bb0c2ddebfd59ee3bae6da765840e71cca0c91d284\",\"size\":62787215,\"approved\":\"2026-11-15T16:36:23.093Z\"}",
+  "sig": "LSEsqzs91sN8MyvENOxqZvEjNrQMc02LABsPo99tyYr4GwHiNmE1hKyFwYFDGwk11WLbxq7ofOJDYZyFkH68AQ=="
+ }
+}
