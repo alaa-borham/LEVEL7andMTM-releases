@@ -6,6 +6,7 @@
   const $ = s => document.querySelector(s);
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   let st = null, pub = { version: 0 }, tab = 'users', editing = null, filter = '', releases = null, upd = null;
+  let prod = null;                               // 1.6.0: the daily limit page as it is being typed (not saved yet)
   let tok = { ok: true }, retoken = false;      // 1.5.0: does the saved GitHub token work; its field shown again
   const app = $('#app');
 
@@ -78,11 +79,41 @@
       ${retoken ? `<div class="card" id="retok"><b>رمز GitHub جديد</b><p>ألصق الرمز الجديد (يبدأ بـ github_pat_). يُحفظ مشفراً على هذا الجهاز مكان القديم.</p>
         <div class="field"><input type="password" id="tok" placeholder="github_pat_…"></div>
         <button class="primary" data-a="token">حفظ الرمز</button> <button data-a="retoken-close">إلغاء</button><div class="msg" id="tmsg"></div></div>` : ''}
-      <nav class="tabs"><button data-tab="users" class="${tab === 'users' ? 'on' : ''}">المستخدمون (${d.users.length})</button><button data-tab="rel" class="${tab === 'rel' ? 'on' : ''}">التحديثات</button></nav>
+      <nav class="tabs"><button data-tab="users" class="${tab === 'users' ? 'on' : ''}">المستخدمون (${d.users.length})</button><button data-tab="rel" class="${tab === 'rel' ? 'on' : ''}">التحديثات</button><button data-tab="prod" class="${tab === 'prod' ? 'on' : ''}">حد الإنتاج اليومي${prodCount() ? ` (${prodCount()})` : ''}</button></nav>
       <main id="main"></main>
       <div class="pubbar" ${d.dirty ? '' : 'hidden'}><span>لديك تغييرات لم تُنشر بعد — لا تصل للأجهزة حتى تنشرها.</span><button class="primary big" data-a="publish">نشر الآن</button></div>
     </div>`;
-    if (tab === 'users') renderUsers(); else renderReleases();
+    if (tab === 'users') renderUsers(); else if (tab === 'prod') renderProduction(); else renderReleases();
+  }
+
+  // ---- 1.6.0: LEVEL7 MTM's daily production limit and work day (the owner: «حد انتاج يومي … لكل عميل … وموعد بدايه
+  // ونهايه يوم العمل»). Typed here, saved with «حفظ», sent to the computers with «نشر الآن» like the users.
+  const savedProd = () => { const p = st.data.production || {}; return { day: p.day ? { start: p.day.start, end: p.day.end } : null, default: p.default ?? null, customers: (p.customers || []).map(c => ({ name: c.name, limit: c.limit })) }; };
+  const prodCount = () => (st.data.production?.customers || []).length;
+  const sameProd = () => JSON.stringify(readProd()) === JSON.stringify(savedProd());
+  /** the page's fields as they are now: names trimmed, numbers made, rows left empty dropped */
+  function readProd() {
+    if (!$('#p-rows')) return prod || savedProd();
+    const num = v => (String(v ?? '').trim() === '' ? null : Number(v));
+    const customers = readProdRows().map(r => ({ name: r.name.replace(/\s+/g, ' ').trim(), limit: num(r.limit) })).filter(r => r.name || r.limit !== null);
+    return { day: $('#p-dayon').checked ? { start: $('#p-start').value, end: $('#p-end').value } : null, default: num($('#p-default').value), customers };
+  }
+  const readProdRows = () => [...document.querySelectorAll('#p-rows .prow')].map(r => ({ name: r.querySelector('.p-name').value, limit: r.querySelector('.p-limit').value }));
+  function renderProduction() {
+    const p = prod || savedProd();
+    const rows = p.customers.length ? p.customers : [{ name: '', limit: '' }];
+    const row = r => `<div class="prow"><input type="text" class="p-name" placeholder="اسم العميل كما هو في LEVEL7 MTM" value="${esc(r.name)}"><input type="number" class="p-limit" min="0" step="1" dir="ltr" placeholder="العدد" value="${esc(r.limit ?? '')}"><span class="unit">ملف XML في اليوم</span><button data-a="p-del" title="حذف هذا العميل من القائمة">✕</button></div>`;
+    $('#main').innerHTML = `<p class="relnote">يعمل في LEVEL7 MTM: عدد ملفات XML التي تُسحب لكل عميل في يوم العمل. ما زاد عن الحد ينتظر في مجلد process ويُسحب في اليوم التالي، الأقدم أولاً. يحتاج LEVEL7 MTM 2.0.43 أو أحدث.</p>
+      <section class="relbox prodbox"><h3>يوم العمل <small>واحد لكل العملاء</small></h3>
+        <label class="switch"><input type="checkbox" id="p-dayon" ${p.day ? 'checked' : ''}> سحب ملفات XML في موعد يوم العمل فقط</label>
+        <div class="row hours" ${p.day ? '' : 'hidden'}><label>البداية <input type="time" id="p-start" dir="ltr" value="${esc(p.day?.start || '08:00')}"></label><label>النهاية <input type="time" id="p-end" dir="ltr" value="${esc(p.day?.end || '17:00')}"></label></div>
+        <p class="hint">${p.day ? 'خارج هذا الموعد لا يُسحب ملف XML جديد. ما سُحب قبل النهاية يكمل الرسم والتعشيق والقص حتى ينتهي. والعدّ يبدأ من صفر عند بداية كل يوم.' : 'بلا موعد: السحب يعمل في أي ساعة، والعدّ يبدأ من صفر عند منتصف الليل.'}</p></section>
+      <section class="relbox prodbox"><h3>الحد اليومي لكل عميل</h3>
+        <div id="p-rows">${rows.map(row).join('')}</div>
+        <div class="row"><button data-a="p-add">+ عميل</button></div>
+        <div class="row rest"><label for="p-default">باقي العملاء (غير المكتوبين هنا)</label><input type="number" id="p-default" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(p.default ?? '')}"><span class="unit">ملف XML في اليوم لكل عميل</span></div>
+        <p class="hint">اكتب اسم العميل كما يظهر في صفحة «العملاء» في LEVEL7 MTM (مثل: الفاخره). منتجات العميل تُحسب معه. لمنتج واحد وحده اكتب «العميل / المنتج». الرقم 0 يوقف السحب لهذا العميل. الأسماء تبقى على هذا الجهاز: المنشور رمز لا يُقرأ منه الاسم.</p></section>
+      <div class="bar"><button class="primary big" data-a="p-save">حفظ</button><span class="msg" id="p-msg">${sameProd() ? '' : 'تغييرات لم تُحفظ بعد.'}</span></div>`;
   }
   // 1.2.6: a clearer card — the name, his state, then one row per program (works / closed, and how much of it is closed)
   function card(u, i) {
@@ -275,6 +306,14 @@
         const r = await A.fullUpdateInstall();
         toast(`يُثبَّت الإصدار ${r.version} — سيُغلق البرنامج ويفتح من جديد.`);
       }
+      else if (a === 'p-add') { prod = readProd(); prod.customers.push({ name: '', limit: '' }); renderProduction(); const all = document.querySelectorAll('#p-rows .p-name'); all[all.length - 1]?.focus(); }
+      else if (a === 'p-del') { const rows = [...document.querySelectorAll('#p-rows .prow')], k = rows.indexOf(t.closest('.prow')); const now = readProdRows(); now.splice(k, 1); prod = { ...readProd(), customers: now }; renderProduction(); }
+      else if (a === 'p-save') {
+        const v = readProd();
+        await A.saveProduction(v);
+        prod = null; st = await A.state(); render();
+        toast('حُفظ حد الإنتاج اليومي ✓ — اضغط «نشر الآن» ليصل إلى الأجهزة.');
+      }
       else if (a === 'add') openEditor(-1);
       else if (t.dataset.edit !== undefined) openEditor(Number(t.dataset.edit));
       else if (a === 'publish') {
@@ -353,8 +392,10 @@
     if (t.dataset.app && editing) { readEditor(); const b = new Set(editing.u.blocked); t.checked ? b.delete(t.dataset.app) : b.add(t.dataset.app); editing.u.blocked = [...b]; drawEditor(); }
     else if (t.dataset.tool && editing) { readEditor(); const b = new Set(editing.u.blocked); t.checked ? b.add(t.dataset.tool) : b.delete(t.dataset.tool); editing.u.blocked = [...b]; drawEditor(); }
     else if (t.id === 'e-date' && editing) { readEditor(); drawEditor(); }
+    else if (t.id === 'p-dayon') { prod = { ...readProd(), customers: readProdRows() }; renderProduction(); }
   });
   document.addEventListener('input', e => {
+    if (e.target.closest?.('.prodbox')) { prod = { ...readProd(), customers: readProdRows() }; const m = $('#p-msg'); if (m) m.textContent = sameProd() ? '' : 'تغييرات لم تُحفظ بعد.'; }
     if (e.target.classList?.contains('e-tf') && editing) { readEditor(); editing.toolFilter = e.target.value; const id = e.target.id; drawEditor(); const f = $('#' + id); f.focus(); f.setSelectionRange(f.value.length, f.value.length); }
   });
   document.addEventListener('keydown', e => {

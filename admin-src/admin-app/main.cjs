@@ -193,6 +193,48 @@ const requireDevice = d => d.requireDevice !== false;
 // months ago — without a word; the names exist nowhere else. Now: not there = the first time (as before); there but not
 // readable = the copy of the last change is put back and the admin is told; no copy either = nothing is touched and the
 // program says so.
+// ---- 1.6.0: the daily production limit of LEVEL7 MTM (the owner: «حد انتاج يومي ويتم ادارته من نظام الادمن لكل عميل …
+// وموعد بدايه ونهايه يوم العمل»). Kept with the users (the customers' names here only); published in the policy as
+// «production»: the work day, the limit of the customers not listed, and for each listed customer the fingerprint of
+// his name and his limit — the policy file is public, so no customer's name is in it. LEVEL7 MTM (services/production.py)
+// makes the same fingerprint from its own customers' names: plainName must stay the same in both.
+const plainName = n => String(n ?? '').normalize('NFC').toLowerCase().replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
+  .replace(/[\u0640\u064b-\u0652\u200b-\u200f\ufeff]/g, '').replace(/[ \t\n\r\u00a0]+/g, ' ').replace(/^ +| +$/g, '').replace(/ ?\/ ?/g, '/');
+const customerId = n => crypto.createHash('sha256').update('level7-customer:' + plainName(n)).digest('hex');
+const HOUR = /^([01]\d|2[0-3]):[0-5]\d$/;
+const limitOf = v => (v === null || v === undefined || v === '' ? null : Number(v));
+/** what the admin typed, checked: {day: {start, end} | null, default: n | null, customers: [{name, limit}]} — or why not */
+function productionOf(p) {
+  p = p && typeof p === 'object' ? p : {};
+  let day = null;
+  if (p.day) {
+    const start = String(p.day.start || ''), end = String(p.day.end || '');
+    if (!HOUR.test(start) || !HOUR.test(end)) throw Error('يوم العمل: اكتب البداية والنهاية بالساعة والدقيقة (مثل 08:00 و 17:00).');
+    if (start === end) throw Error('يوم العمل: البداية والنهاية لا تكونان في الساعة نفسها.');
+    day = { start, end };
+  }
+  const ok = n => Number.isInteger(n) && n >= 0 && n <= 100000;
+  const def = limitOf(p.default);
+  if (def !== null && !ok(def)) throw Error('حد باقي العملاء: اكتب عدداً صحيحاً (أو اتركه فارغاً: بلا حد).');
+  const seen = new Map(), customers = [];
+  for (const r of Array.isArray(p.customers) ? p.customers : []) {
+    const name = String(r?.name ?? '').replace(/\s+/g, ' ').trim(), limit = limitOf(r?.limit);
+    if (!name && limit === null) continue;
+    if (!name) throw Error('حد بلا اسم عميل: اكتب اسم العميل كما هو في LEVEL7 MTM.');
+    if (limit === null || !ok(limit)) throw Error(`العميل «${name}»: اكتب حده اليومي عدداً صحيحاً (0 = لا يُسحب له شيء).`);
+    const id = customerId(name);
+    if (seen.has(id)) throw Error(`العميل مكتوب مرتين: «${seen.get(id)}» و«${name}».`);
+    seen.set(id, name);
+    customers.push({ name, limit });
+  }
+  return { day, default: def, customers };
+}
+/** the part of the policy LEVEL7 MTM reads (undefined: nothing set — no limit, any hour) */
+function publishedProduction(p) {
+  const v = productionOf(p);
+  if (!v.day && v.default === null && !v.customers.length) return undefined;
+  return { ...(v.day ? { day: v.day } : {}), ...(v.default !== null ? { default: v.default } : {}), customers: v.customers.map(c => ({ id: customerId(c.name), limit: c.limit })) };
+}
 let usersNote = '';
 function users() {
   const f = file('users.json');
@@ -287,6 +329,13 @@ function register() {
     writeJson('users.json', d);
     return true;
   });
+  handle('saveProduction', async ({ production }) => {
+    const d = users();
+    d.production = productionOf(production);
+    d.dirty = true;
+    writeJson('users.json', d);
+    return d.production;
+  });
   handle('setRequireDevice', async ({ on }) => {
     const d = users();
     d.requireDevice = !!on; d.dirty = true;
@@ -306,7 +355,7 @@ function register() {
   handle('published', async () => {
     let p = null;
     try { p = await publishedPolicy(); } catch (e) { return { version: 0, users: 0, issued: '', error: clean(e) }; }
-    return { version: p?.version || 0, users: p?.users.length || 0, issued: p?.issued || '' };
+    return { version: p?.version || 0, users: p?.users.length || 0, issued: p?.issued || '', production: !!p?.production };
   });
   // 1.5.0 (review): does the saved GitHub token still work? (an expired one left the header saying «متصل» and no place to
   // enter a new one)
@@ -336,14 +385,15 @@ function register() {
     if (noDevice.length && !anyway) return { ask: true, noDevice };
     let pub;
     try { pub = await publishedPolicy(); } catch (e) { throw Error('تعذرت قراءة الصلاحيات المنشورة الآن (' + clean(e) + '). لم يُنشر شيء — حاول بعد قليل.'); }
-    const before = JSON.stringify([d.users, d.requireDevice]);
+    const before = JSON.stringify([d.users, d.requireDevice, d.production]);
     const version = Math.max(pub?.version || 0, d.lastVersion || 0) + 1;
-    const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [] })) }, key.privateKey);
+    const production = publishedProduction(d.production);      // 1.6.0: LEVEL7 MTM's daily limit and work day
+    const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [] })), ...(production ? { production } : {}) }, key.privateKey);
     await writeRepo(POLICY, JSON.stringify(env, null, 1), `LEVEL7 policy ${version}`);
     // 1.5.0 (review): what was saved WHILE this was being published (a user added during «ينشر…») was written over by the
     // list of before — the user gone from the file and the screen, no «unpublished changes». The file as it is now counts.
     const now = users();
-    const changed = JSON.stringify([now.users, now.requireDevice]) !== before;
+    const changed = JSON.stringify([now.users, now.requireDevice, now.production]) !== before;
     now.lastVersion = Math.max(version, now.lastVersion || 0);
     if (!changed) { now.dirty = false; now.users = list; }
     writeJson('users.json', now);

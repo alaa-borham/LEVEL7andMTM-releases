@@ -24,5 +24,7 @@ contextBridge.exposeInMainWorld('admin', Object.freeze({
   signSetups: () => call('signSetups'),
   // 1.5.1: the whole program updated from inside the program
   fullUpdateInstall: () => call('fullUpdateInstall'),
+  // 1.6.0: LEVEL7 MTM's daily production limit and work day
+  saveProduction: production => call('saveProduction', { production }),
   onUpdateProgress: fn => { ipcRenderer.removeAllListeners('selfupdate:progress'); ipcRenderer.on('selfupdate:progress', (_e, p) => { try { fn(p); } catch {} }); }
 }));
