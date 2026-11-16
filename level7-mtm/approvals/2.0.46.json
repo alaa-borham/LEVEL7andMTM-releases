@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.46",
+ "notes": "A client package read on Windows finds every design of the file by «/» alone [skip ci]\r\n\r\nar: إصلاح لما ظهر في بناء ويندوز 45: قراءة ملفات التصميم من حزمة العميل لا تتأثر بشكل الفاصل في أسمائها\r\n\r\nBuild 45 (Windows) failed in test_a_crafted_file_writes_only_into_the_chosen_folder: a zip written on Windows keeps\r\n«\\» in an entry's name as «/», so the design named «C:\\Windows\\x.ALA» in customer.json was not found (nothing was\r\nwritten outside the chosen folder — the design was missing). The entries are now looked up with «/» only; the test\r\nhas an entry as Windows writes it.\r\n\r\n\r\n",
+ "approved": "2026-11-16T17:07:24.069Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.46-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.46/LEVEL7MTM-2.0.46-Setup.exe",
+  "sha256": "fc662b06e695cbe6ba59a842bc44780517e00c452a0cba0a7c3d51fdb02bbc40",
+  "size": 62887687
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.46\",\"sha256\":\"fc662b06e695cbe6ba59a842bc44780517e00c452a0cba0a7c3d51fdb02bbc40\",\"size\":62887687,\"approved\":\"2026-11-16T17:07:24.069Z\"}",
+  "sig": "TiMSO8hatamT4z50jWcJDz0LqZj2gqUj1HUhNYy0EVsUdqKhVxJv7I4GH3/wJxWwWjPaKVpUfWu4/K8CHnmhBg=="
+ }
+}
