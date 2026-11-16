@@ -80,26 +80,31 @@ function findProgram(dir, exe = EXE) {
 // Everything it needs comes as arguments (never written into the script: a folder with Arabic letters or spaces in its
 // name is then passed as it is). %1 the process to wait for · %2 the new program · %3 the program's folder · %4 its exe ·
 // %5 where the old program is kept · %6 where the result is written («ok» / «failed» / «nobackup»).
+// 1.7.1: Windows' own tools by their full path — a «find» of another kind first in the PATH (Git's, on the Windows check
+// machine; any computer may have one) answered «not there» at once, and the script did not wait for the program.
+// And every file is copied (/IS /IT): robocopy leaves a file of the same size and time as it is — on the Windows check
+// a new program file written in the same clock tick as the old one stayed the old one.
 const APPLY_CMD = [
   '@echo off',
   'setlocal',
+  'set "S32=%SystemRoot%\\System32"',
   'set n=0',
   ':wait',
-  'tasklist /FI "PID eq %~1" /NH 2>nul | find "%~1" >nul',
+  '"%S32%\\tasklist.exe" /FI "PID eq %~1" /NH 2>nul | "%S32%\\find.exe" "%~1" >nul',
   'if errorlevel 1 goto gone',
   'set /a n+=1',
   'if %n% geq 90 goto gone',
-  'ping -n 2 127.0.0.1 >nul',
+  '"%S32%\\ping.exe" -n 2 127.0.0.1 >nul',
   'goto wait',
   ':gone',
-  'robocopy "%~3" "%~5" /MIR /R:3 /W:1 /NFL /NDL /NJH /NJS /NP >nul',
+  '"%S32%\\robocopy.exe" "%~3" "%~5" /MIR /IS /IT /R:3 /W:1 /NFL /NDL /NJH /NJS /NP >nul',
   'if errorlevel 8 goto nobackup',
-  'robocopy "%~2" "%~3" /E /R:10 /W:1 /NFL /NDL /NJH /NJS /NP >nul',
+  '"%S32%\\robocopy.exe" "%~2" "%~3" /E /IS /IT /R:10 /W:1 /NFL /NDL /NJH /NJS /NP >nul',
   'if errorlevel 8 goto failed',
   'echo ok>"%~6"',
   'goto start',
   ':failed',
-  'robocopy "%~5" "%~3" /E /R:10 /W:1 /NFL /NDL /NJH /NJS /NP >nul',
+  '"%S32%\\robocopy.exe" "%~5" "%~3" /E /IS /IT /R:10 /W:1 /NFL /NDL /NJH /NJS /NP >nul',
   'echo failed>"%~6"',
   'goto start',
   ':nobackup',
@@ -127,7 +132,7 @@ const APPLY_SH = [
 // starts is not in the job (Node lets it go: «silent breakaway»), so the update goes on after the program has closed.
 const LAUNCH_CMD = [
   '@echo off',
-  'start "" /b "%ComSpec%" /d /c call "%~dp0apply-admin-update.cmd" %*',
+  'start "" /b "%SystemRoot%\\System32\\cmd.exe" /d /c call "%~dp0apply-admin-update.cmd" %*',
   'exit /b 0',
   ''
 ].join('\r\n');
@@ -198,7 +203,10 @@ function selfTest(zip) {
   const tree = (d, base = d) => fs.readdirSync(d).flatMap(n => { const f = path.join(d, n); return fs.statSync(f).isDirectory() ? tree(f, base) : [path.relative(base, f).replace(/\\/g, '/') + '=' + crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex').slice(0, 12)]; }).sort();
   const make = (d, files) => { for (const [n, t] of Object.entries(files)) { fs.mkdirSync(path.dirname(path.join(d, n)), { recursive: true }); fs.writeFileSync(path.join(d, n), t); } return d; };
   const dead = () => spawnSync(process.execPath, ['-e', '0']).pid;                          // a process that has ended
-  const run = (o, env = {}) => { const s = applyScript(path.join(T, 'script'), o); const r = spawnSync(s.command, s.args, { ...s.options, env: { ...process.env, L7A_NO_START: '1', ...env }, timeout: 240000 }); assert.equal(r.status, 0, 'the script ended (' + r.status + ') ' + (r.stderr || '')); };
+  // (1.7.1: on Windows the script is started through launch-admin-update.cmd, which returns at once: what it did is
+  // known by its result file, waited for here)
+  const waitFor = (f, ms = 180000) => { const t0 = Date.now(); while (!fs.existsSync(f) && Date.now() - t0 < ms) spawnSync(process.execPath, ['-e', 'setTimeout(()=>{},300)']); return fs.existsSync(f); };
+  const run = (o, env = {}) => { const s = applyScript(path.join(T, 'script'), o); const r = spawnSync(s.command, s.args, { ...s.options, env: { ...process.env, L7A_NO_START: '1', ...env }, timeout: 240000 }); assert.equal(r.status, 0, 'the script was started (' + r.status + ') ' + (r.stderr || '')); assert.ok(waitFor(o.result), 'the script wrote its result'); };
   const old = { [EXE]: 'old program', 'resources/app.asar': 'old core', 'resources/app-ui/admin.js': 'old screen', 'locales/ar.pak': 'same' };
   const next = { [EXE]: 'new program', 'resources/app.asar': 'new core', 'resources/app-ui/admin.js': 'new screen', 'locales/ar.pak': 'same', 'resources/new-file.bin': 'added' };
 
@@ -238,9 +246,7 @@ function selfTest(zip) {
       `const c=require('node:child_process').spawn(s.command,s.args,{stdio:'ignore',...s.options,env:{...process.env,L7A_NO_START:'1'}});c.on('error',()=>{});c.unref();setTimeout(()=>process.exit(0),800);`;
     const r = spawnSync(process.execPath, ['-e', code], { stdio: 'ignore', timeout: 60000 });
     assert.equal(r.status, 0, 'the starting program ended');
-    const t0 = Date.now();
-    while (!fs.existsSync(result) && Date.now() - t0 < 180000) spawnSync(process.execPath, ['-e', 'setTimeout(()=>{},500)']);
-    assert.ok(fs.existsSync(result), 'the script went on after the program that started it had ended');
+    assert.ok(waitFor(result), 'the script went on after the program that started it had ended');
     assert.equal(fs.readFileSync(result, 'utf8').trim(), 'ok');
     assert.deepEqual(tree(to), tree(from));
     say('the script goes on after the program that started it has ended (the program closes itself for the update)');
