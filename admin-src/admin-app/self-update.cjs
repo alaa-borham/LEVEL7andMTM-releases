@@ -144,7 +144,7 @@ function applyScript(dir, { pid, from, to, exe = EXE, backup, result }, platform
     const file = path.join(dir, 'apply-admin-update.cmd'), launch = path.join(dir, 'launch-admin-update.cmd');
     fs.writeFileSync(file, APPLY_CMD, 'latin1');
     fs.writeFileSync(launch, LAUNCH_CMD, 'latin1');
-    for (const s of [file, ...a]) if (/["%]/.test(s)) throw Error('اسم المجلد يحتوي علامة لا يمكن تمريرها: ' + s);
+    for (const s of [file, ...a]) if (/["%^]/.test(s)) throw Error('اسم المجلد يحتوي علامة لا يمكن تمريرها: ' + s);
     // cmd.exe: the whole command inside one more pair of quotes (/s), the arguments exactly as written here
     const line = [launch, ...a].map(s => `"${s}"`).join(' ');
     return { file, command: path.join(process.env.SystemRoot || process.env.windir || 'C:\\Windows', 'System32', 'cmd.exe'), args: ['/d', '/s', '/c', `"${line}"`],

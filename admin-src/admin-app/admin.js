@@ -7,6 +7,8 @@
   const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   let st = null, pub = { version: 0 }, tab = 'users', editing = null, filter = '', releases = null, upd = null;
   let prod = null;                               // 1.6.0: the daily limit page as it is being typed (not saved yet)
+  let updating = '';                             // 1.7.2 (review): the full update running — its last word, kept
+  //                                                across the pages (each one drew a fresh, live «تحديث الآن»)
   let tok = { ok: true }, retoken = false;      // 1.5.0: does the saved GitHub token work; its field shown again
   const app = $('#app');
 
@@ -75,7 +77,7 @@
           <div class="stat ${pub.version ? 'ok' : 'warn'}"><small>الصلاحيات المنشورة: </small><b>${pub.version ? `الإصدار ${pub.version} · ${pub.users} مستخدم` : pub.error ? 'تعذرت قراءتها الآن' : 'لا شيء بعد'}</b></div>
           <div class="stat" title="إصدار الشاشة · إصدار الجزء المختوم"><small>برنامج المدير </small><b>الإصدار ${esc(st.version)} · ${esc(st.core)}</b></div>
         </div></header>
-      ${upd ? `<div class="updbar">${upd.needsFull ? `${upd.full ? `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.full.version)}</b> (البرنامج كاملاً، ${(upd.full.size / 1048576).toFixed(0)} ميغابايت). <button class="primary" data-a="fullupdate">تحديث الآن</button> <span id="fullmsg"></span>` : `يوجد إصدار جديد لبرنامج المدير ${esc(upd.version)} — يحتاج تحميل البرنامج كاملاً من صفحة الإصدارات: <b dir="ltr">github.com/alaa-borham/LEVEL7andMTM-releases/releases</b> (admin-v${esc(upd.version)}).`}` : `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.version)}</b>.`}${upd.needsFull ? '' : '<button class="primary" data-a="selfupdate">تحديث الآن</button>'}</div>` : ''}
+      ${upd ? `<div class="updbar">${upd.needsFull ? `${upd.full ? `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.full.version)}</b> (البرنامج كاملاً، ${(upd.full.size / 1048576).toFixed(0)} ميغابايت). ${updating ? '<button class="primary" disabled>يحدّث…</button>' : '<button class="primary" data-a="fullupdate">تحديث الآن</button>'} <span id="fullmsg">${esc(updating)}</span>` : `يوجد إصدار جديد لبرنامج المدير ${esc(upd.version)} — يحتاج تحميل البرنامج كاملاً من صفحة الإصدارات: <b dir="ltr">github.com/alaa-borham/LEVEL7andMTM-releases/releases</b> (admin-v${esc(upd.version)}).`}` : `يوجد إصدار جديد لبرنامج المدير <b dir="ltr">${esc(upd.version)}</b>.`}${upd.needsFull ? '' : '<button class="primary" data-a="selfupdate">تحديث الآن</button>'}</div>` : ''}
       ${retoken ? `<div class="card" id="retok"><b>رمز GitHub جديد</b><p>ألصق الرمز الجديد (يبدأ بـ github_pat_). يُحفظ مشفراً على هذا الجهاز مكان القديم.</p>
         <div class="field"><input type="password" id="tok" placeholder="github_pat_…"></div>
         <button class="primary" data-a="token">حفظ الرمز</button> <button data-a="retoken-close">إلغاء</button><div class="msg" id="tmsg"></div></div>` : ''}
@@ -95,7 +97,8 @@
   function readProd() {
     if (!$('#p-rows')) return prod || savedProd();
     const num = v => (String(v ?? '').trim() === '' ? null : Number(v));
-    const customers = readProdRows().map(r => ({ name: r.name.replace(/\s+/g, ' ').trim(), limit: num(r.limit) })).filter(r => r.name || r.limit !== null);
+    // (only trimmed: the spaces inside are the fingerprint's business — plainName, as LEVEL7 MTM's plain_name)
+    const customers = readProdRows().map(r => ({ name: r.name.trim(), limit: num(r.limit) })).filter(r => r.name || r.limit !== null);
     return { day: $('#p-dayon').checked ? { start: $('#p-start').value, end: $('#p-end').value } : null, default: num($('#p-default').value), customers };
   }
   const readProdRows = () => [...document.querySelectorAll('#p-rows .pline')].map(r => ({ name: r.querySelector('.p-name').value, limit: r.querySelector('.p-limit').value }));
@@ -113,7 +116,10 @@
         <div class="row"><button data-a="p-add">+ عميل</button></div>
         <div class="row rest"><label for="p-default">باقي العملاء (غير المكتوبين هنا)</label><input type="number" id="p-default" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(p.default ?? '')}"><span class="unit">ملف XML في اليوم لكل عميل</span></div>
         <p class="hint">اكتب اسم العميل كما يظهر في صفحة «العملاء» في LEVEL7 MTM (مثل: الفاخره). منتجات العميل تُحسب معه. لمنتج واحد وحده اكتب «العميل / المنتج». الرقم 0 يوقف السحب لهذا العميل. الأسماء تبقى على هذا الجهاز: المنشور رمز لا يُقرأ منه الاسم.</p></section>
-      <div class="bar"><button class="primary big" data-a="p-save">حفظ</button><span class="msg" id="p-msg">${sameProd() ? '' : 'تغييرات لم تُحفظ بعد.'}</span></div>`;
+      <div class="bar"><button class="primary big" data-a="p-save">حفظ</button><span class="msg" id="p-msg"></span></div>`;
+    // 1.7.2 (review): compared once the page is in place — from the page before, a row just deleted was still there
+    // (no «not saved» after ✕), and from another tab the typed numbers were text against the saved numbers
+    $('#p-msg').textContent = sameProd() ? '' : 'تغييرات لم تُحفظ بعد.';
   }
   // 1.2.6: a clearer card — the name, his state, then one row per program (works / closed, and how much of it is closed)
   function card(u, i) {
@@ -304,8 +310,9 @@
       else if (a === 'fullupdate') {
         // 1.5.1: the whole program — downloaded, unpacked, started once to see that it works, then put in place when
         // this one has closed; it opens again by itself
+        if (updating) return;
         t.disabled = true; t.textContent = 'يحدّث…';
-        const say = m => { const el = $('#fullmsg'); if (el) el.textContent = m; };
+        const say = m => { updating = m; const el = $('#fullmsg'); if (el) el.textContent = m; };
         A.onUpdateProgress(p => say(p.phase === 'download' ? `ينزّل… ${p.pct}%` : p.phase === 'unpack' ? 'يفكّ الملفات…' : p.phase === 'check' ? 'يفحص الإصدار الجديد…' : 'يثبّت — سيُغلق البرنامج ويفتح من جديد خلال دقيقة.'));
         say('ينزّل…');
         const r = await A.fullUpdateInstall();
@@ -389,6 +396,7 @@
       if ($('#smsg') && !st.keyOpen) $('#smsg').textContent = m, $('#smsg').className = 'msg bad';
       else if ($('#tmsg') && a === 'token') $('#tmsg').textContent = m, $('#tmsg').className = 'msg bad';
       else if (editing) emsg(m); else toast(m, true);
+      if (a === 'fullupdate') updating = '';
       if (a === 'publish' || t.dataset.approve || t.dataset.appApprove || t.dataset.offer || a === 'fullupdate') { t.disabled = false; render(); }
     }
   });

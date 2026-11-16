@@ -137,6 +137,7 @@ const writeJson = (n, v) => {
   fs.renameSync(t, f);
 };
 let key = null; // { privateKey, publicKey } while the program is open
+let fullUpdating = false; // 1.7.2: a full update of the program is running
 let win = null;
 
 // ---- the GitHub token (encrypted on this computer)
@@ -199,7 +200,11 @@ const requireDevice = d => d.requireDevice !== false;
 // his name and his limit — the policy file is public, so no customer's name is in it. LEVEL7 MTM (services/production.py)
 // makes the same fingerprint from its own customers' names: plainName must stay the same in both.
 const plainName = n => String(n ?? '').normalize('NFC').toLowerCase().replace(/[أإآٱ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي')
-  .replace(/[\u0640\u064b-\u0652\u200b-\u200f\ufeff]/g, '').replace(/[ \t\n\r\u00a0]+/g, ' ').replace(/^ +| +$/g, '').replace(/ ?\/ ?/g, '/');
+  .replace(/[\u0640\u064b-\u0652\u200b-\u200f\ufeff]/g, '')
+  // 1.7.2 (review): every kind of space is one space — a name pasted with U+202F or U+3000 had another fingerprint here
+  // than in LEVEL7 MTM (same class in its plain_name)
+  .replace(/[ \t\n\r\v\f\u0085\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000]+/g, ' ')
+  .replace(/^ +| +$/g, '').replace(/ ?\/ ?/g, '/');
 const customerId = n => crypto.createHash('sha256').update('level7-customer:' + plainName(n)).digest('hex');
 const HOUR = /^([01]\d|2[0-3]):[0-5]\d$/;
 const limitOf = v => (v === null || v === undefined || v === '' ? null : Number(v));
@@ -218,7 +223,7 @@ function productionOf(p) {
   if (def !== null && !ok(def)) throw Error('حد باقي العملاء: اكتب عدداً صحيحاً (أو اتركه فارغاً: بلا حد).');
   const seen = new Map(), customers = [];
   for (const r of Array.isArray(p.customers) ? p.customers : []) {
-    const name = String(r?.name ?? '').replace(/\s+/g, ' ').trim(), limit = limitOf(r?.limit);
+    const name = String(r?.name ?? '').trim(), limit = limitOf(r?.limit);
     if (!name && limit === null) continue;
     if (!name) throw Error('حد بلا اسم عميل: اكتب اسم العميل كما هو في LEVEL7 MTM.');
     if (limit === null || !ok(limit)) throw Error(`العميل «${name}»: اكتب حده اليومي عدداً صحيحاً (0 = لا يُسحب له شيء).`);
@@ -416,6 +421,13 @@ function register() {
   });
   // 1.5.1 (the owner: «أفضل عند تحديث المدير أوتوماتيك مثل الباقية»): the whole program, from inside the program
   handle('fullUpdateInstall', async () => {
+    // 1.7.2 (review): one at a time — a second click (the page drawn again meanwhile) cleared the first one's download
+    // and both failed
+    if (fullUpdating) throw Error('التحديث يعمل الآن؛ انتظر حتى ينتهي.');
+    fullUpdating = true;
+    try { return await fullUpdate(); } catch (e) { fullUpdating = false; throw e; }
+  });
+  async function fullUpdate() {
     if (!INSTALL_DIR) throw Error('التحديث الكامل يعمل في البرنامج المثبَّت فقط.');
     const m = JSON.parse(await readRepo(`${ADMIN_DIR}/latest.json`));
     const v = String(m.core || '');
@@ -426,7 +438,7 @@ function register() {
     // the program's folder must be one this user can write to (it is, wherever the package was unpacked by hand)
     try { const t = path.join(INSTALL_DIR, '.l7a-write-test'); fs.writeFileSync(t, 'x'); fs.rmSync(t); } catch { throw Error('لا يمكن الكتابة في مجلد البرنامج (' + INSTALL_DIR + '). انقل البرنامج إلى مجلد آخر، أو حدّثه يدوياً من صفحة الإصدارات.'); }
     const up = UPDATES();
-    for (const n of (() => { try { return fs.readdirSync(up); } catch { return []; } })()) if (/^(new-|kept|admin-.*\.zip)/.test(n)) SU.fs.rmSync(path.join(up, n), { recursive: true, force: true });
+    for (const n of (() => { try { return fs.readdirSync(up); } catch { return []; } })()) if (/^(new-.*|kept.*|admin-.*\.zip)$/.test(n)) SU.fs.rmSync(path.join(up, n), { recursive: true, force: true });
     const zip = path.join(up, `admin-${v}.zip`);
     say('download', 0);
     await SU.downloadTo(programFetch, info.url, zip, { size: info.size, sha256: info.sha256, onProgress: f => say('download', Math.round(f * 100)) });
@@ -450,7 +462,7 @@ function register() {
     say('install');
     setTimeout(() => app.quit(), 1500);
     return { version: v };
-  });
+  }
   handle('selfUpdateInstall', async () => {
     if (!key) throw Error('افتح المفتاح أولاً.');
     const text = await readRepo(`${ADMIN_DIR}/latest.json`);
