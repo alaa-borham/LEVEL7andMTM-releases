@@ -120,16 +120,28 @@ const APPLY_SH = [
   '[ -n "$L7A_NO_START" ] || ("$3/$4" >/dev/null 2>&1 &)',
   ''
 ].join('\n');
+// 1.7.1 (the owner, admin 1.7.0: «تعذر تحديث برنامج المدير إلى 1.7.0» — «لم يحدث النظام»): on Windows a program started
+// by this one (not «detached») is in a job of Node's that is closed with this program: the script was ended with the
+// program it was waiting for, before it copied anything, and nothing started again. It is started through a first
+// script that starts it once more («start /b»: the same hidden console) and ends at once; what a process of that job
+// starts is not in the job (Node lets it go: «silent breakaway»), so the update goes on after the program has closed.
+const LAUNCH_CMD = [
+  '@echo off',
+  'start "" /b "%ComSpec%" /d /c call "%~dp0apply-admin-update.cmd" %*',
+  'exit /b 0',
+  ''
+].join('\r\n');
 /** Writes the script into `dir` and returns how to start it: { command, args, options }. */
 function applyScript(dir, { pid, from, to, exe = EXE, backup, result }, platform = process.platform) {
   fs.mkdirSync(dir, { recursive: true });
   const a = [String(pid), from, to, exe, backup, result];
   if (platform === 'win32') {
-    const file = path.join(dir, 'apply-admin-update.cmd');
+    const file = path.join(dir, 'apply-admin-update.cmd'), launch = path.join(dir, 'launch-admin-update.cmd');
     fs.writeFileSync(file, APPLY_CMD, 'latin1');
+    fs.writeFileSync(launch, LAUNCH_CMD, 'latin1');
     for (const s of [file, ...a]) if (/["%]/.test(s)) throw Error('اسم المجلد يحتوي علامة لا يمكن تمريرها: ' + s);
     // cmd.exe: the whole command inside one more pair of quotes (/s), the arguments exactly as written here
-    const line = [file, ...a].map(s => `"${s}"`).join(' ');
+    const line = [launch, ...a].map(s => `"${s}"`).join(' ');
     return { file, command: path.join(process.env.SystemRoot || process.env.windir || 'C:\\Windows', 'System32', 'cmd.exe'), args: ['/d', '/s', '/c', `"${line}"`],
       // (a hidden console of its own, which the commands it runs share — started «detached» it has none, and each of
       // them would open a window of its own; on Windows it goes on after the program has closed either way)
@@ -218,7 +230,22 @@ function selfTest(zip) {
     assert.equal(fs.readFileSync(result, 'utf8').trim(), 'ok');
     say('the script waits until the program has closed');
   }
-  // 4. unpacking: a package made by «zip -r»; nothing is written outside the folder
+  // 4. (1.7.1) the program that starts the script ends right after, as the program does: the script goes on, puts
+  //    the new program in place and says so (on Windows it was ended with the program: admin 1.7.0 at the owner's)
+  {
+    const to = make(path.join(T, 'program 4'), old), from = make(path.join(T, 'new 4'), next), backup = path.join(T, 'kept 4'), result = path.join(T, 'result 4.txt');
+    const code = `const SU=require(${JSON.stringify(__filename)});const s=SU.applyScript(${JSON.stringify(path.join(T, 'script 4'))},{pid:process.pid,from:${JSON.stringify(from)},to:${JSON.stringify(to)},backup:${JSON.stringify(backup)},result:${JSON.stringify(result)}});` +
+      `const c=require('node:child_process').spawn(s.command,s.args,{stdio:'ignore',...s.options,env:{...process.env,L7A_NO_START:'1'}});c.on('error',()=>{});c.unref();setTimeout(()=>process.exit(0),800);`;
+    const r = spawnSync(process.execPath, ['-e', code], { stdio: 'ignore', timeout: 60000 });
+    assert.equal(r.status, 0, 'the starting program ended');
+    const t0 = Date.now();
+    while (!fs.existsSync(result) && Date.now() - t0 < 180000) spawnSync(process.execPath, ['-e', 'setTimeout(()=>{},500)']);
+    assert.ok(fs.existsSync(result), 'the script went on after the program that started it had ended');
+    assert.equal(fs.readFileSync(result, 'utf8').trim(), 'ok');
+    assert.deepEqual(tree(to), tree(from));
+    say('the script goes on after the program that started it has ended (the program closes itself for the update)');
+  }
+  // 5. unpacking: a package made by «zip -r»; nothing is written outside the folder
   if (zip) {
     const d = path.join(T, 'unpacked');
     const n = extractZip(zip, d);
