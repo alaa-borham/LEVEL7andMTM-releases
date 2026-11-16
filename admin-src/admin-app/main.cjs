@@ -229,6 +229,9 @@ function productionOf(p) {
   }
   return { day, default: def, customers };
 }
+/** 1.7.0 (the owner: the limit «لكل مستخدم في برنامج المدير» — each client on his own computer): a user's daily limit of
+ *  XML files pulled in LEVEL7 MTM, on his user record (null: no limit) */
+const dailyOf = v => (Number.isInteger(v) && v >= 0 && v <= 100000 ? v : null);
 /** the part of the policy LEVEL7 MTM reads (undefined: nothing set — no limit, any hour) */
 function publishedProduction(p) {
   const v = productionOf(p);
@@ -324,7 +327,7 @@ function register() {
   });
   handle('saveUsers', async ({ list }) => {
     const d = users();
-    d.users = (Array.isArray(list) ? list : []).map(u => ({ name: String(u.name || '').trim(), id: u.id, ...secret(u), expires: u.expires || null, xz: u.xz !== false, admin: !!u.admin, disabled: !!u.disabled, devices: (u.devices || []).filter(c => /^[A-Z2-9]{5}-[A-Z2-9]{5}$/.test(c)), blocked: (u.blocked || []).filter(k => typeof k === 'string') }));
+    d.users = (Array.isArray(list) ? list : []).map(u => ({ name: String(u.name || '').trim(), id: u.id, ...secret(u), expires: u.expires || null, xz: u.xz !== false, admin: !!u.admin, disabled: !!u.disabled, devices: (u.devices || []).filter(c => /^[A-Z2-9]{5}-[A-Z2-9]{5}$/.test(c)), blocked: (u.blocked || []).filter(k => typeof k === 'string'), ...(dailyOf(u.daily) !== null ? { daily: dailyOf(u.daily) } : {}) }));
     d.dirty = true;
     writeJson('users.json', d);
     return true;
@@ -388,7 +391,7 @@ function register() {
     const before = JSON.stringify([d.users, d.requireDevice, d.production]);
     const version = Math.max(pub?.version || 0, d.lastVersion || 0) + 1;
     const production = publishedProduction(d.production);      // 1.6.0: LEVEL7 MTM's daily limit and work day
-    const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [] })), ...(production ? { production } : {}) }, key.privateKey);
+    const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [], ...(dailyOf(u.daily) !== null ? { daily: dailyOf(u.daily) } : {}) })), ...(production ? { production } : {}) }, key.privateKey);
     await writeRepo(POLICY, JSON.stringify(env, null, 1), `LEVEL7 policy ${version}`);
     // 1.5.0 (review): what was saved WHILE this was being published (a user added during «ينشر…») was written over by the
     // list of before — the user gone from the file and the screen, no «unpublished changes». The file as it is now counts.

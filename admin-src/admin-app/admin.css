@@ -108,7 +108,8 @@ button.mini{font-size:12px;padding:2px 8px;margin-inline-start:6px;opacity:.85}
 /* 1.6.0: the daily production limit page */
 .prodbox{padding-bottom:14px}.prodbox .hint{color:var(--muted);font-size:13.5px;margin:10px 0 0;line-height:1.7}
 .prodbox .hours{gap:22px;margin:4px 0}.prodbox .hours[hidden]{display:none}.prodbox .hours label{display:flex;align-items:center;gap:8px}.prodbox input[type=time]{width:130px}
-.prow{display:flex;gap:10px;align-items:center;margin-bottom:8px}.prow .p-name{flex:1;min-width:0;max-width:420px}
+.pline{display:flex;gap:10px;align-items:center;margin-bottom:8px}.pline .p-name{flex:1;min-width:0;max-width:420px}
+#e-daily{width:130px;text-align:center}
 .prodbox input[type=number]{width:110px;text-align:center}.prodbox .unit{color:var(--muted);font-size:13.5px}
 .prodbox .rest{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}.prodbox .rest label{min-width:230px}
 .bar .msg{color:var(--warn)}

@@ -98,12 +98,12 @@
     const customers = readProdRows().map(r => ({ name: r.name.replace(/\s+/g, ' ').trim(), limit: num(r.limit) })).filter(r => r.name || r.limit !== null);
     return { day: $('#p-dayon').checked ? { start: $('#p-start').value, end: $('#p-end').value } : null, default: num($('#p-default').value), customers };
   }
-  const readProdRows = () => [...document.querySelectorAll('#p-rows .prow')].map(r => ({ name: r.querySelector('.p-name').value, limit: r.querySelector('.p-limit').value }));
+  const readProdRows = () => [...document.querySelectorAll('#p-rows .pline')].map(r => ({ name: r.querySelector('.p-name').value, limit: r.querySelector('.p-limit').value }));
   function renderProduction() {
     const p = prod || savedProd();
     const rows = p.customers.length ? p.customers : [{ name: '', limit: '' }];
-    const row = r => `<div class="prow"><input type="text" class="p-name" placeholder="اسم العميل كما هو في LEVEL7 MTM" value="${esc(r.name)}"><input type="number" class="p-limit" min="0" step="1" dir="ltr" placeholder="العدد" value="${esc(r.limit ?? '')}"><span class="unit">ملف XML في اليوم</span><button data-a="p-del" title="حذف هذا العميل من القائمة">✕</button></div>`;
-    $('#main').innerHTML = `<p class="relnote">يعمل في LEVEL7 MTM: عدد ملفات XML التي تُسحب لكل عميل في يوم العمل. ما زاد عن الحد ينتظر في مجلد process ويُسحب في اليوم التالي، الأقدم أولاً. يحتاج LEVEL7 MTM 2.0.43 أو أحدث.</p>
+    const row = r => `<div class="pline"><input type="text" class="p-name" placeholder="اسم العميل كما هو في LEVEL7 MTM" value="${esc(r.name)}"><input type="number" class="p-limit" min="0" step="1" dir="ltr" placeholder="العدد" value="${esc(r.limit ?? '')}"><span class="unit">ملف XML في اليوم</span><button data-a="p-del" title="حذف هذا العميل من القائمة">✕</button></div>`;
+    $('#main').innerHTML = `<p class="relnote">يعمل في LEVEL7 MTM: عدد ملفات XML التي تُسحب لكل عميل في يوم العمل. ما زاد عن الحد ينتظر في مجلد process ويُسحب في اليوم التالي، الأقدم أولاً. يحتاج LEVEL7 MTM 2.0.45 أو أحدث. حد كل مستخدم (عميلك على جهازه) يُكتب في صفحة المستخدم ← LEVEL7 MTM.</p>
       <section class="relbox prodbox"><h3>يوم العمل <small>واحد لكل العملاء</small></h3>
         <label class="switch"><input type="checkbox" id="p-dayon" ${p.day ? 'checked' : ''}> سحب ملفات XML في موعد يوم العمل فقط</label>
         <div class="row hours" ${p.day ? '' : 'hidden'}><label>البداية <input type="time" id="p-start" dir="ltr" value="${esc(p.day?.start || '08:00')}"></label><label>النهاية <input type="time" id="p-end" dir="ltr" value="${esc(p.day?.end || '17:00')}"></label></div>
@@ -124,7 +124,7 @@
     }).join('');
     return `<div class="card" data-edit="${i}"><div class="top"><span class="av">${esc((u.name || '?').trim().charAt(0).toUpperCase())}</span><div class="who"><div class="name">${esc(u.name)}</div><div class="state ${c}">● ${esc(t)}</div></div>${u.admin ? '<span class="chip ok">مدير</span>' : ''}</div>
       <div class="progrows">${progs}</div>
-      <div class="tags"><span class="chip ${noDevice(u) ? 'warn' : ''}">💻 ${u.devices?.length ? `${u.devices.length} جهاز` : mustDevice() ? 'بلا جهاز' : 'أي جهاز'}</span>${oldPw(u) ? '<span class="chip warn" title="صيغة قديمة أضعف: افتح المستخدم واكتب له كلمة سر جديدة">كلمة سر قديمة — غيّرها</span>' : ''}${u.xz === false ? '<span class="chip warn">القياسات للعرض فقط</span>' : ''}${toolsOf(u).length ? `<span class="chip warn">${toolsOf(u).length} أداة مغلقة</span>` : ''}</div></div>`;
+      <div class="tags"><span class="chip ${noDevice(u) ? 'warn' : ''}">💻 ${u.devices?.length ? `${u.devices.length} جهاز` : mustDevice() ? 'بلا جهاز' : 'أي جهاز'}</span>${oldPw(u) ? '<span class="chip warn" title="صيغة قديمة أضعف: افتح المستخدم واكتب له كلمة سر جديدة">كلمة سر قديمة — غيّرها</span>' : ''}${u.xz === false ? '<span class="chip warn">القياسات للعرض فقط</span>' : ''}${Number.isInteger(u.daily) ? `<span class="chip">📥 ${u.daily} XML في اليوم</span>` : ''}${toolsOf(u).length ? `<span class="chip warn">${toolsOf(u).length} أداة مغلقة</span>` : ''}</div></div>`;
   }
   function summary() {
     const n = { ok: 0, warn: 0, bad: 0 };
@@ -198,6 +198,8 @@
       </section>
       <section class="etab" data-sec="mtm" ${tab === 'mtm' ? '' : 'hidden'}>
       ${allowed('mtm')}
+      <div class="field"><label for="e-daily">الحد اليومي لسحب ملفات XML على أجهزته (فارغ = بلا حد)</label>
+        <div class="row"><input type="number" id="e-daily" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(u.daily ?? '')}"><span class="muted">ملف XML في يوم العمل، لكل جهاز من أجهزته · 0 = لا يُسحب شيء · يوم العمل من صفحة «حد الإنتاج اليومي»</span></div></div>
       <div class="field"><label>أوامر وصفحات LEVEL7 MTM المغلقة عليه (${closedOf(u, 'mtm').length}) — تختفي ولا تفتح</label>${toolList('mtm')}</div>
       </section>
       <div class="msg" id="emsg"></div></div>
@@ -211,12 +213,15 @@
     u.name = $('#e-name').value.trim();
     u.expires = $('#e-date').value || null;
     u.xz = $('#e-xz').checked; u.admin = $('#e-admin').checked; u.disabled = $('#e-dis').checked;
+    const dl = String($('#e-daily')?.value ?? '').trim();
+    u.daily = dl === '' ? null : Number(dl);      // 1.7.0: his daily limit of XML files pulled in LEVEL7 MTM
     editing.pw = $('#e-pw').value;
   }
   async function saveEditor() {
     readEditor();
     const { u, i } = editing;
     if (!u.name) return emsg('اكتب الاسم.');
+    if (u.daily !== null && u.daily !== undefined && !(Number.isInteger(u.daily) && u.daily >= 0 && u.daily <= 100000)) { editing.tab = 'mtm'; drawEditor(); return emsg('الحد اليومي: اكتب عدداً صحيحاً (أو اتركه فارغاً: بلا حد).'); }
     if (st.data.users.some((x, k) => k !== i && x.name.trim().toLowerCase() === u.name.toLowerCase())) return emsg('هذا الاسم موجود.');
     try {
       if (editing.pw) { delete u.hash; delete u.vh; delete u.n; Object.assign(u, await A.hash(u.name, editing.pw)); }
@@ -307,7 +312,7 @@
         toast(`يُثبَّت الإصدار ${r.version} — سيُغلق البرنامج ويفتح من جديد.`);
       }
       else if (a === 'p-add') { prod = readProd(); prod.customers.push({ name: '', limit: '' }); renderProduction(); const all = document.querySelectorAll('#p-rows .p-name'); all[all.length - 1]?.focus(); }
-      else if (a === 'p-del') { const rows = [...document.querySelectorAll('#p-rows .prow')], k = rows.indexOf(t.closest('.prow')); const now = readProdRows(); now.splice(k, 1); prod = { ...readProd(), customers: now }; renderProduction(); }
+      else if (a === 'p-del') { const rows = [...document.querySelectorAll('#p-rows .pline')], k = rows.indexOf(t.closest('.pline')); const now = readProdRows(); now.splice(k, 1); prod = { ...readProd(), customers: now }; renderProduction(); }
       else if (a === 'p-save') {
         const v = readProd();
         await A.saveProduction(v);
