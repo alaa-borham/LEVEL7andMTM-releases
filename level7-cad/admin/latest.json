@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.6.0",
- "core": "1.6.0",
- "notes": "1.6.0: صفحة «حد الإنتاج اليومي» — يوم العمل (بداية ونهاية) وحد يومي لكل عميل لسحب ملفات XML في LEVEL7 MTM (يحتاج LEVEL7 MTM 2.0.43 أو أحدث)",
- "dir": "level7-cad/admin/v/1.6.0/ui",
+ "version": "1.7.0",
+ "core": "1.7.0",
+ "notes": "1.7.0: الحد اليومي لكل مستخدم (صفحة المستخدم ← LEVEL7 MTM)؛ أمر «حزمة لعميل جديد» يُغلق لمستخدم؛ إصلاح شكل بطاقات المستخدمين في 1.6.0. 1.6.0: صفحة «حد الإنتاج اليومي»",
+ "dir": "level7-cad/admin/v/1.7.0/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,18 +13,18 @@
   },
   {
    "path": "admin.js",
-   "sha256": "4e35ea26fb1099638ce5198e396e6af361b302e48b779c011360d2de61149ce0",
-   "size": 39605
+   "sha256": "dd581a3e5965be4cec1727d29f19783bccabf8eae236044509374e3ccd8e4f39",
+   "size": 40762
   },
   {
    "path": "admin.css",
-   "sha256": "c5ab60bbb638ed8b6f62cf72c9927bdb2c991ec2fbde0b7dca1ca9bfbb3cb1ad",
-   "size": 11724
+   "sha256": "e986783e3a22218b383d2225778a109b5b6a57b98651c8b9ec52789e59a473aa",
+   "size": 11766
   },
   {
    "path": "catalogue.json",
-   "sha256": "062866d849cd04355aba7b4d1f65817c53854f869c008cdb4b92585ef8809130",
-   "size": 13019
+   "sha256": "bca6cd90e466df4ecd3d42bf8500b26e32ee75a35dc90b2972f41d952bd4aba4",
+   "size": 13088
   },
   {
    "path": "icon.png",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "5d86ad58b9df255e29ed74962dcd952c9aa2b957269476bbec7a7ec291de2dda",
+   "sha256": "206eebc882f0c6fb519b323d676880f3bfb7068d51ec640601049041d2439132",
    "size": 41
   }
  ]
