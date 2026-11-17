@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.49",
+ "notes": "«تصميم» in a measurement check: each X keeps the design's own value [skip ci]\r\n\r\nThe owner: when the XML's value is outside the range set for it, take the\r\ndesign's value «without typing a number». In «فحص القياسات», the formula\r\n«تصميم» (also «التصميم», «design»): with From … to, only when the XML value\r\nis outside them or missing; without them, always. The measurement is not\r\nsent — every X it fills keeps its value in the design file, and follows it\r\nwhen the design changes. Shown in the order as «التصميم» with a note\r\n«FL: قيمة التصميم نفسه (في XML: …)»; the rules mark it «design», so neither\r\n«missing» nor «would keep the design's value» holds the order.\r\n\r\nar: الكلمة «تصميم» في فحص القياسات: يأخذ كل X قيمته من ملف التصميم\r\n\r\n\r\n",
+ "approved": "2026-11-17T01:33:55.191Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.49-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.49/LEVEL7MTM-2.0.49-Setup.exe",
+  "sha256": "d36c6f52c6e13a3ec297f00c47053a695b31d9ec78756ff32355d37f0e13ad92",
+  "size": 62918591
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.49\",\"sha256\":\"d36c6f52c6e13a3ec297f00c47053a695b31d9ec78756ff32355d37f0e13ad92\",\"size\":62918591,\"approved\":\"2026-11-17T01:33:55.191Z\"}",
+  "sig": "Iaeh5RlR3WyPZztlUPgdvSBdEQEDhmiOxZu3uToRHTwF21KiMtCEQdTpYSWlbkN+GvfuUqPXw/rK8RTHjW+lDg=="
+ }
+}
