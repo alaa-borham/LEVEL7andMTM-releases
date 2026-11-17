@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.48",
+ "notes": "Test: an encoding no platform reads (build 47 on Windows read «ANSI» as its code page) [skip ci]\r\n\r\nBuild 47 failed in test_one_xml_whose_encoding_cannot_be_read_never_stops_the_watch alone (479 passed):\r\non Windows «ANSI» is Python's name for the system code page (mbcs), so that XML is read there as it should\r\nbe. The test now takes an encoding unknown everywhere and gb2312 (a multi-byte encoding the reader refuses).\r\n\r\nar: اختبار: ترميز لا يقرؤه أي نظام (ويندوز يقرأ «ANSI» بلغة جهازه)\r\n\r\n\r\n",
+ "approved": "2026-11-17T00:08:27.579Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.48-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.48/LEVEL7MTM-2.0.48-Setup.exe",
+  "sha256": "8d1c7f683aaeb2702f24daa132d9b962fe001522b2bdae4280adb939107673e9",
+  "size": 62920899
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.48\",\"sha256\":\"8d1c7f683aaeb2702f24daa132d9b962fe001522b2bdae4280adb939107673e9\",\"size\":62920899,\"approved\":\"2026-11-17T00:08:27.579Z\"}",
+  "sig": "8+Jbw74pYwNXXJvjTik5Nk7/RyZRB5dvLBkwsye70afmpjO7c7Rc6V7QBqY4jzTm7i97O8q5QSTf9sfYHfM9Dw=="
+ }
+}
