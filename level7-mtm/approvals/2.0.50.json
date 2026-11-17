@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.50",
+ "notes": "Measurement checks: a design's X shown without the part 000 [skip ci]\r\n\r\nar: في «فحص القياسات» يظهر X12 وحده بدل X12/000 لأن 000 هو جدول X الوحيد للتصميم\r\n\r\n\r\n",
+ "approved": "2026-11-17T06:01:30.092Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.50-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.50/LEVEL7MTM-2.0.50-Setup.exe",
+  "sha256": "ed7a803837243740b9441547388d99dfd2f96428550a587bab392082f1dd97f1",
+  "size": 62915450
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.50\",\"sha256\":\"ed7a803837243740b9441547388d99dfd2f96428550a587bab392082f1dd97f1\",\"size\":62915450,\"approved\":\"2026-11-17T06:01:30.092Z\"}",
+  "sig": "+n7kkHlG/Uv14SjW+w5aG2xL0bBGdprkEOk3Zw4QiJ8QQqPBii1hjaSKzhRnvb/scqPdKgF0u31QwfieqZGBBw=="
+ }
+}
