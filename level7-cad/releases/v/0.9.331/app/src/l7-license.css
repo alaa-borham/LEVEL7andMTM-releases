@@ -1,0 +1,16 @@
+/* 0.9.289 super admin control: the login screen and the super admin screen */
+#l7-lock{position:fixed;inset:0;z-index:100000;display:flex;align-items:center;justify-content:center;background:rgba(10,13,18,.92);direction:rtl;font:14px system-ui,'Segoe UI',Tahoma,sans-serif}
+#l7-lock[hidden]{display:none}
+#l7-lock .lk-box{width:360px;padding:22px 24px;border-radius:12px;background:#171c24;color:#e4e9f0;border:1px solid #2e3742;box-shadow:0 12px 40px rgba(0,0,0,.5)}
+#l7-lock h2{margin:0 0 4px;font-size:18px}#l7-lock p{margin:6px 0;color:#9aa6b5;font-size:13px}
+#l7-lock label{display:block;margin:10px 0 4px;font-size:13px}
+#l7-lock input[type=text],#l7-lock input[type=password]{width:100%;box-sizing:border-box;height:34px;padding:0 10px;border-radius:7px;border:1px solid #2e3742;background:#10141a;color:#e4e9f0;font-size:14px}
+#l7-lock .lk-row{display:flex;gap:8px;align-items:center;margin-top:14px}
+#l7-lock button{height:34px;padding:0 16px;border-radius:7px;border:1px solid #2e3742;background:#1c222b;color:#e4e9f0;cursor:pointer;font-size:14px}
+#l7-lock button.primary{background:#2f7de1;border-color:#2f7de1;color:#fff}
+#l7-lock .lk-msg{color:#ef5350;min-height:18px}
+#l7-user{margin-inline-start:10px;cursor:pointer;color:#8fd18a}#l7-user.warn{color:#f2b84b}
+.l7-closed{display:none!important}
+#l7-lock label.lk-check{display:flex;gap:6px;align-items:center}
+#l7-lock .lk-devline{margin-top:14px;font-size:12px}#l7-lock .lk-dev{color:#8fc1ff;font:600 13px Consolas,monospace;letter-spacing:.5px}
+#l7-lock .lk-devline button,#l7-lock p button{height:24px;padding:0 8px;font-size:12px}
