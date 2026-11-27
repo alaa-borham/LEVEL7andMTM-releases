@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.7.2",
- "core": "1.7.2",
- "notes": "إصلاحات المراجعة: رسالة «تغييرات لم تُحفظ بعد» في صفحة حد الإنتاج اليومي تظهر بشكل صحيح؛ اسم العميل بأي نوع من المسافات يطابق LEVEL7 MTM؛ تحديث واحد في كل مرة.",
- "dir": "level7-cad/admin/v/1.7.2/ui",
+ "version": "1.8.0",
+ "core": "1.8.0",
+ "notes": "حد إنتاج شهري بجانب اليومي: في صفحة «حد الإنتاج» لكل عميل خانة «في اليوم» وخانة «في الشهر»، ولباقي العملاء، وفي صفحة المستخدم «الحد الشهري». يعمل مع LEVEL7 MTM 2.0.58 أو أحدث.",
+ "dir": "level7-cad/admin/v/1.8.0/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,8 +13,8 @@
   },
   {
    "path": "admin.js",
-   "sha256": "1c6559c9ad5ca5924a9688e2062e99e458f78f8e4ef85513dcc211ec687b1adf",
-   "size": 41535
+   "sha256": "808ed2ee5b35633785e91342b504a7a899c905a11e77a8cdab4cce53219bf399",
+   "size": 43523
   },
   {
    "path": "admin.css",
@@ -33,8 +33,8 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "acfb8eb670f24dab8631f37d82bc14780250a0c23548a2561b9b9100e2630d29",
-   "size": 41
+   "sha256": "32ada19ed7b32d40553ae5dc037e1d8dd65eef6af1604f8cf05327b4870e2bd7",
+   "size": 42
   }
  ]
 }
