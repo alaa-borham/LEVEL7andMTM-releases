@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.330",
- "notes": "LEVEL7 and MTM 0.9.330 (full program from 0.9.328): round 3 of the review; a link to a later part offered for repair (the owner's part 015)",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.330/app",
+ "version": "0.9.331",
+ "notes": "0.9.331: نقرة على طرف خط تُحفظ «طرف الخط» فتتبعه في كل مقاس (خطأ الجبزور P77)؛ والتشغيل التجريبي ينبّه إلى نقطة رقمها الثابت يساوي طول خطها",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.331/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "ea61a5afdc955fa01cfaa79b110e1795388de1b688114952c05dde9e03ce4a32",
-   "size": 215489
+   "sha256": "8cf7d0d1a61d6225c136f2b79aeec6e1f6b0eb1deba8bf310168d5b839fd9a55",
+   "size": 216183
   },
   {
    "path": "assets/icon.ico",
@@ -155,18 +155,18 @@
    "size": 4102
   },
   {
-   "path": "assets/l7design/assets/index-BJuc8TdO.js",
-   "sha256": "914eb0ef5a47ded3d30ceadfd1bbbdedeff97411d0382e2ca8108d99ba4a92f1",
-   "size": 1049396
-  },
-  {
    "path": "assets/l7design/assets/index-C52WllZp.css",
    "sha256": "24173c80eba2fc2cc48ba27939550e203b4c9a2d943a4d597a3d268c912462c3",
    "size": 71774
   },
   {
+   "path": "assets/l7design/assets/index-CwOCpHWo.js",
+   "sha256": "07c7a4e2ea3a1809ebbec49395e9e498a89b3df51907f84be29ee5d6df81bf22",
+   "size": 1052330
+  },
+  {
    "path": "assets/l7design/index.html",
-   "sha256": "5b263ab5459087eade4be9a5a0895b6e4d9ff080a6cb8d383c44d80afd1077d1",
+   "sha256": "41e039b18a451ba27ad13b9647c4a73afcecd168ac6ed9f64697370b012da02d",
    "size": 4097
   },
   {
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "565d2fec7c6792637a0cac62187fcb399eed3cc3999f61a55397c059b36a7af9",
+   "sha256": "1f7a74b3f25ac282462d59cfb49f5f7a17dab349929a912e4f2d4094f6092537",
    "size": 301
   },
   {
