@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.50",
- "notes": "Measurement checks: a design's X shown without the part 000 [skip ci]\r\n\r\nar: في «فحص القياسات» يظهر X12 وحده بدل X12/000 لأن 000 هو جدول X الوحيد للتصميم\r\n\r\n\r\n",
- "approved": "2026-11-17T06:01:30.092Z",
+ "version": "2.0.56",
+ "notes": "release-probe: the build's own command (file, notes, --latest) and the commit of build 55 [skip ci]\r\n\r\n\r\n",
+ "approved": "2026-11-27T13:25:15.142Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.50-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.50/LEVEL7MTM-2.0.50-Setup.exe",
-  "sha256": "ed7a803837243740b9441547388d99dfd2f96428550a587bab392082f1dd97f1",
-  "size": 62915450
+  "name": "LEVEL7MTM-2.0.56-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.56/LEVEL7MTM-2.0.56-Setup.exe",
+  "sha256": "7a428f9e63deaf21dda763c60f48e81591ea08838060e2c9cc9b6693409232eb",
+  "size": 62991627
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.50\",\"sha256\":\"ed7a803837243740b9441547388d99dfd2f96428550a587bab392082f1dd97f1\",\"size\":62915450,\"approved\":\"2026-11-17T06:01:30.092Z\"}",
-  "sig": "+n7kkHlG/Uv14SjW+w5aG2xL0bBGdprkEOk3Zw4QiJ8QQqPBii1hjaSKzhRnvb/scqPdKgF0u31QwfieqZGBBw=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.56\",\"sha256\":\"7a428f9e63deaf21dda763c60f48e81591ea08838060e2c9cc9b6693409232eb\",\"size\":62991627,\"approved\":\"2026-11-27T13:25:15.142Z\"}",
+  "sig": "ZtqQL7IiQ4C/6Kv/82AHzwXoSyrBb1WiBpECXqTsnS/Z/3tShD6gnl8Ifv3pNORZncSjLfmjFqyrh3qeddD4CA=="
  }
 }
