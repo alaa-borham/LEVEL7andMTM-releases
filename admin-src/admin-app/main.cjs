@@ -208,7 +208,11 @@ const plainName = n => String(n ?? '').normalize('NFC').toLowerCase().replace(/[
 const customerId = n => crypto.createHash('sha256').update('level7-customer:' + plainName(n)).digest('hex');
 const HOUR = /^([01]\d|2[0-3]):[0-5]\d$/;
 const limitOf = v => (v === null || v === undefined || v === '' ? null : Number(v));
-/** what the admin typed, checked: {day: {start, end} | null, default: n | null, customers: [{name, limit}]} — or why not */
+/** what the admin typed, checked: {day: {start, end} | null, default: n | null, customers: [{name, limit}]} — or why not.
+ *  1.8.0 (the owner: «بالاضافه الي نظام حد الانتاج اليومي اريد يكون ايضا لدي نظام شهري»): beside each daily limit a
+ *  monthly one — a row's «month», the others' «default_month» (each only when typed); a row may have either or both.
+ *  LEVEL7 MTM 2.0.57 reads them; an older one keeps to the daily limits. */
+const MONTH_MAX = 3000000;
 function productionOf(p) {
   p = p && typeof p === 'object' ? p : {};
   let day = null;
@@ -219,29 +223,38 @@ function productionOf(p) {
     day = { start, end };
   }
   const ok = n => Number.isInteger(n) && n >= 0 && n <= 100000;
-  const def = limitOf(p.default);
+  const okM = n => Number.isInteger(n) && n >= 0 && n <= MONTH_MAX;
+  const def = limitOf(p.default), defM = limitOf(p.default_month);
   if (def !== null && !ok(def)) throw Error('حد باقي العملاء: اكتب عدداً صحيحاً (أو اتركه فارغاً: بلا حد).');
+  if (defM !== null && !okM(defM)) throw Error('الحد الشهري لباقي العملاء: اكتب عدداً صحيحاً (أو اتركه فارغاً: بلا حد).');
   const seen = new Map(), customers = [];
   for (const r of Array.isArray(p.customers) ? p.customers : []) {
-    const name = String(r?.name ?? '').trim(), limit = limitOf(r?.limit);
-    if (!name && limit === null) continue;
+    const name = String(r?.name ?? '').trim(), limit = limitOf(r?.limit), month = limitOf(r?.month);
+    if (!name && limit === null && month === null) continue;
     if (!name) throw Error('حد بلا اسم عميل: اكتب اسم العميل كما هو في LEVEL7 MTM.');
-    if (limit === null || !ok(limit)) throw Error(`العميل «${name}»: اكتب حده اليومي عدداً صحيحاً (0 = لا يُسحب له شيء).`);
+    if (limit === null && month === null) throw Error(`العميل «${name}»: اكتب حده اليومي أو الشهري عدداً صحيحاً (0 = لا يُسحب له شيء).`);
+    if (limit !== null && !ok(limit)) throw Error(`العميل «${name}»: اكتب حده اليومي عدداً صحيحاً (0 = لا يُسحب له شيء).`);
+    if (month !== null && !okM(month)) throw Error(`العميل «${name}»: اكتب حده الشهري عدداً صحيحاً (0 = لا يُسحب له شيء).`);
     const id = customerId(name);
     if (seen.has(id)) throw Error(`العميل مكتوب مرتين: «${seen.get(id)}» و«${name}».`);
     seen.set(id, name);
-    customers.push({ name, limit });
+    customers.push({ name, limit, ...(month !== null ? { month } : {}) });
   }
-  return { day, default: def, customers };
+  return { day, default: def, ...(defM !== null ? { default_month: defM } : {}), customers };
 }
 /** 1.7.0 (the owner: the limit «لكل مستخدم في برنامج المدير» — each client on his own computer): a user's daily limit of
  *  XML files pulled in LEVEL7 MTM, on his user record (null: no limit) */
 const dailyOf = v => (Number.isInteger(v) && v >= 0 && v <= 100000 ? v : null);
+/** 1.8.0: and his monthly limit («monthly») */
+const monthlyOf = v => (Number.isInteger(v) && v >= 0 && v <= MONTH_MAX ? v : null);
+const userLimits = u => ({ ...(dailyOf(u.daily) !== null ? { daily: dailyOf(u.daily) } : {}), ...(monthlyOf(u.monthly) !== null ? { monthly: monthlyOf(u.monthly) } : {}) });
 /** the part of the policy LEVEL7 MTM reads (undefined: nothing set — no limit, any hour) */
 function publishedProduction(p) {
   const v = productionOf(p);
-  if (!v.day && v.default === null && !v.customers.length) return undefined;
-  return { ...(v.day ? { day: v.day } : {}), ...(v.default !== null ? { default: v.default } : {}), customers: v.customers.map(c => ({ id: customerId(c.name), limit: c.limit })) };
+  const defM = v.default_month ?? null;
+  if (!v.day && v.default === null && defM === null && !v.customers.length) return undefined;
+  return { ...(v.day ? { day: v.day } : {}), ...(v.default !== null ? { default: v.default } : {}), ...(defM !== null ? { default_month: defM } : {}),
+    customers: v.customers.map(c => ({ id: customerId(c.name), ...(c.limit !== null ? { limit: c.limit } : {}), ...(c.month !== undefined && c.month !== null ? { month: c.month } : {}) })) };
 }
 let usersNote = '';
 function users() {
@@ -332,7 +345,7 @@ function register() {
   });
   handle('saveUsers', async ({ list }) => {
     const d = users();
-    d.users = (Array.isArray(list) ? list : []).map(u => ({ name: String(u.name || '').trim(), id: u.id, ...secret(u), expires: u.expires || null, xz: u.xz !== false, admin: !!u.admin, disabled: !!u.disabled, devices: (u.devices || []).filter(c => /^[A-Z2-9]{5}-[A-Z2-9]{5}$/.test(c)), blocked: (u.blocked || []).filter(k => typeof k === 'string'), ...(dailyOf(u.daily) !== null ? { daily: dailyOf(u.daily) } : {}) }));
+    d.users = (Array.isArray(list) ? list : []).map(u => ({ name: String(u.name || '').trim(), id: u.id, ...secret(u), expires: u.expires || null, xz: u.xz !== false, admin: !!u.admin, disabled: !!u.disabled, devices: (u.devices || []).filter(c => /^[A-Z2-9]{5}-[A-Z2-9]{5}$/.test(c)), blocked: (u.blocked || []).filter(k => typeof k === 'string'), ...userLimits(u) }));
     d.dirty = true;
     writeJson('users.json', d);
     return true;
@@ -395,8 +408,8 @@ function register() {
     try { pub = await publishedPolicy(); } catch (e) { throw Error('تعذرت قراءة الصلاحيات المنشورة الآن (' + clean(e) + '). لم يُنشر شيء — حاول بعد قليل.'); }
     const before = JSON.stringify([d.users, d.requireDevice, d.production]);
     const version = Math.max(pub?.version || 0, d.lastVersion || 0) + 1;
-    const production = publishedProduction(d.production);      // 1.6.0: LEVEL7 MTM's daily limit and work day
-    const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [], ...(dailyOf(u.daily) !== null ? { daily: dailyOf(u.daily) } : {}) })), ...(production ? { production } : {}) }, key.privateKey);
+    const production = publishedProduction(d.production);      // 1.6.0: LEVEL7 MTM's daily limit and work day (1.8.0: and monthly)
+    const env = L.signPolicy({ version, issued: new Date().toISOString(), requireDevice: must, users: list.map(u => ({ id: u.id, ...secret(u), expires: u.expires || null, disabled: !!u.disabled, xz: u.xz !== false, admin: !!u.admin, devices: u.devices || [], blocked: u.blocked || [], ...userLimits(u) })), ...(production ? { production } : {}) }, key.privateKey);
     await writeRepo(POLICY, JSON.stringify(env, null, 1), `LEVEL7 policy ${version}`);
     // 1.5.0 (review): what was saved WHILE this was being published (a user added during «ينشر…») was written over by the
     // list of before — the user gone from the file and the screen, no «unpublished changes». The file as it is now counts.

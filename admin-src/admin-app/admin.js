@@ -81,7 +81,7 @@
       ${retoken ? `<div class="card" id="retok"><b>رمز GitHub جديد</b><p>ألصق الرمز الجديد (يبدأ بـ github_pat_). يُحفظ مشفراً على هذا الجهاز مكان القديم.</p>
         <div class="field"><input type="password" id="tok" placeholder="github_pat_…"></div>
         <button class="primary" data-a="token">حفظ الرمز</button> <button data-a="retoken-close">إلغاء</button><div class="msg" id="tmsg"></div></div>` : ''}
-      <nav class="tabs"><button data-tab="users" class="${tab === 'users' ? 'on' : ''}">المستخدمون (${d.users.length})</button><button data-tab="rel" class="${tab === 'rel' ? 'on' : ''}">التحديثات</button><button data-tab="prod" class="${tab === 'prod' ? 'on' : ''}">حد الإنتاج اليومي${prodCount() ? ` (${prodCount()})` : ''}</button></nav>
+      <nav class="tabs"><button data-tab="users" class="${tab === 'users' ? 'on' : ''}">المستخدمون (${d.users.length})</button><button data-tab="rel" class="${tab === 'rel' ? 'on' : ''}">التحديثات</button><button data-tab="prod" class="${tab === 'prod' ? 'on' : ''}">حد الإنتاج${prodCount() ? ` (${prodCount()})` : ''}</button></nav>
       <main id="main"></main>
       <div class="pubbar" ${d.dirty ? '' : 'hidden'}><span>لديك تغييرات لم تُنشر بعد — لا تصل للأجهزة حتى تنشرها.</span><button class="primary big" data-a="publish">نشر الآن</button></div>
     </div>`;
@@ -90,7 +90,8 @@
 
   // ---- 1.6.0: LEVEL7 MTM's daily production limit and work day (the owner: «حد انتاج يومي … لكل عميل … وموعد بدايه
   // ونهايه يوم العمل»). Typed here, saved with «حفظ», sent to the computers with «نشر الآن» like the users.
-  const savedProd = () => { const p = st.data.production || {}; return { day: p.day ? { start: p.day.start, end: p.day.end } : null, default: p.default ?? null, customers: (p.customers || []).map(c => ({ name: c.name, limit: c.limit })) }; };
+  // 1.8.0: and the monthly limit beside the daily one (a row's «month», the others' «default_month»)
+  const savedProd = () => { const p = st.data.production || {}; return { day: p.day ? { start: p.day.start, end: p.day.end } : null, default: p.default ?? null, default_month: p.default_month ?? null, customers: (p.customers || []).map(c => ({ name: c.name, limit: c.limit ?? null, month: c.month ?? null })) }; };
   const prodCount = () => (st.data.production?.customers || []).length;
   const sameProd = () => JSON.stringify(readProd()) === JSON.stringify(savedProd());
   /** the page's fields as they are now: names trimmed, numbers made, rows left empty dropped */
@@ -98,24 +99,24 @@
     if (!$('#p-rows')) return prod || savedProd();
     const num = v => (String(v ?? '').trim() === '' ? null : Number(v));
     // (only trimmed: the spaces inside are the fingerprint's business — plainName, as LEVEL7 MTM's plain_name)
-    const customers = readProdRows().map(r => ({ name: r.name.trim(), limit: num(r.limit) })).filter(r => r.name || r.limit !== null);
-    return { day: $('#p-dayon').checked ? { start: $('#p-start').value, end: $('#p-end').value } : null, default: num($('#p-default').value), customers };
+    const customers = readProdRows().map(r => ({ name: r.name.trim(), limit: num(r.limit), month: num(r.month) })).filter(r => r.name || r.limit !== null || r.month !== null);
+    return { day: $('#p-dayon').checked ? { start: $('#p-start').value, end: $('#p-end').value } : null, default: num($('#p-default').value), default_month: num($('#p-default-month').value), customers };
   }
-  const readProdRows = () => [...document.querySelectorAll('#p-rows .pline')].map(r => ({ name: r.querySelector('.p-name').value, limit: r.querySelector('.p-limit').value }));
+  const readProdRows = () => [...document.querySelectorAll('#p-rows .pline')].map(r => ({ name: r.querySelector('.p-name').value, limit: r.querySelector('.p-limit').value, month: r.querySelector('.p-month').value }));
   function renderProduction() {
     const p = prod || savedProd();
-    const rows = p.customers.length ? p.customers : [{ name: '', limit: '' }];
-    const row = r => `<div class="pline"><input type="text" class="p-name" placeholder="اسم العميل كما هو في LEVEL7 MTM" value="${esc(r.name)}"><input type="number" class="p-limit" min="0" step="1" dir="ltr" placeholder="العدد" value="${esc(r.limit ?? '')}"><span class="unit">ملف XML في اليوم</span><button data-a="p-del" title="حذف هذا العميل من القائمة">✕</button></div>`;
-    $('#main').innerHTML = `<p class="relnote">يعمل في LEVEL7 MTM: عدد ملفات XML التي تُسحب لكل عميل في يوم العمل. ما زاد عن الحد ينتظر في مجلد process ويُسحب في اليوم التالي، الأقدم أولاً. يحتاج LEVEL7 MTM 2.0.45 أو أحدث. حد كل مستخدم (عميلك على جهازه) يُكتب في صفحة المستخدم ← LEVEL7 MTM.</p>
+    const rows = p.customers.length ? p.customers : [{ name: '', limit: '', month: '' }];
+    const row = r => `<div class="pline"><input type="text" class="p-name" placeholder="اسم العميل كما هو في LEVEL7 MTM" value="${esc(r.name)}"><input type="number" class="p-limit" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(r.limit ?? '')}"><span class="unit">في اليوم</span><input type="number" class="p-month" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(r.month ?? '')}"><span class="unit">في الشهر</span><button data-a="p-del" title="حذف هذا العميل من القائمة">✕</button></div>`;
+    $('#main').innerHTML = `<p class="relnote">يعمل في LEVEL7 MTM: عدد ملفات XML التي تُسحب لكل عميل في يوم العمل وفي الشهر. ما زاد عن حد اليوم ينتظر في مجلد process ويُسحب في يوم العمل التالي، وما زاد عن حد الشهر يُسحب من أول الشهر التالي، الأقدم أولاً. الحد اليومي يحتاج LEVEL7 MTM 2.0.45 أو أحدث، والشهري 2.0.57 أو أحدث. حد كل مستخدم (عميلك على جهازه) يُكتب في صفحة المستخدم ← LEVEL7 MTM.</p>
       <section class="relbox prodbox"><h3>يوم العمل <small>واحد لكل العملاء</small></h3>
         <label class="switch"><input type="checkbox" id="p-dayon" ${p.day ? 'checked' : ''}> سحب ملفات XML في موعد يوم العمل فقط</label>
         <div class="row hours" ${p.day ? '' : 'hidden'}><label>البداية <input type="time" id="p-start" dir="ltr" value="${esc(p.day?.start || '08:00')}"></label><label>النهاية <input type="time" id="p-end" dir="ltr" value="${esc(p.day?.end || '17:00')}"></label></div>
         <p class="hint">${p.day ? 'خارج هذا الموعد لا يُسحب ملف XML جديد. ما سُحب قبل النهاية يكمل الرسم والتعشيق والقص حتى ينتهي. والعدّ يبدأ من صفر عند بداية كل يوم.' : 'بلا موعد: السحب يعمل في أي ساعة، والعدّ يبدأ من صفر عند منتصف الليل.'}</p></section>
-      <section class="relbox prodbox"><h3>الحد اليومي لكل عميل</h3>
+      <section class="relbox prodbox"><h3>حد كل عميل <small>عدد ملفات XML · اترك الخانة فارغة: بلا حد</small></h3>
         <div id="p-rows">${rows.map(row).join('')}</div>
         <div class="row"><button data-a="p-add">+ عميل</button></div>
-        <div class="row rest"><label for="p-default">باقي العملاء (غير المكتوبين هنا)</label><input type="number" id="p-default" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(p.default ?? '')}"><span class="unit">ملف XML في اليوم لكل عميل</span></div>
-        <p class="hint">اكتب اسم العميل كما يظهر في صفحة «العملاء» في LEVEL7 MTM (مثل: الفاخره). منتجات العميل تُحسب معه. لمنتج واحد وحده اكتب «العميل / المنتج». الرقم 0 يوقف السحب لهذا العميل. الأسماء تبقى على هذا الجهاز: المنشور رمز لا يُقرأ منه الاسم.</p></section>
+        <div class="row rest"><label for="p-default">باقي العملاء (غير المكتوبين هنا) — لكل عميل</label><input type="number" id="p-default" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(p.default ?? '')}"><span class="unit">في اليوم</span><input type="number" id="p-default-month" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(p.default_month ?? '')}"><span class="unit">في الشهر</span></div>
+        <p class="hint">اكتب اسم العميل كما يظهر في صفحة «العملاء» في LEVEL7 MTM (مثل: الفاخره). منتجات العميل تُحسب معه. لمنتج واحد وحده اكتب «العميل / المنتج». الرقم 0 يوقف السحب لهذا العميل. الشهر هو الشهر الميلادي، والعدّ يبدأ من صفر في أول يوم عمل منه. الأسماء تبقى على هذا الجهاز: المنشور رمز لا يُقرأ منه الاسم.</p></section>
       <div class="bar"><button class="primary big" data-a="p-save">حفظ</button><span class="msg" id="p-msg"></span></div>`;
     // 1.7.2 (review): compared once the page is in place — from the page before, a row just deleted was still there
     // (no «not saved» after ✕), and from another tab the typed numbers were text against the saved numbers
@@ -130,7 +131,7 @@
     }).join('');
     return `<div class="card" data-edit="${i}"><div class="top"><span class="av">${esc((u.name || '?').trim().charAt(0).toUpperCase())}</span><div class="who"><div class="name">${esc(u.name)}</div><div class="state ${c}">● ${esc(t)}</div></div>${u.admin ? '<span class="chip ok">مدير</span>' : ''}</div>
       <div class="progrows">${progs}</div>
-      <div class="tags"><span class="chip ${noDevice(u) ? 'warn' : ''}">💻 ${u.devices?.length ? `${u.devices.length} جهاز` : mustDevice() ? 'بلا جهاز' : 'أي جهاز'}</span>${oldPw(u) ? '<span class="chip warn" title="صيغة قديمة أضعف: افتح المستخدم واكتب له كلمة سر جديدة">كلمة سر قديمة — غيّرها</span>' : ''}${u.xz === false ? '<span class="chip warn">القياسات للعرض فقط</span>' : ''}${Number.isInteger(u.daily) ? `<span class="chip">📥 ${u.daily} XML في اليوم</span>` : ''}${toolsOf(u).length ? `<span class="chip warn">${toolsOf(u).length} أداة مغلقة</span>` : ''}</div></div>`;
+      <div class="tags"><span class="chip ${noDevice(u) ? 'warn' : ''}">💻 ${u.devices?.length ? `${u.devices.length} جهاز` : mustDevice() ? 'بلا جهاز' : 'أي جهاز'}</span>${oldPw(u) ? '<span class="chip warn" title="صيغة قديمة أضعف: افتح المستخدم واكتب له كلمة سر جديدة">كلمة سر قديمة — غيّرها</span>' : ''}${u.xz === false ? '<span class="chip warn">القياسات للعرض فقط</span>' : ''}${Number.isInteger(u.daily) ? `<span class="chip">📥 ${u.daily} XML في اليوم</span>` : ''}${Number.isInteger(u.monthly) ? `<span class="chip">📅 ${u.monthly} XML في الشهر</span>` : ''}${toolsOf(u).length ? `<span class="chip warn">${toolsOf(u).length} أداة مغلقة</span>` : ''}</div></div>`;
   }
   function summary() {
     const n = { ok: 0, warn: 0, bad: 0 };
@@ -205,7 +206,9 @@
       <section class="etab" data-sec="mtm" ${tab === 'mtm' ? '' : 'hidden'}>
       ${allowed('mtm')}
       <div class="field"><label for="e-daily">الحد اليومي لسحب ملفات XML على أجهزته (فارغ = بلا حد)</label>
-        <div class="row"><input type="number" id="e-daily" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(u.daily ?? '')}"><span class="muted">ملف XML في يوم العمل، لكل جهاز من أجهزته · 0 = لا يُسحب شيء · يوم العمل من صفحة «حد الإنتاج اليومي»</span></div></div>
+        <div class="row"><input type="number" id="e-daily" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(u.daily ?? '')}"><span class="muted">ملف XML في يوم العمل، لكل جهاز من أجهزته · 0 = لا يُسحب شيء · يوم العمل من صفحة «حد الإنتاج»</span></div></div>
+      <div class="field"><label for="e-monthly">الحد الشهري لسحب ملفات XML على أجهزته (فارغ = بلا حد)</label>
+        <div class="row"><input type="number" id="e-monthly" min="0" step="1" dir="ltr" placeholder="بلا حد" value="${esc(u.monthly ?? '')}"><span class="muted">ملف XML في الشهر الميلادي، لكل جهاز من أجهزته · 0 = لا يُسحب شيء · يحتاج LEVEL7 MTM 2.0.57 أو أحدث</span></div></div>
       <div class="field"><label>أوامر وصفحات LEVEL7 MTM المغلقة عليه (${closedOf(u, 'mtm').length}) — تختفي ولا تفتح</label>${toolList('mtm')}</div>
       </section>
       <div class="msg" id="emsg"></div></div>
@@ -221,6 +224,8 @@
     u.xz = $('#e-xz').checked; u.admin = $('#e-admin').checked; u.disabled = $('#e-dis').checked;
     const dl = String($('#e-daily')?.value ?? '').trim();
     u.daily = dl === '' ? null : Number(dl);      // 1.7.0: his daily limit of XML files pulled in LEVEL7 MTM
+    const ml = String($('#e-monthly')?.value ?? '').trim();
+    u.monthly = ml === '' ? null : Number(ml);    // 1.8.0: and his monthly limit
     editing.pw = $('#e-pw').value;
   }
   async function saveEditor() {
@@ -228,6 +233,7 @@
     const { u, i } = editing;
     if (!u.name) return emsg('اكتب الاسم.');
     if (u.daily !== null && u.daily !== undefined && !(Number.isInteger(u.daily) && u.daily >= 0 && u.daily <= 100000)) { editing.tab = 'mtm'; drawEditor(); return emsg('الحد اليومي: اكتب عدداً صحيحاً (أو اتركه فارغاً: بلا حد).'); }
+    if (u.monthly !== null && u.monthly !== undefined && !(Number.isInteger(u.monthly) && u.monthly >= 0 && u.monthly <= 3000000)) { editing.tab = 'mtm'; drawEditor(); return emsg('الحد الشهري: اكتب عدداً صحيحاً (أو اتركه فارغاً: بلا حد).'); }
     if (st.data.users.some((x, k) => k !== i && x.name.trim().toLowerCase() === u.name.toLowerCase())) return emsg('هذا الاسم موجود.');
     try {
       if (editing.pw) { delete u.hash; delete u.vh; delete u.n; Object.assign(u, await A.hash(u.name, editing.pw)); }
@@ -318,13 +324,13 @@
         const r = await A.fullUpdateInstall();
         toast(`يُثبَّت الإصدار ${r.version} — سيُغلق البرنامج ويفتح من جديد.`);
       }
-      else if (a === 'p-add') { prod = readProd(); prod.customers.push({ name: '', limit: '' }); renderProduction(); const all = document.querySelectorAll('#p-rows .p-name'); all[all.length - 1]?.focus(); }
+      else if (a === 'p-add') { prod = readProd(); prod.customers.push({ name: '', limit: '', month: '' }); renderProduction(); const all = document.querySelectorAll('#p-rows .p-name'); all[all.length - 1]?.focus(); }
       else if (a === 'p-del') { const rows = [...document.querySelectorAll('#p-rows .pline')], k = rows.indexOf(t.closest('.pline')); const now = readProdRows(); now.splice(k, 1); prod = { ...readProd(), customers: now }; renderProduction(); }
       else if (a === 'p-save') {
         const v = readProd();
         await A.saveProduction(v);
         prod = null; st = await A.state(); render();
-        toast('حُفظ حد الإنتاج اليومي ✓ — اضغط «نشر الآن» ليصل إلى الأجهزة.');
+        toast('حُفظ حد الإنتاج ✓ — اضغط «نشر الآن» ليصل إلى الأجهزة.');
       }
       else if (a === 'add') openEditor(-1);
       else if (t.dataset.edit !== undefined) openEditor(Number(t.dataset.edit));
