@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.332",
- "notes": "الرموز تحت معادلات Z تتبع كل تغيير؛ نقطة مثبتة على نهاية خط تُكتشف عند الفتح والحفظ وتُصلح بضغطة؛ التشغيل التجريبي يرسم كل بارت بمقاس صغير وكبير ويذكر ما لا يُرسم",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.332/app",
+ "version": "0.9.333",
+ "notes": "عند الحفظ تُحفظ النسخة السابقة بجوار التصميم باسم <الاسم>_.ALbk (برنامج كامل)",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.333/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,8 +16,8 @@
   },
   {
    "path": "README.md",
-   "sha256": "5f18645073dbcac043e102a15e52fc3ce9e713254c41a02539da3e5928e140bd",
-   "size": 217349
+   "sha256": "3880fb3bbd640d1d93d8764fb67ef177cc25fd76afc5ca1d9db6751b51690409",
+   "size": 217751
   },
   {
    "path": "assets/icon.ico",
@@ -181,8 +181,8 @@
   },
   {
    "path": "desktop/main.cjs",
-   "sha256": "e179adff6dc8d3f32d0794e5cb13481c2ac50f9d2fc8bd4e31b4dc3349dd11a8",
-   "size": 131304
+   "sha256": "7280c624109453e859f91f6fabc5465a05603393e08567a677a5c403a36ae054",
+   "size": 134549
   },
   {
    "path": "desktop/native-save-targets.cjs",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "3123fd72a5de3f4a49f9047e401ed3abb99f953e8f8161103f42c60c2a361dee",
+   "sha256": "a5dcbb055b46daae78d0f5f0ae6b0f327446be73c057265fd3b97af8ba63f695",
    "size": 301
   },
   {
@@ -501,8 +501,8 @@
   },
   {
    "path": "src/l7-design-mode.js",
-   "sha256": "7277e9f4355ec34c5ccfd05f31db0f4a875d64ac540262dfa6cf15c1aa0e8241",
-   "size": 81812
+   "sha256": "fee528447d3f4d17b514367771bd970eb13ff3bd7aa48fdd2503657a53b9fb21",
+   "size": 81754
   },
   {
    "path": "src/l7-icons.js",
