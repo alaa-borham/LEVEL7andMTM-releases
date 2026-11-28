@@ -1,8 +1,8 @@
 {
  "product": "LEVEL7 and MTM",
- "version": "0.9.333",
- "notes": "عند الحفظ تُحفظ النسخة السابقة بجوار التصميم باسم <الاسم>_.ALbk (برنامج كامل)",
- "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.333/app",
+ "version": "0.9.334",
+ "notes": "أيقونة البرنامج الجديدة (LEVEL7 CAD): النافذة وشريط المهام والاختصارات وشاشة البدء",
+ "baseUrl": "https://raw.githubusercontent.com/alaa-borham/LEVEL7andMTM-releases/main/level7-cad/releases/v/0.9.334/app",
  "files": [
   {
    "path": "README-ar.md",
@@ -16,18 +16,18 @@
   },
   {
    "path": "README.md",
-   "sha256": "3880fb3bbd640d1d93d8764fb67ef177cc25fd76afc5ca1d9db6751b51690409",
-   "size": 217751
+   "sha256": "7a2522b25f70a25eef20817a8e24741bd3879546cd7149743d715376a1539e29",
+   "size": 217985
   },
   {
    "path": "assets/icon.ico",
-   "sha256": "5868bd4297ab2cd00864202740bcbbc482cf3f55fe289a78540e74b16a81be91",
-   "size": 203152
+   "sha256": "04b344ad3c75492c4a7e5a76a924641d7ae77b85b90919e5e2e4bdc9fb95d93a",
+   "size": 157430
   },
   {
    "path": "assets/icon.png",
-   "sha256": "ff3efcc04ab5c2dc8c9d7231110f35cb0f4c4343b643f318fda75e346155db95",
-   "size": 98806
+   "sha256": "e458a5fbbedcf30e0bda349ace6696d81a84309b49d59901bb6d7e1de77222c3",
+   "size": 104729
   },
   {
    "path": "assets/icon.svg",
@@ -256,7 +256,7 @@
   },
   {
    "path": "package.json",
-   "sha256": "a5dcbb055b46daae78d0f5f0ae6b0f327446be73c057265fd3b97af8ba63f695",
+   "sha256": "9231defc207f5700ed7fc31049de12cdf0bd792269782f9ca63ca4fbe31dc73e",
    "size": 301
   },
   {
