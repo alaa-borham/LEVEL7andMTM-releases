@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 Nesting",
  "app": "nesting",
- "version": "2.0.30",
- "notes": "Round 3: grain arrows kept, names fit their pieces on every plotter, one crossing size leaves only itself out [skip ci]\r\n\r\nar: مراجعة الجولة الثالثة: سهم خط النسيج يبقى، وخط النسيج داخل القطعة لا يُقصّر؛ اسم القطعة الطويل يُكتب بطول القطعة الضيقة؛ الراسم بنصّه الخاص يكتب الاسم بحجمه المناسب؛ مقاس مُدرّج يتقاطع خطه يُترك وحده لا الملف كله\r\n\r\nFound by the round-3 review (2.0.29) and reproduced:\r\n- grain_inside kept only first→last of a GRAFIS grain line (one polyline with its arrowhead): the arrow was lost in\r\n  PLT / DXF and lines already inside were shortened. A line inside its piece now stays exactly as drawn; one that\r\n  runs out keeps its arrow, moved with the cut end of its shaft.\r\n- fit_text: 2.5 mm at least (4 before); written along a long narrow piece (turned 90°) when it fits larger so.\r\n- PLT label mode (the plotter's own font) wrote every name at the configured size from the fitted position: the\r\n  name's own size now (SI per name, as wide as the fitted one).\r\n- A graded AAMA size whose cut line crosses itself refused the whole file: that size alone is left out (said); the\r\n  drawn size still refuses all.\r\ntests/test_inside_piece.py (2 round-3 tests; both fail before).\r\n\r\n\r\n",
- "approved": "2026-11-15T13:36:42.026Z",
+ "version": "2.0.32",
+ "notes": "A piece wider than the fabric: how wide it is, at its narrowest allowed turn [skip ci]\r\n\r\nThe owner's order JB-26975_2-1 (fabric 950 mm, bottom 152.4 cm): «does not fit usable width 950.0 mm» — now\r\n«… (it needs 1012.4 mm)», so it is seen at once to be the fabric's width (the owner: «كم عرض القطعة»).\r\ntests/test_nesting.py: the needed width given and larger than the fabric.\r\n\r\n\r\n",
+ "approved": "2026-11-28T15:00:38.077Z",
  "setup": {
-  "name": "LEVEL7Nesting-2.0.30-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.30/LEVEL7Nesting-2.0.30-Setup.exe",
-  "sha256": "105c9c17b072411e651142caa0c1f3312d38c332367f0aa91320b5f43106575f",
-  "size": 55973837
+  "name": "LEVEL7Nesting-2.0.32-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.32/LEVEL7Nesting-2.0.32-Setup.exe",
+  "sha256": "165e38e8a08c3493d347ab3972c6ce9e24abd2c437189c1f132c944869e2131a",
+  "size": 56014302
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.30\",\"sha256\":\"105c9c17b072411e651142caa0c1f3312d38c332367f0aa91320b5f43106575f\",\"size\":55973837,\"approved\":\"2026-11-15T13:36:42.026Z\"}",
-  "sig": "L4/3i3cmvqSlFbL3WZ0NYY9FcTlLYYMsPpUxFzLFlSBqgyVRLzcB8TgJUPoplvvYgVmE5GONz5IItMM7BOBsBQ=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.32\",\"sha256\":\"165e38e8a08c3493d347ab3972c6ce9e24abd2c437189c1f132c944869e2131a\",\"size\":56014302,\"approved\":\"2026-11-28T15:00:38.077Z\"}",
+  "sig": "axSd+mE5l0vVcyV3bX+GWgE2riVZyzJikJ5SRxYsLAufm9OcbvvT8ayXpOA1ijWWVXp/phgksQUuEWbBo8BfDA=="
  }
 }
