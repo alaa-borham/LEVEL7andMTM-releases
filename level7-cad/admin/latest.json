@@ -1,10 +1,10 @@
 {
  "product": "LEVEL7 CAD MTM Admin",
  "kind": "admin-ui",
- "version": "1.8.0",
+ "version": "1.8.1",
  "core": "1.8.0",
- "notes": "حد إنتاج شهري بجانب اليومي: في صفحة «حد الإنتاج» لكل عميل خانة «في اليوم» وخانة «في الشهر»، ولباقي العملاء، وفي صفحة المستخدم «الحد الشهري». يعمل مع LEVEL7 MTM 2.0.58 أو أحدث.",
- "dir": "level7-cad/admin/v/1.8.0/ui",
+ "notes": "وصف أقصر في صفحة «حد الإنتاج».",
+ "dir": "level7-cad/admin/v/1.8.1/ui",
  "files": [
   {
    "path": "index.html",
@@ -13,8 +13,8 @@
   },
   {
    "path": "admin.js",
-   "sha256": "808ed2ee5b35633785e91342b504a7a899c905a11e77a8cdab4cce53219bf399",
-   "size": 43523
+   "sha256": "9654e7e494dba8016f528e3ac0075a3a4c8a90ac618a9f0768c1c0a03e89d4a8",
+   "size": 42743
   },
   {
    "path": "admin.css",
@@ -33,7 +33,7 @@
   },
   {
    "path": "ui-version.json",
-   "sha256": "32ada19ed7b32d40553ae5dc037e1d8dd65eef6af1604f8cf05327b4870e2bd7",
+   "sha256": "fd6bbe47bb9c28baa6bfa96bb17646a1cc05d77be8a91515dc3ea857ab3ca701",
    "size": 42
   }
  ]
