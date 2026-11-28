@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.58",
- "notes": "Monthly production limit beside the daily one (admin program 1.8.0)\r\n\r\nThe owner: «بالاضافه الي نظام حد الانتاج اليومي اريد يكون ايضا لدي نظام شهري».\r\n- policy «production»: a row's «month», «default_month» for the customers not listed, the user's «monthly»;\r\n  a row may carry either limit or both. The month is the calendar month of the work day (a work day over\r\n  midnight counts for the month it started in).\r\n- over a month's limit the XML waits in process, as over a day's, and is pulled from the first work day of the\r\n  next month, the oldest first; the reason is said (Arabic in the window).\r\n- the status bar: «الفاخره: 5 من 100 اليوم · 40 من 2000 هذا الشهر»; the title «حد الإنتاج» when a month is set.\r\n- a version before this one reads the daily limits only.\r\ntests/test_monthly_limit.py (9), test_daily_limit.py unchanged and passing.\r\n\r\nar: حد إنتاج شهري بجانب اليومي: لكل عميل أو منتج، ولباقي العملاء، ولكل مستخدم\r\n\r\n\r\n",
- "approved": "2026-11-27T14:41:41.474Z",
+ "version": "2.0.63",
+ "notes": "A child's order is compared with the design scaled as the whole order (not stopped for being small)\r\n\r\nThe owner's order DAM-26791_1-1 (and QRT-262574_2-1: «Children Size», front length 80 cm, jabzour length 26 cm) was\r\nstopped: «الجبزور الصغير (part 024): 143 mm long, in the design 420 mm». Every piece of a child's thobe is a third to\r\na half of the adult design's; the limit (half to twice the design's) was measured on adults.\r\n- pattern_check.order_scale: the median of the order's pieces' length / width ratios to the design (4 pieces at\r\n  least); each piece is compared with the design times that scale. One wrong measurement still makes one piece far\r\n  from the others (stopped); an order all more than 3 times smaller / larger than the design (a unit typed wrong) is\r\n  judged as before.\r\ntests/test_design_compare.py: 4 (a child's order; one piece far in an adult's and in a child's order; a whole order\r\nin the wrong unit; too few pieces). The first fails before this change.\r\n\r\nar: طلب الأطفال يُقارن بالتصميم بعد تصغيره بنسبة الطلب كله؛ قطعة واحدة بعيدة عن بقية القطع تبقى تُوقف\r\n\r\n\r\n",
+ "approved": "2026-11-28T10:03:06.192Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.58-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.58/LEVEL7MTM-2.0.58-Setup.exe",
-  "sha256": "6b661c61e2038aac2b5de73ecac23cb49860b47e3c8b386ba623810c3a0bfbb7",
-  "size": 62988052
+  "name": "LEVEL7MTM-2.0.63-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.63/LEVEL7MTM-2.0.63-Setup.exe",
+  "sha256": "66bfeb725750e5712eacb6657be23aa6615e2be9aac0aa3cf175351bc92bf303",
+  "size": 63008747
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.58\",\"sha256\":\"6b661c61e2038aac2b5de73ecac23cb49860b47e3c8b386ba623810c3a0bfbb7\",\"size\":62988052,\"approved\":\"2026-11-27T14:41:41.474Z\"}",
-  "sig": "pZLdIFuh65aYs3s3xRM2/VrRSvbFyo679dndWzxCWUkQoPwHSN8u3/kzIuxeBQo2gPtI5DE/ArqeM2/aracrBg=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.63\",\"sha256\":\"66bfeb725750e5712eacb6657be23aa6615e2be9aac0aa3cf175351bc92bf303\",\"size\":63008747,\"approved\":\"2026-11-28T10:03:06.192Z\"}",
+  "sig": "USllVECnlDC77dWBPjzel7jZU2pBderFAz4DgUtR1YXYjqrzxbFfJvy3Hs5LToQm7IsgPc8lI/zP8ZNaQ9ZuDw=="
  }
 }
