@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 Nesting",
+ "app": "nesting",
+ "version": "2.0.32",
+ "notes": "A piece wider than the fabric: how wide it is, at its narrowest allowed turn [skip ci]\r\n\r\nThe owner's order JB-26975_2-1 (fabric 950 mm, bottom 152.4 cm): «does not fit usable width 950.0 mm» — now\r\n«… (it needs 1012.4 mm)», so it is seen at once to be the fabric's width (the owner: «كم عرض القطعة»).\r\ntests/test_nesting.py: the needed width given and larger than the fabric.\r\n\r\n\r\n",
+ "approved": "2026-11-28T15:00:38.077Z",
+ "setup": {
+  "name": "LEVEL7Nesting-2.0.32-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/nesting-v2.0.32/LEVEL7Nesting-2.0.32-Setup.exe",
+  "sha256": "165e38e8a08c3493d347ab3972c6ce9e24abd2c437189c1f132c944869e2131a",
+  "size": 56014302
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"nesting\",\"version\":\"2.0.32\",\"sha256\":\"165e38e8a08c3493d347ab3972c6ce9e24abd2c437189c1f132c944869e2131a\",\"size\":56014302,\"approved\":\"2026-11-28T15:00:38.077Z\"}",
+  "sig": "axSd+mE5l0vVcyV3bX+GWgE2riVZyzJikJ5SRxYsLAufm9OcbvvT8ayXpOA1ijWWVXp/phgksQUuEWbBo8BfDA=="
+ }
+}
