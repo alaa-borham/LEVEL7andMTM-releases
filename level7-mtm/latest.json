@@ -1,17 +1,17 @@
 {
  "product": "LEVEL7 MTM",
  "app": "mtm",
- "version": "2.0.58",
- "notes": "Monthly production limit beside the daily one (admin program 1.8.0)\r\n\r\nThe owner: «بالاضافه الي نظام حد الانتاج اليومي اريد يكون ايضا لدي نظام شهري».\r\n- policy «production»: a row's «month», «default_month» for the customers not listed, the user's «monthly»;\r\n  a row may carry either limit or both. The month is the calendar month of the work day (a work day over\r\n  midnight counts for the month it started in).\r\n- over a month's limit the XML waits in process, as over a day's, and is pulled from the first work day of the\r\n  next month, the oldest first; the reason is said (Arabic in the window).\r\n- the status bar: «الفاخره: 5 من 100 اليوم · 40 من 2000 هذا الشهر»; the title «حد الإنتاج» when a month is set.\r\n- a version before this one reads the daily limits only.\r\ntests/test_monthly_limit.py (9), test_daily_limit.py unchanged and passing.\r\n\r\nar: حد إنتاج شهري بجانب اليومي: لكل عميل أو منتج، ولباقي العملاء، ولكل مستخدم\r\n\r\n\r\n",
- "approved": "2026-11-27T14:41:41.474Z",
+ "version": "2.0.64",
+ "notes": "Faster customers page and start; each problem line says if it is a measurement or a piece, in its colour [skip ci]\r\n\r\nFrom the owner's level7mtm-slow.log (2.0.63):\r\n- the customers page froze 6-8 s (on choosing a customer, opening the page, saving): its Basic-Size column read\r\n  2000 orders again for each row (23 with the products), each order's JSON parsed twice; and each row's cutting\r\n  formats / folder made every customer's settings. Now: one look for all rows (json_extract, kept a minute; a new\r\n  order makes it again), the product's customer read from the saved list. Here: 1.9 s -> 0.03 s.\r\n- the window froze 7.7 s when the program opened: its first order list is built in the background (the program's\r\n  own window; a test builds it at once).\r\n- a forced list asked while one is being built is built again after it (never lost).\r\nFrom his level7mtm-errors.log: a range saved as text broke the measurement checks page («Unknown format code 'g'»).\r\n\r\nThe owner: «اريد ان يميز الخطأ هذا اذا كان قياس او قطعه بلون مختلف كي تكون عمليه التعديل سريعه» — each line of the\r\norder's problems: [القياس] yellow, [القطعة] red (the drawing program's «part 011 … step 3» too), [اختيار] blue.\r\ntests: test_ui_smoke (customers page reads once; a range as text; the colours), test_cad_workspace adjusted.\r\n\r\n\r\n",
+ "approved": "2026-11-28T11:45:48.294Z",
  "setup": {
-  "name": "LEVEL7MTM-2.0.58-Setup.exe",
-  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.58/LEVEL7MTM-2.0.58-Setup.exe",
-  "sha256": "6b661c61e2038aac2b5de73ecac23cb49860b47e3c8b386ba623810c3a0bfbb7",
-  "size": 62988052
+  "name": "LEVEL7MTM-2.0.64-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.64/LEVEL7MTM-2.0.64-Setup.exe",
+  "sha256": "bff76f86a4975ca4efa71378491e8a6c0d37fc5fdf7220594317cb241d23adcc",
+  "size": 63005594
  },
  "approval": {
-  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.58\",\"sha256\":\"6b661c61e2038aac2b5de73ecac23cb49860b47e3c8b386ba623810c3a0bfbb7\",\"size\":62988052,\"approved\":\"2026-11-27T14:41:41.474Z\"}",
-  "sig": "pZLdIFuh65aYs3s3xRM2/VrRSvbFyo679dndWzxCWUkQoPwHSN8u3/kzIuxeBQo2gPtI5DE/ArqeM2/aracrBg=="
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.64\",\"sha256\":\"bff76f86a4975ca4efa71378491e8a6c0d37fc5fdf7220594317cb241d23adcc\",\"size\":63005594,\"approved\":\"2026-11-28T11:45:48.294Z\"}",
+  "sig": "dEn+XJOVKj03G/awBo79WNhKj+MZ6nYhgoCdpN9aQgpWIoXyCHJTisRjYSVsWKh9nQS4JyenkZeBMpLZ7UxADg=="
  }
 }

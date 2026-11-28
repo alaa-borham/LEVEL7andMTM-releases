@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.63",
+ "notes": "A child's order is compared with the design scaled as the whole order (not stopped for being small)\r\n\r\nThe owner's order DAM-26791_1-1 (and QRT-262574_2-1: «Children Size», front length 80 cm, jabzour length 26 cm) was\r\nstopped: «الجبزور الصغير (part 024): 143 mm long, in the design 420 mm». Every piece of a child's thobe is a third to\r\na half of the adult design's; the limit (half to twice the design's) was measured on adults.\r\n- pattern_check.order_scale: the median of the order's pieces' length / width ratios to the design (4 pieces at\r\n  least); each piece is compared with the design times that scale. One wrong measurement still makes one piece far\r\n  from the others (stopped); an order all more than 3 times smaller / larger than the design (a unit typed wrong) is\r\n  judged as before.\r\ntests/test_design_compare.py: 4 (a child's order; one piece far in an adult's and in a child's order; a whole order\r\nin the wrong unit; too few pieces). The first fails before this change.\r\n\r\nar: طلب الأطفال يُقارن بالتصميم بعد تصغيره بنسبة الطلب كله؛ قطعة واحدة بعيدة عن بقية القطع تبقى تُوقف\r\n\r\n\r\n",
+ "approved": "2026-11-28T10:03:06.192Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.63-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.63/LEVEL7MTM-2.0.63-Setup.exe",
+  "sha256": "66bfeb725750e5712eacb6657be23aa6615e2be9aac0aa3cf175351bc92bf303",
+  "size": 63008747
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.63\",\"sha256\":\"66bfeb725750e5712eacb6657be23aa6615e2be9aac0aa3cf175351bc92bf303\",\"size\":63008747,\"approved\":\"2026-11-28T10:03:06.192Z\"}",
+  "sig": "USllVECnlDC77dWBPjzel7jZU2pBderFAz4DgUtR1YXYjqrzxbFfJvy3Hs5LToQm7IsgPc8lI/zP8ZNaQ9ZuDw=="
+ }
+}

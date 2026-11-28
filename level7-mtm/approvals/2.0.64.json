@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.64",
+ "notes": "Faster customers page and start; each problem line says if it is a measurement or a piece, in its colour [skip ci]\r\n\r\nFrom the owner's level7mtm-slow.log (2.0.63):\r\n- the customers page froze 6-8 s (on choosing a customer, opening the page, saving): its Basic-Size column read\r\n  2000 orders again for each row (23 with the products), each order's JSON parsed twice; and each row's cutting\r\n  formats / folder made every customer's settings. Now: one look for all rows (json_extract, kept a minute; a new\r\n  order makes it again), the product's customer read from the saved list. Here: 1.9 s -> 0.03 s.\r\n- the window froze 7.7 s when the program opened: its first order list is built in the background (the program's\r\n  own window; a test builds it at once).\r\n- a forced list asked while one is being built is built again after it (never lost).\r\nFrom his level7mtm-errors.log: a range saved as text broke the measurement checks page («Unknown format code 'g'»).\r\n\r\nThe owner: «اريد ان يميز الخطأ هذا اذا كان قياس او قطعه بلون مختلف كي تكون عمليه التعديل سريعه» — each line of the\r\norder's problems: [القياس] yellow, [القطعة] red (the drawing program's «part 011 … step 3» too), [اختيار] blue.\r\ntests: test_ui_smoke (customers page reads once; a range as text; the colours), test_cad_workspace adjusted.\r\n\r\n\r\n",
+ "approved": "2026-11-28T11:45:48.294Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.64-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.64/LEVEL7MTM-2.0.64-Setup.exe",
+  "sha256": "bff76f86a4975ca4efa71378491e8a6c0d37fc5fdf7220594317cb241d23adcc",
+  "size": 63005594
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.64\",\"sha256\":\"bff76f86a4975ca4efa71378491e8a6c0d37fc5fdf7220594317cb241d23adcc\",\"size\":63005594,\"approved\":\"2026-11-28T11:45:48.294Z\"}",
+  "sig": "dEn+XJOVKj03G/awBo79WNhKj+MZ6nYhgoCdpN9aQgpWIoXyCHJTisRjYSVsWKh9nQS4JyenkZeBMpLZ7UxADg=="
+ }
+}
