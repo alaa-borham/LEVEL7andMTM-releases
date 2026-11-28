@@ -1,0 +1,17 @@
+{
+ "product": "LEVEL7 MTM",
+ "app": "mtm",
+ "version": "2.0.65",
+ "notes": "Order page: each measurement a message names takes that message's colour; a click on the message chooses its row [skip ci]\r\n\r\nThe owner: «عندما يكون عندي خطأ اريد يتم تمييز الاسطر الذي به تلك الاخطأ» — measure_marks: the worst severity of\r\nthe messages naming a measurement (its field, else «CODE: …» / «CODE = …»): red stops, yellow review, blue info.\r\ntest_ui_smoke: the colours and the click.\r\n\r\n\r\n",
+ "approved": "2026-11-28T16:06:13.199Z",
+ "setup": {
+  "name": "LEVEL7MTM-2.0.65-Setup.exe",
+  "url": "https://github.com/alaa-borham/LEVEL7andMTM-releases/releases/download/mtm-v2.0.65/LEVEL7MTM-2.0.65-Setup.exe",
+  "sha256": "90ea6e151f42239bbb61a5bcba50eb8b340562ab8e99a424af5632fb43ef3796",
+  "size": 63008727
+ },
+ "approval": {
+  "payload": "{\"product\":\"LEVEL7 and MTM\",\"kind\":\"setup\",\"app\":\"mtm\",\"version\":\"2.0.65\",\"sha256\":\"90ea6e151f42239bbb61a5bcba50eb8b340562ab8e99a424af5632fb43ef3796\",\"size\":63008727,\"approved\":\"2026-11-28T16:06:13.199Z\"}",
+  "sig": "wD1YQ0a+fqGAUGkeTRs57GWfoVneecDxTY28yW3CiRVc4k6SSyqE7xWcQRYNLBF9s/rDbcDOzJByf7V82BSIDA=="
+ }
+}
